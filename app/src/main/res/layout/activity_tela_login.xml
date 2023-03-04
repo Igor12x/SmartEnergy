@@ -104,8 +104,9 @@
         android:id="@+id/button"
         android:layout_width="275dp"
         android:layout_height="59dp"
-        android:background="@drawable/bordas_arredondadas_botao_azul"
+        android:backgroundTint="@color/azulescuro"
         android:text="Button"
+        app:cornerRadius="10dp"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="511dp" />
 
