@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textLogin"
+        android:id="@+id/textCadastro"
         android:layout_width="112dp"
         android:layout_height="44dp"
         android:text="@string/tituloLogin"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textLogin2"
+        app:layout_constraintBottom_toTopOf="@+id/textCadastro2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.857" />
 
     <TextView
-        android:id="@+id/textLogin2"
+        android:id="@+id/textCadastro2"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginTop="119dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textLogin"
+        app:layout_constraintStart_toStartOf="@+id/textCadastro"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.895" />
 
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.403" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextNome"
         android:layout_width="290dp"
         android:layout_height="46dp"
         android:backgroundTint="@color/azulescuro"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.239" />
 
     <EditText
-        android:id="@+id/editTextSenha"
+        android:id="@+id/editTextEmail"
         android:layout_width="290dp"
         android:layout_height="46dp"
         android:backgroundTint="@color/azulescuro"
