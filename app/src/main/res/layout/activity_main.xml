@@ -72,6 +72,7 @@
         android:layout_height="46dp"
         android:backgroundTint="@color/azulescuro"
         android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c"
         android:hint="@string/plainEmail"
         android:inputType="textPersonName"
         android:text="@string/plainSenha"
