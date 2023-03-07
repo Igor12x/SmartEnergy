@@ -8,4 +8,5 @@
     <string name="plainCPF">CPF</string>
     <string name="textoLogin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="tituloCadastro">CADASTRO</string>
+    <string name="btnCadastro">CADASTRAR</string>
 </resources>
