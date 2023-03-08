@@ -31,7 +31,7 @@
         android:layout_marginBottom="557dp"
         android:fontFamily="@font/mplusrrounded1c_bold"
 
-        android:text="@string/textoLogin"
+        android:text="@string/textoDescricao"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -186,9 +186,13 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icone_seta"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintBottom_toTopOf="@+id/viewLog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.106"
+            app:srcCompat="@drawable/icone_seta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
