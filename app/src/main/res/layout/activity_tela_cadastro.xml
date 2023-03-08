@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textCadastro"
+        android:id="@+id/textCadTitulo"
         android:layout_width="169dp"
         android:layout_height="47dp"
         android:text="@string/tituloCadastro"
         android:textColor="@color/azulescuro"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textCadastro2"
+        app:layout_constraintBottom_toTopOf="@+id/textCadDescricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.857" />
 
     <TextView
-        android:id="@+id/textCadastro2"
+        android:id="@+id/textCadDescricao"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginTop="119dp"
@@ -31,7 +31,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textCadastro"
+        app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.895" />
 
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <View
-            android:id="@+id/view2"
+            android:id="@+id/viewCad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="179dp"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNome"
+            android:id="@+id/plainCadNome"
             android:layout_width="290dp"
             android:layout_height="0dp"
             android:layout_marginTop="219dp"
@@ -68,13 +68,27 @@
             android:textColor="@color/brancoazulado"
             android:textColorHighlight="@color/brancoazulado"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintBottom_toBottomOf="@+id/viewCad"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imgCadNome"
+            android:layout_width="27dp"
+            android:layout_height="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadNome"
+            app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
+            app:layout_constraintHorizontal_bias="0.969"
+            app:layout_constraintStart_toStartOf="@+id/plainCadNome"
+            app:layout_constraintTop_toTopOf="@+id/plainCadNome"
+            app:layout_constraintVertical_bias="0.45"
+            app:srcCompat="@drawable/icone_pessoa" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/plainCadEmail"
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:layout_marginStart="60dp"
@@ -89,23 +103,25 @@
             android:textColor="@color/brancoazulado"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextSenha"
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editTextNome" />
+            app:layout_constraintTop_toTopOf="@+id/plainCadNome" />
 
         <ImageView
-            android:id="@+id/imgEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="119dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
-            app:layout_constraintTop_toTopOf="@+id/view2"
+            android:id="@+id/imgCadEmail"
+            android:layout_width="27dp"
+            android:layout_height="21dp"
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadEmail"
+            app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
+            app:layout_constraintHorizontal_bias="0.969"
+            app:layout_constraintStart_toStartOf="@+id/plainCadEmail"
+            app:layout_constraintTop_toTopOf="@+id/plainCadEmail"
+            app:layout_constraintVertical_bias="0.44"
             app:srcCompat="@drawable/email_branco" />
 
         <EditText
-            android:id="@+id/editTextSenha"
+            android:id="@+id/plainCadSenha"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="60dp"
@@ -120,13 +136,21 @@
             android:textColor="@color/brancoazulado"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toTopOf="@+id/editTextSenha2"
+            app:layout_constraintBottom_toTopOf="@+id/plainCadRecuperaSenha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view2" />
+            app:layout_constraintTop_toTopOf="@+id/viewCad" />
+
+        <ImageView
+            android:id="@+id/imgCadSenha"
+            android:layout_width="32dp"
+            android:layout_height="17dp"
+            app:srcCompat="@drawable/icone_olho_branco"
+            tools:layout_editor_absoluteX="314dp"
+            tools:layout_editor_absoluteY="371dp" />
 
         <EditText
-            android:id="@+id/editTextSenha2"
+            android:id="@+id/plainCadRecuperaSenha"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="60dp"
@@ -140,13 +164,21 @@
             android:textColor="@color/brancoazulado"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toTopOf="@+id/editTextCPF"
+            app:layout_constraintBottom_toTopOf="@+id/plainCadCpf"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSenha" />
+            app:layout_constraintTop_toBottomOf="@+id/plainCadSenha" />
+
+        <ImageView
+            android:id="@+id/imgCadRecuperaSenha"
+            android:layout_width="32dp"
+            android:layout_height="17dp"
+            app:srcCompat="@drawable/icone_olho_branco"
+            tools:layout_editor_absoluteX="314dp"
+            tools:layout_editor_absoluteY="439dp" />
 
         <EditText
-            android:id="@+id/editTextCPF"
+            android:id="@+id/plainCadCpf"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="60dp"
@@ -160,26 +192,35 @@
             android:textColor="@color/brancoazulado"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
+            app:layout_constraintBottom_toTopOf="@+id/btnCadCadastrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSenha2" />
+            app:layout_constraintTop_toBottomOf="@+id/plainCadRecuperaSenha" />
+
+        <ImageView
+            android:id="@+id/imgCadCpf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icone_cpf_branco"
+            tools:layout_editor_absoluteX="320dp"
+            tools:layout_editor_absoluteY="501dp" />
 
         <Button
-            android:id="@+id/btnCadastrar"
+            android:id="@+id/btnCadCadastrar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="60dp"
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="123dp"
             android:backgroundTint="@color/brancoazulado"
-            android:text="Button"
+            android:text="@string/btnCadastro"
             android:textColor="@color/azulescuro"
             app:cornerRadius="47dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCPF" />
+            app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
