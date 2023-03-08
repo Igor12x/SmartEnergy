@@ -9,4 +9,11 @@
     <string name="textoLogin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
+    <string name="plainEsqSenhaTitulo">Esqueceu a senha?</string>
+    <string name="plainEsqSenhaDescricao">Não se preocupe! Por favor, insira abaixo o endereço de email vinculado a sua conta</string>
+    <string name="plainEsqSenhaEmail">Entre com seu email</string>
+    <string name="btnEsqSenha">Enviar Código</string>
+    <string name="txtEscSenha">Lembrou a Senha?</string>
+    <string name="txtEscSenhaLog"><u>Login</u></string>
+
 </resources>

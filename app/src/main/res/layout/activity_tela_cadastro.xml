@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textCadTitulo"
+        android:id="@+id/plainEsqSenhaTitulo"
         android:layout_width="169dp"
         android:layout_height="47dp"
         android:text="@string/tituloCadastro"
         android:textColor="@color/azulescuro"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textCadDescricao"
+        app:layout_constraintBottom_toTopOf="@+id/plainEsqSenhaDescricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.857" />
 
     <TextView
-        android:id="@+id/textCadDescricao"
+        android:id="@+id/plainEsqSenhaDescricao"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginTop="119dp"
@@ -31,7 +31,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
+        app:layout_constraintStart_toStartOf="@+id/plainEsqSenhaTitulo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.895" />
 
@@ -41,8 +41,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <View
             android:id="@+id/viewCad"
@@ -220,6 +222,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icone_seta"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
