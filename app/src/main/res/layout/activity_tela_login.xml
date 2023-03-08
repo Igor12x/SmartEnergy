@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulescuro"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textLogTitulo"
+        android:layout_width="112dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/tituloLogin"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textLogDescricao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <TextView
+        android:id="@+id/textLogDescricao"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginBottom="557dp"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+
+        android:text="@string/textoDescricao"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textLogTitulo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogSeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/viewLog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.106"
+            app:srcCompat="@drawable/icone_seta" />
+
+        <View
+            android:id="@+id/viewLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="176dp"
+
+            android:background="@drawable/bordas_arredondadas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/plainLogEmail"
+            android:layout_width="290dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@color/azulescuro"
+            android:ems="10"
+            android:fontFamily="@font/mplusrrounded1c_bold"
+            android:hint="@string/plainEmail"
+            android:inputType="textPersonName"
+            android:textColorHighlight="@color/azulescuro"
+            android:textColorHint="@color/azulescuro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewLog"
+            app:layout_constraintVertical_bias="0.118" />
+
+        <ImageView
+            android:id="@+id/imgLogEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintEnd_toEndOf="@+id/plainLogEmail"
+            app:layout_constraintHorizontal_bias="0.965"
+            app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
+            app:layout_constraintTop_toTopOf="@+id/plainLogEmail"
+            app:srcCompat="@drawable/email_azul" />
+
+        <EditText
+            android:id="@+id/plainLogSenha"
+            android:layout_width="290dp"
+            android:layout_height="46dp"
+            android:backgroundTint="@color/azulescuro"
+            android:ems="10"
+            android:fontFamily="@font/mplusrrounded1c_bold"
+            android:hint="@string/plainSenha"
+            android:inputType="textPersonName"
+            android:textColorHighlight="@color/azulescuro"
+            android:textColorHint="@color/azulescuro"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLog"
+            app:layout_constraintEnd_toEndOf="@+id/plainLogEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
+            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintVertical_bias="0.431" />
+
+        <ImageView
+            android:id="@+id/imgLogSenha"
+            android:layout_width="32dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="252dp"
+            app:layout_constraintBottom_toBottomOf="@+id/plainLogSenha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/plainLogSenha"
+            app:layout_constraintTop_toTopOf="@+id/plainLogSenha"
+            app:layout_constraintVertical_bias="0.448"
+            app:srcCompat="@drawable/icone_olho_azul" />
+
+        <Button
+            android:id="@+id/buttonLog"
+            android:layout_width="290dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/azulescuro"
+            android:fontFamily="@font/mplis_bold"
+            android:text="@string/button"
+            android:textSize="19sp"
+            app:cornerRadius="47dp"
+            app:layout_constraintBottom_toTopOf="@+id/textLogEsqueceuSenha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textLogEsqueceuSenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mplusrrounded1c_bold"
+            android:text="@string/TextViewEsqueceuSenha"
+            android:textColor="@color/azulescuro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintVertical_bias="0.568" />
+
+        <TextView
+            android:id="@+id/textLogNaoTemConta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="144dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/TextViewRodape"
+            android:textColor="@color/azulescuro"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="@+id/buttonLog"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLog"
+            app:layout_constraintVertical_bias="0.058" />
+
+        <TextView
+            android:id="@+id/textLogRegistreAgora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/TextViewRodape2"
+            android:textColor="@color/brancoazuladoTexto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/buttonLog"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textLogEsqueceuSenha"
+            app:layout_constraintVertical_bias="0.886" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

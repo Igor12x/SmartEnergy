@@ -2,10 +2,18 @@
     <string name="app_name">projetotcc</string>
     <string name="tituloLogin">LOGIN</string>
     <string name="plainEmail">E-mail</string>
+    <string name="editTextNome">Nome</string>
     <string name="plainSenha">Digite a senha</string>
+    <string name="plainConfirmeSenha">Confirme a senha</string>
+    <string name="plainCPF">CPF</string>
     <string name="button">LOGIN</string>
     <string name="TextViewEsqueceuSenha">ESQUECEU A SENHA?</string>
     <string name="TextViewRodape">Não tem conta? </string>
     <string name="TextViewRodape2"><u>Registre-se agora</u></string>
-    <string name="textoLogin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-</resources>
+    <string name="textoDescricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="tituloCadastro">CADASTRO</string>
+    <string name="btnCadastro">CADASTRAR</string>
+    <string name="button">LOGIN</string>
+    <string name="TextViewEsqueceuSenha">ESQUECEU A SENHA?</string>
+    <string name="TextViewRodape">Não tem conta? </string>
+    <string name="TextViewRodape2"><u>Registre-se agora</u></string></resources>
