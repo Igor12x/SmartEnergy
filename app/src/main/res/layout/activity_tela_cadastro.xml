@@ -46,11 +46,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgCadSeta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintBottom_toTopOf="@+id/viewCad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toStartOf="parent"
@@ -162,9 +162,13 @@
             android:id="@+id/imgCadSenha"
             android:layout_width="32dp"
             android:layout_height="17dp"
-            app:srcCompat="@drawable/icone_olho_branco"
-            tools:layout_editor_absoluteX="314dp"
-            tools:layout_editor_absoluteY="371dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
+            app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
+            app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
+            app:layout_constraintVertical_bias="0.437"
+            app:srcCompat="@drawable/icone_olho_branco" />
 
         <EditText
             android:id="@+id/plainCadRecuperaSenha"
@@ -191,9 +195,12 @@
             android:id="@+id/imgCadRecuperaSenha"
             android:layout_width="32dp"
             android:layout_height="17dp"
-            app:srcCompat="@drawable/icone_olho_branco"
-            tools:layout_editor_absoluteX="314dp"
-            tools:layout_editor_absoluteY="439dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadRecuperaSenha"
+            app:layout_constraintEnd_toEndOf="@+id/plainCadRecuperaSenha"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="@+id/plainCadRecuperaSenha"
+            app:layout_constraintTop_toTopOf="@+id/plainCadRecuperaSenha"
+            app:srcCompat="@drawable/icone_olho_branco" />
 
         <EditText
             android:id="@+id/plainCadCpf"
@@ -220,9 +227,13 @@
             android:id="@+id/imgCadCpf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icone_cpf_branco"
-            tools:layout_editor_absoluteX="320dp"
-            tools:layout_editor_absoluteY="501dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/plainCadCpf"
+            app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
+            app:layout_constraintHorizontal_bias="0.981"
+            app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
+            app:layout_constraintTop_toTopOf="@+id/plainCadCpf"
+            app:layout_constraintVertical_bias="0.368"
+            app:srcCompat="@drawable/icone_cpf_branco" />
 
         <Button
             android:id="@+id/btnCadCadastrar"
