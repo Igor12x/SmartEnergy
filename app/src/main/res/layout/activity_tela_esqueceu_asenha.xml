@@ -52,6 +52,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -61,13 +62,18 @@
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="290dp"
+                android:layout_height="60dp"
+                android:background="@drawable/edit_text_equeceu_senha"
                 android:ems="10"
+                android:fontFamily="@font/mplusrrounded1c"
+                android:gravity="fill"
                 android:inputType="textPersonName"
+                android:paddingStart="20dp"
                 android:text="@string/plainEsqSenhaEmail"
-                android:textColor="@color/azulescuro"
+                android:textColor="@color/brancoazuladotexto"
                 android:textColorHighlight="@color/azulescuro"
+                android:textColorHint="@color/azulescuro"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -77,17 +83,18 @@
 
             <Button
                 android:id="@+id/btnEscSenha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="290dp"
+                android:layout_height="60dp"
                 android:layout_marginBottom="123dp"
                 android:backgroundTint="@color/azulescuro"
                 android:text="@string/btnEsqSenha"
                 app:cornerRadius="47dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+                app:layout_constraintVertical_bias="0.17" />
 
             <TextView
                 android:id="@+id/textView"
