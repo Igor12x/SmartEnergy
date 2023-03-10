@@ -13,4 +13,7 @@
     <string name="textoDescricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
+    <string name="TextSenhaAlterada">Senha alterada!</string>
+    <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>
+    <string name="btnSenhaAlt">Volte ao Login</string>
 </resources>
