@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textLogTitulo"
+        android:id="@+id/textCodVerificacaoTitulo"
         android:layout_width="112dp"
         android:layout_height="44dp"
         android:fontFamily="@font/montserrat_bold"
@@ -16,7 +16,7 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textLogDescricao"
+        app:layout_constraintBottom_toTopOf="@+id/textCodVerificacaoDescricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.857" />
 
     <TextView
-        android:id="@+id/textLogDescricao"
+        android:id="@+id/textCodVerificacaoDescricao"
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginTop="119dp"
@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textLogTitulo"
+        app:layout_constraintStart_toStartOf="@+id/textCodVerificacaoTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

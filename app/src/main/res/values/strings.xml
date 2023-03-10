@@ -13,4 +13,9 @@
     <string name="textoDescricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
+    <string name="textDescricao_codVerificacao">Digite o código que enviamos no seu email</string>
+    <string name="textTitulo_codVerificacao">Código de Verificação</string>
+    <string name="codVerificacao_botao">Verificar</string>
+    <string name="codVerificacao_textRodape">Não recebeu o código?</string>
+    <string name="codVerificacao_textRodape2">Reenviar</string>
 </resources>
