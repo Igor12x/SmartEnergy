@@ -15,4 +15,7 @@
     <string name="btnCadastro">CADASTRAR</string>
     <string name="txtNvSenhaTitulo">Criar nova senha</string>
     <string name="txtNvSenhaDsc">Sua senha não pode ser nenhuma utilizada anteriormente</string>
+    <string name="editTextNvSenha">Nova Senha</string>
+    <string name="editTextCfmSenha">Confirme a Senha</string>
+    <string name="btnCfmSenha">Redefinir Senha</string>
 </resources>
