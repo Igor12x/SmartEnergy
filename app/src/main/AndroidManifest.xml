@@ -12,13 +12,10 @@
         android:theme="@style/Theme.Projetotcc"
         tools:targetApi="31">
         <activity
-            android:name=".TelaInicio_ParteSuperior"
+            android:name=".Tela_Login"
             android:exported="false" />
         <activity
             android:name=".Tela_Cadastro"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
