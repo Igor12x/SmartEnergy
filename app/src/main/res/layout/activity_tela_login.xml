@@ -5,38 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/azulescuro"
-    tools:context=".MainActivity">
+    tools:context=".Tela_Login">
+
+    <ImageView
+        android:id="@+id/imgLogSeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icone_seta" />
 
     <TextView
         android:id="@+id/textLogTitulo"
-        android:layout_width="112dp"
-        android:layout_height="44dp"
+        android:layout_width="159dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="63dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/tituloLogin"
+        android:text="@string/textLogTitulo"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textLogDescricao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
-
-    <TextView
-        android:id="@+id/textLogDescricao"
-        android:layout_width="280dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="119dp"
-        android:layout_marginBottom="557dp"
-        android:fontFamily="@font/mplusrrounded1c_bold"
-
-        android:text="@string/textoDescricao"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textLogTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,25 +36,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imgLogSeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/viewLog"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.106"
-            app:srcCompat="@drawable/icone_seta" />
-
         <View
             android:id="@+id/viewLog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="411dp"
+            android:layout_height="0dp"
             android:layout_marginTop="176dp"
 
             android:background="@drawable/bordas_arredondadas"
@@ -81,8 +62,8 @@
             android:backgroundTint="@color/azulescuro"
             android:ems="10"
             android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/plainEmail"
-            android:inputType="textPersonName"
+            android:hint="@string/hintLogEmail"
+            android:inputType="textWebEmailAddress|textEmailAddress|textEmailSubject"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +82,7 @@
             app:layout_constraintHorizontal_bias="0.965"
             app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
             app:layout_constraintTop_toTopOf="@+id/plainLogEmail"
-            app:srcCompat="@drawable/email_azul" />
+            app:srcCompat="@drawable/icone_email_azul" />
 
         <EditText
             android:id="@+id/plainLogSenha"
@@ -110,11 +91,11 @@
             android:backgroundTint="@color/azulescuro"
             android:ems="10"
             android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/plainSenha"
-            android:inputType="textPersonName"
+            android:hint="@string/hintLogSenha"
+            android:inputType="textPassword"
             android:textColorHighlight="@color/azulescuro"
             android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLog"
+            app:layout_constraintBottom_toTopOf="@+id/btnLog"
             app:layout_constraintEnd_toEndOf="@+id/plainLogEmail"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
@@ -135,12 +116,12 @@
             app:srcCompat="@drawable/icone_olho_azul" />
 
         <Button
-            android:id="@+id/buttonLog"
+            android:id="@+id/btnLog"
             android:layout_width="290dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/azulescuro"
             android:fontFamily="@font/mplis_bold"
-            android:text="@string/button"
+            android:text="@string/btnLog"
             android:textSize="19sp"
             app:cornerRadius="47dp"
             app:layout_constraintBottom_toTopOf="@+id/textLogEsqueceuSenha"
@@ -155,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mplusrrounded1c_bold"
-            android:text="@string/TextViewEsqueceuSenha"
+            android:text="@string/textLogEsqueceuSenha"
             android:textColor="@color/azulescuro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -170,29 +151,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="144dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="@string/TextViewRodape"
+            android:text="@string/textLogNaoTemConta"
             android:textColor="@color/azulescuro"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.111"
-            app:layout_constraintStart_toStartOf="@+id/buttonLog"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLog"
-            app:layout_constraintVertical_bias="0.058" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewLog"
+            app:layout_constraintEnd_toEndOf="@+id/btnLog"
+            app:layout_constraintHorizontal_bias="0.129"
+            app:layout_constraintStart_toStartOf="@+id/btnLog"
+            app:layout_constraintTop_toBottomOf="@+id/btnLog"
+            app:layout_constraintVertical_bias="0.578" />
 
         <TextView
             android:id="@+id/textLogRegistreAgora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="144dp"
             android:fontFamily="@font/montserrat_regular"
-            android:text="@string/TextViewRodape2"
+            android:text="@string/textLogRegistreAgora"
             android:textColor="@color/brancoazuladoTexto"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/buttonLog"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textLogEsqueceuSenha"
-            app:layout_constraintVertical_bias="0.886" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/viewLog"
+            app:layout_constraintEnd_toEndOf="@+id/btnLog"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toStartOf="@+id/btnLog"
+            app:layout_constraintTop_toBottomOf="@+id/btnLog"
+            app:layout_constraintVertical_bias="0.578" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
