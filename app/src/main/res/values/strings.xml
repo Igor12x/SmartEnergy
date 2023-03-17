@@ -12,4 +12,6 @@
     <string name="textLogRegistreAgora"><u>Registre-se agora</u></string>
     <string name="textCadTitulo">CADASTRO</string>
     <string name="btnCad">CADASTRAR</string>
+    <string name="txtEndereco"></string>
+    <string name="txtData">Quinta, 16 de MAR de 2023</string>
 </resources>

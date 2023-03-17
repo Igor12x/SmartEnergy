@@ -47,11 +47,27 @@
         tools:layout_editor_absoluteX="319dp"
         tools:layout_editor_absoluteY="110dp" />
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="110dp" />
+        android:backgroundTint="#00FFFFFF"
+        app:srcCompat="@drawable/baseline_calendar_today_24"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="221dp" />
+
+    <ListView
+        android:layout_width="167dp"
+        android:layout_height="30dp"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="94dp" />
+
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtData"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="234dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
