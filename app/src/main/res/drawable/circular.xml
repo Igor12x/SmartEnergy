@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Aqui está o fundo o gráfico -->
     <item>
         <rotate
             android:fromDegrees="270"
@@ -15,10 +16,11 @@
         </rotate>
 
     </item>
+    <!-- Abaixo está o preenchimento do gráfico -->
     <item>
         <rotate
-            android:fromDegrees="160"
-            android:toDegrees="160">
+            android:fromDegrees="180"
+            android:toDegrees="180">
             <shape
                 android:shape="ring"
                 android:thickness="20dp"
