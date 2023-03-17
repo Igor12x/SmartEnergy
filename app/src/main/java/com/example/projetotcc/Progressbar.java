@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class progressbar extends AppCompatActivity {
+public class Progressbar extends AppCompatActivity {
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
                 kWh = 0, //kWh consumidos no relógio (recebido pelo arduino)
                 contatorDias = 0, //criada para contar quantos dias se passaram
@@ -31,6 +31,7 @@ public class progressbar extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private TextView textViewProgress,txtAtual, txtProjecao, txtDiaMes;
+    private Calculos calculo = new Calculos();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class progressbar extends AppCompatActivity {
 
         diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura
 
-        totalProjecao = ((totalContaAtual/contatorDias)*diasRestantes)+totalContaAtual; //criar um método
+        totalProjecao = calculo.Calcularprojecao(totalContaAtual, contatorDias, diasRestantes);
 
 
 

@@ -15,7 +15,7 @@
             android:name=".Tela_Cadastro"
             android:exported="false" />
         <activity
-            android:name=".progressbar"
+            android:name=".Progressbar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
