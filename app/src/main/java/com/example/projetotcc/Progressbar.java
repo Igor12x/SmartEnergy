@@ -10,19 +10,23 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+import model.Calculos;
+
 public class Progressbar extends AppCompatActivity {
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
-                kWh = 0, //kWh consumidos no relógio (recebido pelo arduino)
                 contatorDias = 0, //criada para contar quantos dias se passaram
                 diasRestantes = 0, //quantos dias faltam até a próxima medição/leitura
                 max = 10, min = 0, //variavel provisória para ajudar gerar números aleatórios
                 limiteProgresso = 0, //limite do preenchimento do gráfico
                 limiteConsumo = 0; //limite definido pelo usuário sobre o consumo
 
-    private double  tarifaAneelTE = 0,  tarifaAneelTUSD = 0, //tarifas sem imposto
-                    pis = 0, confins = 0, icms = 0, //impostos
+    private double  tarifaAneelTE = 469.78,  tarifaAneelTUSD = 365.99, //tarifas sem imposto
+                    kWh = 0, //kWh consumidos no relógio (recebido pelo arduino)
+                    pis = 27, confins = 1.27, icms = 25,
                     tarifaTUSD = 0,  tarifaTE = 0, //tarifa final com impostos
                     totalContaAtual = 0, totalProjecao = 0; //valores finais da conta de energia
+
+    //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
 
     Random geradorKw = new Random();
@@ -67,25 +71,17 @@ public class Progressbar extends AppCompatActivity {
 
     private void updateProgressBar()
     {
-        tarifaAneelTE = 469.78/1000;
-        tarifaAneelTUSD = 365.99/1000;
-        pis = 0.27/100;
-        confins = 1.27/100;
-        icms = 25/100;
-        tarifaTUSD = (tarifaAneelTUSD)/(1-(pis+confins+icms));
-        tarifaTE = (tarifaAneelTE)/(1-(pis+confins+icms));
-        kWh = kWh + geradorKw.nextInt(max + 1 - min) + min;
-        totalContaAtual = (kWh * tarifaTUSD) + (kWh * tarifaTE);
+        kWh = kWh + geradorKw.nextInt(max + 1 - min) + min; //provisório
+        contatorDias++; //provisório
+        diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura (provisório)
 
+
+        tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
+        tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
+        totalContaAtual = calculo.calcularValorConta(tarifaTUSD, tarifaTE, kWh);
+        totalProjecao = calculo.calcularProjecao(totalContaAtual, contatorDias, diasRestantes);
 
         progressBar.setProgress(preenchimento);
-        contatorDias++;
-
-        diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura
-
-        totalProjecao = calculo.Calcularprojecao(totalContaAtual, contatorDias, diasRestantes);
-
-
 
 
         textViewProgress.setText(kWh + " Kw/h");
