@@ -82,7 +82,7 @@ public class Progressbar extends AppCompatActivity {
     {
         RequisaoWebService consumo = new RequisaoWebService();
         //convertendo um objeto list para double
-        consumoList = consumo.consumoHoje();
+        consumoList = consumo.consumoHoje(0);
         Double consumoDouble = Double.valueOf(consumoList.toString());
         kWh = consumoDouble.doubleValue();
 
