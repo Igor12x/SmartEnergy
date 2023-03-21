@@ -2,15 +2,23 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import model.Calculos;
+import model.Consumo;
+import model.RequisaoWebService;
 
 public class Progressbar extends AppCompatActivity {
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
@@ -25,6 +33,7 @@ public class Progressbar extends AppCompatActivity {
                     pis = 27, confins = 1.27, icms = 25,
                     tarifaTUSD = 0,  tarifaTE = 0, //tarifa final com impostos
                     totalContaAtual = 0, totalProjecao = 0; //valores finais da conta de energia
+    private List<Consumo> consumoList = new ArrayList<>();
 
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
@@ -71,6 +80,12 @@ public class Progressbar extends AppCompatActivity {
 
     private void updateProgressBar()
     {
+        RequisaoWebService consumo = new RequisaoWebService();
+        //convertendo um objeto list para double
+        consumoList = consumo.consumoHoje();
+        Double consumoDouble = Double.valueOf(consumoList.toString());
+        kWh = consumoDouble.doubleValue();
+
         kWh = kWh + geradorKw.nextInt(max + 1 - min) + min; //provisório
         contatorDias++; //provisório
         diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura (provisório)
