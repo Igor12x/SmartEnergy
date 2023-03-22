@@ -15,7 +15,7 @@
             android:name=".Tela_Login"
             android:exported="false" />
         <activity
-            android:name=".Tela_Cadastro"
+            android:name=".TelaInicio_ParteSuperior"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
