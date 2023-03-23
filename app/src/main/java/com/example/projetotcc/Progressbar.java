@@ -2,14 +2,21 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentUris;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -17,10 +24,10 @@ import java.util.List;
 import java.util.Random;
 
 import model.Calculos;
-import model.Consumo;
-import model.RequisaoWebService;
+import model.Arduino;
 
 public class Progressbar extends AppCompatActivity {
+    public double resultado = 0;
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
                 contatorDias = 0, //criada para contar quantos dias se passaram
                 diasRestantes = 0, //quantos dias faltam até a próxima medição/leitura
@@ -33,7 +40,7 @@ public class Progressbar extends AppCompatActivity {
                     pis = 27, confins = 1.27, icms = 25,
                     tarifaTUSD = 0,  tarifaTE = 0, //tarifa final com impostos
                     totalContaAtual = 0, totalProjecao = 0; //valores finais da conta de energia
-    private List<Consumo> consumoList = new ArrayList<>();
+    private List<Arduino> arduinoList = new ArrayList<>();
 
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
@@ -62,31 +69,29 @@ public class Progressbar extends AppCompatActivity {
     }
     public void onClickUp(View view) //precisamos trocar pela entrada do banco de dados
     {
-        if (preenchimento <= 60)
+        txtDiaMes.setText(kWh + " Kw/h");
+        /*if (preenchimento <= 60)
         {
             preenchimento += 2;
             updateProgressBar();
-        }
+        }*/
     }
 
     public void onClickLow(View view)//precisamos trocar pela entrada do banco de dados
     {
-        if (preenchimento >= 10)
+
+        txtDiaMes.setText(kWh + " Kw/h");
+        /*if (preenchimento >= 10)
         {
             preenchimento -= 5;
             updateProgressBar();
-        }
+        }*/
     }
 
     private void updateProgressBar()
     {
-        RequisaoWebService consumo = new RequisaoWebService();
-        //convertendo um objeto list para double
-        consumoList = consumo.consumoHoje(0);
-        Double consumoDouble = Double.valueOf(consumoList.toString());
-        kWh = consumoDouble.doubleValue();
 
-        kWh = kWh + geradorKw.nextInt(max + 1 - min) + min; //provisório
+        kWh = consumoHoje();
         contatorDias++; //provisório
         diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura (provisório)
 
@@ -99,10 +104,48 @@ public class Progressbar extends AppCompatActivity {
         progressBar.setProgress(preenchimento);
 
 
-        textViewProgress.setText(kWh + " Kw/h");
+        /*textViewProgress.setText(kWh + " Kw/h");
         txtDiaMes.setText("Dia " + contatorDias);
         txtAtual.setText("R$ " + df.format(totalContaAtual));
-        txtProjecao.setText("R$ " + df.format(totalProjecao));
+        txtProjecao.setText("R$ " + df.format(totalProjecao));*/
     }
+    public double consumoHoje() {
 
+        //Configuração do endpoint (url) da requisição
+        String url = "https://localhost:7202/api/Arduino/1";
+        //Criar um objeto da classe Volley para configurar as requisições ao webservice
+        RequestQueue solicitacao = Volley.newRequestQueue(this);
+        //Configurando a requisição a ser enviada
+        JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET,
+                url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+
+                    //Recuperar cada objeto do webservice
+                    JSONObject object = response.getJSONObject(0);
+                    //atribui cada coluno em uma varíavel apenas para organizar melhor
+                    int codigo = object.getInt("codigo");
+                    double kWh = object.getDouble("kWh");
+                    String registro_dia = object.getString("registro_dia");
+                    String registro_horario = object.getString("registro_horario");
+
+                    Arduino a = new Arduino(codigo, kWh, registro_dia, registro_horario);
+                    resultado = a.kWh;
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        solicitacao.add(envio);
+        return resultado;
+
+    }
 }
