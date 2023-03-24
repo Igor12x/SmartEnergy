@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -69,6 +70,7 @@ public class Progressbar extends AppCompatActivity {
     }
     public void onClickUp(View view) //precisamos trocar pela entrada do banco de dados
     {
+        kWh = consumoHoje();
         txtDiaMes.setText(kWh + " Kw/h");
         /*if (preenchimento <= 60)
         {
@@ -79,7 +81,7 @@ public class Progressbar extends AppCompatActivity {
 
     public void onClickLow(View view)//precisamos trocar pela entrada do banco de dados
     {
-
+        kWh = consumoHoje();
         txtDiaMes.setText(kWh + " Kw/h");
         /*if (preenchimento >= 10)
         {
@@ -112,9 +114,9 @@ public class Progressbar extends AppCompatActivity {
     public double consumoHoje() {
 
         //Configuração do endpoint (url) da requisição
-        String url = "https://localhost:7202/api/Arduino/1";
+        String url = "https://192.168.1.44:7202/api/Arduino/1";
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
-        RequestQueue solicitacao = Volley.newRequestQueue(this);
+        RequestQueue solicitacao = Volley.newRequestQueue(Progressbar.this);
         //Configurando a requisição a ser enviada
         JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONArray>() {
@@ -132,6 +134,9 @@ public class Progressbar extends AppCompatActivity {
 
                     Arduino a = new Arduino(codigo, kWh, registro_dia, registro_horario);
                     resultado = a.kWh;
+                    double teste = 999;
+                    resultado = teste;
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
