@@ -45,13 +45,7 @@ public class Progressbar extends AppCompatActivity {
 
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
-
-    Random geradorKw = new Random();
-    DecimalFormat df = new DecimalFormat("#.##");
-
-
-    private ProgressBar progressBar;
-    private TextView textViewProgress,txtAtual, txtProjecao, txtDiaMes;
+    private TextView txtDiaMes;
     private Calculos calculo = new Calculos();
 
     @Override
@@ -59,57 +53,12 @@ public class Progressbar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progressbar);
 
-        progressBar = findViewById(R.id.progress_bar);
-        textViewProgress = findViewById(R.id.text_view_progress);
-        txtAtual = findViewById(R.id.txtConsumoAtual);
-        txtProjecao = findViewById(R.id.txtPrevisao);
         txtDiaMes = findViewById(R.id.txtDiaMes);
-
-        progressBar.setProgress(0);
-        textViewProgress.setText("0%");
     }
-    public void onClickUp(View view) //precisamos trocar pela entrada do banco de dados
+    public void onClick(View view)//precisamos trocar pela entrada do banco de dados
     {
         kWh = consumoHoje();
         txtDiaMes.setText(kWh + " Kw/h");
-        /*if (preenchimento <= 60)
-        {
-            preenchimento += 2;
-            updateProgressBar();
-        }*/
-    }
-
-    public void onClickLow(View view)//precisamos trocar pela entrada do banco de dados
-    {
-        kWh = consumoHoje();
-        txtDiaMes.setText(kWh + " Kw/h");
-        /*if (preenchimento >= 10)
-        {
-            preenchimento -= 5;
-            updateProgressBar();
-        }*/
-    }
-
-    private void updateProgressBar()
-    {
-
-        kWh = consumoHoje();
-        contatorDias++; //provisório
-        diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura (provisório)
-
-
-        tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
-        tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
-        totalContaAtual = calculo.calcularValorConta(tarifaTUSD, tarifaTE, kWh);
-        totalProjecao = calculo.calcularProjecao(totalContaAtual, contatorDias, diasRestantes);
-
-        progressBar.setProgress(preenchimento);
-
-
-        /*textViewProgress.setText(kWh + " Kw/h");
-        txtDiaMes.setText("Dia " + contatorDias);
-        txtAtual.setText("R$ " + df.format(totalContaAtual));
-        txtProjecao.setText("R$ " + df.format(totalProjecao));*/
     }
     public double consumoHoje() {
 
@@ -134,8 +83,6 @@ public class Progressbar extends AppCompatActivity {
 
                     Arduino a = new Arduino(codigo, kWh, registro_dia, registro_horario);
                     resultado = a.kWh;
-                    double teste = 999;
-                    resultado = teste;
 
 
                 } catch (JSONException e) {
@@ -153,4 +100,26 @@ public class Progressbar extends AppCompatActivity {
         return resultado;
 
     }
+
+    /*private void updateProgressBar()
+    {
+
+        kWh = consumoHoje();
+        contatorDias++; //provisório
+        diasRestantes = 10;//aqui devemos calcular os dias restantes para próxima leitura (provisório)
+
+
+        tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
+        tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
+        totalContaAtual = calculo.calcularValorConta(tarifaTUSD, tarifaTE, kWh);
+        totalProjecao = calculo.calcularProjecao(totalContaAtual, contatorDias, diasRestantes);
+
+        progressBar.setProgress(preenchimento);
+
+
+        /*textViewProgress.setText(kWh + " Kw/h");
+        txtDiaMes.setText("Dia " + contatorDias);
+        txtAtual.setText("R$ " + df.format(totalContaAtual));
+        txtProjecao.setText("R$ " + df.format(totalProjecao));
+    }*/
 }
