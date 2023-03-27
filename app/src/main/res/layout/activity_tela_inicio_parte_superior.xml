@@ -40,6 +40,19 @@
                     tools:layout_editor_absoluteX="-87dp"
                     tools:layout_editor_absoluteY="-206dp" />
 
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="411dp"
+        android:layout_height="183dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bordas_arredondadas_invertida" />
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="292dp"
@@ -47,6 +60,16 @@
                     app:srcCompat="@drawable/icone_barra"
                     tools:layout_editor_absoluteX="59dp"
                     tools:layout_editor_absoluteY="21dp" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="293dp"
+        android:layout_height="93dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.644"
+        app:srcCompat="@drawable/icone_barra" />
 
                 <ImageButton
                     android:id="@+id/imageButton"
@@ -56,6 +79,17 @@
                     app:srcCompat="@drawable/baseline_home_24"
                     tools:layout_editor_absoluteX="67dp"
                     tools:layout_editor_absoluteY="94dp" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="37dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerEndereco"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/spinnerEndereco"
+        app:srcCompat="@drawable/baseline_home_24" />
 
                 <ImageView
                     android:id="@+id/imageView6"
@@ -64,6 +98,16 @@
                     app:srcCompat="@drawable/icone_setabaixa"
                     tools:layout_editor_absoluteX="319dp"
                     tools:layout_editor_absoluteY="110dp" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerEndereco"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/spinnerEndereco"
+        app:srcCompat="@drawable/icone_setabaixa" />
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -81,6 +125,18 @@
                     android:layout_height="30dp"
                     tools:layout_editor_absoluteX="132dp"
                     tools:layout_editor_absoluteY="94dp" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_calendar_today_24" />
 
                 <!-- inserindo o ProgressBar -->
 
@@ -101,6 +157,17 @@
                     app:srcCompat="@drawable/group_8"
                     tools:layout_editor_absoluteX="25dp"
                     tools:layout_editor_absoluteY="267dp" />
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtData"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.039" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -333,6 +400,38 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="77dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icone_lampada" />
+
+    <Spinner
+        android:id="@+id/spinnerEndereco"
+        android:layout_width="210dp"
+        android:layout_height="21dp"
+        android:entries="@array/spinnerEndereco"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="72dp"
+        android:layout_height="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.022"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,4 +14,9 @@
     <string name="btnCad">CADASTRAR</string>
     <string name="txtEndereco"></string>
     <string name="txtData">Quinta, 16 de MAR de 2023</string>
+    <string-array name="spinnerEndereco">
+        <item>Rua das Rosas</item>
+        <item>Rua das Orquideas</item>
+        <item>Rua dos Cravos</item>
+    </string-array>
 </resources>
