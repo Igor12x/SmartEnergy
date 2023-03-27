@@ -7,7 +7,6 @@
     <corners
         android:bottomLeftRadius="300dp"
         android:bottomRightRadius="300dp"
-        andro
         />
 
 </shape>

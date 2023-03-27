@@ -10,5 +10,9 @@
     <color name="azulescuro">#2C4B7B</color>
     <color name="brancoazulado">#E8EBF3</color>
     <color name="brancoazuladoTexto">#A4B4DC</color>
+    <color name="verdeClaro">#66FF00</color>
+    <color name="verdeEscuro">#006400</color>
+    <color name="amarelo">#FFFF00</color>
+    <color name="vermelho">#FF0000</color>
 
 </resources>
