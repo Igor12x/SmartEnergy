@@ -43,7 +43,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.635"
+                    app:layout_constraintVertical_bias="0.824"
                     app:srcCompat="@drawable/icone_barra" />
 
                 <ImageButton
@@ -347,12 +347,12 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageView90"
-                    android:src="@drawable/icone_pessoa"
-                    android:layout_width="72dp"
-                    android:layout_height="63dp"
+                    android:layout_width="65dp"
+                    android:layout_height="59dp"
                     android:layout_marginTop="16dp"
+                    android:src="@drawable/icone_pessoa"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.061"
+                    app:layout_constraintHorizontal_bias="0.057"
                     app:layout_constraintStart_toStartOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
