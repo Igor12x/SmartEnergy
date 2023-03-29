@@ -24,18 +24,18 @@
         android:id="@+id/textCodVerificacaoTitulo"
         android:layout_width="355dp"
         android:layout_height="41dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textTitulo_codVerificacao"
         android:textColor="@color/azulescuro"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textCodVerificacaoDescricao"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgCodVerificacaoSeta" />
 
     <TextView
         android:id="@+id/textCodVerificacaoDescricao"
@@ -43,26 +43,27 @@
         android:layout_height="55dp"
 
         android:layout_marginStart="37dp"
-        android:layout_marginEnd="95dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="94dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/textDescricao_codVerificacao"
         android:textColor="@color/azulescuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="156dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoTitulo" />
 
     <EditText
         android:id="@+id/plainCodVerificacao1"
         android:layout_width="70dp"
         android:layout_height="60dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/edit_text_cod_verificacao"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/plainCodVerificacao2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
 
@@ -70,38 +71,46 @@
         android:id="@+id/plainCodVerificacao2"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/edit_text_cod_verificacao"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/plainCodVerificacao3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
+        app:layout_constraintStart_toEndOf="@+id/plainCodVerificacao1"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
 
     <EditText
         android:id="@+id/plainCodVerificacao3"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/edit_text_cod_verificacao"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintEnd_toStartOf="@+id/plainCodVerificacao4"
+        app:layout_constraintStart_toEndOf="@+id/plainCodVerificacao2"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
 
     <EditText
         android:id="@+id/plainCodVerificacao4"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="11dp"
         android:background="@drawable/edit_text_cod_verificacao"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
 
@@ -111,18 +120,16 @@
         android:layout_height="66dp"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="208dp"
         android:backgroundTint="@color/azulescuro"
-        android:fontFamily="@font/mplis_bold"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/codVerificacao_botao"
         android:textSize="19sp"
         app:cornerRadius="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textCodVerificacaoNaoRecebeu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textCodVerificacaoNaoRecebeu"

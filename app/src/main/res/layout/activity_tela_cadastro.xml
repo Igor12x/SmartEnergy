@@ -27,7 +27,7 @@
         android:layout_width="280dp"
         android:layout_height="55dp"
         android:layout_marginTop="119dp"
-        android:fontFamily="@font/mplis_bold"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/textoDescricao"
 
         android:textColor="@color/azulescuro"
@@ -35,15 +35,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgCadSeta"
@@ -243,7 +234,7 @@
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="123dp"
             android:backgroundTint="@color/brancoazulado"
-            android:fontFamily="@font/mplis_bold"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/btnCadastro"
             android:textColor="@color/azulescuro"
             android:textSize="19sp"
@@ -252,7 +243,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

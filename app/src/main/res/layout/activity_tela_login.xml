@@ -39,13 +39,7 @@
         app:layout_constraintStart_toStartOf="@+id/textCodVerificacaoTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <ImageView
             android:id="@+id/imgLogSeta"
@@ -139,7 +133,7 @@
             android:layout_width="290dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/azulescuro"
-            android:fontFamily="@font/mplis_bold"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/button"
             android:textSize="19sp"
             app:cornerRadius="47dp"
@@ -194,7 +188,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textLogEsqueceuSenha"
             app:layout_constraintVertical_bias="0.886" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
