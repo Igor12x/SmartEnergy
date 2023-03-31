@@ -18,22 +18,23 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/txtNvSenhaDsc"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.371" />
 
     <TextView
         android:id="@+id/txtNvSenhaDsc"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="@font/montserrat_bold"
 
         android:text="@string/txtNvSenhaDsc"
         android:textColor="@color/azulescuro"
         app:layout_constraintBottom_toTopOf="@+id/editTextNvSenha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -49,12 +50,13 @@
 
     <EditText
         android:id="@+id/editTextNvSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="314dp"
+        android:layout_height="49dp"
         android:background="@drawable/borda_redonda_edit_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/editTextNvSenha"
+        android:textColor="@color/azulescuro"
         app:layout_constraintBottom_toTopOf="@+id/editTextCfmSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +65,14 @@
 
     <EditText
         android:id="@+id/editTextCfmSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="314dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="304dp"
         android:background="@drawable/borda_redonda_edit_text"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/editTextCfmSenha"
+        android:textColor="@color/azulescuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -77,14 +80,16 @@
 
     <Button
         android:id="@+id/btnCfmSenha"
-        android:layout_width="219dp"
-        android:layout_height="43dp"
+        android:layout_width="309dp"
+        android:layout_height="60dp"
         android:backgroundTint="@color/azulescuro"
         android:text="@string/btnCfmSenha"
         app:cornerRadius="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCfmSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCfmSenha"
+        app:layout_constraintVertical_bias="0.152" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
