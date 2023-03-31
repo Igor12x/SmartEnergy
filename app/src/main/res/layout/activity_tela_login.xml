@@ -139,7 +139,7 @@
             android:layout_width="290dp"
             android:layout_height="60dp"
             android:backgroundTint="@color/azulescuro"
-            android:fontFamily="@font/mplis_bold"
+
             android:text="@string/button"
             android:textSize="19sp"
             app:cornerRadius="47dp"

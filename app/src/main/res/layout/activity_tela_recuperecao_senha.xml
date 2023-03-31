@@ -43,7 +43,7 @@
             android:layout_marginTop="16dp"
 
             android:layout_marginEnd="65dp"
-            android:fontFamily="@font/mplis_bold"
+            
             android:gravity="center_horizontal"
             android:text="@string/TextSenhaAlteradaDsc"
             android:textColor="@color/azulescuro"
