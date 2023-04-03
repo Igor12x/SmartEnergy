@@ -14,5 +14,9 @@
     <color name="yellow">#FFF52D</color>
     <color name="red">#FF2D2D</color>
     <color name="gray">#EDEDED</color>
+    <color name="verdeClaro">#66FF00</color>
+    <color name="verdeEscuro">#006400</color>
+    <color name="amarelo">#FFFF00</color>
+    <color name="vermelho">#FF0000</color>
 
 </resources>
