@@ -26,7 +26,7 @@ import model.Calculos;
 import model.Medidor;
 
 public class Progressbar extends AppCompatActivity {
-    public double consumo = 0;
+    public double consumoAtual = 0; //destinada para mostrar o consumo atual
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
             contatorDias = 0, //criada para contar quantos dias se passaram
             diasRestantes = 0, //quantos dias faltam até a próxima medição/leitura
@@ -59,12 +59,12 @@ public class Progressbar extends AppCompatActivity {
         Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
             public void onResultado(double resultado) {
-                consumo = resultado;
+                consumoAtual = resultado;
             }
         });
     }
-    public void onClick(View view)//precisamos trocar pela entrada do banco de dados
+    public void onClick(View view)
     {
-        txtDiaMes.setText(consumo + "kWh");
+        txtDiaMes.setText(consumoAtual + "kWh");
     }
 }

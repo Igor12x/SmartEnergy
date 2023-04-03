@@ -44,20 +44,20 @@ public class Medidor extends Progressbar{
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("onResponse", response.toString());
-                for(int i=0 ; i<response.length() ; i++) {
-                    try {
-                        JSONObject object = response.getJSONObject(i);
 
+                    try {
+                        //Pegando do JSON da API o objeto de index 0
+                        JSONObject object = response.getJSONObject(0);
+                        //criando o objeto medidor passando os atributos do objeto JSON no construtor
                         Medidor medidor = new Medidor(object.getInt("codigo"),
                                 object.getDouble("consumo"), object.getString("registro_dia"), object.getString("registro_horario"));
-
+                        //chamando método onResultado como callback
                         listener.onResultado(medidor.consumo);
                         Log.i("medor", medidor.toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
