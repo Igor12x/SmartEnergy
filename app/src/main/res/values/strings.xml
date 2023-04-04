@@ -50,4 +50,7 @@
     <string name="txtEscSenha">Lembrou a Senha?</string>
     <string name="txtEscSenhaLog"><u>Login</u></string>
 
+    <string name="TextSenhaAlterada">Senha alterada!</string>
+    <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>
+    <string name="btnSenhaAlt">Volte ao Login</string>
 </resources>
