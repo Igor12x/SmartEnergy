@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_tela_esqueceu_a_senha">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="20dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="372dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icone_seta" />
+
+    <TextView
+        android:id="@+id/plainEsqSenhaTitulo"
+        android:layout_width="280dp"
+        android:layout_height="58dp"
+        android:text="@string/plainEsqSenhaTitulo"
+        android:textColor="@color/azulescuro"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/plainEsqSenhaDescricao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/plainEsqSenhaDescricao"
+        android:layout_width="297dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="156dp"
+        android:text="@string/plainEsqSenhaDescricao"
+        android:textColor="@color/azulescuro"
+
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainEsqSenhaTitulo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="345dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edit_text_equeceu_senha"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c"
+        android:gravity="fill"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:text="@string/plainEsqSenhaEmail"
+        android:textColor="@color/brancoazuladotexto"
+        android:textColorHighlight="@color/azulescuro"
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
+
+    <Button
+        android:id="@+id/btnEscSenha"
+        android:layout_width="347dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="123dp"
+        android:backgroundTint="@color/azulescuro"
+        android:text="@string/btnEsqSenha"
+        app:cornerRadius="47dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="128dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/txtEscSenha"
+        android:textColor="@color/azulescuro"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="48dp"
+        android:text="@string/txtEscSenhaLog"
+        android:textColor="@color/brancoazuladotexto"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

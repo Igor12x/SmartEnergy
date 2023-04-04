@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azulescuro"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/plainEsqSenhaTitulo"
+        android:layout_width="112dp"
+        android:layout_height="44dp"
+        android:text="@string/tituloLogin"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/plainEsqSenhaDescricao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
+
+    <TextView
+        android:id="@+id/plainEsqSenhaDescricao"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="119dp"
+        android:text="@string/textoLogin"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/viewCad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainEsqSenhaTitulo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895" />
+
+    <View
+        android:id="@+id/viewCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/bordas_arredondadas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403" />
+
+    <EditText
+        android:id="@+id/plainCadNome"
+        android:layout_width="290dp"
+        android:layout_height="46dp"
+        android:backgroundTint="@color/azulescuro"
+        android:ems="10"
+        android:hint="@string/plainEmail"
+        android:inputType="textPersonName"
+        android:textColorHighlight="@color/azulescuro"
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewCad"
+        app:layout_constraintVertical_bias="0.239" />
+
+    <EditText
+        android:id="@+id/plainCadEmail"
+        android:layout_width="290dp"
+        android:layout_height="46dp"
+        android:backgroundTint="@color/azulescuro"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c"
+        android:hint="@string/plainEmail"
+        android:inputType="textPersonName"
+        android:text="@string/plainSenha"
+        android:textColorHighlight="@color/azulescuro"
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewCad"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/email"
+        tools:layout_editor_absoluteX="304dp"
+        tools:layout_editor_absoluteY="310dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/olhoicone"
+        tools:layout_editor_absoluteX="304dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
