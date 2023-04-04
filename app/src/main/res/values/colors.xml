@@ -12,6 +12,11 @@
     <color name="brancoazuladoTexto">#A4B4DC</color>
     <color name="borda_edit_text_branco">#DADADA</color>
     <color name="borda_edit_text_azul">#2C4B7B</color>
+    <color name="gray">#EDEDED</color>
+    <color name="green">#8DFF33</color>
+    <color name="yellow">#FFF52D</color>
+    <color name="red">#FF2D2D</color>
+
 
     <color name="brancoazuladotexto">#A4B4DC</color>
 

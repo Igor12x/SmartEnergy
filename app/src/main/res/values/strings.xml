@@ -19,7 +19,6 @@
         <item>Rua das Orquideas</item>
         <item>Rua dos Cravos</item>
     </string-array>
-    <string name="app_name">projetotcc</string>
     <string name="tituloLogin">LOGIN</string>
     <string name="plainEmail">E-mail</string>
     <string name="editTextNome">Nome</string>
