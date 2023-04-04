@@ -48,6 +48,8 @@
         app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <ImageView
             android:id="@+id/imgCadSeta"
             android:layout_width="wrap_content"
@@ -233,5 +235,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
             app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

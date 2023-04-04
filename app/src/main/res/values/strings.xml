@@ -33,6 +33,11 @@
     <string name="textoDescricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
+    <string name="txtNvSenhaTitulo">Criar nova senha</string>
+    <string name="txtNvSenhaDsc">Sua senha não pode ser nenhuma utilizada anteriormente</string>
+    <string name="editTextNvSenha">Nova Senha</string>
+    <string name="editTextCfmSenha">Confirme a Senha</string>
+    <string name="btnCfmSenha">Redefinir Senha</string>
     <string name="textDescricao_codVerificacao">Digite o código que enviamos no seu email</string>
     <string name="textTitulo_codVerificacao">Código de Verificação</string>
     <string name="codVerificacao_botao">Verificar</string>
