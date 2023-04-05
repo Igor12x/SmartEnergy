@@ -48,6 +48,7 @@
     <string name="btnEsqSenha">Enviar Código</string>
     <string name="txtEscSenha">Lembrou a Senha?</string>
     <string name="txtEscSenhaLog"><u>Login</u></string>
+    <string name="TextContaAtual">Conta Atual</string>
 
     <string name="TextSenhaAlterada">Senha alterada!</string>
     <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>

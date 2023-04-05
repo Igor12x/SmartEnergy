@@ -183,44 +183,42 @@
                     app:srcCompat="@drawable/ic_launcher_foreground" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textInicioConsumoAtual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/textView3"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="0.28" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textInicioValorConta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/textView4"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
+                    app:layout_constraintHorizontal_bias="0.52"
+                    app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="0.968" />
+                    app:layout_constraintVertical_bias="0.494" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textInicioContaAtual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="TextView"
+                    android:layout_marginEnd="24dp"
+                    android:text="@string/TextContaAtual"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="0.578" />
+                    app:layout_constraintVertical_bias="0.707" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/textInicioConsumoProjetado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
                     app:layout_constraintStart_toStartOf="@+id/imageView10"
@@ -228,21 +226,20 @@
                     app:layout_constraintVertical_bias="0.28" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textInicioValorContaProjetado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="44dp"
-                    android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
                     app:layout_constraintStart_toStartOf="@+id/imageView10" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/textInicioContaProjetada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
-                    android:text="TextView"
+                    android:text="Conta Projetada"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
                     app:layout_constraintStart_toStartOf="@+id/imageView10" />
