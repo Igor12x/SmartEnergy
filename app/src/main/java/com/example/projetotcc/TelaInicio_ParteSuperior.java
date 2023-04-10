@@ -9,13 +9,20 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import model.Calculos;
 import model.Medidor;
 
 public class TelaInicio_ParteSuperior extends AppCompatActivity {
+
+    public Calendar calendar = Calendar.getInstance();
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public Date date = calendar.getTime();
     public DecimalFormat df = new DecimalFormat("0.00"); // objetado destinado para formatar numeros decimais
     public double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
@@ -35,7 +42,8 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
 
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
-    public TextView textInicioConsumoProjetado, textInicioConsumoAtual, textInicioValorConta, textInicioValorContaProjetado, textView3;
+    public TextView textInicioConsumoProjetado, textInicioConsumoAtual,
+            textInicioValorConta, textInicioValorContaProjetado, textView3, txtData;
     public Calculos calculo = new Calculos();
 
     public ProgressBar progressConsumoAtual, progressLimiteConsumo;
@@ -52,6 +60,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         textInicioConsumoProjetado = findViewById(R.id.textInicioConsumoProjetado);
         textInicioValorConta = findViewById(R.id.textInicioValorConta);
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
+        txtData = findViewById(R.id.txtData);
         textView3 = findViewById(R.id.textView333);
 
 
@@ -89,6 +98,10 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
 
                 progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
                 progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
+
+
+                String dataAtual = dateFormat.format(date);
+                txtData.setText(dataAtual);
             }
 
         });
