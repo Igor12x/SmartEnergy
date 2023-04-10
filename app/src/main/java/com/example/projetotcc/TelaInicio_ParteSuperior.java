@@ -23,7 +23,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
             diasRestantes = 0, //quantos dias faltam até a próxima medição/leitura
             max = 10, min = 0, //variavel provisória para ajudar gerar números aleatórios
             limiteProgresso = 0, //limite do preenchimento do gráfico
-            limiteConsumo = 50; //limite definido pelo usuário sobre o consumo
+            limiteConsumo = 50; //limite definido pelo usuário sobre o consumo (alterar para shared preferrens)
 
     public double tarifaAneelTE = 469.78, tarifaAneelTUSD = 365.99, //tarifas sem imposto
             kWh, //kWh consumidos no relógio (recebido pelo arduino)
@@ -38,7 +38,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
     public TextView textInicioConsumoProjetado, textInicioConsumoAtual, textInicioValorConta, textInicioValorContaProjetado, textView3;
     public Calculos calculo = new Calculos();
 
-    public ProgressBar progress_bar;
+    public ProgressBar progressConsumoAtual, progressLimiteConsumo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,8 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         setContentView(R.layout.activity_tela_inicio_parte_superior);
 
         //referenciando aos componentes
-        progress_bar = findViewById(R.id.progress_bar);
+        progressConsumoAtual = findViewById(R.id.progress_bar);
+        progressLimiteConsumo = findViewById(R.id.progress_bar2);
         textInicioConsumoAtual = findViewById(R.id.textInicioConsumoAtual);
         textInicioConsumoProjetado = findViewById(R.id.textInicioConsumoProjetado);
         textInicioValorConta = findViewById(R.id.textInicioValorConta);
@@ -83,9 +84,11 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                 textInicioConsumoAtual.setText(consumoAtual + "kWh");
                 textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
 
-                double graus = (consumoAtual/limiteConsumo) * 100;
+                double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
+                double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
 
-                progress_bar.setProgress((int)graus);
+                progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
+                progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
             }
 
         });
