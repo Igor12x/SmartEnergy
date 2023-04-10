@@ -52,4 +52,6 @@
     <string name="TextSenhaAlterada">Senha alterada!</string>
     <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>
     <string name="btnSenhaAlt">Volte ao Login</string>
+    <string name="txtConsumoDoDiaDeHoje">Consumo de energia no dia de hoje:</string>
+    <string name="txtMedidorConsumoDiario">78kWh</string>
 </resources>

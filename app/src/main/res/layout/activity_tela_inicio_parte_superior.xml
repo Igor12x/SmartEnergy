@@ -22,7 +22,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 tools:context=".TelaInicio_ParteSuperior">
 
 
@@ -108,7 +108,7 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/imageView3"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintVertical_bias="0.1"
                     app:srcCompat="@drawable/icone_lampada" />
 
                 <ImageView
@@ -382,21 +382,61 @@
                     app:layout_constraintStart_toStartOf="@+id/imageView15"
                     app:layout_constraintTop_toTopOf="@+id/imageView15" />
 
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="350dp"
+                    android:layout_height="121dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15"
+                    app:srcCompat="@drawable/borda_branca_retangular" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="65dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/imageView7"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15"
+                    app:srcCompat="@drawable/icone_grafico" />
+
+                <TextView
+                    android:id="@+id/txtConsumoDoDiaDeHoje"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/txtConsumoDoDiaDeHoje"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                    app:layout_constraintHorizontal_bias="0.511"
+                    app:layout_constraintStart_toStartOf="@+id/imageView7"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+                <TextView
+                    android:id="@+id/txtMedidorConsumoDiario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/txtMedidorConsumoDiario"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView17"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="@+id/imageView7" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="345dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="52dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.448"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtConsumoDoDiaDeHoje"
+                    app:srcCompat="@drawable/line_13" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="393dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                app:srcCompat="@drawable/borda_branca_retangular" />
-
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="91dp"
-                android:layout_height="72dp"
-                app:srcCompat="@drawable/icone_grafico" />
 
         </LinearLayout>
     </ScrollView>
