@@ -20,10 +20,6 @@ import model.Calculos;
 import model.Medidor;
 
 public class TelaInicio_ParteSuperior extends AppCompatActivity {
-
-    public Calendar calendar = Calendar.getInstance();
-    public SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
-    public Date date = calendar.getTime();
     public DecimalFormat df = new DecimalFormat("0.00"); // objetado destinado para formatar numeros decimais
     public double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
     private int preenchimento = 0, //destinada para preencher o gráfico em graus
@@ -44,9 +40,8 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
     public TextView textInicioConsumoProjetado, textInicioConsumoAtual,
-            textInicioValorConta, textInicioValorContaProjetado, textView3, txtData, textView5;
+            textInicioValorConta, textInicioValorContaProjetado, txtConsumoDiario, txtData;
     public Calculos calculo = new Calculos();
-
     public ProgressBar progressConsumoAtual, progressLimiteConsumo;
 
     @Override
@@ -61,11 +56,10 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         textInicioConsumoProjetado = findViewById(R.id.textInicioConsumoProjetado);
         textInicioValorConta = findViewById(R.id.textInicioValorConta);
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
+
         txtData = findViewById(R.id.txtData);
-        textView3 = findViewById(R.id.textView333);
-        textView5 = findViewById(R.id.textView5);
 
-
+        txtConsumoDiario = findViewById(R.id.textView333);
 
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
@@ -75,7 +69,8 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
             @Override
             public void onResultado(double resultado) {
 
-                consumoAtual = Double.parseDouble(df.format(resultado)); // formatando o número antes de atribuir
+                // formatando o número antes de atribuir
+                consumoAtual = Double.parseDouble(df.format(resultado));
 
                 //calculando os valores da tarifa (depois preciso pegar o valores do banco)
                 tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
@@ -95,27 +90,28 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                 textInicioConsumoAtual.setText(consumoAtual + "kWh");
                 textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
 
+                //definindo a porcentagem que será preenchida pelo gráfico
                 double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
                 double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
-
                 progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
                 progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
 
-
+                //gerando data de hoje e formatando
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
+                Date date = calendar.getTime();
                 String dataAtual = dateFormat.format(date);
                 txtData.setText(dataAtual);
-            }
 
+            }
         });
+        //aqui estou enviando uma solicitação (GET) para a API, que me devolve o quanto em kWh
+        // foi no consumido no dia de hoje
         Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
             public void onResultado(double resultado) {
-                textView3.setText(resultado + "kWh");
+                txtConsumoDiario.setText(resultado + "kWh");
             }
         });
-
-
-
     }
-
 }
