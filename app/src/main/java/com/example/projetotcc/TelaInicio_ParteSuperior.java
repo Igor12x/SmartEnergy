@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import model.Calculos;
 import model.Medidor;
@@ -21,7 +22,7 @@ import model.Medidor;
 public class TelaInicio_ParteSuperior extends AppCompatActivity {
 
     public Calendar calendar = Calendar.getInstance();
-    public SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    public SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
     public Date date = calendar.getTime();
     public DecimalFormat df = new DecimalFormat("0.00"); // objetado destinado para formatar numeros decimais
     public double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
@@ -43,7 +44,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
     public TextView textInicioConsumoProjetado, textInicioConsumoAtual,
-            textInicioValorConta, textInicioValorContaProjetado, textView3, txtData;
+            textInicioValorConta, textInicioValorContaProjetado, textView3, txtData, textView5;
     public Calculos calculo = new Calculos();
 
     public ProgressBar progressConsumoAtual, progressLimiteConsumo;
@@ -62,6 +63,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
         txtData = findViewById(R.id.txtData);
         textView3 = findViewById(R.id.textView333);
+        textView5 = findViewById(R.id.textView5);
 
 
 
