@@ -59,7 +59,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
 
         txtData = findViewById(R.id.txtData);
 
-        txtConsumoDiario = findViewById(R.id.textView333);
+        txtConsumoDiario = findViewById(R.id.textInicioValorConta);
 
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);

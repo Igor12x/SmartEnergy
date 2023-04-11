@@ -184,19 +184,19 @@
                     app:srcCompat="@drawable/ic_launcher_foreground" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textInicioConsumoAtual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="4dp"
                     android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/textView3"
+                    app:layout_constraintBottom_toTopOf="@+id/textInicioValorConta"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/textInicioValorConta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
@@ -218,7 +218,7 @@
                     app:layout_constraintVertical_bias="0.578" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/textInicioConsumoProjetado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
@@ -229,7 +229,7 @@
                     app:layout_constraintVertical_bias="0.28" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/textInicioValorContaProjetado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="44dp"
