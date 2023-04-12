@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 import model.Calculos;
+import model.Fatura;
 import model.Medidor;
 
 public class TelaInicio_ParteSuperior extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
     //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
 
     public TextView textInicioConsumoProjetado, textInicioConsumoAtual,
-            textInicioValorConta, textInicioValorContaProjetado, txtConsumoDiario, txtData;
+            textInicioValorConta, textInicioValorContaProjetado, txtConsumoDiario, txtData, textUltimaFatura;
     public Calculos calculo = new Calculos();
     public ProgressBar progressConsumoAtual, progressLimiteConsumo;
 
@@ -56,7 +57,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         textInicioConsumoProjetado = findViewById(R.id.textInicioConsumoProjetado);
         textInicioValorConta = findViewById(R.id.textInicioValorConta);
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
-
+        textUltimaFatura = findViewById(R.id.textUltimaFatura);
         txtData = findViewById(R.id.txtData);
 
         txtConsumoDiario = findViewById(R.id.textInicioValorConta);
@@ -65,7 +66,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
         //enviando solicitação para a API e utlizando uma interface (callback) para trazer o valor do consumo atual
-        Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
+        /*Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
             public void onResultado(double resultado) {
 
@@ -111,6 +112,13 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
             @Override
             public void onResultado(double resultado) {
                 txtConsumoDiario.setText(resultado + "kWh");
+            }
+        });*/
+
+        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
+            @Override
+            public void onResultado(Fatura fatura) {
+                textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
             }
         });
     }
