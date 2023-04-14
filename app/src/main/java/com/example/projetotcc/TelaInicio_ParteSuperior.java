@@ -65,56 +65,6 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
-        //enviando solicitação para a API e utlizando uma interface (callback) para trazer o valor do consumo atual
-        /*Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
-            @Override
-            public void onResultado(double resultado) {
-
-                // formatando o número antes de atribuir
-                consumoAtual = Double.parseDouble(df.format(resultado));
-
-                //calculando os valores da tarifa (depois preciso pegar o valores do banco)
-                tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
-                tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
-
-                //transformando o consumo no valor cobrado pela distribuidora
-                valorAtual = Double.parseDouble(df.format(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual)));
-
-                //projeção do valor final da conta
-                consumoProjetado = Double.parseDouble(df.format(calculo.calcularProjecao(consumoAtual, 6,24))); //alterar por um select no banco
-                valorProjetado = Double.parseDouble(df.format(calculo.calcularProjecao(valorAtual, 6, 24))); //alterar por um select no banco
-
-                //mostrando na tela, em valores:
-                textInicioValorContaProjetado.setText("R$" + valorProjetado);
-                textInicioValorConta.setText("R$" + valorAtual);
-                //em KWh
-                textInicioConsumoAtual.setText(consumoAtual + "kWh");
-                textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
-
-                //definindo a porcentagem que será preenchida pelo gráfico
-                double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
-                double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
-                progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
-                progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
-
-                //gerando data de hoje e formatando
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
-                Date date = calendar.getTime();
-                String dataAtual = dateFormat.format(date);
-                txtData.setText(dataAtual);
-
-            }
-        });
-        //aqui estou enviando uma solicitação (GET) para a API, que me devolve o quanto em kWh
-        // foi no consumido no dia de hoje
-        Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
-            @Override
-            public void onResultado(double resultado) {
-                txtConsumoDiario.setText(resultado + "kWh");
-            }
-        });*/
-
         Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
             @Override
             public void onResultado(Fatura fatura) {
