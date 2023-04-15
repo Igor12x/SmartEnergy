@@ -2,7 +2,6 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -11,19 +10,16 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
-import model.Calculos;
-import model.Fatura;
-import model.Medidor;
+import Models.Calculos;
+import Models.Fatura;
+import Models.Medidor;
 
-public class TelaInicio_ParteSuperior extends AppCompatActivity {
+public class Tela_Principal extends AppCompatActivity {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual

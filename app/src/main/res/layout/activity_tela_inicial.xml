@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8EBF3"
-    tools:context=".Tela_inicial">
+    tools:context=".Tela_Inicial">
 
     <TextView
         android:id="@+id/textView13"

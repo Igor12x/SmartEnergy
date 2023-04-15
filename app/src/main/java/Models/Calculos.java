@@ -1,7 +1,5 @@
-package model;
+package Models;
 
-
-import android.util.Log;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
