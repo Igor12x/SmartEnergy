@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 import model.Calculos;
+import model.Fatura;
 import model.Medidor;
 
 public class TelaInicio_ParteSuperior extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
 
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado, txtConsumoDiario,
-            txtData, txtMedidorConsumoDiario;
+            txtData, txtMedidorConsumoDiario, textUltimaFatura;
     private Calculos calculo = new Calculos();
 
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
@@ -123,6 +124,13 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
             @Override
             public void onResultado(String resultado) {
                 txtMedidorConsumoDiario.setText(resultado);
+            }
+        });
+
+        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
+            @Override
+            public void onResultado(Fatura fatura) {
+                textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
             }
         });
     }
