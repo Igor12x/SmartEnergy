@@ -17,27 +17,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Medidor extends Progressbar {
-
-    public int codigo;
     public double consumo;
-    public String registro_dia;
-    public String registro_horario;
 
-    public Medidor(int codigo, double consumo, String registro_dia, String registro_horario) {
-        this.codigo = codigo;
+    public Medidor(double consumo) {
         this.consumo = consumo;
-        this.registro_dia = registro_dia;
-        this.registro_horario = registro_horario;
     }
 
     //interface para salvar o resultado da API
     public interface BuscaConsumoListener {
-        void onResultado(double resultado);
+        void onResultado(Medidor medidor);
 
     }
 
     public interface BuscaConsumoDiarioListener {
-        void onResultado(String resultado);
+        void onResultado(Medidor medidor);
 
     }
 
@@ -56,10 +49,9 @@ public class Medidor extends Progressbar {
                     //Pegando do JSON da API o objeto de index 0
                     JSONObject object = response.getJSONObject(0);
                     //criando o objeto medidor passando os atributos do objeto JSON no construtor
-                    Medidor medidor = new Medidor(object.getInt("codigo"),
-                            object.getDouble("consumo"), object.getString("registro_dia"), object.getString("registro_horario"));
+                    Medidor medidor = new Medidor(object.getDouble("consumo"));
                     //chamando método onResultado como callback
-                    listener.onResultado(medidor.consumo);
+                    listener.onResultado(medidor);
                     Log.i("medor", medidor.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -94,7 +86,8 @@ public class Medidor extends Progressbar {
                     JSONObject object = response;
 
                     //chamando método onResultado como callback
-                    listener.onResultado(object.getString("consumoDiario"));
+                    Medidor medidor = new Medidor(object.getDouble("consumo"));
+                    listener.onResultado(medidor);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

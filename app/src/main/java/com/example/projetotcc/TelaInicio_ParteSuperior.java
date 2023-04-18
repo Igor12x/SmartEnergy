@@ -3,6 +3,9 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -67,63 +70,63 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         txtMedidorConsumoDiario = findViewById(R.id.txtMedidorConsumoDiario);
         txtData = findViewById(R.id.txtData);
         txtConsumoDiario = findViewById(R.id.textInicioValorConta);
+        spinnerResidencias = findViewById(R.id.spinnerEndereco);
 
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
         //enviando solicitação para a API e utlizando uma interface (callback) para
         // trazer o valor do consumo atual
-        Medidor.buscarConsumoAtual(59 //mudar para uma variavél que recupera valores do sharedPreferences
+        Medidor.buscarConsumoAtual(1 //mudar para uma variavél que recupera valores do sharedPreferences
                 , solicitacao, new Medidor.BuscaConsumoListener() {
-            @Override
-            public void onResultado(double resultado) {
+                    @Override
+                    public void onResultado(Medidor medidor) {
+                        // formatando o número antes de atribuir
+                        consumoAtual = calculo.formatarDouble(medidor.consumo);
 
-                // formatando o número antes de atribuir
-                consumoAtual = calculo.formatarDouble(resultado);
+                        //calculando os valores da tarifa (depois preciso pegar o valores do banco)
+                        tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
+                        tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
 
-                //calculando os valores da tarifa (depois preciso pegar o valores do banco)
-                tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
-                tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
+                        //transformando o consumo no valor cobrado pela distribuidora
+                        valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
 
-                //transformando o consumo no valor cobrado pela distribuidora
-                valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
+                        //gerando data de hoje e formatando
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
+                        String dataAtual = dateFormat.format(date);
+                        txtData.setText(dataAtual);
 
-                //gerando data de hoje e formatando
-                Calendar calendar = Calendar.getInstance();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
-                String dataAtual = dateFormat.format(date);
-                txtData.setText(dataAtual);
+                        //projeção do valor final da conta
+                        consumoProjetado = calculo.formatarDouble(calculo.calcularProjecao(consumoAtual,
+                                calculo.contadorDias(date, diaFechamentoFatura),
+                                calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-                //projeção do valor final da conta
-                consumoProjetado = calculo.formatarDouble(calculo.calcularProjecao(consumoAtual,
-                        calculo.contadorDias(date, diaFechamentoFatura),
-                        calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
+                        valorProjetado =  calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
+                                calculo.contadorDias(date, diaFechamentoFatura),
+                                calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-                valorProjetado =  calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
-                        calculo.contadorDias(date, diaFechamentoFatura),
-                        calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
+                        //mostrando na tela, em valores:
+                        textInicioValorContaProjetado.setText("R$" + valorProjetado);
+                        textInicioValorConta.setText("R$" + valorAtual);
+                        //em KWh
+                        textInicioConsumoAtual.setText(consumoAtual + "kWh");
+                        textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
 
-                //mostrando na tela, em valores:
-                textInicioValorContaProjetado.setText("R$" + valorProjetado);
-                textInicioValorConta.setText("R$" + valorAtual);
-                //em KWh
-                textInicioConsumoAtual.setText(consumoAtual + "kWh");
-                textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
+                        //definindo a porcentagem que será preenchida pelo gráfico
+                        double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
+                        double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
+                        progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
+                        progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
 
-                //definindo a porcentagem que será preenchida pelo gráfico
-                double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
-                double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
-                progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
-                progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
-
-            }
-        });
+                    }
+                });
         //aqui estou enviando uma solicitação (GET) para a API, que me devolve o quanto em kWh
         // foi no consumido no dia de hoje
         Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
-            public void onResultado(String resultado) {
-                txtMedidorConsumoDiario.setText(resultado);
+            public void onResultado(Medidor medidor) {
+                txtMedidorConsumoDiario.setText(medidor.consumo + "kWh");
             }
         });
 
@@ -133,5 +136,26 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                 textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
             }
         });
+        /*Residencia.ListarResidencias(int idCliente, solicitacao, new Residencia.ListarResidenciasListener () {
+            @Override
+           public void onResultado(List<Residencias> residencias) {
+                ArrayAdapter<Residencia> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, residencias);
+                adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerResidencias.setAdapter(adaptador);
+
+                spinnerResidencias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Residencia residenciaSelecionada = (Residencia) parent.getItemAtPosition(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+
+            }
+        });*/
     }
 }
