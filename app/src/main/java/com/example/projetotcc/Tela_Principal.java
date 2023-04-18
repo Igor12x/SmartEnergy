@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import Models.Calculos;
+import Models.CompanhiaEletrica;
 import Models.Fatura;
 import Models.Medidor;
 
@@ -26,15 +27,6 @@ public class Tela_Principal extends AppCompatActivity {
     private int limiteConsumo = 50,
             diaFechamentoFatura = 1; //limite definido pelo usuário sobre o consumo (alterar para shared preferrens)
 
-
-    private double tarifaAneelTE = 469.78, tarifaAneelTUSD = 365.99, //tarifas sem imposto
-            kWh, //kWh consumidos no relógio (recebido pelo arduino)
-            pis = 27, confins = 1.27, icms = 25,
-            tarifaTUSD = 0, tarifaTE = 0, //tarifa final com impostos
-            totalContaAtual = 0, totalProjecao = 0; //valores finais da conta de energia
-
-    //todos os dados preenchidos diretamente devemos trocar pelos dados do banco
-
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado, txtConsumoDiario,
             txtData, txtMedidorConsumoDiario, textUltimaFatura;
@@ -42,7 +34,8 @@ public class Tela_Principal extends AppCompatActivity {
 
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
 
-    private Spinner spinnerResidencias;
+    private double tarifaTUSD;
+    private double tarifaTE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +46,6 @@ public class Tela_Principal extends AppCompatActivity {
         progressConsumoAtual = findViewById(R.id.progress_bar);
         progressLimiteConsumo = findViewById(R.id.progress_bar2);
 
-        spinnerResidencias = findViewById(R.id.spinnerEndereco);
-
-
         textInicioConsumoAtual = findViewById(R.id.textInicioConsumoAtual);
         textInicioConsumoProjetado = findViewById(R.id.textInicioConsumoProjetado);
         textInicioValorConta = findViewById(R.id.textInicioValorConta);
@@ -64,25 +54,18 @@ public class Tela_Principal extends AppCompatActivity {
         txtData = findViewById(R.id.txtData);
         txtConsumoDiario = findViewById(R.id.textInicioValorConta);
 
-        //criando uma solicitação para a rede aonde está a API
+        // Criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
-        //enviando solicitação para a API e utlizando uma interface (callback) para
-        // trazer o valor do consumo atual
-        Medidor.buscarConsumoAtual(59 //mudar para uma variavél que recupera valores do sharedPreferences
-                , solicitacao, new Medidor.BuscaConsumoListener() {
+        Medidor.buscarConsumoAtual(59, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
             public void onResultado(double resultado) {
 
                 // formatando o número antes de atribuir
                 consumoAtual = calculo.formatarDouble(resultado);
 
-                //calculando os valores da tarifa (depois preciso pegar o valores do banco)
-                tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
-                tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
-
                 //transformando o consumo no valor cobrado pela distribuidora
-                valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
+                //valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
 
                 //gerando data de hoje e formatando
                 Calendar calendar = Calendar.getInstance();
@@ -111,11 +94,9 @@ public class Tela_Principal extends AppCompatActivity {
                 double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
                 progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
                 progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
-
             }
         });
-        //aqui estou enviando uma solicitação (GET) para a API, que me devolve o quanto em kWh
-        // foi no consumido no dia de hoje
+
         Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
             public void onResultado(String resultado) {
@@ -127,6 +108,14 @@ public class Tela_Principal extends AppCompatActivity {
             @Override
             public void onResultado(Fatura fatura) {
                 textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
+            }
+        });
+
+        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
+            @Override
+            public void onResultado(CompanhiaEletrica tarifasComImpostoCompanhia) {
+                tarifaTUSD = tarifasComImpostoCompanhia.getTarifaTEComImposto();
+                tarifaTE = tarifasComImpostoCompanhia.getTarifaTUSDComImposto();
             }
         });
     }

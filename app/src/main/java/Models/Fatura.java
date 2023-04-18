@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,10 +19,6 @@ public class Fatura {
     public Fatura(String valorUltimaFatura, String consumoUltimaFatura) {
         this.valorUltimaFatura = valorUltimaFatura;
         this.consumoUltimaFatura = consumoUltimaFatura;
-    }
-
-    public String getValorUltimaFatura() {
-        return valorUltimaFatura;
     }
 
     public interface BuscarValorConsumoUltimaFaturaListener {
@@ -56,8 +53,13 @@ public class Fatura {
         solicitacao.add(envio);
     }
 
-    public String getConsumoUltimaFatura() {
-        return consumoUltimaFatura;
+
+
+
+    public String getConsumoUltimaFatura() { return consumoUltimaFatura;
+    }
+    public String getValorUltimaFatura() {
+        return valorUltimaFatura;
     }
 
 }
