@@ -1,7 +1,6 @@
 package model;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -9,8 +8,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.projetotcc.Progressbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,13 +31,13 @@ public class Medidor extends Progressbar {
 
     }
 
-    public static void buscarConsumoAtual(int id, RequestQueue solicitacao, BuscaConsumoListener listener) {
+    public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, BuscaConsumoListener listener) {
         String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo";
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idResidencia, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.i("onResponse", response.toString());
@@ -70,13 +67,13 @@ public class Medidor extends Progressbar {
     }
 
 
-    public static void buscarConsumoDiario(int id, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
+    public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
         String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario";
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + idResidencia, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
