@@ -34,7 +34,7 @@ public class CompanhiaEletrica {
     }
 
     public interface BuscarTarifasListener {
-        void onResultado(CompanhiaEletrica tarifasComImpostoCompanhia);
+        void onResultado(CompanhiaEletrica tarifasComImposto);
     }
 
     public static void BuscarTarifas(int idCompanhia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
@@ -48,12 +48,12 @@ public class CompanhiaEletrica {
                 try {
                     CompanhiaEletrica tarifasCompanhia = validarJson(response);
 
-                    double tarifaTUSDImposto = CalcularTarifaTUSDComImposto(tarifasCompanhia.getTarifaTUSD(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
-                    double tarifaTEImposto = CalcularTarifaTEComImposto(tarifasCompanhia.getTarifaTE(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
+                    double tarifaTUSDImposto = CalcularTarifaComImposto(tarifasCompanhia.getTarifaTUSD(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
+                    double tarifaTEImposto = CalcularTarifaComImposto(tarifasCompanhia.getTarifaTE(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
 
-                    CompanhiaEletrica tarifasComImpostoCompanhia = new CompanhiaEletrica(tarifaTUSDImposto, tarifaTEImposto);
+                    CompanhiaEletrica tarifasComImposto = new CompanhiaEletrica(tarifaTUSDImposto, tarifaTEImposto);
 
-                    listener.onResultado(tarifasComImpostoCompanhia);
+                    listener.onResultado(tarifasComImposto);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     listener.onResultado(null);
@@ -78,22 +78,13 @@ public class CompanhiaEletrica {
         return new CompanhiaEletrica(tarifaTUSD, tarifaTE, icms, pis, cofins);
     }
 
-    private static double CalcularTarifaTUSDComImposto (double tarifaTUSD, double icms, double pis, double cofins){
-        double tarifaKWHTUSD = tarifaTUSD/1000;
+    private static double CalcularTarifaComImposto (double tarifa, double icms, double pis, double cofins){
+        double tarifaKWH = tarifa/1000;
         double icmsPercentual = icms/100;
         double pisPercentual = pis/100;
         double confinsPercentual = cofins/100;
 
-        return (tarifaKWHTUSD)/(1-(pisPercentual+confinsPercentual+icmsPercentual));
-    };
-
-    private static double CalcularTarifaTEComImposto (double tarifaTE, double icms, double pis, double cofins){
-        double tarifaKWHTE = tarifaTE/1000;
-        double icmsPercentual = icms/100;
-        double pisPercentual = pis/100;
-        double confinsPercentual = cofins/100;
-
-        return (tarifaKWHTE)/(1-(pisPercentual+confinsPercentual+icmsPercentual));
+        return (tarifaKWH)/(1-(pisPercentual+confinsPercentual+icmsPercentual));
     };
 
     public double getTarifaTUSD() {
