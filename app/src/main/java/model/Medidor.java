@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Medidor extends Progressbar {
+public class Medidor {
     public double consumo;
 
     public Medidor(double consumo) {

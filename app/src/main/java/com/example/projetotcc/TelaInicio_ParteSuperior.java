@@ -25,8 +25,9 @@ import java.util.Locale;
 import model.Calculos;
 import model.Fatura;
 import model.Medidor;
+import model.Residencia;
 
-public class TelaInicio_ParteSuperior extends AppCompatActivity {
+public class TelaInicio_ParteSuperior extends AppCompatActivity  {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
@@ -72,6 +73,8 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
         txtConsumoDiario = findViewById(R.id.textInicioValorConta);
         spinnerResidencias = findViewById(R.id.spinnerEndereco);
 
+
+
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
@@ -102,7 +105,7 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                                 calculo.contadorDias(date, diaFechamentoFatura),
                                 calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-                        valorProjetado =  calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
+                        valorProjetado = calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
                                 calculo.contadorDias(date, diaFechamentoFatura),
                                 calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
@@ -114,10 +117,10 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                         textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
 
                         //definindo a porcentagem que será preenchida pelo gráfico
-                        double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
-                        double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
-                        progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
-                        progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
+                        double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
+                        double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
+                        progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
+                        progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
 
                     }
                 });
@@ -136,26 +139,24 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity {
                 textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
             }
         });
-        /*Residencia.ListarResidencias(int idCliente, solicitacao, new Residencia.ListarResidenciasListener () {
+        /*Residencia.listarResidencias( 1, solicitacao, new Residencia.ListarResidenciaListener () {
             @Override
-           public void onResultado(List<Residencias> residencias) {
-                ArrayAdapter<Residencia> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, residencias);
+           public void onResultado(List<Residencia> residencias) {
+                ArrayAdapter<Residencia> adaptador = new ArrayAdapter<>(getApplicationContext(), androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item,residencias);
                 adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerResidencias.setAdapter(adaptador);
-
-                spinnerResidencias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        Residencia residenciaSelecionada = (Residencia) parent.getItemAtPosition(position);
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
                 }
+        });
 
-            }
-        });*/
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }*/
     }
 }

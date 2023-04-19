@@ -36,11 +36,11 @@ public class Residencia {
         this.bairro = bairro;
     }
 
-    public interface BuscarResidenciaListener{
+    public interface ListarResidenciaListener{
         void onResultado(List<Residencia> residencias);
     }
 
-    public void listarResidencias(int idCliente, RequestQueue solicitacao, BuscarResidenciaListener listener) {
+    public static void listarResidencias(int idCliente, RequestQueue solicitacao, ListarResidenciaListener listener) {
         String url = "http://10.0.2.2:5000/api/Residencia/buscar";
         List<Residencia> residencias = new ArrayList<Residencia>();
         JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idCliente, null, new Response.Listener<JSONArray>() {
