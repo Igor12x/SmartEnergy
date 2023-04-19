@@ -43,8 +43,6 @@ public class Tela_Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicio_parte_superior);
 
-        // Referenciando aos componentes
-        txtData = findViewById(R.id.txtData);
         progressConsumoAtual = findViewById(R.id.progress_bar);
         progressLimiteConsumo = findViewById(R.id.progress_bar2);
         textInicioConsumoAtual = findViewById(R.id.textInicioConsumoAtual);
@@ -53,7 +51,8 @@ public class Tela_Principal extends AppCompatActivity {
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
         txtMedidorConsumoDiario = findViewById(R.id.txtMedidorConsumoDiario);
 
-        ExibirDataAtual();
+        txtData = findViewById(R.id.txtData);
+        ExibirDataAtual(txtData);
 
         Medidor.buscarConsumoAtual(59, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
@@ -125,10 +124,10 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
 
-    public void ExibirDataAtual() {
+    public void ExibirDataAtual(TextView textViewData) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
         String dataAtual = dateFormat.format(date);
-        txtData.setText(dataAtual);
+        textViewData.setText(dataAtual);
     };
 }
