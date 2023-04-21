@@ -29,8 +29,8 @@ public class Fatura {
         void onResultado(Fatura fatura);
     }
 
-    public static void BuscarValorConsumoUltimaFatura(int id, RequestQueue solicitacao, Fatura.BuscarValorConsumoUltimaFaturaListener listener){
-        String url = "http://10.0.2.2:5000/api/Fatura/UltimaFatura/1";
+    public static void BuscarValorConsumoUltimaFatura(int idResidencia, RequestQueue solicitacao, Fatura.BuscarValorConsumoUltimaFaturaListener listener){
+        String url = "http://10.0.2.2:5000/api/Fatura/UltimaFatura/" + idResidencia;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

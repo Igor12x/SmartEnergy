@@ -25,18 +25,14 @@ public class Tela_Principal extends AppCompatActivity {
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
     private int limiteConsumo = 200,
             diaFechamentoFatura = 1; //limite definido pelo usuário sobre o consumo (alterar para shared preferrens)
-
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite;
-
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
-
     private double tarifaTUSD = 0;
     private double tarifaTE = 0;
 
     // Criando uma solicitação para a rede aonde está a API
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +49,21 @@ public class Tela_Principal extends AppCompatActivity {
         textInicioValorContaProjetado = findViewById(R.id.textInicioValorContaProjetado);
         txtMedidorConsumoDiario = findViewById(R.id.txtMedidorConsumoDiario);
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
-
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
 
         textLimite = findViewById(R.id.textLimite);
-        textLimite.setText(limiteConsumo + " kWh");
+        textLimite.setText(limiteConsumo + " kWh"); //substituir futuramente
 
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
+        buscarConsumoAtual(solicitacao);
+        buscarConsumoDiario(solicitacao);
+        buscarUltimaFatura(solicitacao);
+        buscarTarifas(solicitacao);
+
+    }
+    public void buscarConsumoAtual(RequestQueue solicitacao){
         Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
             public void onResultado(double resultado) {
@@ -73,67 +75,70 @@ public class Tela_Principal extends AppCompatActivity {
                 ExibirValorConsumoFaturaAtual(consumoAtual, valorAtual);
                 ExibirValorConsumoFaturaProjetada(consumoAtual);
 
-
                 //definindo a porcentagem que será preenchida pelo gráfico
-                double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
-                double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
-                progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
-                progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
+                double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
+                double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
+                progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
+                progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
             }
         });
-
+    }
+    public void buscarConsumoDiario(RequestQueue solicitacao){
         Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
             public void onResultado(double resultado) {
-                txtMedidorConsumoDiario.setText(resultado + "kWh");
+                txtMedidorConsumoDiario.setText(resultado + " kWh");
             }
         });
-
+    }
+    public void buscarUltimaFatura (RequestQueue solicitacao){
         Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
             @Override
             public void onResultado(Fatura fatura) {
-                textUltimaFatura.setText("O valor da ultima: " + "R$" + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura() + "kWh");
+                textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() + " com consumo: "
+                        + fatura.getConsumoUltimaFatura() + " kWh");
             }
         });
+    }
+    public void buscarTarifas(RequestQueue solicitacao){
         CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
             @Override
             public void onResultado(CompanhiaEletrica tarifasComImposto) {
                 tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
                 tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
-
             }
         });
     }
-
     public double formatarDouble(double valor) {
+
         DecimalFormat df = new DecimalFormat("0.00");
         String converter = df.format(valor);
         converter = converter.replace(",", ".");
         valor = Double.parseDouble(converter);
         return valor;
     };
-
     public void ExibirValorConsumoFaturaAtual(double consumoAtual, double valorAtual) {
+
         textInicioConsumoAtual.setText(consumoAtual + " kWh");
         textInicioValorConta.setText("R$ " + valorAtual);
     }
-
     public void ExibirValorConsumoFaturaProjetada(double consumoAtual) {
+
         consumoProjetado = formatarDouble(Fatura.calcularProjecaoFatura(consumoAtual,
                 Fatura.contadorDias(date, diaFechamentoFatura),
                 Fatura.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-        valorProjetado =  formatarDouble(Fatura.calcularProjecaoFatura(valorAtual,
+        valorProjetado = formatarDouble(Fatura.calcularProjecaoFatura(valorAtual,
                 Fatura.contadorDias(date, diaFechamentoFatura),
                 Fatura.calculardDiasRestantes(date, diaFechamentoFatura)));
 
         textInicioValorContaProjetado.setText("R$ " + valorProjetado);
         textInicioConsumoProjetado.setText(consumoProjetado + " kWh");
     }
-
     public void ExibirDataAtual(TextView textViewData) {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy",
+                new Locale("pt", "BR"));
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     };

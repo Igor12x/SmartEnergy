@@ -37,8 +37,8 @@ public class CompanhiaEletrica {
         void onResultado(CompanhiaEletrica tarifasComImposto);
     }
 
-    public static void BuscarTarifas(int idCompanhia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
-        String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idCompanhia;
+    public static void BuscarTarifas(int idResidencia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
+        String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idResidencia;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

@@ -31,13 +31,13 @@ public class Medidor {
 
     }
 
-    public static void buscarConsumoAtual(int id, RequestQueue solicitacao, BuscaConsumoListener listener) {
-        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo";
+    public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, BuscaConsumoListener listener) {
+        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
@@ -65,13 +65,13 @@ public class Medidor {
     }
 
 
-    public static void buscarConsumoDiario(int id, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
-        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario";
+    public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
+        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario/" + idResidencia;
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
