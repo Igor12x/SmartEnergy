@@ -38,7 +38,7 @@ public class CompanhiaEletrica {
     }
 
     public static void BuscarTarifas(int idCompanhia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
-        String url = "http://localhost:5000/api/CompanhiaEletrica/Tarifas/" + idCompanhia;
+        String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idCompanhia;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -70,8 +70,8 @@ public class CompanhiaEletrica {
     }
 
     private static CompanhiaEletrica validarJson(JSONObject response) throws JSONException {
-        double tarifaTUSD = response.getDouble("TarifaTusd");
-        double tarifaTE = response.getDouble("TarifaTe");
+        double tarifaTUSD = response.getDouble("TarifaTUSD");
+        double tarifaTE = response.getDouble("TarifaTE");
         double icms = response.getDouble("Icms");
         double pis = response.getDouble("Pis");
         double cofins = response.getDouble("Cofins");

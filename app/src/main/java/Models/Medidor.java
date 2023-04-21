@@ -14,17 +14,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Medidor {
-
-    public int codigo;
     public double consumo;
-    public String registro_dia;
-    public String registro_horario;
 
-    public Medidor(int codigo, double consumo, String registro_dia, String registro_horario) {
-        this.codigo = codigo;
+    public Medidor(double consumo) {
         this.consumo = consumo;
-        this.registro_dia = registro_dia;
-        this.registro_horario = registro_horario;
     }
 
     //interface para salvar o resultado da API
@@ -34,7 +27,7 @@ public class Medidor {
     }
 
     public interface BuscaConsumoDiarioListener {
-        void onResultado(String resultado);
+        void onResultado(double resultado);
 
     }
 
@@ -44,17 +37,14 @@ public class Medidor {
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + id, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
 
                 try {
-                    //Pegando do JSON da API o objeto de index 0
-                    JSONObject object = response.getJSONObject(0);
                     //criando o objeto medidor passando os atributos do objeto JSON no construtor
-                    Medidor medidor = new Medidor(object.getInt("codigo"),
-                            object.getDouble("consumo"), object.getString("registro_dia"), object.getString("registro_horario"));
+                    Medidor medidor = new Medidor(response.getDouble("Consumo"));
                     //chamando método onResultado como callback
                     listener.onResultado(medidor.consumo);
                     Log.i("medor", medidor.toString());
@@ -90,8 +80,9 @@ public class Medidor {
                     //Pegando do JSON da API o objeto de index 0
                     JSONObject object = response;
 
+                    Medidor medidor = new Medidor(object.getDouble("Consumo"));
                     //chamando método onResultado como callback
-                    listener.onResultado(object.getString("consumoDiario"));
+                    listener.onResultado(medidor.consumo);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
