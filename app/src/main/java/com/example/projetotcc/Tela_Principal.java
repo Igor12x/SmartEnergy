@@ -2,6 +2,7 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -29,8 +30,8 @@ public class Tela_Principal extends AppCompatActivity {
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
-    private double tarifaTUSD = 0;
-    private double tarifaTE = 0;
+    private double tarifaTUSD;
+    private double tarifaTE;
 
     // Criando uma solicitação para a rede aonde está a API
 
@@ -57,11 +58,20 @@ public class Tela_Principal extends AppCompatActivity {
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
+        buscarTarifas(solicitacao);
         buscarConsumoAtual(solicitacao);
         buscarConsumoDiario(solicitacao);
         buscarUltimaFatura(solicitacao);
-        buscarTarifas(solicitacao);
 
+    }
+    public void buscarTarifas(RequestQueue solicitacao){
+        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
+            @Override
+            public void onResultado(CompanhiaEletrica tarifasComImposto) {
+                tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
+                tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
+            }
+        });
     }
     public void buscarConsumoAtual(RequestQueue solicitacao){
         Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
@@ -70,7 +80,6 @@ public class Tela_Principal extends AppCompatActivity {
 
                 consumoAtual = formatarDouble(resultado);
                 textConsumoAtualLimite.setText(consumoAtual + " kWh");
-
                 valorAtual = formatarDouble(Fatura.calcularValorFaturaAtual(tarifaTUSD, tarifaTE, consumoAtual));
                 ExibirValorConsumoFaturaAtual(consumoAtual, valorAtual);
                 ExibirValorConsumoFaturaProjetada(consumoAtual);
@@ -97,15 +106,6 @@ public class Tela_Principal extends AppCompatActivity {
             public void onResultado(Fatura fatura) {
                 textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() + " com consumo: "
                         + fatura.getConsumoUltimaFatura() + " kWh");
-            }
-        });
-    }
-    public void buscarTarifas(RequestQueue solicitacao){
-        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
-            @Override
-            public void onResultado(CompanhiaEletrica tarifasComImposto) {
-                tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
-                tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
             }
         });
     }

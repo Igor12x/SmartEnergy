@@ -54,9 +54,9 @@ public class CompanhiaEletrica {
                     CompanhiaEletrica tarifasComImposto = new CompanhiaEletrica(tarifaTUSDImposto, tarifaTEImposto);
 
                     listener.onResultado(tarifasComImposto);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    listener.onResultado(null);
                 }
             }
         }, new Response.ErrorListener() {

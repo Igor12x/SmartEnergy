@@ -15,11 +15,9 @@ import org.json.JSONObject;
 
 public class Medidor {
     public double consumo;
-
     public Medidor(double consumo) {
         this.consumo = consumo;
     }
-
     //interface para salvar o resultado da API
     public interface BuscaConsumoListener {
         void onResultado(double resultado);
@@ -68,7 +66,8 @@ public class Medidor {
     public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
         String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario/" + idResidencia;
 
-        //Criar um objeto da classe Volley para configurar as requisições ao webservice
+        //Criar um o
+        //bjeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
