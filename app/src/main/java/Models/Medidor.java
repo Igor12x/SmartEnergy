@@ -1,4 +1,4 @@
-package model;
+package Models;
 
 import android.util.Log;
 
@@ -15,40 +15,36 @@ import org.json.JSONObject;
 
 public class Medidor {
     public double consumo;
-
     public Medidor(double consumo) {
         this.consumo = consumo;
     }
-
     //interface para salvar o resultado da API
     public interface BuscaConsumoListener {
-        void onResultado(Medidor medidor);
+        void onResultado(double resultado);
 
     }
 
     public interface BuscaConsumoDiarioListener {
-        void onResultado(Medidor medidor);
+        void onResultado(double resultado);
 
     }
 
     public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, BuscaConsumoListener listener) {
-        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo";
+        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idResidencia, null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
 
                 try {
-                    //Pegando do JSON da API o objeto de index 0
-                    JSONObject object = response.getJSONObject(0);
                     //criando o objeto medidor passando os atributos do objeto JSON no construtor
-                    Medidor medidor = new Medidor(object.getDouble("consumo"));
+                    Medidor medidor = new Medidor(response.getDouble("Consumo"));
                     //chamando método onResultado como callback
-                    listener.onResultado(medidor);
+                    listener.onResultado(medidor.consumo);
                     Log.i("medor", medidor.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -68,12 +64,13 @@ public class Medidor {
 
 
     public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
-        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario";
+        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario/" + idResidencia;
 
-        //Criar um objeto da classe Volley para configurar as requisições ao webservice
+        //Criar um o
+        //bjeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
 
-        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url + "/" + idResidencia, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.i("onResponse", response.toString());
@@ -82,9 +79,9 @@ public class Medidor {
                     //Pegando do JSON da API o objeto de index 0
                     JSONObject object = response;
 
+                    Medidor medidor = new Medidor(object.getDouble("Consumo"));
                     //chamando método onResultado como callback
-                    Medidor medidor = new Medidor(object.getDouble("consumo"));
-                    listener.onResultado(medidor);
+                    listener.onResultado(medidor.consumo);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

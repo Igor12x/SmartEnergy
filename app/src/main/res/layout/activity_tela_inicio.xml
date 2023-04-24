@@ -5,7 +5,7 @@
     android:id="@+id/gr"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaInicio_ParteSuperior">
+    tools:context=".Tela_Principal">
 
     <!-- inserindo o ProgressBar -->
 
@@ -23,7 +23,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".TelaInicio_ParteSuperior">
+                tools:context=".Tela_Principal">
 
 
                 <ImageView
@@ -315,7 +315,7 @@
                     app:srcCompat="@drawable/ic_launcher_foreground" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textLimite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
@@ -359,7 +359,7 @@
                     app:srcCompat="@drawable/line_13" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textConsumoAtualLimite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="56dp"

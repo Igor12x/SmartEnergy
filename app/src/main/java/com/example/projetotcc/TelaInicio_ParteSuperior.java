@@ -3,9 +3,6 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -25,9 +22,8 @@ import java.util.Locale;
 import model.Calculos;
 import model.Fatura;
 import model.Medidor;
-import model.Residencia;
 
-public class TelaInicio_ParteSuperior extends AppCompatActivity  {
+public class TelaInicio_ParteSuperior extends AppCompatActivity {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
@@ -71,65 +67,63 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity  {
         txtMedidorConsumoDiario = findViewById(R.id.txtMedidorConsumoDiario);
         txtData = findViewById(R.id.txtData);
         txtConsumoDiario = findViewById(R.id.textInicioValorConta);
-        spinnerResidencias = findViewById(R.id.spinnerEndereco);
-
-
 
         //criando uma solicitação para a rede aonde está a API
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
         //enviando solicitação para a API e utlizando uma interface (callback) para
         // trazer o valor do consumo atual
-        Medidor.buscarConsumoAtual(1 //mudar para uma variavél que recupera valores do sharedPreferences
+        Medidor.buscarConsumoAtual(59 //mudar para uma variavél que recupera valores do sharedPreferences
                 , solicitacao, new Medidor.BuscaConsumoListener() {
-                    @Override
-                    public void onResultado(Medidor medidor) {
-                        // formatando o número antes de atribuir
-                        consumoAtual = calculo.formatarDouble(medidor.consumo);
+            @Override
+            public void onResultado(double resultado) {
 
-                        //calculando os valores da tarifa (depois preciso pegar o valores do banco)
-                        tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
-                        tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
+                // formatando o número antes de atribuir
+                consumoAtual = calculo.formatarDouble(resultado);
 
-                        //transformando o consumo no valor cobrado pela distribuidora
-                        valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
+                //calculando os valores da tarifa (depois preciso pegar o valores do banco)
+                tarifaTE = calculo.calcularTarifaImpostos(tarifaAneelTE, pis, confins, icms);
+                tarifaTUSD = calculo.calcularTarifaImpostos(tarifaAneelTUSD, pis, confins, icms);
 
-                        //gerando data de hoje e formatando
-                        Calendar calendar = Calendar.getInstance();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
-                        String dataAtual = dateFormat.format(date);
-                        txtData.setText(dataAtual);
+                //transformando o consumo no valor cobrado pela distribuidora
+                valorAtual = calculo.formatarDouble(calculo.calcularValorConta(tarifaTUSD, tarifaTE, consumoAtual));
 
-                        //projeção do valor final da conta
-                        consumoProjetado = calculo.formatarDouble(calculo.calcularProjecao(consumoAtual,
-                                calculo.contadorDias(date, diaFechamentoFatura),
-                                calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
+                //gerando data de hoje e formatando
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy", new Locale("pt", "BR"));
+                String dataAtual = dateFormat.format(date);
+                txtData.setText(dataAtual);
 
-                        valorProjetado = calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
-                                calculo.contadorDias(date, diaFechamentoFatura),
-                                calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
+                //projeção do valor final da conta
+                consumoProjetado = calculo.formatarDouble(calculo.calcularProjecao(consumoAtual,
+                        calculo.contadorDias(date, diaFechamentoFatura),
+                        calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-                        //mostrando na tela, em valores:
-                        textInicioValorContaProjetado.setText("R$" + valorProjetado);
-                        textInicioValorConta.setText("R$" + valorAtual);
-                        //em KWh
-                        textInicioConsumoAtual.setText(consumoAtual + "kWh");
-                        textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
+                valorProjetado =  calculo.formatarDouble(calculo.calcularProjecao(valorAtual,
+                        calculo.contadorDias(date, diaFechamentoFatura),
+                        calculo.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-                        //definindo a porcentagem que será preenchida pelo gráfico
-                        double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
-                        double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
-                        progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
-                        progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
+                //mostrando na tela, em valores:
+                textInicioValorContaProjetado.setText("R$" + valorProjetado);
+                textInicioValorConta.setText("R$" + valorAtual);
+                //em KWh
+                textInicioConsumoAtual.setText(consumoAtual + "kWh");
+                textInicioConsumoProjetado.setText(consumoProjetado + "kWh");
 
-                    }
-                });
+                //definindo a porcentagem que será preenchida pelo gráfico
+                double grausGraficoConsumoAtual = (consumoAtual/consumoProjetado) * 100;
+                double grausGraficoLimiteConsumo = (consumoAtual/limiteConsumo) * 100;
+                progressConsumoAtual.setProgress((int)grausGraficoConsumoAtual);
+                progressLimiteConsumo.setProgress((int)grausGraficoLimiteConsumo);
+
+            }
+        });
         //aqui estou enviando uma solicitação (GET) para a API, que me devolve o quanto em kWh
         // foi no consumido no dia de hoje
         Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
-            public void onResultado(Medidor medidor) {
-                txtMedidorConsumoDiario.setText(medidor.consumo + "kWh");
+            public void onResultado(String resultado) {
+                txtMedidorConsumoDiario.setText(resultado);
             }
         });
 
@@ -139,24 +133,5 @@ public class TelaInicio_ParteSuperior extends AppCompatActivity  {
                 textUltimaFatura.setText("O valor da ultima: " + fatura.getValorUltimaFatura() + " com consumo: " + fatura.getConsumoUltimaFatura());
             }
         });
-        /*Residencia.listarResidencias( 1, solicitacao, new Residencia.ListarResidenciaListener () {
-            @Override
-           public void onResultado(List<Residencia> residencias) {
-                ArrayAdapter<Residencia> adaptador = new ArrayAdapter<>(getApplicationContext(), androidx.constraintlayout.widget.R.layout.support_simple_spinner_dropdown_item,residencias);
-                adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerResidencias.setAdapter(adaptador);
-                }
-        });
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }*/
     }
 }
