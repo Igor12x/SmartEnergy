@@ -3,8 +3,12 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.os.Bundle;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -14,13 +18,17 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import Models.CompanhiaEletrica;
 import Models.Fatura;
 import Models.Medidor;
+import Models.Residencia;
+import Models.ResidenciaAdapter;
 
-public class Tela_Principal extends AppCompatActivity {
+
+public class Tela_Principal extends AppCompatActivity  {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
@@ -32,7 +40,9 @@ public class Tela_Principal extends AppCompatActivity {
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
+    private Spinner spinnerResidencias;
 
+    private RequestQueue solicitacao = null;
     // Criando uma solicitação para a rede aonde está a API
 
     @Override
@@ -40,7 +50,7 @@ public class Tela_Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicio);
 
-        RequestQueue solicitacao = Volley.newRequestQueue(this);
+        solicitacao = Volley.newRequestQueue(this);
 
         progressConsumoAtual = findViewById(R.id.progress_bar);
         progressLimiteConsumo = findViewById(R.id.progress_bar2);
@@ -52,29 +62,62 @@ public class Tela_Principal extends AppCompatActivity {
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
 
+        spinnerResidencias = findViewById(R.id.spinnerEndereco);
+
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh"); //substituir futuramente
 
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
-        buscarTarifas(solicitacao);
-        buscarConsumoAtual(solicitacao);
-        buscarConsumoDiario(solicitacao);
-        buscarUltimaFatura(solicitacao);
+
+        Residencia.listarResidencias(1, solicitacao, new Residencia.ListarResidenciaListener() {
+            @Override
+            public void onResultado(List<Residencia> residencias) {
+                ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
+                spinnerResidencias.setAdapter(adaptador);
+
+                spinnerResidencias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
+                        // usar residenciaSelecionada para buscar informações adicionais
+                        buscarTarifas(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarConsumoAtual(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarConsumoDiario(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarUltimaFatura(solicitacao, residenciaSelecionada.getCodigo());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+        });
+
+
+
 
     }
-    public void buscarTarifas(RequestQueue solicitacao){
-        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
+    public void buscarTarifas(RequestQueue solicitacao, int idResidencia){
+        CompanhiaEletrica.BuscarTarifas(idResidencia, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
             @Override
             public void onResultado(CompanhiaEletrica tarifasComImposto) {
-                tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
-                tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
+                try {
+                    tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
+                    tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
+                } catch (Exception e)
+                    {
+                        tarifaTUSD = 0;
+                        tarifaTE = 0;
+                }
+
             }
         });
     }
-    public void buscarConsumoAtual(RequestQueue solicitacao){
-        Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
+    public void buscarConsumoAtual(RequestQueue solicitacao, int idResidencia){
+        Medidor.buscarConsumoAtual(idResidencia, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
             public void onResultado(double resultado) {
 
@@ -92,16 +135,16 @@ public class Tela_Principal extends AppCompatActivity {
             }
         });
     }
-    public void buscarConsumoDiario(RequestQueue solicitacao){
-        Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
+    public void buscarConsumoDiario(RequestQueue solicitacao, int idResidencia){
+        Medidor.buscarConsumoDiario(idResidencia, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
             @Override
             public void onResultado(double resultado) {
                 txtMedidorConsumoDiario.setText(resultado + " kWh");
             }
         });
     }
-    public void buscarUltimaFatura (RequestQueue solicitacao){
-        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
+    public void buscarUltimaFatura (RequestQueue solicitacao, int idResidencia){
+        Fatura.BuscarValorConsumoUltimaFatura(idResidencia, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
             @Override
             public void onResultado(Fatura fatura) {
                 textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() + " com consumo: "
@@ -142,4 +185,7 @@ public class Tela_Principal extends AppCompatActivity {
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     };
+
+
+
 }

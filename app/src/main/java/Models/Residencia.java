@@ -1,4 +1,4 @@
-package model;
+package Models;
 
 import android.util.Log;
 
@@ -16,6 +16,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Residencia {
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
     private int codigo;
     private String logradouro;
     private int numero;
@@ -39,9 +71,12 @@ public class Residencia {
     public interface ListarResidenciaListener{
         void onResultado(List<Residencia> residencias);
     }
+    public String toString() {
+        return logradouro;
+    }
 
     public static void listarResidencias(int idCliente, RequestQueue solicitacao, ListarResidenciaListener listener) {
-        String url = "http://10.0.2.2:5000/api/Residencia/buscar";
+        String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
         List<Residencia> residencias = new ArrayList<Residencia>();
         JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idCliente, null, new Response.Listener<JSONArray>() {
             @Override
@@ -51,16 +86,17 @@ public class Residencia {
 
                         JSONObject object = response.getJSONObject(i);
 
-                        Residencia residencia = new Residencia(object.getInt("codigo"),
-                                                                object.getString("logradouro"),
-                                                                object.getInt("numero"),
-                                                                object.getString("complemento"),
-                                                                object.getString("cep"),
-                                                                object.getString("municipio"),
-                                                                object.getString("uf"),
-                                                                object.getString("bairro")
+                        Residencia residencia = new Residencia(object.getInt("Codigo"),
+                                                                object.getString("Logradouro"),
+                                                                object.getInt("Numero"),
+                                                                object.getString("Complemento"),
+                                                                object.getString("Cep"),
+                                                                object.getString("Municipio"),
+                                                                object.getString("Uf"),
+                                                                object.getString("Bairro")
                         );
                         residencias.add(residencia);
+                        Log.i("listarResdencia", residencia + " oi");
                     }
                     listener.onResultado(residencias);
                 } catch (JSONException e) {
