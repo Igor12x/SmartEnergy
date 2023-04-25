@@ -45,64 +45,64 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/plainLogEmail"
-            android:layout_width="290dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="68dp"
-            android:backgroundTint="@color/azulescuro"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintLogEmail"
-            android:inputType="textWebEmailAddress|textEmailAddress|textEmailSubject"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewLog"
-            app:layout_constraintVertical_bias="0.118" />
+    <EditText
+        android:id="@+id/txtCpf"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/azulescuro"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintLogEmail"
+        android:inputType="textWebEmailAddress|textEmailAddress|textEmailSubject"
+        android:textColorHighlight="@color/azulescuro"
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewLog"
+        app:layout_constraintVertical_bias="0.118" />
 
         <ImageView
             android:id="@+id/imgLogEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/plainLogEmail"
-            app:layout_constraintEnd_toEndOf="@+id/plainLogEmail"
+            app:layout_constraintBottom_toBottomOf="@+id/txtCpf"
+            app:layout_constraintEnd_toEndOf="@+id/txtCpf"
             app:layout_constraintHorizontal_bias="0.965"
-            app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
-            app:layout_constraintTop_toTopOf="@+id/plainLogEmail"
+            app:layout_constraintStart_toStartOf="@+id/txtCpf"
+            app:layout_constraintTop_toTopOf="@+id/txtCpf"
             app:srcCompat="@drawable/icone_email_azul" />
 
-        <EditText
-            android:id="@+id/plainLogSenha"
-            android:layout_width="290dp"
-            android:layout_height="46dp"
-            android:backgroundTint="@color/azulescuro"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintLogSenha"
-            android:inputType="textPassword"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/azulescuro"
-            app:layout_constraintBottom_toTopOf="@+id/btnLog"
-            app:layout_constraintEnd_toEndOf="@+id/plainLogEmail"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/plainLogEmail"
-            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
-            app:layout_constraintVertical_bias="0.431" />
+    <EditText
+        android:id="@+id/txtSenha"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/azulescuro"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintLogSenha"
+        android:inputType="textPassword"
+        android:textColorHighlight="@color/azulescuro"
+        android:textColorHint="@color/azulescuro"
+        app:layout_constraintBottom_toTopOf="@+id/btnLog"
+        app:layout_constraintEnd_toEndOf="@+id/txtCpf"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtCpf"
+        app:layout_constraintTop_toBottomOf="@+id/txtCpf"
+        app:layout_constraintVertical_bias="0.431" />
 
         <ImageView
             android:id="@+id/imgLogSenha"
             android:layout_width="32dp"
             android:layout_height="17dp"
             android:layout_marginStart="252dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainLogSenha"
+            app:layout_constraintBottom_toBottomOf="@+id/txtSenha"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/plainLogSenha"
-            app:layout_constraintTop_toTopOf="@+id/plainLogSenha"
+            app:layout_constraintStart_toStartOf="@+id/txtSenha"
+            app:layout_constraintTop_toTopOf="@+id/txtSenha"
             app:layout_constraintVertical_bias="0.448"
             app:srcCompat="@drawable/icone_olho_azul" />
 
@@ -119,7 +119,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintTop_toBottomOf="@+id/txtCpf"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
@@ -133,7 +133,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainLogEmail"
+            app:layout_constraintTop_toBottomOf="@+id/txtCpf"
             app:layout_constraintVertical_bias="0.568" />
 
         <TextView
