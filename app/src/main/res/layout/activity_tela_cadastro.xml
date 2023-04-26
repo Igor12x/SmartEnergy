@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brancoazulado"
+    android:background="@color/cbranco_acinzentado"
     tools:context=".Tela_Login">
 
     <ImageView
@@ -25,7 +25,7 @@
         android:layout_marginTop="63dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textCadTitulo"
-        android:textColor="@color/azulescuro"
+        android:textColor="@color/cazul_marinho"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textCadDescricao"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,200 +42,198 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textoDescricao"
 
-        android:textColor="@color/azulescuro"
+        android:textColor="@color/cazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ImageView
+        android:id="@+id/imgCadSeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewCad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icone_seta" />
 
-        <ImageView
-            android:id="@+id/imgCadSeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/viewCad"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/icone_seta" />
+    <View
+        android:id="@+id/viewCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        <View
-            android:id="@+id/viewCad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        android:background="@drawable/bordas_arredondadas_azul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-            android:layout_marginTop="176dp"
-            android:background="@drawable/bordas_arredondadas_azul"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <EditText
+        android:id="@+id/plainCadNome"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadNome"
+        android:inputType="textPersonName"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewCad" />
 
-        <EditText
-            android:id="@+id/plainCadNome"
-            android:layout_width="291dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="32dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintCadNome"
-            android:inputType="textPersonName"
-            android:textColor="@color/brancoazulado"
-            android:textColorHighlight="@color/brancoazulado"
-            android:textColorHint="@color/brancoazulado"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewCad" />
+    <ImageView
+        android:id="@+id/imgCadNome"
+        android:layout_width="28dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadNome"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
+        app:layout_constraintTop_toTopOf="@+id/plainCadNome"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_pessoa" />
 
-        <ImageView
-            android:id="@+id/imgCadNome"
-            android:layout_width="28dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainCadNome"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
-            app:layout_constraintTop_toTopOf="@+id/plainCadNome"
-            app:layout_constraintVertical_bias="0.21"
-            app:srcCompat="@drawable/icone_pessoa" />
+    <EditText
+        android:id="@+id/plainCadEmail"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadEmail"
+        android:inputType="textPassword|textEmailAddress"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainCadNome"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadNome" />
 
-        <EditText
-            android:id="@+id/plainCadEmail"
-            android:layout_width="291dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintLogEmail"
-            android:inputType="textPassword|textEmailAddress"
-            android:textColor="@color/brancoazulado"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/brancoazulado"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/plainCadNome"
-            app:layout_constraintTop_toBottomOf="@+id/plainCadNome" />
+    <ImageView
+        android:id="@+id/imgCadEmail"
+        android:layout_width="28dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadEmail"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
+        app:layout_constraintTop_toTopOf="@+id/plainCadEmail"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_email_branco" />
 
-        <ImageView
-            android:id="@+id/imgCadEmail"
-            android:layout_width="28dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainCadEmail"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
-            app:layout_constraintTop_toTopOf="@+id/plainCadEmail"
-            app:layout_constraintVertical_bias="0.21"
-            app:srcCompat="@drawable/icone_email_branco" />
+    <EditText
+        android:id="@+id/plainCadSenha"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintLogSenha"
+        android:inputType="textPassword"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainCadEmail"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadEmail" />
 
-        <EditText
-            android:id="@+id/plainCadSenha"
-            android:layout_width="291dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintLogSenha"
-            android:inputType="textPassword"
-            android:textColor="@color/brancoazulado"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/brancoazulado"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/plainCadEmail"
-            app:layout_constraintTop_toBottomOf="@+id/plainCadEmail" />
+    <ImageView
+        android:id="@+id/imgCadSenha"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
+        app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_olho_branco" />
 
-        <ImageView
-            android:id="@+id/imgCadSenha"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
-            app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
-            app:layout_constraintVertical_bias="0.21"
-            app:srcCompat="@drawable/icone_olho_branco" />
+    <EditText
+        android:id="@+id/plainCadConfirmarSenha"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadConfirmarSenha"
+        android:inputType="textPassword"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
+        app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadSenha" />
 
-        <EditText
-            android:id="@+id/plainCadConfirmarSenha"
-            android:layout_width="291dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintCadConfirmarSenha"
-            android:inputType="textPassword"
-            android:textColor="@color/brancoazulado"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/brancoazulado"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
-            app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
-            app:layout_constraintTop_toBottomOf="@+id/plainCadSenha" />
+    <ImageView
+        android:id="@+id/imgCadConfirmarSenha"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_olho_branco" />
 
-        <ImageView
-            android:id="@+id/imgCadConfirmarSenha"
-            android:layout_width="32dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainCadConfirmarSenha"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
-            app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
-            app:layout_constraintVertical_bias="0.21"
-            app:srcCompat="@drawable/icone_olho_branco" />
+    <EditText
+        android:id="@+id/plainCadCpf"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadCpf"
+        android:inputType="number"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadConfirmarSenha" />
 
-        <EditText
-            android:id="@+id/plainCadCpf"
-            android:layout_width="291dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:ems="10"
-            android:fontFamily="@font/mplusrrounded1c_bold"
-            android:hint="@string/hintCadCpf"
-            android:inputType="number"
-            android:textColor="@color/brancoazulado"
-            android:textColorHighlight="@color/azulescuro"
-            android:textColorHint="@color/brancoazulado"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
-            app:layout_constraintTop_toBottomOf="@+id/plainCadConfirmarSenha" />
+    <ImageView
+        android:id="@+id/imgCadCpf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadCpf"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
+        app:layout_constraintTop_toTopOf="@+id/plainCadCpf"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_cpf_branco" />
 
-        <ImageView
-            android:id="@+id/imgCadCpf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/plainCadCpf"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
-            app:layout_constraintTop_toTopOf="@+id/plainCadCpf"
-            app:layout_constraintVertical_bias="0.21"
-            app:srcCompat="@drawable/icone_cpf_branco" />
-
-        <Button
-            android:id="@+id/btnCad"
-            android:layout_width="290dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/brancoazulado"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/btnCadastro"
-            android:textColor="@color/azulescuro"
-            android:textSize="19sp"
-            app:cornerRadius="47dp"
-            app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
-            app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
-
+    <Button
+        android:id="@+id/btnCad"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/btnCadastro"
+        android:textColor="@color/cazul_marinho"
+        android:textSize="19sp"
+        app:cornerRadius="47dp"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

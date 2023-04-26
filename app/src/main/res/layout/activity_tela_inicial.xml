@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8EBF3"
+    android:background="@color/brancoazulado"
     tools:context=".Tela_Inicial">
 
     <TextView
@@ -13,13 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="201dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="É seu primeiro acesso?"
+        android:textColor="@color/preto"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -30,7 +32,9 @@
         android:layout_marginEnd="253dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#2C4B7B"
+        android:fontFamily="@font/montserrat_bold"
         android:text="CADASTRO"
+        android:textColor="@color/lbranco"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +48,9 @@
         android:layout_marginStart="63dp"
         android:layout_marginEnd="244dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Já é cadastrado?"
+        android:textColor="@color/preto"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -59,6 +65,7 @@
         android:layout_marginEnd="254dp"
         android:layout_marginBottom="76dp"
         android:backgroundTint="#00FFFFFF"
+        android:fontFamily="@font/montserrat_bold"
         android:text="LOGIN"
         android:textColor="#2C4B7B"
         app:cornerRadius="30dp"
@@ -66,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/azulescuro" />
+        app:strokeColor="@color/lazul_marinho" />
 
     <ImageView
         android:id="@+id/imageView8"
