@@ -30,7 +30,8 @@ public class Medidor {
     }
 
     public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, BuscaConsumoListener listener) {
-        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
+        //String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
+        String url = "http://localhost:5000/api/Medidor/BuscarConsumo/" + idResidencia;
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
