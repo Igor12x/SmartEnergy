@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
+    <!--color login-->
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#DADADA</color>
@@ -16,6 +15,20 @@
     <color name="green">#8DFF33</color>
     <color name="yellow">#FFF52D</color>
     <color name="red">#FF2D2D</color>
+
+    <!--color cadastro-->
+
+
+    <!--color inicio-->
+    <color name="agua_marinha">#7DD0CB</color>
+    <color name="roxo_rroxeado">#57487B</color>
+    <color name="cinza_ardosia">#565151</color>
+    <color name="branco">#FFFFFF</color>
+    <color name="preto">#000000</color>
+    <color name="cinza_claro">#ebebeb</color>
+
+
+
 
 
     <color name="brancoazuladotexto">#A4B4DC</color>
