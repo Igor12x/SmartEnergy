@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Smart Energy</string>
 
-    <!--********************************   String login   ********************************-->
+    <!--******************************   String login e cadastro   ******************************-->
     <string name="textLogTitulo">LOGIN</string>
     <string name="hintLogCPF">CPF</string>
     <string name="hintLogSenha">Digite a senha</string>
@@ -10,7 +10,6 @@
     <string name="textLogNaoTemConta">Não tem conta? </string>
     <string name="textLogRegistreAgora"><u>Registre-se agora</u></string>
 
-    <!--*******************************   String Cadastro   ********************************-->
     <string name="hintCadNome">Nome</string>
     <string name="hintCadConfirmarSenha">Confirme a senha</string>
     <string name="hintCadCpf">CPF</string>
@@ -18,14 +17,6 @@
     <string name="textCadTitulo">CADASTRO</string>
     <string name="btnCad">CADASTRAR</string>
 
-
-    <string name="txtEndereco"></string>
-    <string name="txtData">Quinta, 16 de MAR de 2023</string>
-    <string-array name="spinnerEndereco">
-        <item>Rua das Rosas</item>
-        <item>Rua das Orquideas</item>
-        <item>Rua dos Cravos</item>
-    </string-array>
     <string name="tituloLogin">LOGIN</string>
     <string name="plainEmail">E-mail</string>
     <string name="editTextNome">Nome</string>
@@ -36,14 +27,20 @@
     <string name="TextViewEsqueceuSenha">ESQUECEU A SENHA?</string>
     <string name="TextViewRodape">Não tem conta? </string>
     <string name="TextViewRodape2"><u>Registre-se agora</u></string>
-    <string name="textoDescricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+
+    <string name="textoDescricao">Por favor, preencha os campos abaixo com suas
+        informações pessoais para criar uma conta em nosso sistema.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
+
+
+    <!--*********************** String esqueci a senha e criar nova senha ***********************-->
     <string name="txtNvSenhaTitulo">Criar nova senha</string>
     <string name="txtNvSenhaDsc">Sua senha não pode ser nenhuma utilizada anteriormente</string>
     <string name="editTextNvSenha">Nova Senha</string>
     <string name="editTextCfmSenha">Confirme a Senha</string>
     <string name="btnCfmSenha">Redefinir Senha</string>
+
     <string name="textDescricao_codVerificacao">Digite o código que enviamos no seu email</string>
     <string name="textTitulo_codVerificacao">Código de Verificação</string>
     <string name="codVerificacao_botao">Verificar</string>
@@ -60,10 +57,18 @@
     <string name="TextSenhaAlterada">Senha alterada!</string>
     <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>
     <string name="btnSenhaAlt">Volte ao Login</string>
+
+
+    <!--**********************************   String inicio   **********************************-->
+    <string name="txtEndereco"></string>
+    <string name="txtData">Quinta, 16 de MAR de 2023</string>
+    <string-array name="spinnerEndereco">
+        <item>Rua das Rosas</item>
+        <item>Rua das Orquideas</item>
+        <item>Rua dos Cravos</item>
+    </string-array>
     <string name="textConsumoDoDiaDeHoje">Consumo de energia no dia de hoje:</string>
     <string name="txtMedidorConsumoDiario">78kWh</string>
-
-
-
+    <string name="txtDicasConsumo">DICAS PARA CONSUMO</string>
 
 </resources>
