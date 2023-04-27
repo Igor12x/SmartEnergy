@@ -12,6 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,7 +23,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="1115dp"
                 tools:context=".Tela_Principal">
 
 
@@ -429,12 +430,24 @@
                     android:id="@+id/imageView17"
                     android:layout_width="345dp"
                     android:layout_height="7dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="60dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.448"
+                    app:layout_constraintHorizontal_bias="0.46"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textConsumoDoDiaDeHoje"
                     app:srcCompat="@drawable/line_13" />
+
+                <TextView
+                    android:id="@+id/txtDicasConsumo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/txtDicasConsumo"
+                    android:textColor="@color/roxo_rroxeado"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

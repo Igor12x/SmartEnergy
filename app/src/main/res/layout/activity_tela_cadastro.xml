@@ -7,16 +7,6 @@
     android:background="@color/cbranco_acinzentado"
     tools:context=".Tela_Login">
 
-    <ImageView
-        android:id="@+id/imgCadSeta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icone_seta" />
-
     <TextView
         android:id="@+id/textCadTitulo"
         android:layout_width="193dp"
@@ -122,6 +112,24 @@
         app:layout_constraintStart_toStartOf="@+id/plainCadNome"
         app:layout_constraintTop_toBottomOf="@+id/plainCadNome" />
 
+    <EditText
+        android:id="@+id/plainCadTel"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadTel"
+        android:inputType="textPassword|textEmailAddress"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/plainCadEmail"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadEmail" />
+
     <ImageView
         android:id="@+id/imgCadEmail"
         android:layout_width="28dp"
@@ -137,7 +145,7 @@
         android:id="@+id/plainCadSenha"
         android:layout_width="291dp"
         android:layout_height="49dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/brancoazulado"
         android:ems="10"
         android:fontFamily="@font/mplusrrounded1c_bold"
@@ -146,10 +154,10 @@
         android:textColor="@color/cbranco_acinzentado"
         android:textColorHighlight="@color/cbranco_acinzentado"
         android:textColorHint="@color/cbranco_acinzentado"
-        app:layout_constraintEnd_toEndOf="@+id/plainCadEmail"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/plainCadEmail"
-        app:layout_constraintTop_toBottomOf="@+id/plainCadEmail" />
+        app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
 
     <ImageView
         android:id="@+id/imgCadSenha"
@@ -194,7 +202,7 @@
         android:id="@+id/plainCadCpf"
         android:layout_width="291dp"
         android:layout_height="49dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/brancoazulado"
         android:ems="10"
         android:fontFamily="@font/mplusrrounded1c_bold"
@@ -203,10 +211,10 @@
         android:textColor="@color/cbranco_acinzentado"
         android:textColorHighlight="@color/cbranco_acinzentado"
         android:textColorHint="@color/cbranco_acinzentado"
-        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadTel"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
-        app:layout_constraintTop_toBottomOf="@+id/plainCadConfirmarSenha" />
+        app:layout_constraintStart_toStartOf="@+id/plainCadTel"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadTel" />
 
     <ImageView
         android:id="@+id/imgCadCpf"
@@ -223,17 +231,17 @@
         android:id="@+id/btnCad"
         android:layout_width="290dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/brancoazulado"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/btnCadastro"
         android:textColor="@color/cazul_marinho"
         android:textSize="19sp"
         app:cornerRadius="47dp"
-        app:layout_constraintEnd_toEndOf="@+id/plainCadCpf"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
-        app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
+        app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadConfirmarSenha" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
