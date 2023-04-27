@@ -29,8 +29,7 @@
     <string name="TextViewRodape">Não tem conta? </string>
     <string name="TextViewRodape2"><u>Registre-se agora</u></string>
 
-    <string name="textoDescricao">Por favor, preencha os campos abaixo com suas
-        informações pessoais para criar uma conta em nosso sistema.</string>
+    <string name="textoDescricao">Por favor, preencha os campos abaixo com suas informações pessoais para criar uma conta em nosso sistema.</string>
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
 
