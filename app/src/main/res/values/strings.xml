@@ -14,6 +14,7 @@
     <string name="hintCadConfirmarSenha">Confirme a senha</string>
     <string name="hintCadCpf">CPF</string>
     <string name="hintCadEmail">EMAIL</string>
+    <string name="hintCadTel">TELEFONE</string>
     <string name="textCadTitulo">CADASTRO</string>
     <string name="btnCad">CADASTRAR</string>
 
