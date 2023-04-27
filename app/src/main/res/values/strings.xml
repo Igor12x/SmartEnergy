@@ -1,17 +1,24 @@
 <resources>
     <string name="app_name">Smart Energy</string>
+
+    <!--********************************   String login   ********************************-->
     <string name="textLogTitulo">LOGIN</string>
-    <string name="hintLogEmail">E-mail</string>
-    <string name="hintCadNome">Nome</string>
+    <string name="hintLogCPF">CPF</string>
     <string name="hintLogSenha">Digite a senha</string>
-    <string name="hintCadConfirmarSenha">Confirme a senha</string>
-    <string name="hintCadCpf">CPF</string>
     <string name="btnLog">LOGIN</string>
     <string name="textLogEsqueceuSenha">ESQUECEU A SENHA?</string>
     <string name="textLogNaoTemConta">Não tem conta? </string>
     <string name="textLogRegistreAgora"><u>Registre-se agora</u></string>
+
+    <!--*******************************   String Cadastro   ********************************-->
+    <string name="hintCadNome">Nome</string>
+    <string name="hintCadConfirmarSenha">Confirme a senha</string>
+    <string name="hintCadCpf">CPF</string>
+    <string name="hintCadEmail">EMAIL</string>
     <string name="textCadTitulo">CADASTRO</string>
     <string name="btnCad">CADASTRAR</string>
+
+
     <string name="txtEndereco"></string>
     <string name="txtData">Quinta, 16 de MAR de 2023</string>
     <string-array name="spinnerEndereco">
@@ -53,6 +60,10 @@
     <string name="TextSenhaAlterada">Senha alterada!</string>
     <string name="TextSenhaAlteradaDsc">Sua senha foi alterada com sucesso.</string>
     <string name="btnSenhaAlt">Volte ao Login</string>
-    <string name="txtConsumoDoDiaDeHoje">Consumo de energia no dia de hoje:</string>
+    <string name="textConsumoDoDiaDeHoje">Consumo de energia no dia de hoje:</string>
     <string name="txtMedidorConsumoDiario">78kWh</string>
+
+
+
+
 </resources>
