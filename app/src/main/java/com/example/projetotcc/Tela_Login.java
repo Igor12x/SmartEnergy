@@ -17,7 +17,7 @@ import Models.LoginCliente;
 public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
     private Button btnLogar;
-    private String cpfCliente, senhaSliente;
+    private String cpfCliente, senhaCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +28,14 @@ public class Tela_Login extends AppCompatActivity {
 
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
-        btnLogar = findViewById(R.id.btnLogin);
+        btnLogar = findViewById(R.id.btnLog);
 
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cpfCliente = txtCpf.getText().toString();
-                senhaSliente = txtSenha.getText().toString();
-                ValidarLogin(solicitacao, cpfCliente, senhaSliente);
+                senhaCliente = txtSenha.getText().toString();
+                ValidarLogin(solicitacao, cpfCliente, senhaCliente);
                 txtCpf.setText("");
                 txtSenha.setText("");
             }
