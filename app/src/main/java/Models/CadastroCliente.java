@@ -18,10 +18,10 @@ public class CadastroCliente {
     private String email;
     private String telefone;
 
-    public CadastroCliente(String nome, String senha, String cpf, String email, String telefone) {
+    public CadastroCliente(String nome,String cpf,  String senha, String email, String telefone) {
         this.nome = nome;
-        this.senha = senha;
         this.cpf = cpf;
+        this.senha = senha;
         this.email = email;
         this.telefone = telefone;
     }
@@ -31,14 +31,14 @@ public class CadastroCliente {
     }
 
     public static void ValidarCadastroCliente(CadastroCliente cadastro, RequestQueue solicitacao, CadastroCliente.ValidarCadastroListener listener) {
-        String url = "http://localhost:5000/api/Login";
+        String url = "http://localhost:5000/api/Cadastro";
 
         JSONObject enviarCliente = new JSONObject();
 
         try {
             enviarCliente.put("nome", cadastro.getNome());
-            enviarCliente.put("senha", cadastro.getSenha());
             enviarCliente.put("cpf", cadastro.getCpf());
+            enviarCliente.put("senha", cadastro.getSenha());
             enviarCliente.put("email", cadastro.getEmail());
             enviarCliente.put("telefone", cadastro.getTelefone());
         } catch (JSONException e) {
@@ -50,7 +50,7 @@ public class CadastroCliente {
             public void onResponse(JSONObject response) {
                 try {
 
-                    Cliente clienteCadastrado = new Cliente(response.getString("Nome"), response.getString("Senha"), response.getString("Cpf"), response.getString("Email"), response.getString("Telefone"));
+                    Cliente clienteCadastrado = new Cliente(response.getString("Nome"), response.getString("Cpf"), response.getString("Senha"), response.getString("Email"), response.getString("Telefone"));
 
                     listener.onResultado(clienteCadastrado);
 

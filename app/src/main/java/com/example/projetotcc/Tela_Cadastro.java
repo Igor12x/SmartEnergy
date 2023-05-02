@@ -49,8 +49,8 @@ public class Tela_Cadastro extends AppCompatActivity {
         });
 
     }
-    public void ValidarCadastro(RequestQueue solicitacao, String nome, String senha, String cpf, String email, String telefone) {
-        CadastroCliente cadastrar = new CadastroCliente(nome, senha, cpf, email, telefone);
+    public void ValidarCadastro(RequestQueue solicitacao, String nome, String cpf, String senha, String email, String telefone) {
+        CadastroCliente cadastrar = new CadastroCliente(nome,cpf , senha, email, telefone);
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new CadastroCliente.ValidarCadastroListener() {
             @Override
             public void onResultado(Cliente clienteCadastrado) {
