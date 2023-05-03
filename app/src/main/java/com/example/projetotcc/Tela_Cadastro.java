@@ -3,6 +3,7 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import Models.LoginCliente;
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
     private Button btnCad;
-    private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente;
+    private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +33,18 @@ public class Tela_Cadastro extends AppCompatActivity {
         plainCadCpf = findViewById(R.id.plainCadCpf);
         plainCadSenha = findViewById(R.id.plainCadSenha);
         plainCadConfirmarSenha = findViewById(R.id.plainCadConfirmarSenha);
+        btnCad = findViewById(R.id.btnCad);
 
         btnCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nomeCliente = plainCadNome.getText().toString();
-                if (plainCadSenha == plainCadConfirmarSenha){
-                    senhaCliente = plainCadSenha.getText().toString();
-                }else{
-                    Toast.makeText(Tela_Cadastro.this, "Os campos da senha não coincidem!!!", Toast.LENGTH_SHORT).show();
-                }
                 cpfCliente = plainCadCpf.getText().toString();
                 emailCliente = plainCadEmail.getText().toString();
                 telCliente = plainCadTel.getText().toString();
+                senhaCliente = plainCadSenha.getText().toString();
+                ValidarCadastro(solicitacao, nomeCliente, cpfCliente, senhaCliente, emailCliente, telCliente);
+                plainCadNome.setText("Cadastrado com sucesso");
             }
         });
 

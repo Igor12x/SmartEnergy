@@ -10,7 +10,7 @@
                 android:thickness="20dp"
                 android:useLevel="false">
                 <gradient
-                    android:endColor="@color/gray"
+                    android:endColor="@color/cinza_claro"
                     android:type="linear" />
             </shape>
         </rotate>
