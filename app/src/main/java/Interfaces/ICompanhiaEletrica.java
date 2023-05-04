@@ -1,7 +1,7 @@
 package Interfaces;
 
-import Models.CompanhiaEletrica;
+import Models.CompanhiaEnergiaEletrica;
 
 public interface ICompanhiaEletrica {
-    void onResultado(CompanhiaEletrica tarifasComImposto);
+    void onResultado(CompanhiaEnergiaEletrica tarifasComImposto);
 }

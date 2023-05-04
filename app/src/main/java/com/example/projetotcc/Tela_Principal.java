@@ -24,9 +24,10 @@ import Interfaces.ICompanhiaEletrica;
 import Interfaces.IFatura;
 import Interfaces.IMedidorBuscarConsumoDiario;
 import Interfaces.IMedidorBuscoConsumoAtual;
-import Models.CompanhiaEletrica;
-import Models.Fatura;
+import Models.CompanhiaEnergiaEletrica;
+import Models.FaturaCliente;
 import Models.Medidor;
+
 
 public class Tela_Principal extends AppCompatActivity {
     private Calendar calendar = Calendar.getInstance();
@@ -91,9 +92,9 @@ public class Tela_Principal extends AppCompatActivity {
 
     }
     public void buscarTarifas(RequestQueue solicitacao){
-        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new ICompanhiaEletrica() {
+        CompanhiaEnergiaEletrica.BuscarTarifas(1, solicitacao, new ICompanhiaEletrica() {
             @Override
-            public void onResultado(CompanhiaEletrica tarifasComImposto) {
+            public void onResultado(CompanhiaEnergiaEletrica tarifasComImposto) {
                 tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
                 tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
             }
@@ -106,7 +107,7 @@ public class Tela_Principal extends AppCompatActivity {
             public void onResultado(double consumoAtualResultado) {
                 consumoAtual = formatarDouble(consumoAtualResultado);
                 textConsumoAtualLimite.setText(consumoAtual + " kWh");
-                valorAtual = formatarDouble(Fatura.calcularValorFaturaAtual(tarifaTUSD, tarifaTE,
+                valorAtual = formatarDouble(FaturaCliente.calcularValorFaturaAtual(tarifaTUSD, tarifaTE,
                         consumoAtual));
                 ExibirValorConsumoFaturaAtual(consumoAtual, valorAtual);
                 ExibirValorConsumoFaturaProjetada(consumoAtual);
@@ -128,9 +129,9 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
     public void buscarUltimaFatura (RequestQueue solicitacao){
-        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new IFatura() {
+        FaturaCliente.BuscarValorConsumoUltimaFatura(1, solicitacao, new IFatura() {
             @Override
-            public void onResultado(Fatura fatura) {
+            public void onResultado(FaturaCliente fatura) {
                 textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() +
                         " com consumo: " + fatura.getConsumoUltimaFatura() + " kWh");
             }
@@ -151,13 +152,13 @@ public class Tela_Principal extends AppCompatActivity {
     }
     public void ExibirValorConsumoFaturaProjetada(double consumoAtual) {
 
-        consumoProjetado = formatarDouble(Fatura.calcularProjecaoFatura(consumoAtual,
-                Fatura.contadorDias(date, diaFechamentoFatura),
-                Fatura.calculardDiasRestantes(date, diaFechamentoFatura)));
+        consumoProjetado = formatarDouble(FaturaCliente.calcularProjecaoFatura(consumoAtual,
+                FaturaCliente.contadorDias(date, diaFechamentoFatura),
+                FaturaCliente.calculardDiasRestantes(date, diaFechamentoFatura)));
 
-        valorProjetado = formatarDouble(Fatura.calcularProjecaoFatura(valorAtual,
-                Fatura.contadorDias(date, diaFechamentoFatura),
-                Fatura.calculardDiasRestantes(date, diaFechamentoFatura)));
+        valorProjetado = formatarDouble(FaturaCliente.calcularProjecaoFatura(valorAtual,
+                FaturaCliente.contadorDias(date, diaFechamentoFatura),
+                FaturaCliente.calculardDiasRestantes(date, diaFechamentoFatura)));
 
         textInicioValorContaProjetado.setText("R$ " + valorProjetado);
         textInicioConsumoProjetado.setText(consumoProjetado + " kWh");

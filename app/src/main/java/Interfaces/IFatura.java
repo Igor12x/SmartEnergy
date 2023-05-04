@@ -1,7 +1,7 @@
 package Interfaces;
 
-import Models.Fatura;
+import Models.FaturaCliente;
 
 public interface IFatura {
-    void onResultado(Fatura fatura);
+    void onResultado(FaturaCliente fatura);
 }

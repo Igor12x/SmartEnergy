@@ -7,7 +7,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,11 +17,11 @@ import java.util.concurrent.TimeUnit;
 
 import Interfaces.IFatura;
 
-public class Fatura {
+public class FaturaCliente {
     private String valorUltimaFatura;
     private String consumoUltimaFatura;
 
-    public Fatura(String valorUltimaFatura, String consumoUltimaFatura) {
+    public FaturaCliente(String valorUltimaFatura, String consumoUltimaFatura) {
         this.valorUltimaFatura = valorUltimaFatura;
         this.consumoUltimaFatura = consumoUltimaFatura;
     }
@@ -38,9 +37,9 @@ public class Fatura {
 
                 try {
                     JSONObject object = response;
-                    Fatura ultimaFatura = new Fatura(object.getString("ValorUltimaFatura"),object.getString("ConsumoUltimaFatura"));
+                    FaturaCliente ultimaFaturaCliente = new FaturaCliente(object.getString("ValorUltimaFatura"),object.getString("ConsumoUltimaFatura"));
 
-                    listener.onResultado(ultimaFatura);
+                    listener.onResultado(ultimaFaturaCliente);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
