@@ -117,8 +117,8 @@ public class Tela_Principal extends AppCompatActivity  {
 
     }
 
-    public void buscarTarifas(RequestQueue solicitacao){
-        CompanhiaEnergiaEletrica.BuscarTarifas(1, solicitacao, new ICompanhiaEletrica() {
+    public void buscarTarifas(RequestQueue solicitacao, int idResidencia){
+        CompanhiaEnergiaEletrica.BuscarTarifas(idResidencia, solicitacao, new ICompanhiaEletrica() {
             @Override
             public void onResultado(CompanhiaEnergiaEletrica tarifasComImposto) {
                 try {

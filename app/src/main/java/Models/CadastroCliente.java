@@ -11,6 +11,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Interfaces.ICadastroCliente;
+
 public class CadastroCliente {
     private String nome;
     private String senha;
@@ -26,12 +28,10 @@ public class CadastroCliente {
         this.telefone = telefone;
     }
 
-    public interface ValidarCadastroListener {
-        void onResultado(Cliente clienteCadastrado);
-    }
 
-    public static void ValidarCadastroCliente(CadastroCliente cadastro, RequestQueue solicitacao, CadastroCliente.ValidarCadastroListener listener) {
-        String url = "http://localhost:5000/api/Cadastro";
+
+    public static void ValidarCadastroCliente(CadastroCliente cadastro, RequestQueue solicitacao, ICadastroCliente listener) {
+        String url = "http://10.0.2.2:5000/api/Cadastro";
 
         JSONObject enviarCliente = new JSONObject();
 
@@ -48,19 +48,13 @@ public class CadastroCliente {
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.POST, url, enviarCliente, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                try {
 
-                    Cliente clienteCadastrado = new Cliente(response.getString("Nome"), response.getString("Cpf"), response.getString("Senha"), response.getString("Email"), response.getString("Telefone"));
-
-                    listener.onResultado(clienteCadastrado);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                listener.onResultado(true);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                listener.onResultado(false);
                 Log.i("onErrorResponse", error.toString());
 
             }

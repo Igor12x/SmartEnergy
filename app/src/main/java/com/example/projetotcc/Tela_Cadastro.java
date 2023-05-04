@@ -12,9 +12,10 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import Interfaces.ICadastroCliente;
 import Models.CadastroCliente;
 import Models.Cliente;
-import Models.LoginCliente;
+import Models.ClienteLogin;
 
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
@@ -51,10 +52,14 @@ public class Tela_Cadastro extends AppCompatActivity {
     }
     public void ValidarCadastro(RequestQueue solicitacao, String nome, String cpf, String senha, String email, String telefone) {
         CadastroCliente cadastrar = new CadastroCliente(nome,cpf , senha, email, telefone);
-        CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new CadastroCliente.ValidarCadastroListener() {
+        CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {
             @Override
-            public void onResultado(Cliente clienteCadastrado) {
-                Toast.makeText(Tela_Cadastro.this, "Cadastrado com sucesso" + clienteCadastrado.getNome(), Toast.LENGTH_SHORT).show();
+            public void onResultado(boolean cadastrado) {
+                if (cadastrado) {
+                    Toast.makeText(Tela_Cadastro.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Tela_Cadastro.this, "Erro ao cadastrar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

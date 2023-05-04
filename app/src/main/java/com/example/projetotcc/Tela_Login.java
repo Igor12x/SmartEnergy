@@ -15,7 +15,7 @@ import com.android.volley.toolbox.Volley;
 
 import Interfaces.ILoginCliente;
 import Models.Cliente;
-import Models.LoginCliente;
+import Models.ClienteLogin;
 
 public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
@@ -49,8 +49,8 @@ public class Tela_Login extends AppCompatActivity {
 
     public void ValidarLogin(RequestQueue solicitacao, String cpf, String senha) {
 
-        LoginCliente login = new LoginCliente(cpf, senha);
-        LoginCliente.ValidarLoginCliente(login, solicitacao, new ILoginCliente() {
+        ClienteLogin login = new ClienteLogin(cpf, senha);
+        ClienteLogin.ValidarLoginCliente(login, solicitacao, new ILoginCliente() {
             @Override
             public void onResultado(Cliente clienteLogado) {
                 SharedPreferences.Editor gravar =

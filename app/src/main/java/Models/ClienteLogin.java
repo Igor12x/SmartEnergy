@@ -13,16 +13,16 @@ import org.json.JSONObject;
 
 import Interfaces.ILoginCliente;
 
-public class LoginCliente {
+public class ClienteLogin {
     private String cpf;
     private String senha;
 
-    public LoginCliente(String cpf, String senha) {
+    public ClienteLogin(String cpf, String senha) {
         this.cpf = cpf;
         this.senha = senha;
     }
 
-    public static void ValidarLoginCliente(LoginCliente login, RequestQueue solicitacao, ILoginCliente listener) {
+    public static void ValidarLoginCliente(ClienteLogin login, RequestQueue solicitacao, ILoginCliente listener) {
         //String url = "http://localhost:5000/api/Login";
         String url = "http://10.0.2.2:5000/api/Login";
 
@@ -57,7 +57,6 @@ public class LoginCliente {
         });
         solicitacao.add(envio);
     }
-
     public String getCpf() {
         return cpf;
     }
