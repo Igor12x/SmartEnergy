@@ -7,8 +7,12 @@ import android.util.Log;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.os.Bundle;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -18,6 +22,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import Interfaces.ICompanhiaEletrica;
@@ -27,9 +32,11 @@ import Interfaces.IMedidorBuscoConsumoAtual;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
 import Models.Medidor;
+import Models.Residencia;
+import Models.ResidenciaAdapter;
 
 
-public class Tela_Principal extends AppCompatActivity {
+public class Tela_Principal extends AppCompatActivity  {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0;
@@ -43,7 +50,9 @@ public class Tela_Principal extends AppCompatActivity {
     private double tarifaTUSD;
     private double tarifaTE;
     private Button btnConfira;
+    private Spinner spinnerResidencias;
 
+    private RequestQueue solicitacao = null;
     // Criando uma solicitação para a rede aonde está a API
 
     @Override
@@ -51,7 +60,7 @@ public class Tela_Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
 
-        RequestQueue solicitacao = Volley.newRequestQueue(this);
+        solicitacao = Volley.newRequestQueue(this);
 
         //referencias
         progressConsumoAtual = findViewById(R.id.progress_bar);
@@ -65,6 +74,8 @@ public class Tela_Principal extends AppCompatActivity {
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
         btnConfira = findViewById(R.id.btnConfira);
 
+        spinnerResidencias = findViewById(R.id.spinnerEndereco);
+
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh");
 
@@ -76,33 +87,53 @@ public class Tela_Principal extends AppCompatActivity {
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
-        buscarTarifas(solicitacao);
-        buscarConsumoAtual(solicitacao);
-        buscarConsumoDiario(solicitacao);
-        buscarUltimaFatura(solicitacao);
+        Residencia.listarResidencias(1, solicitacao, new Residencia.ListarResidenciaListener() {
+            @Override
+            public void onResultado(List<Residencia> residencias) {
+                ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
+                spinnerResidencias.setAdapter(adaptador);
 
-        //chamando a tela dica de consumo
-        btnConfira.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), Tela_Dicas.class);
-            startActivity(intent);
-        }
-    });
+                spinnerResidencias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
+                        // usar residenciaSelecionada para buscar informações adicionais
+                        buscarTarifas(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarConsumoAtual(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarConsumoDiario(solicitacao, residenciaSelecionada.getCodigo());
+                        buscarUltimaFatura(solicitacao, residenciaSelecionada.getCodigo());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+        });
+
+
+
 
     }
+
     public void buscarTarifas(RequestQueue solicitacao){
         CompanhiaEnergiaEletrica.BuscarTarifas(1, solicitacao, new ICompanhiaEletrica() {
             @Override
             public void onResultado(CompanhiaEnergiaEletrica tarifasComImposto) {
-                tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
-                tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
-            }
+                try {
+                    tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
+                    tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
+                } catch (Exception e)
+                {
+                    tarifaTUSD = 0;
+                    tarifaTE = 0;
+                }            }
         });
     }
 
-    public void buscarConsumoAtual(RequestQueue solicitacao){
-        Medidor.buscarConsumoAtual(1, solicitacao, new IMedidorBuscoConsumoAtual() {
+    public void buscarConsumoAtual(RequestQueue solicitacao, int idResidencia){
+        Medidor.buscarConsumoAtual(idResidencia, solicitacao, new IMedidorBuscoConsumoAtual() {
             @Override
             public void onResultado(double consumoAtualResultado) {
                 consumoAtual = formatarDouble(consumoAtualResultado);
@@ -120,16 +151,16 @@ public class Tela_Principal extends AppCompatActivity {
             }
         });
     }
-    public void buscarConsumoDiario(RequestQueue solicitacao){
-        Medidor.buscarConsumoDiario(1, solicitacao, new IMedidorBuscarConsumoDiario() {
+    public void buscarConsumoDiario(RequestQueue solicitacao, int idResidencia){
+        Medidor.buscarConsumoDiario(idResidencia, solicitacao, new IMedidorBuscarConsumoDiario() {
             @Override
             public void onResultado(double consumoDiarioResultado) {
                 txtMedidorConsumoDiario.setText(consumoDiarioResultado + " kWh");
             }
         });
     }
-    public void buscarUltimaFatura (RequestQueue solicitacao){
-        FaturaCliente.BuscarValorConsumoUltimaFatura(1, solicitacao, new IFatura() {
+    public void buscarUltimaFatura (RequestQueue solicitacao, int idResidencia){
+        FaturaCliente.BuscarValorConsumoUltimaFatura(idResidencia, solicitacao, new IFatura() {
             @Override
             public void onResultado(FaturaCliente fatura) {
                 textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() +
@@ -170,4 +201,7 @@ public class Tela_Principal extends AppCompatActivity {
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     };
+
+
+
 }
