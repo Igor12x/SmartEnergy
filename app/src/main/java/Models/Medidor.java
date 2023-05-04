@@ -13,6 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Interfaces.IMedidorBuscarConsumoDiario;
+import Interfaces.IMedidorBuscoConsumoAtual;
+
 public class Medidor {
     public double consumo;
     public Medidor(double consumo) {
@@ -29,9 +32,9 @@ public class Medidor {
 
     }
 
-    public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, BuscaConsumoListener listener) {
-        //String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
-        String url = "http://localhost:5000/api/Medidor/BuscarConsumo/" + idResidencia;
+    public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, IMedidorBuscoConsumoAtual listener) {
+        String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
+        //String url = "http://localhost:5000/api/Medidor/BuscarConsumo/" + idResidencia;
 
         //Criar um objeto da classe Volley para configurar as requisições ao webservice
         //Configurando a requisição a ser enviada
@@ -64,7 +67,7 @@ public class Medidor {
     }
 
 
-    public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, BuscaConsumoDiarioListener listener) {
+    public static void buscarConsumoDiario(int idResidencia, RequestQueue solicitacao, IMedidorBuscarConsumoDiario listener) {
         String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumoDiario/" + idResidencia;
 
         //Criar um o
@@ -90,7 +93,7 @@ public class Medidor {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("onErrorResponse", error.toString());
+                Log.i("onErrorResponseMedidor", error.toString());
             }
         });
         solicitacao.add(envio);

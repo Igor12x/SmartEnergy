@@ -11,6 +11,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Interfaces.ILoginCliente;
+
 public class LoginCliente {
     private String cpf;
     private String senha;
@@ -20,12 +22,9 @@ public class LoginCliente {
         this.senha = senha;
     }
 
-    public interface ValidarLoginListener {
-        void onResultado(Cliente clienteLogado);
-    }
-
-    public static void ValidarLoginCliente(LoginCliente login, RequestQueue solicitacao, LoginCliente.ValidarLoginListener listener) {
-        String url = "http://localhost:5000/api/Login";
+    public static void ValidarLoginCliente(LoginCliente login, RequestQueue solicitacao, ILoginCliente listener) {
+        //String url = "http://localhost:5000/api/Login";
+        String url = "http://10.0.2.2:5000/api/Login";
 
         JSONObject enviarCliente = new JSONObject();
 
@@ -41,7 +40,7 @@ public class LoginCliente {
             public void onResponse(JSONObject response) {
                   try {
 
-                      Cliente clienteLogado = new Cliente(response.getString("Nome"), response.getString("Cpf"), response.getString("Email"), response.getString("Telefone"));
+                      Cliente clienteLogado = new Cliente(response.getString("Nome"), response.getString("Cpf"), response.getString("Email"), response.getString("Telefone"), response.getString("Senha"), response.getInt("Codigo"));
 
                       listener.onResultado(clienteLogado);
 
@@ -52,7 +51,7 @@ public class LoginCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("onErrorResponse", error.toString());
+                Log.i("onErrorResponseLogin", error.toString());
 
             }
         });
