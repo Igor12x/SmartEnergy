@@ -16,6 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import Interfaces.IFatura;
+
 public class Fatura {
     private String valorUltimaFatura;
     private String consumoUltimaFatura;
@@ -25,13 +27,9 @@ public class Fatura {
         this.consumoUltimaFatura = consumoUltimaFatura;
     }
 
-    public interface BuscarValorConsumoUltimaFaturaListener {
-        void onResultado(Fatura fatura);
-    }
-
-    public static void BuscarValorConsumoUltimaFatura(int idResidencia, RequestQueue solicitacao, Fatura.BuscarValorConsumoUltimaFaturaListener listener){
-        //String url = "http://10.0.2.2:5000/api/Fatura/UltimaFatura/" + idResidencia;
-        String url = "http://localhost:5000/api/Fatura/UltimaFatura/" + idResidencia;
+    public static void BuscarValorConsumoUltimaFatura(int idResidencia, RequestQueue solicitacao, IFatura listener){
+        String url = "http://10.0.2.2:5000/api/Fatura/UltimaFatura/" + idResidencia;
+        //String url = "http://localhost:5000/api/Fatura/UltimaFatura/" + idResidencia;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

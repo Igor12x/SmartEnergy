@@ -11,6 +11,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Interfaces.ICompanhiaEletrica;
+
 public class CompanhiaEletrica {
     private double tarifaTUSD;
     private double tarifaTE;
@@ -33,13 +35,9 @@ public class CompanhiaEletrica {
         this.tarifaTEComImposto = tarifaTEComImposto;
     }
 
-    public interface BuscarTarifasListener {
-        void onResultado(CompanhiaEletrica tarifasComImposto);
-    }
-
-    public static void BuscarTarifas(int idResidencia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
-        //String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idResidencia;
-        String url = "http://localhost:5000/api/CompanhiaEletrica/buscarCompanhia/" + idResidencia;
+    public static void BuscarTarifas(int idResidencia, RequestQueue solicitacao, ICompanhiaEletrica listener) {
+        String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idResidencia;
+        //String url = "http://localhost:5000/api/CompanhiaEletrica/buscarCompanhia/" + 1;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -63,7 +61,7 @@ public class CompanhiaEletrica {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("onErrorResponse", error.toString());
+                Log.i("onErrorResponseCompanhia", error.toString());
                 listener.onResultado(null);
             }
         });

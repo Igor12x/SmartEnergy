@@ -2,6 +2,7 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.os.Bundle;
@@ -16,6 +17,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import Interfaces.ICompanhiaEletrica;
+import Interfaces.IFatura;
+import Interfaces.IMedidorBuscarConsumoDiario;
+import Interfaces.IMedidorBuscoConsumoAtual;
 import Models.CompanhiaEletrica;
 import Models.Fatura;
 import Models.Medidor;
@@ -23,17 +28,16 @@ import Models.Medidor;
 public class Tela_Principal extends AppCompatActivity {
     private Calendar calendar = Calendar.getInstance();
     private Date date = calendar.getTime();
-    private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0; //destinada para mostrar o consumo atual
+    private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0;
     private int limiteConsumo = 200,
-            diaFechamentoFatura = 1; //limite definido pelo usuário sobre o consumo (alterar para shared preferrens)
+            diaFechamentoFatura = 1;
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
-            txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite;
+            txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
+            textView2;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
-
-    // Criando uma solicitação para a rede aonde está a API
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,12 @@ public class Tela_Principal extends AppCompatActivity {
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
 
         textLimite = findViewById(R.id.textLimite);
-        textLimite.setText(limiteConsumo + " kWh"); //substituir futuramente
+        textLimite.setText(limiteConsumo + " kWh");
+
+        textView2 = findViewById(R.id.textView2);
+        SharedPreferences ler = getSharedPreferences("contas", MODE_PRIVATE);
+        textView2.setText("Ola " + ler.getString("nome", "")
+        );
 
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
@@ -65,7 +74,7 @@ public class Tela_Principal extends AppCompatActivity {
 
     }
     public void buscarTarifas(RequestQueue solicitacao){
-        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
+        CompanhiaEletrica.BuscarTarifas(1, solicitacao, new ICompanhiaEletrica() {
             @Override
             public void onResultado(CompanhiaEletrica tarifasComImposto) {
                 tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
@@ -74,13 +83,13 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
     public void buscarConsumoAtual(RequestQueue solicitacao){
-        Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
+        Medidor.buscarConsumoAtual(1, solicitacao, new IMedidorBuscoConsumoAtual() {
             @Override
-            public void onResultado(double resultado) {
-
-                consumoAtual = formatarDouble(resultado);
+            public void onResultado(double consumoAtualResultado) {
+                consumoAtual = formatarDouble(consumoAtualResultado);
                 textConsumoAtualLimite.setText(consumoAtual + " kWh");
-                valorAtual = formatarDouble(Fatura.calcularValorFaturaAtual(tarifaTUSD, tarifaTE, consumoAtual));
+                valorAtual = formatarDouble(Fatura.calcularValorFaturaAtual(tarifaTUSD, tarifaTE,
+                        consumoAtual));
                 ExibirValorConsumoFaturaAtual(consumoAtual, valorAtual);
                 ExibirValorConsumoFaturaProjetada(consumoAtual);
 
@@ -93,19 +102,19 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
     public void buscarConsumoDiario(RequestQueue solicitacao){
-        Medidor.buscarConsumoDiario(1, solicitacao, new Medidor.BuscaConsumoDiarioListener() {
+        Medidor.buscarConsumoDiario(1, solicitacao, new IMedidorBuscarConsumoDiario() {
             @Override
-            public void onResultado(double resultado) {
-                txtMedidorConsumoDiario.setText(resultado + " kWh");
+            public void onResultado(double consumoDiarioResultado) {
+                txtMedidorConsumoDiario.setText(consumoDiarioResultado + " kWh");
             }
         });
     }
     public void buscarUltimaFatura (RequestQueue solicitacao){
-        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new Fatura.BuscarValorConsumoUltimaFaturaListener() {
+        Fatura.BuscarValorConsumoUltimaFatura(1, solicitacao, new IFatura() {
             @Override
             public void onResultado(Fatura fatura) {
-                textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() + " com consumo: "
-                        + fatura.getConsumoUltimaFatura() + " kWh");
+                textUltimaFatura.setText("O valor da ultima: " + " R$" + fatura.getValorUltimaFatura() +
+                        " com consumo: " + fatura.getConsumoUltimaFatura() + " kWh");
             }
         });
     }

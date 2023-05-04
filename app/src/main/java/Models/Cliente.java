@@ -6,13 +6,19 @@ public class Cliente {
     private String email;
     private String telefone;
 
-    public Cliente(String nome, String cpf, String email, String telefone) {
+    private String senha;
+
+    private  int codigo;
+
+
+    public Cliente(String nome, String cpf, String email, String telefone, String senha, int codigo) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
+        this.senha = senha;
+        this.codigo = codigo;
     }
-
     public String getNome() {
         return nome;
     }
@@ -27,5 +33,13 @@ public class Cliente {
 
     public String getTelefone() {
         return telefone;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 }
