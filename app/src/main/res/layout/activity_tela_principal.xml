@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,7 +24,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1115dp"
+                android:layout_height="1600dp"
                 tools:context=".Tela_Principal">
 
 
@@ -446,8 +447,46 @@
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                    app:layout_constraintVertical_bias="0.068" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="129dp"
+                    android:layout_height="99dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/logo_ofc" />
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    android:layout_width="378dp"
+                    android:layout_height="406dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDicasConsumo"
+                    app:srcCompat="@drawable/consumo" />
+
+                <Button
+                    android:id="@+id/btnConfira"
+                    android:layout_width="212dp"
+                    android:layout_height="49dp"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginEnd="18dp"
+                    android:backgroundTint="@color/borda_edit_text_azul"
+                    android:text="@string/btnConfira"
+                    android:textColor="@color/branco"
+                    app:cornerRadius="47dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

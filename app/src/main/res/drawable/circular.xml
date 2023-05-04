@@ -9,8 +9,9 @@
                 android:shape="ring"
                 android:thickness="20dp"
                 android:useLevel="false">
+                    <!--TODO   alterar cor a baixo-->
                 <gradient
-                    android:endColor="@color/gray"
+                    android:endColor="@color/green"
                     android:type="linear" />
             </shape>
         </rotate>

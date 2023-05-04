@@ -21,8 +21,8 @@
         android:id="@+id/textLogTitulo"
         android:layout_width="159dp"
         android:layout_height="53dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textLogTitulo"
         android:textColor="@color/lbranco"
@@ -168,6 +168,18 @@
         app:layout_constraintStart_toStartOf="@+id/btnLog"
         app:layout_constraintTop_toBottomOf="@+id/btnLog"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="198dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textLogTitulo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_ofc" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

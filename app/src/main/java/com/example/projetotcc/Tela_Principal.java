@@ -2,7 +2,9 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -32,16 +34,18 @@ public class Tela_Principal extends AppCompatActivity {
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
+    private Button btnConfira;
 
     // Criando uma solicitação para a rede aonde está a API
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_inicio);
+        setContentView(R.layout.activity_tela_principal);
 
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
+        //referencias
         progressConsumoAtual = findViewById(R.id.progress_bar);
         progressLimiteConsumo = findViewById(R.id.progress_bar2);
         textInicioConsumoAtual = findViewById(R.id.textInicioConsumoAtual);
@@ -51,6 +55,7 @@ public class Tela_Principal extends AppCompatActivity {
         txtMedidorConsumoDiario = findViewById(R.id.txtMedidorConsumoDiario);
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
+        btnConfira = findViewById(R.id.btnConfira);
 
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh"); //substituir futuramente
@@ -63,6 +68,15 @@ public class Tela_Principal extends AppCompatActivity {
         buscarConsumoDiario(solicitacao);
         buscarUltimaFatura(solicitacao);
 
+        //chamando a tela dica de consumo
+        btnConfira.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), Tela_Dicas.class);
+            startActivity(intent);
+        }
+    });
+
     }
     public void buscarTarifas(RequestQueue solicitacao){
         CompanhiaEletrica.BuscarTarifas(1, solicitacao, new CompanhiaEletrica.BuscarTarifasListener() {
@@ -73,6 +87,7 @@ public class Tela_Principal extends AppCompatActivity {
             }
         });
     }
+
     public void buscarConsumoAtual(RequestQueue solicitacao){
         Medidor.buscarConsumoAtual(1, solicitacao, new Medidor.BuscaConsumoListener() {
             @Override
@@ -142,4 +157,5 @@ public class Tela_Principal extends AppCompatActivity {
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     };
+
 }
