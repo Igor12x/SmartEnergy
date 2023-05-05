@@ -11,7 +11,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CompanhiaEletrica {
+import Interfaces.ICompanhiaEletrica;
+
+public class CompanhiaEnergiaEletrica {
     private double tarifaTUSD;
     private double tarifaTE;
     private double tarifaTUSDComImposto;
@@ -20,7 +22,7 @@ public class CompanhiaEletrica {
     private double pis;
     private double cofins;
 
-    public CompanhiaEletrica(double tarifaTUSD, double tarifaTE, double icms, double pis, double cofins) {
+    public CompanhiaEnergiaEletrica(double tarifaTUSD, double tarifaTE, double icms, double pis, double cofins) {
         this.tarifaTUSD = tarifaTUSD;
         this.tarifaTE = tarifaTE;
         this.icms = icms;
@@ -28,17 +30,14 @@ public class CompanhiaEletrica {
         this.cofins = cofins;
     }
 
-    public CompanhiaEletrica(double tarifaTUSDComImposto, double tarifaTEComImposto) {
+    public CompanhiaEnergiaEletrica(double tarifaTUSDComImposto, double tarifaTEComImposto) {
         this.tarifaTUSDComImposto = tarifaTUSDComImposto;
         this.tarifaTEComImposto = tarifaTEComImposto;
     }
 
-    public interface BuscarTarifasListener {
-        void onResultado(CompanhiaEletrica tarifasComImposto);
-    }
-
-    public static void BuscarTarifas(int idCompanhia, RequestQueue solicitacao, CompanhiaEletrica.BuscarTarifasListener listener) {
-        String url = "http://localhost:5000/api/CompanhiaEletrica/Tarifas/" + idCompanhia;
+    public static void BuscarTarifas(int idResidencia, RequestQueue solicitacao, ICompanhiaEletrica listener) {
+        String url = "http://10.0.2.2:5000/api/CompanhiaEletrica/buscarCompanhia/" + idResidencia;
+        //String url = "http://localhost:5000/api/CompanhiaEletrica/buscarCompanhia/" + 1;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -46,36 +45,36 @@ public class CompanhiaEletrica {
                 Log.i("onResponse", response.toString());
 
                 try {
-                    CompanhiaEletrica tarifasCompanhia = validarJson(response);
+                    CompanhiaEnergiaEletrica tarifasCompanhia = validarJson(response);
 
                     double tarifaTUSDImposto = CalcularTarifaComImposto(tarifasCompanhia.getTarifaTUSD(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
                     double tarifaTEImposto = CalcularTarifaComImposto(tarifasCompanhia.getTarifaTE(), tarifasCompanhia.getIcms(), tarifasCompanhia.getPis(), tarifasCompanhia.getCofins());
 
-                    CompanhiaEletrica tarifasComImposto = new CompanhiaEletrica(tarifaTUSDImposto, tarifaTEImposto);
+                    CompanhiaEnergiaEletrica tarifasComImposto = new CompanhiaEnergiaEletrica(tarifaTUSDImposto, tarifaTEImposto);
 
                     listener.onResultado(tarifasComImposto);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    listener.onResultado(null);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("onErrorResponse", error.toString());
+                Log.i("onErrorResponseCompanhia", error.toString());
                 listener.onResultado(null);
             }
         });
         solicitacao.add(envio);
     }
 
-    private static CompanhiaEletrica validarJson(JSONObject response) throws JSONException {
-        double tarifaTUSD = response.getDouble("TarifaTusd");
-        double tarifaTE = response.getDouble("TarifaTe");
+    private static CompanhiaEnergiaEletrica validarJson(JSONObject response) throws JSONException {
+        double tarifaTUSD = response.getDouble("TarifaTUSD");
+        double tarifaTE = response.getDouble("TarifaTE");
         double icms = response.getDouble("Icms");
         double pis = response.getDouble("Pis");
         double cofins = response.getDouble("Cofins");
-        return new CompanhiaEletrica(tarifaTUSD, tarifaTE, icms, pis, cofins);
+        return new CompanhiaEnergiaEletrica(tarifaTUSD, tarifaTE, icms, pis, cofins);
     }
 
     private static double CalcularTarifaComImposto (double tarifa, double icms, double pis, double cofins){

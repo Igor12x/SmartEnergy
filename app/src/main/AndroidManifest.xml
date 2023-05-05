@@ -15,10 +15,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Tela_Cadastro"
+            android:name=".Tela_Principal"
             android:exported="false" />
         <activity
-            android:name=".Tela_Principal"
+            android:name=".Tela_Dicas"
+            android:exported="false" />
+
+        <activity
+            android:name=".Tela_Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,7 +7,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,21 +15,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Fatura {
+import Interfaces.IFatura;
+
+public class FaturaCliente {
     private String valorUltimaFatura;
     private String consumoUltimaFatura;
 
-    public Fatura(String valorUltimaFatura, String consumoUltimaFatura) {
+    public FaturaCliente(String valorUltimaFatura, String consumoUltimaFatura) {
         this.valorUltimaFatura = valorUltimaFatura;
         this.consumoUltimaFatura = consumoUltimaFatura;
     }
 
-    public interface BuscarValorConsumoUltimaFaturaListener {
-        void onResultado(Fatura fatura);
-    }
-
-    public static void BuscarValorConsumoUltimaFatura(int id, RequestQueue solicitacao, Fatura.BuscarValorConsumoUltimaFaturaListener listener){
-        String url = "http://localhost:5000/api/Fatura/UltimaFatura/1";
+    public static void BuscarValorConsumoUltimaFatura(int idResidencia, RequestQueue solicitacao, IFatura listener){
+        String url = "http://10.0.2.2:5000/api/Fatura/UltimaFatura/" + idResidencia;
+        //String url = "http://localhost:5000/api/Fatura/UltimaFatura/" + idResidencia;
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -39,9 +37,9 @@ public class Fatura {
 
                 try {
                     JSONObject object = response;
-                    Fatura ultimaFatura = new Fatura(object.getString("ValorUltimaFatura"),object.getString("ConsumoUltimaFatura"));
+                    FaturaCliente ultimaFaturaCliente = new FaturaCliente(object.getString("ValorUltimaFatura"),object.getString("ConsumoUltimaFatura"));
 
-                    listener.onResultado(ultimaFatura);
+                    listener.onResultado(ultimaFaturaCliente);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
