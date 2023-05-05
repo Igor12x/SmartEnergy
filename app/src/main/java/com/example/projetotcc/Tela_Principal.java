@@ -59,7 +59,7 @@ public class Tela_Principal extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
-
+        getSupportActionBar().hide();
         solicitacao = Volley.newRequestQueue(this);
 
         //referencias
@@ -80,14 +80,16 @@ public class Tela_Principal extends AppCompatActivity  {
         textLimite.setText(limiteConsumo + " kWh");
 
         textView2 = findViewById(R.id.textView2);
-        SharedPreferences ler = getSharedPreferences("contas", MODE_PRIVATE);
+        SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
         textView2.setText("Ola " + ler.getString("nome", "")
         );
 
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
-        Residencia.listarResidencias(1, solicitacao, new Residencia.ListarResidenciaListener() {
+        int idCliente = ler.getInt("codigo", 0);
+
+        Residencia.listarResidencias(idCliente, solicitacao, new Residencia.ListarResidenciaListener() {
             @Override
             public void onResultado(List<Residencia> residencias) {
                 ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
@@ -113,7 +115,13 @@ public class Tela_Principal extends AppCompatActivity  {
         });
 
 
-
+        btnConfira.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent t = new Intent(Tela_Principal.this, Tela_Dicas.class);
+                startActivity(t);
+            }
+        });
 
     }
 

@@ -21,18 +21,20 @@ public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
     private Button btnLogar;
     private String cpfCliente, senhaCliente;
-
-    private Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_login);
+
+        //getSupportActionBar().hide();
 
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
+        intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
 
         btnLogar.setOnClickListener(new View.OnClickListener() {

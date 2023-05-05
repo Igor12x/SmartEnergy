@@ -9,6 +9,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="logo_consumo_b_background">#1D1D1D</color>
+
     <!--color background-->
     <color name="brancoazulado">#E8EBF3</color>
 
