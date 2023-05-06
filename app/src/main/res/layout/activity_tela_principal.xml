@@ -79,10 +79,11 @@
                     android:id="@+id/imageButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginBottom="10dp"
                     android:backgroundTint="#00FFFFFF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.057"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView3"
                     app:srcCompat="@drawable/baseline_calendar_today_24" />
@@ -91,13 +92,13 @@
                     android:id="@+id/txtData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="156dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="140dp"
                     android:fontFamily="@font/mplusrrounded1c_bold"
                     android:text="@string/txtData"
                     android:textColor="@color/preto"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageButton2"
                     app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -114,18 +115,7 @@
                     app:layout_constraintVertical_bias="0.177"
                     app:srcCompat="@drawable/group_8" />
 
-                <TextView
-                    android:id="@+id/text_view_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="@color/cinza_claro"
-                    app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-                    app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-                    app:layout_constraintStart_toStartOf="@+id/progress_bar"
-                    app:layout_constraintTop_toTopOf="@+id/progress_bar"
-                    tools:text="60%" />
+
 
                 <TextView
                     android:id="@+id/textView"
@@ -155,6 +145,18 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView"
                     tools:progress="60" />
 
+                <TextView
+                    android:id="@+id/text_view_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/cinza_claro"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                    app:layout_constraintStart_toStartOf="@+id/progress_bar"
+                    app:layout_constraintTop_toTopOf="@+id/progress_bar"
+                    tools:text="60%" />
                 <ImageView
                     android:id="@+id/imageView9"
                     android:layout_width="126dp"
@@ -182,25 +184,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="56dp"
+                    android:layout_marginEnd="28dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="1473 kWh"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintBottom_toTopOf="@+id/textInicioValorConta"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="0.888" />
 
                 <TextView
                     android:id="@+id/textInicioValorConta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="56dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="R$ 1465,60"
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="0.957" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -221,12 +225,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="1800 kWh"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
+                    app:layout_constraintHorizontal_bias="0.553"
                     app:layout_constraintStart_toStartOf="@+id/imageView10"
                     app:layout_constraintTop_toTopOf="@+id/imageView10"
-                    app:layout_constraintVertical_bias="0.28" />
+                    app:layout_constraintVertical_bias="0.318" />
 
                 <TextView
                     android:id="@+id/textInicioValorContaProjetado"
@@ -234,9 +240,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="44dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="R$ 1745,05"
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
+                    app:layout_constraintHorizontal_bias="0.568"
                     app:layout_constraintStart_toStartOf="@+id/imageView10" />
 
                 <TextView
@@ -267,10 +275,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="48dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Fatura do mês anterior: R$ 1800,00 (1858 kWh)"
                     android:textColor="@color/agua_marinha"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.447"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
@@ -297,17 +306,17 @@
 
                 <TextView
                     android:id="@+id/text_view_progress2"
-                    android:layout_width="54dp"
-                    android:layout_height="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/cinza_claro"
                     app:layout_constraintBottom_toBottomOf="@+id/progress_bar2"
                     app:layout_constraintEnd_toEndOf="@+id/progress_bar2"
-                    app:layout_constraintHorizontal_bias="0.576"
+                    app:layout_constraintHorizontal_bias="0.516"
                     app:layout_constraintStart_toStartOf="@+id/progress_bar2"
                     app:layout_constraintTop_toTopOf="@+id/progress_bar2"
-                    app:layout_constraintVertical_bias="0.519"
+                    app:layout_constraintVertical_bias="0.509"
                     tools:text="60%" />
 
                 <Spinner
@@ -334,9 +343,9 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="186dp"
-                    android:layout_height="63dp"
-                    android:layout_marginBottom="48dp"
+                    android:layout_width="195dp"
+                    android:layout_height="65dp"
+                    android:layout_marginBottom="56dp"
                     android:backgroundTint="#F1F1F1"
                     app:layout_constraintBottom_toTopOf="@+id/imageView5"
                     app:layout_constraintEnd_toEndOf="@+id/imageView15"
@@ -350,6 +359,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Limite: R$ 2000,00"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintHorizontal_bias="0.489"
@@ -357,14 +367,32 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
                 <TextView
-                    android:id="@+id/textConsumoAtualLimite"
+                    android:id="@+id/textAjusteLimite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="38dp"
+                    android:fontFamily="@font/mplusrrounded1c_extrabold"
+                    android:text="@string/textAjusteLimite"
+                    android:textColor="@color/agua_marinha"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView5"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView15"
+                    app:layout_constraintStart_toStartOf="@+id/imageView15"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/textConsumoAtualLimite"
+                    android:layout_width="168dp"
+                    android:layout_height="19dp"
+                    android:layout_marginBottom="12dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="Valor Atual: R$ 1465,60"
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintHorizontal_bias="0.578"
                     app:layout_constraintStart_toStartOf="@+id/imageView2" />
 
                 <TextView
@@ -421,7 +449,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:fontFamily="@font/montserrat_bold"
+                    android:text="92 kWh"
                     android:textColor="@color/agua_marinha"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toTopOf="@+id/imageView17"
                     app:layout_constraintEnd_toEndOf="@+id/imageView7"
                     app:layout_constraintHorizontal_bias="0.491"
@@ -481,6 +511,7 @@
                     android:layout_marginStart="181dp"
                     android:layout_marginEnd="18dp"
                     android:backgroundTint="@color/borda_edit_text_azul"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="@string/btnConfira"
                     android:textColor="@color/branco"
                     app:cornerRadius="47dp"
@@ -492,11 +523,24 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="40dp"
-                    android:text="TextView"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Olá, SMART ENERGY"
+                    android:textColor="@color/brancoazulado"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="42dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="28dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView2"
+                    app:layout_constraintHorizontal_bias="0.666"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
