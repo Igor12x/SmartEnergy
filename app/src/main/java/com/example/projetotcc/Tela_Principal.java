@@ -29,6 +29,7 @@ import Interfaces.ICompanhiaEletrica;
 import Interfaces.IFatura;
 import Interfaces.IMedidorBuscarConsumoDiario;
 import Interfaces.IMedidorBuscoConsumoAtual;
+import Interfaces.IResidencia;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
 import Models.Medidor;
@@ -59,7 +60,7 @@ public class Tela_Principal extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
-        getSupportActionBar().hide();
+
         solicitacao = Volley.newRequestQueue(this);
 
         //referencias
@@ -89,7 +90,7 @@ public class Tela_Principal extends AppCompatActivity  {
 
         int idCliente = ler.getInt("codigo", 0);
 
-        Residencia.listarResidencias(idCliente, solicitacao, new Residencia.ListarResidenciaListener() {
+        Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
             @Override
             public void onResultado(List<Residencia> residencias) {
                 ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);

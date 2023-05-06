@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import Interfaces.IResidencia;
+
 public class Residencia {
     public int getCodigo() {
         return codigo;
@@ -68,14 +70,12 @@ public class Residencia {
         this.bairro = bairro;
     }
 
-    public interface ListarResidenciaListener{
-        void onResultado(List<Residencia> residencias);
-    }
+
     public String toString() {
         return logradouro;
     }
 
-    public static void listarResidencias(int idCliente, RequestQueue solicitacao, ListarResidenciaListener listener) {
+    public static void listarResidencias(int idCliente, RequestQueue solicitacao, IResidencia listener) {
         String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
         List<Residencia> residencias = new ArrayList<Residencia>();
         JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idCliente, null, new Response.Listener<JSONArray>() {
