@@ -22,7 +22,7 @@ public class Tela_Criar_Nova_Senha extends AppCompatActivity {
         btnVoltaNovaSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
+                Intent intent = new Intent(getApplicationContext(), Tela_Verificacao_Senha.class);
                 startActivity(intent);
             }
         });
