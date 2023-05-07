@@ -73,4 +73,10 @@
     <string name="txtDicasConsumo">DICAS PARA CONSUMO</string>
     <string name="btnConfira">CONFIRA</string>
 
+
+    <!-- *******************************   String Dicas *****************************************-->
+    <string name="txtDica1"><u>1.</u> TROQUE LÂMPADAS INCANDESCENTES POR LÂMPADAS LED:\n As lâmpadas LED consomem muito menos energia do que as lâmpadas incandescentes e duram muito mais. Além disso, elas produzem menos calor, o que pode ajudar a reduzir a necessidade de ar condicionado.</string>
+    <string name="txtDica2"><u>2.</u> DESLIGUE OS APARELHOS ELETRÔNICOS DA TOMADA:\n Muitos aparelhos eletrônicos continuam consumindo energia mesmo quando estão desligados. Para evitar esse "consumo fantasma", desligue os aparelhos da tomada quando não estiverem em uso ou utilize uma régua de tomadas com botão liga/desliga.</string>
+    <string name="txtDica3"><u>3.</u> UTILIZE A LUZ NATURAL:\n Durante o dia, tente aproveitar a luz natural ao máximo. Abra as cortinas e persianas para deixar a luz entrar na casa e reduza a necessidade de iluminação artificial. Além disso, escolha cores claras para paredes e móveis, que ajudam a refletir a luz e a tornar os ambientes mais iluminados.</string>
+
 </resources>
