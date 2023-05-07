@@ -7,25 +7,11 @@
     android:background="@color/brancoazulado"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imgCodVerificacaoSeta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textCodVerificacaoTitulo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106"
-        app:srcCompat="@drawable/icone_seta" />
-
     <TextView
         android:id="@+id/textCodVerificacaoTitulo"
         android:layout_width="355dp"
         android:layout_height="41dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="76dp"
         android:layout_marginEnd="28dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textTitulo_codVerificacao"
@@ -35,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCodVerificacaoSeta" />
+        tools:layout_editor_absoluteY="118dp" />
 
     <TextView
         android:id="@+id/textCodVerificacaoDescricao"
@@ -165,6 +151,18 @@
         android:textColor="@color/lazul_cinza_claro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnVoltaVerificacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/icone_seta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,7 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
         //referencias
         btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueci);
 
-        //voltando para tela de inicio principal
+        //voltando para tela de login
         btnVoltaEsqueci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
