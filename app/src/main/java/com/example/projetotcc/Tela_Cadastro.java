@@ -2,10 +2,12 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import Models.ClienteLogin;
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
     private Button btnCad;
+
+    private ImageButton btnVoltaCad;
     private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class Tela_Cadastro extends AppCompatActivity {
 
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
+        //referencias
         plainCadNome = findViewById(R.id.plainCadNome);
         plainCadEmail = findViewById(R.id.plainCadEmail);
         plainCadTel = findViewById(R.id.plainCadTel);
@@ -35,6 +40,16 @@ public class Tela_Cadastro extends AppCompatActivity {
         plainCadSenha = findViewById(R.id.plainCadSenha);
         plainCadConfirmarSenha = findViewById(R.id.plainCadConfirmarSenha);
         btnCad = findViewById(R.id.btnCad);
+        btnVoltaCad = findViewById(R.id.btnVoltaCad);
+
+        //voltando para tela inicial
+        btnVoltaCad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Inicial.class);
+                startActivity(intent);
+            }
+        });
 
         btnCad.setOnClickListener(new View.OnClickListener() {
             @Override
