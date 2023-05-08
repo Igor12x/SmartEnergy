@@ -48,7 +48,7 @@
         android:background="@drawable/bordas_arredondadas_azul"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -70,6 +70,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewCad" />
 
+    <EditText
+        android:id="@+id/plainCadSobrenome"
+        android:layout_width="291dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/brancoazulado"
+        android:ems="10"
+        android:fontFamily="@font/mplusrrounded1c_bold"
+        android:hint="@string/hintCadSobrenome"
+        android:inputType="textPersonName"
+        android:textColor="@color/cbranco_acinzentado"
+        android:textColorHighlight="@color/cbranco_acinzentado"
+        android:textColorHint="@color/cbranco_acinzentado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plainCadNome" />
+
     <ImageView
         android:id="@+id/imgCadNome"
         android:layout_width="28dp"
@@ -81,11 +99,22 @@
         app:layout_constraintVertical_bias="0.21"
         app:srcCompat="@drawable/icone_pessoa" />
 
+    <ImageView
+        android:id="@+id/imgCadNome3"
+        android:layout_width="28dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadSobrenome"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadSobrenome"
+        app:layout_constraintTop_toTopOf="@+id/plainCadSobrenome"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icone_pessoa" />
+
     <EditText
         android:id="@+id/plainCadEmail"
         android:layout_width="291dp"
         android:layout_height="49dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@color/brancoazulado"
         android:ems="10"
         android:fontFamily="@font/mplusrrounded1c_bold"
@@ -95,9 +124,9 @@
         android:textColorHighlight="@color/cbranco_acinzentado"
         android:textColorHint="@color/cbranco_acinzentado"
         app:layout_constraintEnd_toEndOf="@+id/plainCadNome"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/plainCadNome"
-        app:layout_constraintTop_toBottomOf="@+id/plainCadNome" />
+        app:layout_constraintTop_toBottomOf="@+id/plainCadSobrenome" />
 
     <EditText
         android:id="@+id/plainCadTel"
@@ -241,6 +270,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icone_seta" />
+
+    <ImageView
+        android:id="@+id/imageView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadTel"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadTel"
+        app:layout_constraintTop_toTopOf="@+id/plainCadTel"
+        app:srcCompat="@drawable/phone_cad" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

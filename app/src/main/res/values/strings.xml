@@ -11,6 +11,7 @@
     <string name="textLogRegistreAgora"><u>Registre-se agora</u></string>
 
     <string name="hintCadNome">Nome</string>
+    <string name="hintCadSobrenome">Sobrenome</string>
     <string name="hintCadConfirmarSenha">Confirme a senha</string>
     <string name="hintCadCpf">CPF</string>
     <string name="hintCadEmail">EMAIL</string>
