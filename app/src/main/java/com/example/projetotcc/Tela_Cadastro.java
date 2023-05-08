@@ -64,6 +64,15 @@ public class Tela_Cadastro extends AppCompatActivity {
             }
         });
 
+        //evento botão cadastrar, redirecionando a tela de seja bem-vindo
+        btnCad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
+                startActivity(intent);
+            }
+        });
+
     }
     public void ValidarCadastro(RequestQueue solicitacao, String nome, String cpf, String senha, String email, String telefone) {
         CadastroCliente cadastrar = new CadastroCliente(nome,cpf , senha, email, telefone);
