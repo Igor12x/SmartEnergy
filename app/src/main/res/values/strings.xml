@@ -33,6 +33,11 @@
     <string name="tituloCadastro">CADASTRO</string>
     <string name="btnCadastro">CADASTRAR</string>
 
+    <!--************************************* String Sucesso ************************************-->
+    <string name="txtSucesso"> Seu cadastro foi efetuado com sucesso!
+        Aguarde até que um de nossos vendedores entre em contato com você.
+
+        Enquanto isso, você poderá usar uma versão de avaliação do aplicativo para conhecer seus recursos.</string>
 
     <!--*********************** String esqueci a senha e criar nova senha ***********************-->
     <string name="txtNvSenhaTitulo">Criar nova senha</string>

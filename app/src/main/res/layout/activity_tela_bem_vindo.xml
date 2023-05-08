@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brancoazulado"
+    tools:context=".Tela_Bem_Vindo">
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="235dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sucesso_bem_vindo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="240dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="GABRIEL,  SEJA BEM-VINDO A SMART ENERGY!"
+        android:textAlignment="center"
+        android:textColor="@color/borda_edit_text_azul"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView26" />
+
+    <TextView
+        android:id="@+id/txtSucesso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:text="@string/txtSucesso"
+        android:textColor="@color/borda_edit_text_azul"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/btnBemVindo"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/cazul_marinho"
+        android:text="Volte ao Login"
+        app:cornerRadius="47dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSucesso" />
+</androidx.constraintlayout.widget.ConstraintLayout>
