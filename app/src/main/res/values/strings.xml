@@ -79,4 +79,22 @@
     <string name="txtDica2"><u>2.</u> DESLIGUE OS APARELHOS ELETRÔNICOS DA TOMADA:\n Muitos aparelhos eletrônicos continuam consumindo energia mesmo quando estão desligados. Para evitar esse "consumo fantasma", desligue os aparelhos da tomada quando não estiverem em uso ou utilize uma régua de tomadas com botão liga/desliga.</string>
     <string name="txtDica3"><u>3.</u> UTILIZE A LUZ NATURAL:\n Durante o dia, tente aproveitar a luz natural ao máximo. Abra as cortinas e persianas para deixar a luz entrar na casa e reduza a necessidade de iluminação artificial. Além disso, escolha cores claras para paredes e móveis, que ajudam a refletir a luz e a tornar os ambientes mais iluminados.</string>
 
+
+    <!-- *******************************  String Perfil *****************************************-->
+    <string name="plainTelefonePerfil"> TELEFONE</string>
+    <string name="plainEmailPerfil"> E-MAIL</string>
+
+    <string-array name="spinnerCasas">
+        <item>Endereço 1</item>
+        <item>Endereço 2</item>
+        <item>Endereço 3</item>
+    </string-array>
+    <string name="plainCEPPerfil">CEP</string>
+    <string name="plainCidadePerfil">Cidade</string>
+    <string name="plainEstadoPerfil">Estado</string>
+    <string name="plainBairroPerfil">Bairro</string>
+    <string name="plainNumPerfil">Nº </string>
+    <string name="plainLogradouroPerfil">Logradouro</string>
+
+
 </resources>
