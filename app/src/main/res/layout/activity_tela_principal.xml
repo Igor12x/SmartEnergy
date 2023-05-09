@@ -531,7 +531,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageView18"
                     android:layout_width="42dp"
                     android:layout_height="37dp"
@@ -540,7 +540,9 @@
                     app:layout_constraintHorizontal_bias="0.666"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/img_usuario"
+                    app:civ_border_color="@color/cinza_borda"
+                    app:civ_border_width="2dp"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,4 +43,8 @@
     <color name="green">#8DFF33</color>
     <color name="yellow">#FFF52D</color>
     <color name="red">#FF2D2D</color>
+
+    <!-- color perfil-->
+    <color name="cinza_borda">#D9D9D9</color>
+
 </resources>
