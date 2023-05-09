@@ -1,0 +1,103 @@
+CREATE DATABASE smartenergy;
+USE smartenergy;
+SHOW TABLES;
+DESCRIBE RESIDENCIA;
+
+-- Tabelas
+
+CREATE TABLE RESIDENCIA (
+    codigo SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    cep VARCHAR (9) NOT NULL,
+    logradouro VARCHAR (50) NOT NULL,
+    numero VARCHAR (5) NOT NULL,
+    bairro VARCHAR (30) NOT NULL,
+    municipio VARCHAR (30) NOT NULL,
+    uf CHAR (2) NOT NULL,
+    complemento VARCHAR (30) NULL,
+    apelido VARCHAR (20) NULL,
+    FK_CLIENTE_codigo SMALLINT UNSIGNED NOT NULL,
+    FK_COMPANHIA_codigo SMALLINT UNSIGNED NOT NULL
+);
+
+CREATE TABLE COMPANHIA (
+    codigo SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    sigla VARCHAR (25) NOT NULL,
+    uf CHAR (2) NOT NULL,
+    tarifa_TUSD DECIMAL (6,2) NOT NULL,
+    tarifa_TE DECIMAL (6,2) NOT NULL,
+    pis DECIMAL (5,4) NOT NULL,
+    cofins DECIMAL (5,4) NOT NULL,
+    icms DECIMAL (5,4) NOT NULL
+);
+
+CREATE TABLE MEDIDOR (
+    codigo SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    consumo DECIMAL (4,1) NOT NULL,
+    registro_dia DATE NOT NULL,
+    registro_horario TIME NOT NULL,
+    medicao_atual DECIMAL (6,1) NOT NULL,
+    FK_RESIDENCIA_codigo SMALLINT UNSIGNED NOT NULL
+);
+
+CREATE TABLE CLIENTE (
+    codigo SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR (20) NOT NULL,
+    sobrenome VARCHAR (20) NOT NULL,
+    cpf VARCHAR (14) NOT NULL,
+    senha VARCHAR (20) NOT NULL,
+    email VARCHAR (50) NOT NULL,
+    telefone VARCHAR (12) NOT NULL,
+    foto_perfil BLOB NULL
+);
+
+CREATE TABLE FATURA (
+    codigo SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    valor DECIMAL (8,2) NOT NULL,
+    mes_vigente DATE NOT NULL,
+    medicao_mes_anterior DECIMAL (6,1) NOT NULL,
+    medicao_mes_atual DECIMAL (6,1) NOT NULL,
+    data_leitura_mes_anterior DATE NOT NULL,
+    data_leitura_mes_atual DATE NOT NULL,
+    FK_CLIENTE_codigo SMALLINT UNSIGNED,
+    FK_RESIDENCIA_codigo SMALLINT UNSIGNED
+);
+ 
+-- Chaves estrangeiras para residência
+ 
+ALTER TABLE RESIDENCIA ADD CONSTRAINT FK_RESIDENCIA_2
+    FOREIGN KEY (FK_CLIENTE_codigo)
+    REFERENCES CLIENTE (codigo)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE RESIDENCIA ADD CONSTRAINT FK_RESIDENCIA_3
+    FOREIGN KEY (FK_COMPANHIA_codigo)
+    REFERENCES COMPANHIA (codigo)
+    ON DELETE RESTRICT;
+    
+-- Chaves estrangeiras para fatura
+    
+ALTER TABLE FATURA ADD CONSTRAINT FK_FATURA_2
+    FOREIGN KEY (FK_CLIENTE_codigo)
+    REFERENCES CLIENTE (codigo)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE FATURA ADD CONSTRAINT FK_FATURA_3
+    FOREIGN KEY (FK_RESIDENCIA_codigo)
+    REFERENCES RESIDENCIA (codigo)
+    ON DELETE RESTRICT;
+    
+-- Chave estrangeira para medidor
+
+ALTER TABLE MEDIDOR ADD CONSTRAINT FK_MEDIDOR_1
+    FOREIGN KEY (FK_RESIDENCIA_codigo)
+    REFERENCES RESIDENCIA (codigo);
+    
+-- Adicioando  propriedade Unique para que não gravar dados na coluna cpf e email repetidos
+
+ALTER TABLE `smartenergy`.`cliente` 
+ADD UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC),
+ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC);
+;
+
+
+
