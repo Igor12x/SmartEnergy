@@ -77,16 +77,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView27"
                     app:srcCompat="@drawable/retangulo5" />
 
-                <ImageView
-                    android:id="@+id/imageView30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView24"
-                    tools:srcCompat="@tools:sample/avatars" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView30"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/img_usuario"
+        app:civ_border_color="@color/cinza_borda"
+        app:civ_border_width="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView24" />
 
                 <TextView
                     android:id="@+id/txtNome"
