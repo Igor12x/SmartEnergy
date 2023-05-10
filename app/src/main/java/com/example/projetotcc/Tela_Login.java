@@ -63,7 +63,7 @@ public class Tela_Login extends AppCompatActivity {
                 txtSenha.setText("");
             }
         });
-
+        //evento de mudança do icone da senha
         btnLogMostrarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

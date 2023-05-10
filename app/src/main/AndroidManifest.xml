@@ -27,7 +27,7 @@
             android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
-            android:name=".Tela_Login"
+            android:name=".Tela_Criar_Nova_Senha"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
