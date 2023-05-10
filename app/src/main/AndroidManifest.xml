@@ -18,7 +18,7 @@
             android:name=".Tela_Bem_Vindo"
             android:exported="false" />
         <activity
-            android:name=".Tela_Perfil"
+            android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
             android:name=".Tela_Principal"
@@ -27,7 +27,7 @@
             android:name=".Tela_Login"
             android:exported="false" />
         <activity
-            android:name=".Tela_Dicas"
+            android:name=".Tela_Perfil"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,7 +1,10 @@
 package com.example.projetotcc;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.content.Intent;
@@ -46,7 +49,7 @@ public class Tela_Principal extends AppCompatActivity  {
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
-            textView2;
+            textView2, textAjusteLimite;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
@@ -74,6 +77,7 @@ public class Tela_Principal extends AppCompatActivity  {
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
         btnConfira = findViewById(R.id.btnConfira);
+        textAjusteLimite = findViewById(R.id.textAjusteLimite);
 
         spinnerResidencias = findViewById(R.id.spinnerEndereco);
 
@@ -89,6 +93,33 @@ public class Tela_Principal extends AppCompatActivity  {
         ExibirDataAtual(txtData);
 
         int idCliente = ler.getInt("codigo", 0);
+
+
+        //limite
+        AlertDialog.Builder builder = new AlertDialog.Builder(Tela_Principal.this);
+        builder.setTitle("Ajuste de limite");
+        builder.setMessage("Mensagem do diálogo");
+        builder.setPositiveButton("Definir", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // ação a ser executada ao clicar no botão positivo
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // ação a ser executada ao clicar no botão negativo
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        //evento do text de limite
+        textAjusteLimite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
+
 
         Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
             @Override
