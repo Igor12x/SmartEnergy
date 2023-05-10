@@ -103,7 +103,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView30" />
 
                 <ImageButton
-                    android:id="@+id/ibtnEdit"
+                    android:id="@+id/imgBtnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -115,7 +115,8 @@
                     app:srcCompat="@drawable/edit_perfil" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/plainPerfilTel"
+                    android:enabled="false"
                     android:layout_width="234dp"
                     android:layout_height="39dp"
                     android:layout_marginTop="16dp"
@@ -130,7 +131,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtNome" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/plainPerfilE"
+                    android:enabled="false"
                     android:layout_width="234dp"
                     android:layout_height="39dp"
                     android:layout_marginTop="24dp"
@@ -142,24 +144,26 @@
                     android:textColorHint="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView27"
                     app:layout_constraintStart_toStartOf="@+id/imageView27"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+                    app:layout_constraintTop_toBottomOf="@+id/plainPerfilTel" />
 
                 <ImageView
                     android:id="@+id/imageView31"
                     android:layout_width="31dp"
                     android:layout_height="35dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
-                    app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2"
+                    android:backgroundTint="@color/brancoazulado"
+                    app:layout_constraintBottom_toBottomOf="@+id/plainPerfilTel"
+                    app:layout_constraintEnd_toEndOf="@+id/plainPerfilTel"
+                    app:layout_constraintTop_toTopOf="@+id/plainPerfilTel"
                     app:srcCompat="@drawable/tel_icon" />
 
                 <ImageView
                     android:id="@+id/imageView32"
                     android:layout_width="32dp"
                     android:layout_height="38dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
-                    app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3"
+                    android:backgroundTint="@color/brancoazulado"
+                    app:layout_constraintBottom_toBottomOf="@+id/plainPerfilE"
+                    app:layout_constraintEnd_toEndOf="@+id/plainPerfilE"
+                    app:layout_constraintTop_toTopOf="@+id/plainPerfilE"
                     app:srcCompat="@drawable/email_icon" />
 
                 <View
@@ -170,9 +174,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
+                    app:layout_constraintBottom_toBottomOf="@+id/plainPerfilTel"
                     app:layout_constraintEnd_toStartOf="@+id/imageView31"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
+                    app:layout_constraintTop_toTopOf="@+id/plainPerfilTel" />
 
                 <View
                     android:id="@+id/view3"
@@ -182,9 +186,9 @@
                     android:layout_marginEnd="7dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
+                    app:layout_constraintBottom_toBottomOf="@+id/plainPerfilE"
                     app:layout_constraintEnd_toStartOf="@+id/imageView32"
-                    app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3"
+                    app:layout_constraintTop_toTopOf="@+id/plainPerfilE"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <ImageButton

@@ -24,7 +24,6 @@ public class Tela_Cadastro extends AppCompatActivity {
     private Button btnCad;
 
     private ImageButton btnVoltaCad;
-    private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +53,13 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nomeCliente = plainCadNome.getText().toString();
-                cpfCliente = plainCadCpf.getText().toString();
-                emailCliente = plainCadEmail.getText().toString();
-                telCliente = plainCadTel.getText().toString();
-                senhaCliente = plainCadSenha.getText().toString();
-                ValidarCadastro(solicitacao, nomeCliente, cpfCliente, senhaCliente, emailCliente, telCliente);
+                CadastroCliente cadastrar = new CadastroCliente(
+                plainCadNome.getText().toString(),
+                plainCadCpf.getText().toString(),
+                plainCadEmail.getText().toString(),
+                plainCadTel.getText().toString(),
+                plainCadSenha.getText().toString());
+                ValidarCadastro(solicitacao, cadastrar);
                 plainCadNome.setText("Cadastrado com sucesso");
             }
         });
@@ -74,16 +74,11 @@ public class Tela_Cadastro extends AppCompatActivity {
         });
 
     }
-    public void ValidarCadastro(RequestQueue solicitacao, String nome, String cpf, String senha, String email, String telefone) {
-        CadastroCliente cadastrar = new CadastroCliente(nome,cpf , senha, email, telefone);
+    public void ValidarCadastro(RequestQueue solicitacao, CadastroCliente cadastrar) {
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {
             @Override
-            public void onResultado(boolean cadastrado) {
-                if (cadastrado) {
-                    Toast.makeText(Tela_Cadastro.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(Tela_Cadastro.this, "Erro ao cadastrar", Toast.LENGTH_SHORT).show();
-                }
+            public void onResultado(String resposta) {
+                Toast.makeText(Tela_Cadastro.this, resposta, Toast.LENGTH_SHORT).show();
             }
         });
     }

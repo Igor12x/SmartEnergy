@@ -38,7 +38,9 @@ public class Tela_Login extends AppCompatActivity {
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
+
         btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
+
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
         //voltando para tela inicial

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -39,6 +40,7 @@ import Models.ResidenciaAdapter;
 
 public class Tela_Principal extends AppCompatActivity  {
     private Calendar calendar = Calendar.getInstance();
+    private ImageView imageView18;
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0;
     private int limiteConsumo = 200,
@@ -52,6 +54,7 @@ public class Tela_Principal extends AppCompatActivity  {
     private double tarifaTE;
     private Button btnConfira;
     private Spinner spinnerResidencias;
+    private Intent intent;
 
     private RequestQueue solicitacao = null;
     // Criando uma solicitação para a rede aonde está a API
@@ -74,6 +77,7 @@ public class Tela_Principal extends AppCompatActivity  {
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
         btnConfira = findViewById(R.id.btnConfira);
+        imageView18 = findViewById(R.id.imageView18);
 
         spinnerResidencias = findViewById(R.id.spinnerEndereco);
 
@@ -85,10 +89,19 @@ public class Tela_Principal extends AppCompatActivity  {
         textView2.setText("Ola " + ler.getString("nome", "")
         );
 
+        intent = new Intent(getApplicationContext(), Tela_Perfil.class);
+
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
         int idCliente = ler.getInt("codigo", 0);
+
+        imageView18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
 
         Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
             @Override
