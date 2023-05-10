@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,7 +24,7 @@ public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
     private Button btnLogar;
 
-    private ImageButton btnVoltaLogin;
+    private ImageButton btnVoltaLogin, btnLogMostrarSenha;
     private String cpfCliente, senhaCliente;
     private Intent intent;
     @Override
@@ -39,6 +41,7 @@ public class Tela_Login extends AppCompatActivity {
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
         btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
+        btnLogMostrarSenha = findViewById(R.id.btnLogMostrarSenha);
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
         //voltando para tela inicial
@@ -60,6 +63,22 @@ public class Tela_Login extends AppCompatActivity {
                 txtSenha.setText("");
             }
         });
+
+        btnLogMostrarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !txtSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                txtSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnLogMostrarSenha.setImageResource(mostrarSenha ? R.drawable.olho_fechado : R.drawable.icone_olho_azul);
+            }
+
+
+        });
+
     }
 
     public void ValidarLogin(RequestQueue solicitacao, String cpf, String senha) {
