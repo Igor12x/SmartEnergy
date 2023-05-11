@@ -20,7 +20,7 @@ public class RecuperarSenhaCliente {
         this.codigoVerificacao = codigoVerificacao;
     }
 
-    public static void ValidarLoginCliente(String email, RequestQueue solicitacao, IRecuperarSenhaCliente listener) {
+    public static void ReceberCodigoVerificacao(String email, RequestQueue solicitacao, IRecuperarSenhaCliente listener) {
         //String url = "http://localhost:5000/api/RecuperarSenha" + email;;
         String url = "http://10.0.2.2:5000/api/RecuperarSenha/" + email;
 
