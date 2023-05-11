@@ -17,7 +17,7 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
         setContentView(R.layout.activity_tela_esqueceu_senha);
 
         //referencias
-        btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueci);
+        btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueceuSenha);
 
         //voltando para tela de login
         btnVoltaEsqueci.setOnClickListener(new View.OnClickListener() {
