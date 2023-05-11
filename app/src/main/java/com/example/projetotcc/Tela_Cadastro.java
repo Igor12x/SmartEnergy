@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +25,7 @@ public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
     private Button btnCad;
 
-    private ImageButton btnVoltaCad;
+    private ImageButton btnVoltaCad, btnCadSenha, btnCadConfirmaSenha;
     private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class Tela_Cadastro extends AppCompatActivity {
         plainCadConfirmarSenha = findViewById(R.id.plainCadConfirmarSenha);
         btnCad = findViewById(R.id.btnCad);
         btnVoltaCad = findViewById(R.id.btnVoltaCad);
+        btnCadSenha = findViewById(R.id.btnCadSenha);
+        btnCadConfirmaSenha = findViewById(R.id.btnCadConfirmaSenha);
 
         //voltando para tela inicial
         btnVoltaCad.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +76,35 @@ public class Tela_Cadastro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnCadSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !plainCadSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                plainCadSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnCadSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+            }
+
+
+        });
+
+        btnCadConfirmaSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !plainCadConfirmarSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                plainCadConfirmarSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+            }
+
+
+        });
 
 
     }
@@ -88,4 +121,8 @@ public class Tela_Cadastro extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }
