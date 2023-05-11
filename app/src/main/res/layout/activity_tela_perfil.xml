@@ -27,12 +27,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:background="@android:color/transparent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/icone_seta"
+                app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.04"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/icone_seta" />
+
+                     />
 
                 <ImageView
                     android:id="@+id/imageView24"
@@ -112,7 +113,8 @@
                     app:layout_constraintHorizontal_bias="0.945"
                     app:layout_constraintStart_toStartOf="@+id/imageView27"
                     app:layout_constraintTop_toTopOf="@+id/imageView27"
-                    app:srcCompat="@drawable/edit_perfil" />
+                    app:srcCompat="@drawable/edit_perfil"
+                    android:tag="ImgEditar"/>
 
                 <EditText
                     android:id="@+id/plainPerfilTel"

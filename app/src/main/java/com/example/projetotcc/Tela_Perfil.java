@@ -1,10 +1,15 @@
 package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -34,7 +39,11 @@ public class Tela_Perfil extends AppCompatActivity {
         imgBtnEdit = findViewById(R.id.imgBtnEdit);
         plainPerfilE = findViewById(R.id.plainPerfilE);
         plainPerfilTel = findViewById(R.id.plainPerfilTel);
+
         SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        plainPerfilE.setText(ler.getString("email", ""));
+        plainPerfilTel.setText(ler.getString("telefone", ""));
+
 
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
@@ -49,11 +58,27 @@ public class Tela_Perfil extends AppCompatActivity {
         imgBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plainPerfilE.setEnabled(true);
-                plainPerfilTel.setEnabled(true);
-                dados = new AlterarCadastro(plainPerfilE.getText().toString(),
-                        plainPerfilTel.getText().toString());
-                alterarCadastro(solicitacao, dados, ler);
+
+                String ImgAtual = imgBtnEdit.getTag().toString();
+
+
+                if (!ImgAtual.equals("ImgEditar")) {
+                    Log.d("IFBotãoImg", "cheguei aqui no if");
+                    dados = new AlterarCadastro(plainPerfilE.getText().toString(),
+                            plainPerfilTel.getText().toString());
+                    imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+                    alterarCadastro(solicitacao, dados, ler);
+                    plainPerfilE.setEnabled(false);
+                    plainPerfilTel.setEnabled(false);
+                    imgBtnEdit.setTag("ImgEditar");
+                } else {
+                    Log.d("ElseBotãoImg", "cheguei aqui");
+                    imgBtnEdit.setTag("ImgConfirmar");
+                    imgBtnEdit.setImageResource(R.drawable.iconeok);
+                    plainPerfilE.setEnabled(true);
+                    plainPerfilTel.setEnabled(true);
+                }
+
             }
         });
     }
@@ -72,5 +97,7 @@ public class Tela_Perfil extends AppCompatActivity {
          gravar.putInt("codigo", clienteAtualizado.getCodigo());
      }
  });
+ plainPerfilE.setText(ler.getString("email", ""));
+ plainPerfilTel.setText(ler.getString("telefone", ""));
     }
 }

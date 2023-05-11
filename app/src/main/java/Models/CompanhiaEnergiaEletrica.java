@@ -78,12 +78,9 @@ public class CompanhiaEnergiaEletrica {
     }
 
     private static double CalcularTarifaComImposto (double tarifa, double icms, double pis, double cofins){
-        double tarifaKWH = tarifa/1000;
-        double icmsPercentual = icms/100;
-        double pisPercentual = pis/100;
-        double confinsPercentual = cofins/100;
 
-        return (tarifaKWH)/(1-(pisPercentual+confinsPercentual+icmsPercentual));
+
+        return (tarifa)/(1-(pis+cofins+icms));
     };
 
     public double getTarifaTUSD() {
