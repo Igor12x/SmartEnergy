@@ -9,6 +9,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import Interfaces.ICadastroCliente;
 import Models.CadastroCliente;
 import Models.Cliente;
 import Models.ClienteLogin;
+import Models.MascaraCPF;
 
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
@@ -45,6 +47,8 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnVoltaCad = findViewById(R.id.btnVoltaCad);
         btnCadSenha = findViewById(R.id.btnCadSenha);
         btnCadConfirmaSenha = findViewById(R.id.btnCadConfirmaSenha);
+        plainCadCpf.addTextChangedListener(new MascaraCPF((EditText) plainCadCpf,11));
+
 
         //voltando para tela inicial
         btnVoltaCad.setOnClickListener(new View.OnClickListener() {
@@ -59,19 +63,12 @@ public class Tela_Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nomeCliente = plainCadNome.getText().toString();
-                cpfCliente = plainCadCpf.getText().toString();
+                cpfCliente = plainCadCpf.getText().toString().replaceAll("[^\\d]", "");
                 emailCliente = plainCadEmail.getText().toString();
-                telCliente = plainCadTel.getText().toString();
+                telCliente = plainCadTel.getText().toString().replaceAll("[^\\d]", "");
                 senhaCliente = plainCadSenha.getText().toString();
                 ValidarCadastro(solicitacao, nomeCliente, cpfCliente, senhaCliente, emailCliente, telCliente);
                 plainCadNome.setText("Cadastrado com sucesso");
-            }
-        });
-
-        //evento botão cadastrar, redirecionando a tela de seja bem-vindo
-        btnCad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
                 startActivity(intent);
             }
@@ -86,6 +83,8 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 // Atualize o ícone do botão
                 btnCadSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+
+
             }
 
 
