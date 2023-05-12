@@ -73,6 +73,7 @@ public class Tela_Login extends AppCompatActivity {
                 SharedPreferences.Editor gravar =
                         getSharedPreferences("usuario", MODE_PRIVATE).edit();
                 gravar.putString("nome", clienteLogado.getNome());
+                gravar.putString("sobrenome", clienteLogado.getSobrenome());
                 gravar.putString("cpf", clienteLogado.getCpf());
                 gravar.putString("email", clienteLogado.getEmail());
                 gravar.putString("telefone", clienteLogado.getTelefone());

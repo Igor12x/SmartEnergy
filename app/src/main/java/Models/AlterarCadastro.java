@@ -30,7 +30,7 @@ public class AlterarCadastro {
     }
 
     public static void Alterar(AlterarCadastro dados, int codigoCliente, RequestQueue solicitacao, IAlterarCadastro listener){
-        String url = "http://10.0.2.2:5000/api/" + codigoCliente;
+        String url = "http://10.0.2.2:5000/api/AlterarCadastro/" + codigoCliente;
 
         JSONObject enviarAlteracao = new JSONObject();
 
@@ -45,6 +45,7 @@ public class AlterarCadastro {
             public void onResponse(JSONObject response) {
                 try {
                 Cliente clienteAtualizado = new Cliente(response.getString("Nome"),
+                        response.getString("Sobrenome"),
                         response.getString("Cpf"),
                         response.getString("Email"),
                         response.getString("Telefone"),

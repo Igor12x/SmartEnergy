@@ -2,6 +2,7 @@ package Models;
 
 public class Cliente {
     private String nome;
+    private String sobrenome;
     private String cpf;
     private String email;
     private String telefone;
@@ -11,8 +12,9 @@ public class Cliente {
     private  int codigo;
 
 
-    public Cliente(String nome, String cpf, String email, String telefone, String senha, int codigo) {
+    public Cliente(String nome, String sobrenome, String cpf, String email, String telefone, String senha, int codigo) {
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
@@ -22,6 +24,9 @@ public class Cliente {
 
     public String getNome() {
         return nome;
+    }
+    public String getSobrenome() {
+        return sobrenome;
     }
 
     public String getCpf() {
