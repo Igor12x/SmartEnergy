@@ -21,10 +21,16 @@
             android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
+            android:name=".Tela_Criar_Nova_Senha"
+            android:exported="false" />
+        <activity
             android:name=".Tela_Principal"
             android:exported="false" />
         <activity
             android:name=".Tela_Login"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Cadastro"
             android:exported="false" />
         <activity
             android:name=".Tela_Perfil"
@@ -35,6 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Tela_Inicial"
+            android:exported="false" />
     </application>
 
 </manifest>

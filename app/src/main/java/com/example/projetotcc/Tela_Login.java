@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,7 +34,7 @@ public class Tela_Login extends AppCompatActivity {
         //getSupportActionBar().hide();
 
         RequestQueue solicitacao = Volley.newRequestQueue(this);
-
+    try {
         //referencias
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
@@ -41,7 +42,7 @@ public class Tela_Login extends AppCompatActivity {
         btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
-        //voltando para tela inicial
+
         btnVoltaLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +51,7 @@ public class Tela_Login extends AppCompatActivity {
             }
         });
 
+        //voltando para tela inicial
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +62,12 @@ public class Tela_Login extends AppCompatActivity {
                 txtSenha.setText("");
             }
         });
+
+    } catch (Exception e) {
+        Log.d("ERRO LOGIN", "login" + e);
+    }
+
+
     }
 
     public void ValidarLogin(RequestQueue solicitacao, String cpf, String senha) {
