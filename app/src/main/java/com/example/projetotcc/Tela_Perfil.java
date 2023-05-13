@@ -35,6 +35,7 @@ public class Tela_Perfil extends AppCompatActivity {
     private TextView txtNome;
     private AlterarCadastro dados;
     private Spinner spinnerCasas;
+    private SharedPreferences ler;
     private ImageButton btnVoltaPerfil, imgBtnEdit;
     private EditText plainPerfilE, plainPerfilTel, plainCEPPerfil, plainCidadePerfil,
             plainEstadoPerfil, plainBairroPerfil, plainNumPerfil, plainLogradouroPerfil;
@@ -61,7 +62,7 @@ public class Tela_Perfil extends AppCompatActivity {
 
 
 
-        SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        ler = getSharedPreferences("usuario", MODE_PRIVATE);
         txtNome.setText(ler.getString("nome", "") + " " + ler.getString("sobrenome",""));
         plainPerfilE.setText(ler.getString("email", ""));
         plainPerfilTel.setText(ler.getString("telefone", ""));

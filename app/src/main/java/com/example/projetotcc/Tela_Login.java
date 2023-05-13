@@ -90,3 +90,13 @@ public class Tela_Login extends AppCompatActivity {
         });
     }
 }
+/*SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+if (sharedPreferences.contains("cpf") && sharedPreferences.contains("senha")) {
+    String cpf = sharedPreferences.getString("cpf", "");
+    String senha = sharedPreferences.getString("senha", "");
+
+    // Use as informações de CPF e senha aqui
+} else {
+    // SharedPreferences não contém informações de CPF e senha
+}*/

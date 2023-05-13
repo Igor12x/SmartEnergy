@@ -48,7 +48,7 @@ public class Tela_Principal extends AppCompatActivity  {
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
-            textView2;
+            textView2, text_view_progress, text_view_progress2;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
@@ -78,11 +78,15 @@ public class Tela_Principal extends AppCompatActivity  {
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
         btnConfira = findViewById(R.id.btnConfira);
         imageView18 = findViewById(R.id.imageView18);
+        text_view_progress = findViewById(R.id.text_view_progress);
+        text_view_progress2 = findViewById(R.id.text_view_progress2);
 
         spinnerResidencias = findViewById(R.id.spinnerEndereco);
 
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh");
+
+
 
         textView2 = findViewById(R.id.textView2);
         SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
@@ -168,6 +172,8 @@ public class Tela_Principal extends AppCompatActivity  {
                 //definindo a porcentagem que será preenchida pelo gráfico
                 double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
                 double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
+                text_view_progress.setText((int)grausGraficoConsumoAtual + "%");
+                text_view_progress2.setText((int)grausGraficoLimiteConsumo + "%");
                 progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
                 progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
             }
