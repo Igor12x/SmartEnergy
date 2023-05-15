@@ -22,6 +22,7 @@ import Models.CadastroCliente;
 import Models.Cliente;
 import Models.ClienteLogin;
 import Models.MascaraCPF;
+import Models.MascaraTelefone;
 
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
@@ -48,7 +49,7 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnCadSenha = findViewById(R.id.btnCadSenha);
         btnCadConfirmaSenha = findViewById(R.id.btnCadConfirmaSenha);
         plainCadCpf.addTextChangedListener(new MascaraCPF((EditText) plainCadCpf,11));
-
+        plainCadTel.addTextChangedListener(new MascaraTelefone((EditText) plainCadTel,11 ));
 
         //voltando para tela inicial
         btnVoltaCad.setOnClickListener(new View.OnClickListener() {
