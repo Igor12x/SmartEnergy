@@ -8,6 +8,7 @@ import android.text.Editable;
 public class MascaraCPF implements TextWatcher {
         private EditText editText;
         private int limiteCaracter;
+        private boolean isRemovingText = false;
 
         public MascaraCPF(EditText editText, int limiteCaracter) {
             this.editText = editText;
@@ -17,6 +18,7 @@ public class MascaraCPF implements TextWatcher {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             // Nada a fazer aqui
+            isRemovingText = count > after;
         }
 
         @Override
@@ -26,6 +28,11 @@ public class MascaraCPF implements TextWatcher {
 
         @Override
         public void afterTextChanged(Editable s) {
+            if (isRemovingText) {
+                // Se o usuário está removendo o texto, não aplica a máscara
+                isRemovingText = false;
+                return;
+            }
             String cpf = s.toString();
 
             cpf = cpf.replaceAll("[^\\d]", "");

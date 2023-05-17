@@ -9,6 +9,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import Interfaces.ILoginCliente;
 import Models.Cliente;
 import Models.ClienteLogin;
+import Models.MascaraCPF;
 
 public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
@@ -43,6 +45,8 @@ public class Tela_Login extends AppCompatActivity {
         btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
         btnLogMostrarSenha = findViewById(R.id.btnLogMostrarSenha);
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
+
+        txtCpf.addTextChangedListener(new MascaraCPF((EditText) txtCpf, 11) );
 
         //voltando para tela inicial
         btnVoltaLogin.setOnClickListener(new View.OnClickListener() {
