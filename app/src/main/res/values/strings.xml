@@ -101,6 +101,7 @@
     <string name="plainBairroPerfil">Bairro</string>
     <string name="plainNumPerfil">Nº </string>
     <string name="plainLogradouroPerfil">Logradouro</string>
+    <string name="disconnect">DESCONECTAR</string>
 
 
 </resources>
