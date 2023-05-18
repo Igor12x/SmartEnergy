@@ -101,6 +101,8 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 // Atualize o ícone do botão
                 btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+                
+
             }
 
 
