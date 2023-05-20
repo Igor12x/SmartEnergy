@@ -40,7 +40,7 @@ public class Tela_Login extends AppCompatActivity {
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
 
-        btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
+        btnVoltaLogin = findViewById(R.id.imageButton3);
 
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 

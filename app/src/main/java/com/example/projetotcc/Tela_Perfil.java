@@ -1,28 +1,21 @@
 package com.example.projetotcc;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
@@ -37,7 +30,6 @@ public class Tela_Perfil extends AppCompatActivity {
 
     //private Button btnSim, btnNao;
     private TextView txtNome;
-    private AlterarCadastro dados;
     private String emailSemAlteracao = null;
     private String telSemAlteracao = null;
     private Spinner spinnerCasas;
@@ -57,15 +49,64 @@ public class Tela_Perfil extends AppCompatActivity {
 
         BtnVoltaPerfil();
         ImgBtnEdit(solicitacao);
+        BtnDesconectar();
 
         carregarDadosPerfil();
         carregarDadosResidencia(solicitacao, getIdClienteSharedPreferences());
     }
 
+    private void BtnDesconectar() {
+        ibtnDesconectar.setOnClickListener(view -> {
+            try {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Tela_Perfil.this, R.style.AlertDialogTheme);
+                View view1 = LayoutInflater.from(Tela_Perfil.this).inflate(R.layout.layout_dialog, findViewById(R.id.layoutDialogContainer));
+                builder.setView(view1);
+                final AlertDialog alertDialog = builder.create();
+
+                Button btnSim = view1.findViewById(R.id.btnSim);
+                btnSim.setOnClickListener(v -> desconectar(alertDialog));
+
+                Button btnNao = view1.findViewById(R.id.btnNao);
+                btnNao.setOnClickListener(v -> alertDialog.dismiss());
+
+                alertDialog.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(Tela_Perfil.this, "Ocorreu um erro ao exibir o diálogo de desconexão. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void desconectar(AlertDialog alertDialog) {
+        try {
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                alertDialog.dismiss();
+                limparSharedPreferences();
+                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
+                startActivity(intent);
+            }, 500); // ajuste o valor do atraso conforme necessário
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Tela_Perfil.this, "Ocorreu um erro ao desconectar. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void limparSharedPreferences() {
+        try {
+            ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        SharedPreferences.Editor editor = ler.edit();
+        editor.clear();
+        editor.apply();
+    }
+
     private int getIdClienteSharedPreferences() {
         try {
             ler = getSharedPreferences("usuario", MODE_PRIVATE);
-            return getSharedPreferences("usuario", MODE_PRIVATE).getInt("codigo", 0);
+            return ler.getInt("codigo", 0);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(Tela_Perfil.this, "Erro ao carregar seus dados de perfil. Por favor, tente logar novamente ou entre em contato com o suporte.", Toast.LENGTH_SHORT).show();
@@ -75,31 +116,49 @@ public class Tela_Perfil extends AppCompatActivity {
 
     private void ImgBtnEdit(RequestQueue solicitacao) {
         imgBtnEdit.setOnClickListener(v -> {
+            String imgAtual = imgBtnEdit.getTag().toString();
 
-            String ImgAtual = imgBtnEdit.getTag().toString();
-
-            if (ImgAtual.equals("ImgEditar")) {
-                imgBtnEdit.setImageResource(R.drawable.iconeok);
-                imgBtnEdit.setTag("ImgConfirmar");
-                emailSemAlteracao = plainPerfilE.getText().toString();
-                telSemAlteracao = plainPerfilTel.getText().toString();
-                plainPerfilE.setEnabled(true);
-                plainPerfilTel.setEnabled(true);
-            } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString()) || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
-                dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
-                editarCadastro(solicitacao, dados, ler);
-                imgBtnEdit.setImageResource(R.drawable.edit_perfil);
-                imgBtnEdit.setTag("ImgEditar");
+            if (imgAtual.equals("ImgEditar")) {
+                habilitarEdicao();
+            } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString())
+                    || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
+                if (camposPreenchidos()) {
+                    realizarAlteracao(solicitacao);
+                } else {
+                    Toast.makeText(Tela_Perfil.this, "Há campos vazios, preencha todos", Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(Tela_Perfil.this, "Você não realizou alterações", Toast.LENGTH_SHORT).show();
-                imgBtnEdit.setImageResource(R.drawable.edit_perfil);
-                imgBtnEdit.setTag("ImgEditar");
-                plainPerfilE.setEnabled(false);
-                plainPerfilTel.setEnabled(false);
+                Toast.makeText(Tela_Perfil.this, "Não foi realizado nenhuma alteração", Toast.LENGTH_SHORT).show();
+                restaurarEstadoInicial();
             }
         });
     }
 
+    private void habilitarEdicao() {
+        imgBtnEdit.setImageResource(R.drawable.iconeok);
+        imgBtnEdit.setTag("ImgConfirmar");
+        emailSemAlteracao = plainPerfilE.getText().toString();
+        telSemAlteracao = plainPerfilTel.getText().toString();
+        plainPerfilE.setEnabled(true);
+        plainPerfilTel.setEnabled(true);
+    }
+
+    private boolean camposPreenchidos() {
+        return !plainPerfilE.getText().toString().isEmpty() && !plainPerfilTel.getText().toString().isEmpty();
+    }
+
+    private void realizarAlteracao(RequestQueue solicitacao) {
+        AlterarCadastro dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
+        editarCadastro(solicitacao, dados, ler);
+        restaurarEstadoInicial();
+    }
+
+    private void restaurarEstadoInicial() {
+        imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+        imgBtnEdit.setTag("ImgEditar");
+        plainPerfilE.setEnabled(false);
+        plainPerfilTel.setEnabled(false);
+    }
     private void BtnVoltaPerfil() {
         btnVoltaPerfil.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
@@ -110,58 +169,6 @@ public class Tela_Perfil extends AppCompatActivity {
     private void inicializarViews() {
         btnVoltaPerfil = findViewById(R.id.btnVoltaPerfil);
         ibtnDesconectar = findViewById(R.id.ibtnDesconectar);
-
-        //Desconectar
-        ibtnDesconectar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Tela_Perfil.this, R.style.AlertDialogTheme);
-                View view1 = LayoutInflater.from(Tela_Perfil.this).inflate(
-                        R.layout.layout_dialog,(ConstraintLayout)findViewById(R.id.layoutDialogContainer)
-                );
-                builder.setView(view1);
-                final AlertDialog alertDialog = builder.create();
-
-                Button btnSim = view1.findViewById(R.id.btnSim);
-                btnSim.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                alertDialog.dismiss();
-
-                                SharedPreferences prefs = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = prefs.edit();
-                                editor.clear();
-                                editor.apply();
-
-                                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
-                                startActivity(intent);
-                            }
-                        }, 500); // ajuste o valor do atraso conforme necessário
-                    }
-                });
-
-                Button btnNao = view1.findViewById(R.id.btnNao);
-                btnNao.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-
-                alertDialog.show();
-            }
-        });
-
-
-
-        //------------------------------------------------------------------------------------
-
-        //------------------------------------------------------------------------------
         imgBtnEdit = findViewById(R.id.imgBtnEdit);
         plainPerfilE = findViewById(R.id.plainPerfilE);
         plainPerfilTel = findViewById(R.id.plainPerfilTel);
