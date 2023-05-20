@@ -1,6 +1,7 @@
 package com.example.projetotcc;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,33 +33,28 @@ public class Tela_Perfil extends AppCompatActivity {
     private ImageButton btnVoltaPerfil, imgBtnEdit;
     private EditText plainPerfilE, plainPerfilTel, plainCEPPerfil, plainCidadePerfil,
             plainEstadoPerfil, plainBairroPerfil, plainNumPerfil, plainLogradouroPerfil;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_perfil);
 
-        inicializarViews();
-
-        ler = getSharedPreferences("usuario", MODE_PRIVATE);
-        int idCliente = ler.getInt("codigo", 0);
         RequestQueue solicitacao = Volley.newRequestQueue(this);
 
-        //preenchendos os campos da tela de perfil
-        txtNome.setText(ler.getString("nome", "") + " " + ler.getString("sobrenome",""));
-        plainPerfilE.setText(ler.getString("email", ""));
-        plainPerfilTel.setText(ler.getString("telefone", ""));
-        buscarResidencias(solicitacao, idCliente);
+        inicializarViews();
 
-        //voltando para tela de inicio principal
-        btnVoltaPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
-                startActivity(intent);
-            }
-        });
-         imgBtnEdit.setOnClickListener(new View.OnClickListener() {
+        BtnVoltaPerfil();
+        ImgBtnEdit(solicitacao);
+
+
+        carregarDadosPerfil();
+        carregarDadosResidencia(solicitacao, getIdClienteSharedPreferences());
+    }
+    private int getIdClienteSharedPreferences() {
+        SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        return ler.getInt("codigo", 0); // 0, pois sempre terá apenas um usuário cadastrado
+    }
+    private void ImgBtnEdit(RequestQueue solicitacao) {
+        imgBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -78,7 +74,15 @@ public class Tela_Perfil extends AppCompatActivity {
             }
         });
     }
-
+    private void BtnVoltaPerfil() {
+        btnVoltaPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
+                startActivity(intent);
+            }
+        });
+    }
     private void inicializarViews() {
         btnVoltaPerfil = findViewById(R.id.btnVoltaPerfil);
         imgBtnEdit = findViewById(R.id.imgBtnEdit);
@@ -93,29 +97,34 @@ public class Tela_Perfil extends AppCompatActivity {
         plainLogradouroPerfil = findViewById(R.id.plainLogradouroPerfil);
         spinnerCasas = findViewById(R.id.spinnerCasas);
     }
-
-    public void alterarCadastro(RequestQueue solicitacao, AlterarCadastro dados, SharedPreferences ler){
- AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, new IAlterarCadastro() {
-     @Override
-     public void onResultado(Cliente clienteAtualizado) {
-         SharedPreferences salvar =
-                 getSharedPreferences("usuario", Context.MODE_PRIVATE);
-         SharedPreferences.Editor gravar = salvar.edit();
-         gravar.putString("nome", clienteAtualizado.getNome());
-         gravar.putString("cpf", clienteAtualizado.getCpf());
-         gravar.putString("email", clienteAtualizado.getEmail());
-         gravar.putString("telefone", clienteAtualizado.getTelefone());
-         gravar.putString("senha", clienteAtualizado.getSenha());
-         gravar.putInt("codigo", clienteAtualizado.getCodigo());
-         gravar.commit();
-         plainPerfilE.setText(clienteAtualizado.getEmail());
-         plainPerfilTel.setText(clienteAtualizado.getTelefone());
-         plainPerfilE.setEnabled(false);
-         plainPerfilTel.setEnabled(false);
-     }
- });
+    private void carregarDadosPerfil() {
+        String nomeCompleto = ler.getString("nome", "") + " " + ler.getString("sobrenome", "");
+        txtNome.setText(nomeCompleto);
+        plainPerfilE.setText(ler.getString("email", ""));
+        plainPerfilTel.setText(ler.getString("telefone", ""));
     }
-    public void setTextResidencia(Residencia residenciaSelecionada){
+    public void alterarCadastro(RequestQueue solicitacao, AlterarCadastro dados, SharedPreferences ler) {
+        AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, new IAlterarCadastro() {
+            @Override
+            public void onResultado(Cliente clienteAtualizado) {
+                SharedPreferences salvar =
+                        getSharedPreferences("usuario", Context.MODE_PRIVATE);
+                SharedPreferences.Editor gravar = salvar.edit();
+                gravar.putString("nome", clienteAtualizado.getNome());
+                gravar.putString("cpf", clienteAtualizado.getCpf());
+                gravar.putString("email", clienteAtualizado.getEmail());
+                gravar.putString("telefone", clienteAtualizado.getTelefone());
+                gravar.putString("senha", clienteAtualizado.getSenha());
+                gravar.putInt("codigo", clienteAtualizado.getCodigo());
+                gravar.commit();
+                plainPerfilE.setText(clienteAtualizado.getEmail());
+                plainPerfilTel.setText(clienteAtualizado.getTelefone());
+                plainPerfilE.setEnabled(false);
+                plainPerfilTel.setEnabled(false);
+            }
+        });
+    }
+    public void setTextResidencia(Residencia residenciaSelecionada) {
         plainLogradouroPerfil.setText(residenciaSelecionada.getLogradouro());
         plainCEPPerfil.setText(residenciaSelecionada.getCep());
         plainCidadePerfil.setText(residenciaSelecionada.getMunicipio());
@@ -123,7 +132,7 @@ public class Tela_Perfil extends AppCompatActivity {
         plainNumPerfil.setText("Nº " + residenciaSelecionada.getNumero());
         plainEstadoPerfil.setText(residenciaSelecionada.getUf());
     }
-    public void setEnabledResidencia () {
+    public void setEnabledResidencia() {
         plainLogradouroPerfil.setEnabled(false);
         plainCEPPerfil.setEnabled(false);
         plainCidadePerfil.setEnabled(false);
@@ -131,7 +140,7 @@ public class Tela_Perfil extends AppCompatActivity {
         plainNumPerfil.setEnabled(false);
         plainEstadoPerfil.setEnabled(false);
     }
-    public void buscarResidencias (RequestQueue solicitacao, int idCliente){
+    public void carregarDadosResidencia(RequestQueue solicitacao, int idCliente) {
         Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
             @Override
             public void onResultado(List<Residencia> residencias) {
@@ -144,7 +153,6 @@ public class Tela_Perfil extends AppCompatActivity {
                         setTextResidencia(residenciaSelecionada);
                         setEnabledResidencia();
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
                         setEnabledResidencia();
@@ -153,6 +161,4 @@ public class Tela_Perfil extends AppCompatActivity {
             }
         });
     }
-
-
 }
