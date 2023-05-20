@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.Spinner;
@@ -42,6 +43,7 @@ import Models.ResidenciaAdapter;
 
 public class Tela_Principal extends AppCompatActivity  {
     private Calendar calendar = Calendar.getInstance();
+    private ImageView imageView18;
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0;
     private int limiteConsumo = 200,
@@ -49,12 +51,14 @@ public class Tela_Principal extends AppCompatActivity  {
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
-            textView2, textAjusteLimite;
+            textView2, text_view_progress, text_view_progress2,
+            textAjusteLimite;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
     private Button btnConfira;
     private Spinner spinnerResidencias;
+    private Intent intent;
 
     private RequestQueue solicitacao = null;
     // Criando uma solicitação para a rede aonde está a API
@@ -77,6 +81,9 @@ public class Tela_Principal extends AppCompatActivity  {
         textUltimaFatura = findViewById(R.id.textUltimaFatura);
         textConsumoAtualLimite = findViewById(R.id.textConsumoAtualLimite);
         btnConfira = findViewById(R.id.btnConfira);
+        imageView18 = findViewById(R.id.imageView18);
+        text_view_progress = findViewById(R.id.text_view_progress);
+        text_view_progress2 = findViewById(R.id.text_view_progress2);
         textAjusteLimite = findViewById(R.id.textAjusteLimite);
 
         spinnerResidencias = findViewById(R.id.spinnerEndereco);
@@ -84,15 +91,26 @@ public class Tela_Principal extends AppCompatActivity  {
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh");
 
+
+
         textView2 = findViewById(R.id.textView2);
         SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
         textView2.setText("Ola " + ler.getString("nome", "")
         );
 
+        intent = new Intent(getApplicationContext(), Tela_Perfil.class);
+
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
         int idCliente = ler.getInt("codigo", 0);
+
+        imageView18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
 
 
         //limite
@@ -186,6 +204,8 @@ public class Tela_Principal extends AppCompatActivity  {
                 //definindo a porcentagem que será preenchida pelo gráfico
                 double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
                 double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
+                text_view_progress.setText((int)grausGraficoConsumoAtual + "%");
+                text_view_progress2.setText((int)grausGraficoLimiteConsumo + "%");
                 progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
                 progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
             }

@@ -40,7 +40,7 @@ public class ClienteLogin {
             public void onResponse(JSONObject response) {
                   try {
 
-                      Cliente clienteLogado = new Cliente(response.getString("Nome"), response.getString("Cpf"), response.getString("Email"), response.getString("Telefone"), response.getString("Senha"), response.getInt("Codigo"));
+                      Cliente clienteLogado = new Cliente(response.getString("Nome"), response.getString("Sobrenome"), response.getString("Cpf"), response.getString("Email"), response.getString("Telefone"), response.getString("Senha"), response.getInt("Codigo"));
 
                       listener.onResultado(clienteLogado);
 

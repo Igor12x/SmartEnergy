@@ -22,16 +22,6 @@ public class Medidor {
         this.consumo = consumo;
     }
     //interface para salvar o resultado da API
-    public interface BuscaConsumoListener {
-        void onResultado(double resultado);
-
-    }
-
-    public interface BuscaConsumoDiarioListener {
-        void onResultado(double resultado);
-
-    }
-
     public static void buscarConsumoAtual(int idResidencia, RequestQueue solicitacao, IMedidorBuscoConsumoAtual listener) {
         String url = "http://10.0.2.2:5000/api/Medidor/BuscarConsumo/" + idResidencia;
         //String url = "http://localhost:5000/api/Medidor/BuscarConsumo/" + idResidencia;

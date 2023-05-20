@@ -39,7 +39,9 @@ public class Tela_Login extends AppCompatActivity {
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
+
         btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
+
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
 
@@ -79,6 +81,7 @@ public class Tela_Login extends AppCompatActivity {
                 SharedPreferences.Editor gravar =
                         getSharedPreferences("usuario", MODE_PRIVATE).edit();
                 gravar.putString("nome", clienteLogado.getNome());
+                gravar.putString("sobrenome", clienteLogado.getSobrenome());
                 gravar.putString("cpf", clienteLogado.getCpf());
                 gravar.putString("email", clienteLogado.getEmail());
                 gravar.putString("telefone", clienteLogado.getTelefone());
@@ -95,3 +98,13 @@ public class Tela_Login extends AppCompatActivity {
         });
     }
 }
+/*SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+if (sharedPreferences.contains("cpf") && sharedPreferences.contains("senha")) {
+    String cpf = sharedPreferences.getString("cpf", "");
+    String senha = sharedPreferences.getString("senha", "");
+
+    // Use as informações de CPF e senha aqui
+} else {
+    // SharedPreferences não contém informações de CPF e senha
+}*/
