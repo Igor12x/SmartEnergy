@@ -50,7 +50,17 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 emailCliente = editTextEmail.getText().toString();
-                EnviarCodigoVerificacao(emailCliente);
+
+                if (emailCliente.isEmpty()) {
+                    Toast.makeText(Tela_Esqueceu_Senha.this, "Preencha o campo com um email", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (android.util.Patterns.EMAIL_ADDRESS.matcher(emailCliente).matches()) {
+                        EnviarCodigoVerificacao(emailCliente);
+                    } else {
+                        Toast.makeText(Tela_Esqueceu_Senha.this, "Digite um email válido", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }
         });
     }
