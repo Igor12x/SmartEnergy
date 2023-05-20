@@ -17,12 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import java.util.List;
-
-import Interfaces.IAlterarCadastro;
-import Interfaces.IResidencia;
 import Models.AlterarCadastro;
-import Models.Cliente;
 import Models.Residencia;
 import Models.ResidenciaAdapter;
 
@@ -65,42 +60,36 @@ public class Tela_Perfil extends AppCompatActivity {
     }
 
     private void ImgBtnEdit(RequestQueue solicitacao) {
-        imgBtnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        imgBtnEdit.setOnClickListener(v -> {
 
-                String ImgAtual = imgBtnEdit.getTag().toString();
+            String ImgAtual = imgBtnEdit.getTag().toString();
 
-                if (ImgAtual.equals("ImgEditar")) {
-                    imgBtnEdit.setImageResource(R.drawable.iconeok);
-                    imgBtnEdit.setTag("ImgConfirmar");
-                    emailSemAlteracao = plainPerfilE.getText().toString();
-                    telSemAlteracao = plainPerfilTel.getText().toString();
-                    plainPerfilE.setEnabled(true);
-                    plainPerfilTel.setEnabled(true);
-                } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString()) || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
-                    dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
-                    editarCadastro(solicitacao, dados, ler);
-                    imgBtnEdit.setImageResource(R.drawable.edit_perfil);
-                    imgBtnEdit.setTag("ImgEditar");
-                } else {
-                    Toast.makeText(Tela_Perfil.this, "Você não realizou alterações", Toast.LENGTH_SHORT).show();
-                    imgBtnEdit.setImageResource(R.drawable.edit_perfil);
-                    imgBtnEdit.setTag("ImgEditar");
-                    plainPerfilE.setEnabled(false);
-                    plainPerfilTel.setEnabled(false);
-                }
+            if (ImgAtual.equals("ImgEditar")) {
+                imgBtnEdit.setImageResource(R.drawable.iconeok);
+                imgBtnEdit.setTag("ImgConfirmar");
+                emailSemAlteracao = plainPerfilE.getText().toString();
+                telSemAlteracao = plainPerfilTel.getText().toString();
+                plainPerfilE.setEnabled(true);
+                plainPerfilTel.setEnabled(true);
+            } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString()) || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
+                dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
+                editarCadastro(solicitacao, dados, ler);
+                imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+                imgBtnEdit.setTag("ImgEditar");
+            } else {
+                Toast.makeText(Tela_Perfil.this, "Você não realizou alterações", Toast.LENGTH_SHORT).show();
+                imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+                imgBtnEdit.setTag("ImgEditar");
+                plainPerfilE.setEnabled(false);
+                plainPerfilTel.setEnabled(false);
             }
         });
     }
 
     private void BtnVoltaPerfil() {
-        btnVoltaPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
-                startActivity(intent);
-            }
+        btnVoltaPerfil.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);
+            startActivity(intent);
         });
     }
 
@@ -133,29 +122,26 @@ public class Tela_Perfil extends AppCompatActivity {
     }
 
     private void editarCadastro(RequestQueue solicitacao, AlterarCadastro dados, SharedPreferences ler) {
-        AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, new IAlterarCadastro() {
-            @Override
-            public void onResultado(Cliente clienteAtualizado) {
-                try {
-                    SharedPreferences salvar =
-                            getSharedPreferences("usuario", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor gravar = salvar.edit();
-                    gravar.putString("nome", clienteAtualizado.getNome());
-                    gravar.putString("cpf", clienteAtualizado.getCpf());
-                    gravar.putString("email", clienteAtualizado.getEmail());
-                    gravar.putString("telefone", clienteAtualizado.getTelefone());
-                    gravar.putString("senha", clienteAtualizado.getSenha());
-                    gravar.putInt("codigo", clienteAtualizado.getCodigo());
-                    gravar.apply();
-                    plainPerfilE.setText(clienteAtualizado.getEmail());
-                    plainPerfilTel.setText(clienteAtualizado.getTelefone());
-                    plainPerfilE.setEnabled(false);
-                    plainPerfilTel.setEnabled(false);
-                    Toast.makeText(Tela_Perfil.this, "Dados alterados com sucesso", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(Tela_Perfil.this, "Erro ao alterar o cadastro. Por favor, tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
-                }
+        AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, clienteAtualizado -> {
+            try {
+                SharedPreferences salvar =
+                        getSharedPreferences("usuario", Context.MODE_PRIVATE);
+                SharedPreferences.Editor gravar = salvar.edit();
+                gravar.putString("nome", clienteAtualizado.getNome());
+                gravar.putString("cpf", clienteAtualizado.getCpf());
+                gravar.putString("email", clienteAtualizado.getEmail());
+                gravar.putString("telefone", clienteAtualizado.getTelefone());
+                gravar.putString("senha", clienteAtualizado.getSenha());
+                gravar.putInt("codigo", clienteAtualizado.getCodigo());
+                gravar.apply();
+                plainPerfilE.setText(clienteAtualizado.getEmail());
+                plainPerfilTel.setText(clienteAtualizado.getTelefone());
+                plainPerfilE.setEnabled(false);
+                plainPerfilTel.setEnabled(false);
+                Toast.makeText(Tela_Perfil.this, "Dados alterados com sucesso", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(Tela_Perfil.this, "Erro ao alterar o cadastro. Por favor, tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -165,7 +151,7 @@ public class Tela_Perfil extends AppCompatActivity {
         plainCEPPerfil.setText(residenciaSelecionada.getCep());
         plainCidadePerfil.setText(residenciaSelecionada.getMunicipio());
         plainBairroPerfil.setText(residenciaSelecionada.getBairro());
-        plainNumPerfil.setText("Nº " + residenciaSelecionada.getNumero());
+        plainNumPerfil.setText(getString(R.string.perfil_numero, String.valueOf(residenciaSelecionada.getNumero())));
         plainEstadoPerfil.setText(residenciaSelecionada.getUf());
     }
 
@@ -179,30 +165,27 @@ public class Tela_Perfil extends AppCompatActivity {
     }
 
     private void carregarDadosResidencia(RequestQueue solicitacao, int idCliente) {
-        Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
-            @Override
-            public void onResultado(List<Residencia> residencias) {
-                try {
-                    ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
-                    spinnerCasas.setAdapter(adaptador);
-                    spinnerCasas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
-                            setTextResidencia(residenciaSelecionada);
-                            setEnabledResidencia();
-                        }
+        Residencia.listarResidencias(idCliente, solicitacao, residencias -> {
+            try {
+                ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
+                spinnerCasas.setAdapter(adaptador);
+                spinnerCasas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
+                        setTextResidencia(residenciaSelecionada);
+                        setEnabledResidencia();
+                    }
 
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            setEnabledResidencia();
-                        }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        setEnabledResidencia();
+                    }
 
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(Tela_Perfil.this, "Erro ao carregar dados da residencia. Por favor, tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
-                }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(Tela_Perfil.this, "Erro ao carregar dados da residencia. Por favor, tente novamente mais tarde.", Toast.LENGTH_SHORT).show();
             }
         });
     }
