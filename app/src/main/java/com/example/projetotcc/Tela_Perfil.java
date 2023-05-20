@@ -77,41 +77,30 @@ public class Tela_Perfil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-        imgBtnEdit.setOnClickListener(new View.OnClickListener() {
+         imgBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String ImgAtual = imgBtnEdit.getTag().toString();
 
                 if (!ImgAtual.equals("ImgEditar")) {
-                    Log.d("IFBotãoImg", "cheguei aqui no if");
-                    dados = new AlterarCadastro(plainPerfilE.getText().toString(),
-                            plainPerfilTel.getText().toString());
-                    imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+                    dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
                     alterarCadastro(solicitacao, dados, ler);
-                    plainPerfilE.setEnabled(false);
-                    plainPerfilTel.setEnabled(false);
+                    imgBtnEdit.setImageResource(R.drawable.edit_perfil);
                     imgBtnEdit.setTag("ImgEditar");
                 } else {
-                    Log.d("ElseBotãoImg", "cheguei aqui");
-                    imgBtnEdit.setTag("ImgConfirmar");
                     imgBtnEdit.setImageResource(R.drawable.iconeok);
+                    imgBtnEdit.setTag("ImgConfirmar");
                     plainPerfilE.setEnabled(true);
                     plainPerfilTel.setEnabled(true);
                 }
-
             }
         });
     }
     public void alterarCadastro(RequestQueue solicitacao, AlterarCadastro dados, SharedPreferences ler){
-
  AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, new IAlterarCadastro() {
      @Override
      public void onResultado(Cliente clienteAtualizado) {
-         Log.d("OnResultadoAlterarCadastro", " >>>>>>>> " + clienteAtualizado.getTelefone());
          SharedPreferences salvar =
                  getSharedPreferences("usuario", Context.MODE_PRIVATE);
          SharedPreferences.Editor gravar = salvar.edit();
@@ -124,6 +113,8 @@ public class Tela_Perfil extends AppCompatActivity {
          gravar.commit();
          plainPerfilE.setText(clienteAtualizado.getEmail());
          plainPerfilTel.setText(clienteAtualizado.getTelefone());
+         plainPerfilE.setEnabled(false);
+         plainPerfilTel.setEnabled(false);
      }
  });
     }
