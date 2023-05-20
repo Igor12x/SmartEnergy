@@ -57,18 +57,17 @@ public class Tela_Perfil extends AppCompatActivity {
         plainBairroPerfil = findViewById(R.id.plainBairroPerfil);
         plainNumPerfil = findViewById(R.id.plainNumPerfil);
         plainLogradouroPerfil = findViewById(R.id.plainLogradouroPerfil);
-
         spinnerCasas = findViewById(R.id.spinnerCasas);
 
-
-
         ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        int idCliente = ler.getInt("codigo", 0);
+        RequestQueue solicitacao = Volley.newRequestQueue(this);
+
+        //preenchendos os campos da tela de perfil
         txtNome.setText(ler.getString("nome", "") + " " + ler.getString("sobrenome",""));
         plainPerfilE.setText(ler.getString("email", ""));
         plainPerfilTel.setText(ler.getString("telefone", ""));
-
-        int idCliente = ler.getInt("codigo", 0);
-        RequestQueue solicitacao = Volley.newRequestQueue(this);
+        buscarResidencias(solicitacao, idCliente);
 
         //voltando para tela de inicio principal
         btnVoltaPerfil.setOnClickListener(new View.OnClickListener() {
@@ -78,48 +77,14 @@ public class Tela_Perfil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
-            @Override
-            public void onResultado(List<Residencia> residencias) {
-                ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
-                spinnerCasas.setAdapter(adaptador);
 
-                spinnerCasas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
 
-                        plainLogradouroPerfil.setText(residenciaSelecionada.getLogradouro());
-                        plainCEPPerfil.setText(residenciaSelecionada.getCep());
-                        plainCidadePerfil.setText(residenciaSelecionada.getMunicipio());
-                        plainBairroPerfil.setText(residenciaSelecionada.getBairro());
-                        plainNumPerfil.setText("Nº " + residenciaSelecionada.getNumero());
-                        plainEstadoPerfil.setText(residenciaSelecionada.getUf());
-
-                        plainLogradouroPerfil.setEnabled(false);
-                        plainCEPPerfil.setEnabled(false);
-                        plainCidadePerfil.setEnabled(false);
-                        plainBairroPerfil.setEnabled(false);
-                        plainNumPerfil.setEnabled(false);
-                        plainEstadoPerfil.setEnabled(false);
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-            }
-        });
 
         imgBtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String ImgAtual = imgBtnEdit.getTag().toString();
-
-
 
                 if (!ImgAtual.equals("ImgEditar")) {
                     Log.d("IFBotãoImg", "cheguei aqui no if");
@@ -162,4 +127,44 @@ public class Tela_Perfil extends AppCompatActivity {
      }
  });
     }
+    public void setTextResidencia(Residencia residenciaSelecionada){
+        plainLogradouroPerfil.setText(residenciaSelecionada.getLogradouro());
+        plainCEPPerfil.setText(residenciaSelecionada.getCep());
+        plainCidadePerfil.setText(residenciaSelecionada.getMunicipio());
+        plainBairroPerfil.setText(residenciaSelecionada.getBairro());
+        plainNumPerfil.setText("Nº " + residenciaSelecionada.getNumero());
+        plainEstadoPerfil.setText(residenciaSelecionada.getUf());
+    }
+    public void setEnabledResidencia () {
+        plainLogradouroPerfil.setEnabled(false);
+        plainCEPPerfil.setEnabled(false);
+        plainCidadePerfil.setEnabled(false);
+        plainBairroPerfil.setEnabled(false);
+        plainNumPerfil.setEnabled(false);
+        plainEstadoPerfil.setEnabled(false);
+    }
+    public void buscarResidencias (RequestQueue solicitacao, int idCliente){
+        Residencia.listarResidencias(idCliente, solicitacao, new IResidencia() {
+            @Override
+            public void onResultado(List<Residencia> residencias) {
+                ResidenciaAdapter adaptador = new ResidenciaAdapter(getApplicationContext(), residencias);
+                spinnerCasas.setAdapter(adaptador);
+                spinnerCasas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
+                        setTextResidencia(residenciaSelecionada);
+                        setEnabledResidencia();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        setEnabledResidencia();
+                    }
+                });
+            }
+        });
+    }
+
+
 }
