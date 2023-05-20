@@ -118,47 +118,74 @@ public class Tela_Perfil extends AppCompatActivity {
         imgBtnEdit.setOnClickListener(v -> {
             String imgAtual = imgBtnEdit.getTag().toString();
 
-            if (imgAtual.equals("ImgEditar")) {
-                habilitarEdicao();
-            } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString())
-                    || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
-                if (camposPreenchidos()) {
-                    realizarAlteracao(solicitacao);
+            try {
+                if (imgAtual.equals("ImgEditar")) {
+                    habilitarEdicao();
+                } else if (!emailSemAlteracao.equals(plainPerfilE.getText().toString())
+                        || !telSemAlteracao.equals(plainPerfilTel.getText().toString())) {
+                    if (camposPreenchidos()) {
+                        realizarAlteracao(solicitacao);
+                    } else {
+                        Toast.makeText(Tela_Perfil.this, "Há campos vazios, preencha todos", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(Tela_Perfil.this, "Há campos vazios, preencha todos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Tela_Perfil.this, "Não foi realizada nenhuma alteração", Toast.LENGTH_SHORT).show();
+                    restaurarEstadoInicial();
                 }
-            } else {
-                Toast.makeText(Tela_Perfil.this, "Não foi realizado nenhuma alteração", Toast.LENGTH_SHORT).show();
-                restaurarEstadoInicial();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(Tela_Perfil.this, "Ocorreu um erro. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void habilitarEdicao() {
-        imgBtnEdit.setImageResource(R.drawable.iconeok);
-        imgBtnEdit.setTag("ImgConfirmar");
-        emailSemAlteracao = plainPerfilE.getText().toString();
-        telSemAlteracao = plainPerfilTel.getText().toString();
-        plainPerfilE.setEnabled(true);
-        plainPerfilTel.setEnabled(true);
+        try {
+            imgBtnEdit.setImageResource(R.drawable.iconeok);
+            imgBtnEdit.setTag("ImgConfirmar");
+            emailSemAlteracao = plainPerfilE.getText().toString();
+            telSemAlteracao = plainPerfilTel.getText().toString();
+            plainPerfilE.setEnabled(true);
+            plainPerfilTel.setEnabled(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Tela_Perfil.this, "Ocorreu um erro. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean camposPreenchidos() {
-        return !plainPerfilE.getText().toString().isEmpty() && !plainPerfilTel.getText().toString().isEmpty();
+        try {
+            return !plainPerfilE.getText().toString().isEmpty() && !plainPerfilTel.getText().toString().isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Tela_Perfil.this, "Ocorreu um erro. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     private void realizarAlteracao(RequestQueue solicitacao) {
-        AlterarCadastro dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
-        editarCadastro(solicitacao, dados, ler);
-        restaurarEstadoInicial();
+        try {
+            AlterarCadastro dados = new AlterarCadastro(plainPerfilE.getText().toString(), plainPerfilTel.getText().toString());
+            editarCadastro(solicitacao, dados, ler);
+            restaurarEstadoInicial();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Tela_Perfil.this, "Ocorreu um erro. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void restaurarEstadoInicial() {
-        imgBtnEdit.setImageResource(R.drawable.edit_perfil);
-        imgBtnEdit.setTag("ImgEditar");
-        plainPerfilE.setEnabled(false);
-        plainPerfilTel.setEnabled(false);
+        try {
+            imgBtnEdit.setImageResource(R.drawable.edit_perfil);
+            imgBtnEdit.setTag("ImgEditar");
+            plainPerfilE.setEnabled(false);
+            plainPerfilTel.setEnabled(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(Tela_Perfil.this, "Ocorreu um erro. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();
+        }
     }
+
     private void BtnVoltaPerfil() {
         btnVoltaPerfil.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), Tela_Principal.class);

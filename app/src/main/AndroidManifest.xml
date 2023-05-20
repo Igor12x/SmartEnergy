@@ -18,6 +18,10 @@
             android:name=".Tela_Bem_Vindo"
             android:exported="false" />
         <activity
+            android:name=".Tela_Inicial"
+            android:exported="false" />
+        <activity
+
             android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
