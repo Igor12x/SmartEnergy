@@ -38,19 +38,7 @@ public class Tela_Perfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_perfil);
 
-        //referencias
-        btnVoltaPerfil = findViewById(R.id.btnVoltaPerfil);
-        imgBtnEdit = findViewById(R.id.imgBtnEdit);
-        plainPerfilE = findViewById(R.id.plainPerfilE);
-        plainPerfilTel = findViewById(R.id.plainPerfilTel);
-        txtNome = findViewById(R.id.txtNome);
-        plainCEPPerfil = findViewById(R.id.plainCEPPerfil);
-        plainCidadePerfil = findViewById(R.id.plainCidadePerfil);
-        plainEstadoPerfil = findViewById(R.id.plainEstadoPerfil);
-        plainBairroPerfil = findViewById(R.id.plainBairroPerfil);
-        plainNumPerfil = findViewById(R.id.plainNumPerfil);
-        plainLogradouroPerfil = findViewById(R.id.plainLogradouroPerfil);
-        spinnerCasas = findViewById(R.id.spinnerCasas);
+        inicializarViews();
 
         ler = getSharedPreferences("usuario", MODE_PRIVATE);
         int idCliente = ler.getInt("codigo", 0);
@@ -90,6 +78,22 @@ public class Tela_Perfil extends AppCompatActivity {
             }
         });
     }
+
+    private void inicializarViews() {
+        btnVoltaPerfil = findViewById(R.id.btnVoltaPerfil);
+        imgBtnEdit = findViewById(R.id.imgBtnEdit);
+        plainPerfilE = findViewById(R.id.plainPerfilE);
+        plainPerfilTel = findViewById(R.id.plainPerfilTel);
+        txtNome = findViewById(R.id.txtNome);
+        plainCEPPerfil = findViewById(R.id.plainCEPPerfil);
+        plainCidadePerfil = findViewById(R.id.plainCidadePerfil);
+        plainEstadoPerfil = findViewById(R.id.plainEstadoPerfil);
+        plainBairroPerfil = findViewById(R.id.plainBairroPerfil);
+        plainNumPerfil = findViewById(R.id.plainNumPerfil);
+        plainLogradouroPerfil = findViewById(R.id.plainLogradouroPerfil);
+        spinnerCasas = findViewById(R.id.spinnerCasas);
+    }
+
     public void alterarCadastro(RequestQueue solicitacao, AlterarCadastro dados, SharedPreferences ler){
  AlterarCadastro.Alterar(dados, ler.getInt("codigo", 0), solicitacao, new IAlterarCadastro() {
      @Override
