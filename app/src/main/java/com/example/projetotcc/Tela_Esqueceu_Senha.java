@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
 import Interfaces.IRecuperarSenhaCliente;
 import Models.RecuperarSenhaCliente;
@@ -21,23 +22,22 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
     private ImageButton btnVoltaEsqueci;
     private Button btnEnviarEmail;
     private EditText editTextEmail;
-    private RequestQueue solicitacao = null;
     private String emailCliente;
-
-    private Intent intent;
+    private Intent intentVerificarCodigo;
+    private RequestQueue solicitacao = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_esqueceu_senha);
 
-        //referencias
+        solicitacao = Volley.newRequestQueue(this);
+        intentVerificarCodigo = new Intent(getApplicationContext(), Tela_Verificacao_Codigo.class);
+
         btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueceuSenha);
         btnEnviarEmail = findViewById(R.id.btnEscSenha);
         editTextEmail = findViewById(R.id.editTextEmail);
-        intent = new Intent(getApplicationContext(), Tela_Verificacao_Senha.class);
 
-        //voltando para tela de login
         btnVoltaEsqueci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,32 +50,31 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 emailCliente = editTextEmail.getText().toString();
-                ReceberCodigoVerificacao(solicitacao, emailCliente);
+                EnviarCodigoVerificacao(emailCliente);
             }
         });
-
     }
 
-    public void ReceberCodigoVerificacao(RequestQueue solicitacao, String email) {
+    public void EnviarCodigoVerificacao(String email){
         try {
-            RecuperarSenhaCliente.ReceberCodigoVerificacao(email, solicitacao, new IRecuperarSenhaCliente() {
+            RecuperarSenhaCliente.ReceberCodigoVerificacao(email, solicitacao, getApplicationContext(), new IRecuperarSenhaCliente() {
                 @Override
                 public void onResultado(String codigoVerificacao) {
                     SharedPreferences.Editor gravarDadosRecuperacao = getSharedPreferences("dadosRecuperacao", MODE_PRIVATE).edit();
                     gravarDadosRecuperacao.putString("email", emailCliente);
                     gravarDadosRecuperacao.putString("codigoVerificacao", codigoVerificacao);
+                    gravarDadosRecuperacao.commit();
+                    startActivity(intentVerificarCodigo);
+                }
 
-                    if(gravarDadosRecuperacao.commit()){
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(Tela_Esqueceu_Senha.this, "Senha ou/e e-mail incorretos",
-                                Toast.LENGTH_LONG).show();
-                    }
+                @Override
+                public void onError(String mensagemErro) {
+                    Toast.makeText(Tela_Esqueceu_Senha.this, mensagemErro, Toast.LENGTH_SHORT).show();
                 }
             });
-        } catch (IllegalArgumentException e) {
-            Toast.makeText(this, "Email não cadastrado", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(Tela_Esqueceu_Senha.this, "Email não cadastrado!", Toast.LENGTH_SHORT).show();
         }
-
     }
+
 }

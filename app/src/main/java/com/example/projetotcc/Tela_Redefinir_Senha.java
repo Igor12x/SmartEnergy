@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class Tela_Criar_Nova_Senha extends AppCompatActivity {
+public class Tela_Redefinir_Senha extends AppCompatActivity {
 
     private ImageButton btnVoltaNovaSenha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_criar_nova_senha);
+        setContentView(R.layout.activity_tela_redefinir_senha);
 
         //referencias
         btnVoltaNovaSenha = findViewById(R.id.btnVoltaNovaSenha);
@@ -22,7 +22,7 @@ public class Tela_Criar_Nova_Senha extends AppCompatActivity {
         btnVoltaNovaSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Verificacao_Senha.class);
+                Intent intent = new Intent(getApplicationContext(), Tela_Verificacao_Codigo.class);
                 startActivity(intent);
             }
         });

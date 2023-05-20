@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class Tela_Verificacao_Senha extends AppCompatActivity {
+public class Tela_Verificacao_Codigo extends AppCompatActivity {
 
     private ImageButton btnVoltaVerificacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_verificacao_senha);
+        setContentView(R.layout.activity_tela_verificacao_codigo);
 
         //referencias
         btnVoltaVerificacao = findViewById(R.id.btnVoltaVerificacao);
