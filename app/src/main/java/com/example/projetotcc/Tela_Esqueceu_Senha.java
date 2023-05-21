@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import Interfaces.IRecuperarSenhaCliente;
+import Interfaces.IRecuperarSenhaCodigoVerificacao;
 import Models.RecuperarSenhaCliente;
 
 public class Tela_Esqueceu_Senha extends AppCompatActivity {
@@ -67,7 +67,7 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
 
     public void EnviarCodigoVerificacao(String email){
         try {
-            RecuperarSenhaCliente.ReceberCodigoVerificacao(email, solicitacao, getApplicationContext(), new IRecuperarSenhaCliente() {
+            RecuperarSenhaCliente.ReceberCodigoVerificacao(email, solicitacao, getApplicationContext(), new IRecuperarSenhaCodigoVerificacao() {
                 @Override
                 public void onResultado(String codigoVerificacao) {
                     SharedPreferences.Editor gravarDadosRecuperacao = getSharedPreferences("dadosRecuperacao", MODE_PRIVATE).edit();
