@@ -5,9 +5,7 @@ public class Cliente {
     private String cpf;
     private String email;
     private String telefone;
-
     private String senha;
-
     private  int codigo;
 
 

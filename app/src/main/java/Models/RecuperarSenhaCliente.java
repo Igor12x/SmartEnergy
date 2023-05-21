@@ -1,6 +1,7 @@
 package Models;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -8,7 +9,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import Interfaces.IRecuperarSenhaCliente;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import Interfaces.IRecuperarSenhaCodigoVerificacao;
+import Interfaces.IRecuperarSenhaRedefinir;
 
 public class RecuperarSenhaCliente {
 
@@ -18,7 +24,7 @@ public class RecuperarSenhaCliente {
         this.codigoVerificacao = codigoVerificacao;
     }
 
-    public static void ReceberCodigoVerificacao(String email, RequestQueue solicitacao, Context contexto, IRecuperarSenhaCliente listener) {
+    public static void ReceberCodigoVerificacao(String email, RequestQueue solicitacao, Context contexto, IRecuperarSenhaCodigoVerificacao listener) {
         String url = "http://localhost:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
 
         StringRequest envio = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -42,6 +48,29 @@ public class RecuperarSenhaCliente {
         });
         solicitacao.add(envio);
     }
+
+    public static void RedefinirSenhaCliente(String senhaNova, RequestQueue solicitacao, IRecuperarSenhaRedefinir listiner) {
+        String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha/";
+
+        StringRequest envio = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("senhaNova", senhaNova);
+                return params;
+            }
+        };
+        solicitacao.add(envio);
+    }
+
 
     public String getCodigoVerificacao() {
         return codigoVerificacao;
