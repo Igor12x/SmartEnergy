@@ -128,6 +128,7 @@ public class Tela_Principal extends AppCompatActivity {
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                         txtAjuste.setText("R$" + (int) progress);
                         valorAjuste = progress;
+
                         // Define a posição da barra de progresso com o valor selecionado
                         sliderAjuste.setProgress(progress);
                     }
