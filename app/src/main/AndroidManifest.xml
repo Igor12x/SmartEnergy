@@ -24,7 +24,7 @@
             android:name=".Tela_Criar_Nova_Senha"
             android:exported="false" />
         <activity
-            android:name=".Tela_Principal"
+            android:name=".Tela_Perfil"
             android:exported="false" />
         <activity
             android:name=".Tela_Login"
@@ -36,7 +36,7 @@
             android:name=".Tela_Inicial"
             android:exported="false" />
         <activity
-            android:name=".Tela_Perfil"
+            android:name=".Tela_Principal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

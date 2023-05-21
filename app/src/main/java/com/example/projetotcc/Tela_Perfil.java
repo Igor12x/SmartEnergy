@@ -20,7 +20,6 @@ import android.widget.Toast;
 public class Tela_Perfil extends AppCompatActivity {
 
     private ImageButton btnVoltaPerfil, ibtnDesconectar;
-    //private Button btnSim, btnNao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +70,6 @@ public class Tela_Perfil extends AppCompatActivity {
                         alertDialog.dismiss();
                     }
                 });
-
-
                 alertDialog.show();
             }
         });
