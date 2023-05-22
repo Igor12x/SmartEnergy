@@ -76,6 +76,7 @@
     <string name="textConsumoDoDiaDeHoje">Consumo de energia no dia de hoje:</string>
     <string name="txtMedidorConsumoDiario">78kWh</string>
     <string name="textAjusteLimite"><u>Ajuste seu limite</u></string>
+    <string name="plainAjusteNum">R$ </string>
     <string name="txtDicasConsumo">DICAS PARA CONSUMO</string>
     <string name="btnConfira">CONFIRA</string>
 

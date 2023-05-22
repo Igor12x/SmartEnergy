@@ -39,6 +39,12 @@
     <color name="cinza_claro">#ebebeb</color>
     <color name="brancoazuladotexto">#A4B4DC</color>
 
+    <!--color slider-->
+    <color name="star_color">#24FF00</color>
+    <color name="mid_color">#DEE130</color>
+    <color name="centerX">#D9831B</color>
+    <color name="end_color">#FF1E00</color>
+
     <!-- color grafico-->
     <color name="green">#8DFF33</color>
     <color name="yellow">#FFF52D</color>

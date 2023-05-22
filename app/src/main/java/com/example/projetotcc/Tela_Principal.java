@@ -2,22 +2,26 @@ package com.example.projetotcc;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.graphics.drawable.GradientDrawable;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -41,7 +45,7 @@ import Models.Residencia;
 import Models.ResidenciaAdapter;
 
 
-public class Tela_Principal extends AppCompatActivity  {
+public class Tela_Principal extends AppCompatActivity {
     private Calendar calendar = Calendar.getInstance();
     private ImageView imageView18;
     private Date date = calendar.getTime();
@@ -51,6 +55,8 @@ public class Tela_Principal extends AppCompatActivity  {
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
+            textView2, textAjusteLimite;
+
             textView2, text_view_progress, text_view_progress2,
             textAjusteLimite;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
@@ -62,6 +68,9 @@ public class Tela_Principal extends AppCompatActivity  {
 
     private RequestQueue solicitacao = null;
     // Criando uma solicitação para a rede aonde está a API
+
+    //ajuste de limite
+    private int valorAjuste = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +112,7 @@ public class Tela_Principal extends AppCompatActivity  {
         txtData = findViewById(R.id.txtData);
         ExibirDataAtual(txtData);
 
+
         int idCliente = ler.getInt("codigo", 0);
 
         imageView18.setOnClickListener(new View.OnClickListener() {
@@ -134,8 +144,62 @@ public class Tela_Principal extends AppCompatActivity  {
         textAjusteLimite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Tela_Principal.this, R.style.AlertDialogTheme);
+                View view1 = LayoutInflater.from(Tela_Principal.this).inflate(
+                        R.layout.layout_dialog_inicio, (ConstraintLayout) findViewById(R.id.layoutDialogInicio)
+                );
+
+                builder.setView(view1);
+                final AlertDialog dialog = builder.create();
+
+                TextView txtAjuste = view1.findViewById(R.id.txtAjuste);
+                SeekBar sliderAjuste = view1.findViewById(R.id.sliderAjuste);
+                Button btnAjustar = view1.findViewById(R.id.btnAjustar);
+
+                // Restaurar o valor do ajuste
+                sliderAjuste.setProgress(valorAjuste);
+                txtAjuste.setText("R$" + valorAjuste);
+
+                sliderAjuste.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                        txtAjuste.setText("R$" + (int) progress);
+                        valorAjuste = progress;
+
+                        // Define a posição da barra de progresso com o valor selecionado
+                        sliderAjuste.setProgress(progress);
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
+                });
+
+                btnAjustar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int valorAjuste = sliderAjuste.getProgress();
+
+                        // Faça a validação do valor do ajuste
+                        if (valorAjuste >= 0 && valorAjuste <= 1000) {
+                            //Valor válido
+                            Toast.makeText(Tela_Principal.this, "Limite ajustado para: R$" +
+                                    valorAjuste, Toast.LENGTH_SHORT).show();
+                            dialog.dismiss(); // Fechar o diálogo
+                        } else {
+                            // Valor inválido
+                            Toast.makeText(Tela_Principal.this, "Valor inválido", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
                 dialog.show();
             }
+
         });
 
 
@@ -175,22 +239,22 @@ public class Tela_Principal extends AppCompatActivity  {
 
     }
 
-    public void buscarTarifas(RequestQueue solicitacao, int idResidencia){
+    public void buscarTarifas(RequestQueue solicitacao, int idResidencia) {
         CompanhiaEnergiaEletrica.BuscarTarifas(idResidencia, solicitacao, new ICompanhiaEletrica() {
             @Override
             public void onResultado(CompanhiaEnergiaEletrica tarifasComImposto) {
                 try {
                     tarifaTUSD = tarifasComImposto.getTarifaTEComImposto();
                     tarifaTE = tarifasComImposto.getTarifaTUSDComImposto();
-                } catch (Exception e)
-                {
+                } catch (Exception e) {
                     tarifaTUSD = 0;
                     tarifaTE = 0;
-                }            }
+                }
+            }
         });
     }
 
-    public void buscarConsumoAtual(RequestQueue solicitacao, int idResidencia){
+    public void buscarConsumoAtual(RequestQueue solicitacao, int idResidencia) {
         Medidor.buscarConsumoAtual(idResidencia, solicitacao, new IMedidorBuscoConsumoAtual() {
             @Override
             public void onResultado(double consumoAtualResultado) {
@@ -211,7 +275,8 @@ public class Tela_Principal extends AppCompatActivity  {
             }
         });
     }
-    public void buscarConsumoDiario(RequestQueue solicitacao, int idResidencia){
+
+    public void buscarConsumoDiario(RequestQueue solicitacao, int idResidencia) {
         Medidor.buscarConsumoDiario(idResidencia, solicitacao, new IMedidorBuscarConsumoDiario() {
             @Override
             public void onResultado(double consumoDiarioResultado) {
@@ -219,7 +284,8 @@ public class Tela_Principal extends AppCompatActivity  {
             }
         });
     }
-    public void buscarUltimaFatura (RequestQueue solicitacao, int idResidencia){
+
+    public void buscarUltimaFatura(RequestQueue solicitacao, int idResidencia) {
         FaturaCliente.BuscarValorConsumoUltimaFatura(idResidencia, solicitacao, new IFatura() {
             @Override
             public void onResultado(FaturaCliente fatura) {
@@ -228,6 +294,7 @@ public class Tela_Principal extends AppCompatActivity  {
             }
         });
     }
+
     public double formatarDouble(double valor) {
 
         DecimalFormat df = new DecimalFormat("0.00");
@@ -235,12 +302,16 @@ public class Tela_Principal extends AppCompatActivity  {
         converter = converter.replace(",", ".");
         valor = Double.parseDouble(converter);
         return valor;
-    };
+    }
+
+    ;
+
     public void ExibirValorConsumoFaturaAtual(double consumoAtual, double valorAtual) {
 
         textInicioConsumoAtual.setText(consumoAtual + " kWh");
         textInicioValorConta.setText("R$ " + valorAtual);
     }
+
     public void ExibirValorConsumoFaturaProjetada(double consumoAtual) {
 
         consumoProjetado = formatarDouble(FaturaCliente.calcularProjecaoFatura(consumoAtual,
@@ -254,14 +325,16 @@ public class Tela_Principal extends AppCompatActivity  {
         textInicioValorContaProjetado.setText("R$ " + valorProjetado);
         textInicioConsumoProjetado.setText(consumoProjetado + " kWh");
     }
+
     public void ExibirDataAtual(TextView textViewData) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd 'de' MMM 'de' yyyy",
                 new Locale("pt", "BR"));
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
-    };
+    }
 
+    ;
 
 
 }

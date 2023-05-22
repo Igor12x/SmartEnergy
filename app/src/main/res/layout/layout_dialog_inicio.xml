@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDialogInicioContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:padding="20dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutDialogInicio"
+        android:layout_width="280dp"
+        android:layout_height="190dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/cbranco"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.018">
+
+        <EditText
+            android:id="@+id/txtAjuste"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_bold"
+            android:hint="@string/plainAjusteNum"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="@color/cazul_marinho"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView35"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/line_13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAjuste" />
+
+        <TextView
+            android:id="@+id/txtlimiteDisponivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="limite disponivel - R$200,00"
+            android:textColor="@color/agua_marinha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView35" />
+
+        <SeekBar
+            android:id="@+id/sliderAjuste"
+            style="@style/SeekBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="25dp"
+            android:max="1200"
+            android:thumb="@drawable/custom_seekbar"
+            android:valueFrom="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel"
+            app:trackHeight="5dp" />
+
+        <Button
+            android:id="@+id/btnAjustar"
+            android:layout_width="190dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/borda_edit_text_azul"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Ajustar"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.438"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderAjuste" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_bold"
+            android:inputType="textPersonName"
+            android:text="0"
+            android:textColor="@color/green"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="33dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_bold"
+            android:inputType="textPersonName"
+            android:text="1.200"
+            android:textColor="@color/end_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.917"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
