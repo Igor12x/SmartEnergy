@@ -19,10 +19,8 @@ public class Tela_Verificacao_Codigo extends AppCompatActivity {
 
     private ImageButton btnVoltaVerificacao;
     private Intent intentRedefinirSenha, intentEsqueceuSenha;
-    private EditText editTextNum1, editTextNum2, editTextNum3, editTextNum4;
     private EditText[] editTexts;
     private Button btnVerificarCodigo;
-    private String num1, num2, num3, num4, codigoVerificacaoDigitado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +29,7 @@ public class Tela_Verificacao_Codigo extends AppCompatActivity {
 
         btnVoltaVerificacao = findViewById(R.id.btnVoltaVerificacao);
         btnVerificarCodigo = findViewById(R.id.buttonCodVerificacao);
-        EditText[] editTexts = new EditText[]{
+        editTexts = new EditText[]{
                 findViewById(R.id.plainCodVerificacao1),
                 findViewById(R.id.plainCodVerificacao2),
                 findViewById(R.id.plainCodVerificacao3),
@@ -103,9 +101,6 @@ public class Tela_Verificacao_Codigo extends AppCompatActivity {
     public void validarCodigoVerificacao(String codigoDigitado) {
         SharedPreferences dadosRedefinirSenha = getSharedPreferences("dadosRecuperacao", Context.MODE_PRIVATE);
         String codigoVerificacaoEmail = dadosRedefinirSenha.getString("codigoVerificacao", "");
-
-        Log.i("Codigo Digitado", "Codigo: " + codigoDigitado);
-        Log.i("Codigo Shared", "Codigo: " + codigoVerificacaoEmail);
 
         if (codigoVerificacaoEmail.equals(codigoDigitado)) {
             SharedPreferences.Editor apagarCodigoVerificacao = dadosRedefinirSenha.edit();
