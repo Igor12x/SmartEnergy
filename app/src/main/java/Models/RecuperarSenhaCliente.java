@@ -8,11 +8,16 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import Interfaces.ICadastroCliente;
 import Interfaces.IRecuperarSenhaCodigoVerificacao;
 import Interfaces.IRecuperarSenhaRedefinir;
 
@@ -49,28 +54,34 @@ public class RecuperarSenhaCliente {
         solicitacao.add(envio);
     }
 
-    public static void RedefinirSenhaCliente(String senhaNova, RequestQueue solicitacao, IRecuperarSenhaRedefinir listiner) {
-        String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha/";
+    public static void ValidarCadastroCliente(Cliente redefinirSenhacliente, RequestQueue solicitacao, IRecuperarSenhaRedefinir listener) {
+        String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
 
-        StringRequest envio = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        JSONObject enviarCliente = new JSONObject();
+
+        try {
+            enviarCliente.put("email", redefinirSenhacliente.getEmail());
+            enviarCliente.put("senha", redefinirSenhacliente.getSenha());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.POST, url, enviarCliente, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
+
+                listener.onResultado(true);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                listener.onResultado(false);
+                Log.i("onErrorResponse", error.toString());
+
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("senhaNova", senhaNova);
-                return params;
-            }
-        };
+        });
         solicitacao.add(envio);
     }
-
 
     public String getCodigoVerificacao() {
         return codigoVerificacao;

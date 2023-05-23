@@ -8,6 +8,10 @@ public class Cliente {
     private String senha;
     private  int codigo;
 
+    public Cliente(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
 
     public Cliente(String nome, String cpf, String email, String telefone, String senha, int codigo) {
         this.nome = nome;
