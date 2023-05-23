@@ -43,9 +43,10 @@
         android:layout_height="49dp"
         android:background="@drawable/borda_redonda_edit_text"
         android:ems="10"
+        android:hint="@string/editTextNvSenha"
         android:inputType="textPersonName"
-        android:text="@string/editTextNvSenha"
         android:textColor="@color/lazul_marinho"
+        android:textColorHint="@color/lazul_marinho"
         app:layout_constraintBottom_toTopOf="@+id/editTextCfmSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +60,10 @@
         android:layout_marginBottom="304dp"
         android:background="@drawable/borda_redonda_edit_text"
         android:ems="10"
+        android:hint="@string/editTextCfmSenha"
         android:inputType="textPersonName"
-        android:text="@string/editTextCfmSenha"
         android:textColor="@color/lazul_marinho"
+        android:textColorHint="@color/lazul_marinho"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -88,10 +90,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icone_seta" />
+        app:srcCompat="@drawable/icone_seta"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

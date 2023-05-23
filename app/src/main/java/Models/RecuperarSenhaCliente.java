@@ -47,14 +47,14 @@ public class RecuperarSenhaCliente {
                 } else if (networkResponse != null && networkResponse.statusCode == 500) {
                     listener.onError("O email fornecido não possui cadastro.");
                 } else {
-                    listener.onError("Ocorreu um erro ao recuperar o código de verificação. Por favor, tente novamente mais tarde.");
+                    listener.onError("Um erro inesperado ocorreu. Tente novamente mais tarde.");
                 }
             }
         });
         solicitacao.add(envio);
     }
 
-    public static void ValidarCadastroCliente(Cliente redefinirSenhacliente, RequestQueue solicitacao, IRecuperarSenhaRedefinir listener) {
+    public static void RedefinirSenhaCliente(Cliente redefinirSenhacliente, RequestQueue solicitacao, Context contexto, IRecuperarSenhaRedefinir listener) {
         String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
 
         JSONObject enviarCliente = new JSONObject();
@@ -75,9 +75,14 @@ public class RecuperarSenhaCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                listener.onResultado(false);
-                Log.i("onErrorResponse", error.toString());
-
+                NetworkResponse networkResponse = error.networkResponse;
+                if (networkResponse != null && networkResponse.statusCode == 404) {
+                    listener.onError("O recurso solicitado não foi encontrado.");
+                } else if (networkResponse != null && networkResponse.statusCode == 500) {
+                    listener.onError("As senhas fornececidas estão inválidas.");
+                } else {
+                    listener.onError("Um erro inesperado ocorreu. Tente novamente mais tarde.");
+                }
             }
         });
         solicitacao.add(envio);
