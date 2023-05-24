@@ -64,7 +64,16 @@ public class Tela_Perfil extends AppCompatActivity {
                 final AlertDialog alertDialog = builder.create();
 
                 Button btnSim = view1.findViewById(R.id.btnSim);
-                btnSim.setOnClickListener(v -> desconectar(alertDialog));
+                //btnSim.setOnClickListener(v -> desconectar(alertDialog));
+                btnSim.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        desconectar(alertDialog);
+                        Intent intent = new Intent(Tela_Perfil.this, Tela_Inicial.class);
+                        startActivity(intent);
+                    }
+                });
+
 
                 Button btnNao = view1.findViewById(R.id.btnNao);
                 btnNao.setOnClickListener(v -> alertDialog.dismiss());

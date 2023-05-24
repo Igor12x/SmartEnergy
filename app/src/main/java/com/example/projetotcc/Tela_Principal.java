@@ -55,10 +55,9 @@ public class Tela_Principal extends AppCompatActivity {
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado,
             txtData, txtMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite, textLimite,
-            textView2, textAjusteLimite;
+            textView2, textAjusteLimite,
 
-            textView2, text_view_progress, text_view_progress2,
-            textAjusteLimite;
+            text_view_progress, text_view_progress2;
     private ProgressBar progressConsumoAtual, progressLimiteConsumo;
     private double tarifaTUSD;
     private double tarifaTE;
@@ -122,24 +121,6 @@ public class Tela_Principal extends AppCompatActivity {
             }
         });
 
-
-        //limite
-        AlertDialog.Builder builder = new AlertDialog.Builder(Tela_Principal.this);
-        builder.setTitle("Ajuste de limite");
-        builder.setMessage("Mensagem do diálogo");
-        builder.setPositiveButton("Definir", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // ação a ser executada ao clicar no botão positivo
-            }
-        });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // ação a ser executada ao clicar no botão negativo
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
         //evento do text de limite
         textAjusteLimite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,17 +136,22 @@ public class Tela_Principal extends AppCompatActivity {
                 TextView txtAjuste = view1.findViewById(R.id.txtAjuste);
                 SeekBar sliderAjuste = view1.findViewById(R.id.sliderAjuste);
                 Button btnAjustar = view1.findViewById(R.id.btnAjustar);
+                TextView txtValorLimite = view1.findViewById(R.id.txtValorLimite);
 
-                // Restaurar o valor do ajuste
+                if (valorAjuste == 0){
+                    valorAjuste = 1200;
+                }
+
+                //não meche, é sério
+                txtValorLimite.setText("" + valorAjuste);
+                sliderAjuste.setMax(Integer.parseInt(txtValorLimite.getText().toString()));
                 sliderAjuste.setProgress(valorAjuste);
-                txtAjuste.setText("R$" + valorAjuste);
+                txtAjuste.setText("" + valorAjuste);
 
                 sliderAjuste.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                        txtAjuste.setText("R$" + (int) progress);
-                        valorAjuste = progress;
-
+                        txtAjuste.setText("" + (int) progress);
                         // Define a posição da barra de progresso com o valor selecionado
                         sliderAjuste.setProgress(progress);
                     }
@@ -182,10 +168,11 @@ public class Tela_Principal extends AppCompatActivity {
                 btnAjustar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        int valorAjuste = sliderAjuste.getProgress();
-
                         // Faça a validação do valor do ajuste
-                        if (valorAjuste >= 0 && valorAjuste <= 1000) {
+                        if (valorAjuste >= 0) {
+
+                            valorAjuste = Integer.parseInt(txtAjuste.getText().toString());
+                            sliderAjuste.setMax(Integer.parseInt(txtAjuste.getText().toString()));
                             //Valor válido
                             Toast.makeText(Tela_Principal.this, "Limite ajustado para: R$" +
                                     valorAjuste, Toast.LENGTH_SHORT).show();

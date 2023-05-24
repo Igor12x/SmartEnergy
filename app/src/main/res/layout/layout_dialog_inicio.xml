@@ -30,7 +30,6 @@
             android:layout_marginTop="2dp"
             android:ems="10"
             android:fontFamily="@font/montserrat_bold"
-            android:hint="@string/plainAjusteNum"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColorHint="@color/cazul_marinho"
@@ -49,51 +48,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtAjuste" />
 
-        <TextView
-            android:id="@+id/txtlimiteDisponivel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="limite disponivel - R$200,00"
-            android:textColor="@color/agua_marinha"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView35" />
-
         <SeekBar
             android:id="@+id/sliderAjuste"
             style="@style/SeekBarStyle"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_marginTop="25dp"
-            android:max="1200"
+            android:layout_marginTop="37dp"
             android:thumb="@drawable/custom_seekbar"
-            android:valueFrom="0"
+            android:valueFrom="2000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel"
+            app:layout_constraintTop_toBottomOf="@+id/txtAjuste"
             app:trackHeight="5dp" />
 
         <Button
             android:id="@+id/btnAjustar"
             android:layout_width="190dp"
             android:layout_height="44dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="@color/borda_edit_text_azul"
             android:fontFamily="@font/montserrat_bold"
             android:text="Ajustar"
             app:cornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.438"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sliderAjuste" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAjuste" />
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:background="@null"
             android:ems="10"
             android:fontFamily="@font/montserrat_bold"
@@ -104,24 +89,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAjuste" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName5"
+        <TextView
+            android:id="@+id/txtValorLimite"
             android:layout_width="33dp"
             android:layout_height="19dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
             android:background="@null"
             android:ems="10"
             android:fontFamily="@font/montserrat_bold"
             android:inputType="textPersonName"
-            android:text="1.200"
             android:textColor="@color/end_color"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.917"
+            app:layout_constraintHorizontal_bias="0.991"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtlimiteDisponivel" />
+            app:layout_constraintTop_toBottomOf="@+id/txtAjuste" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
