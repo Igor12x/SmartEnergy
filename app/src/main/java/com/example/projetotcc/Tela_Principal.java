@@ -142,7 +142,7 @@ public class Tela_Principal extends AppCompatActivity {
                     valorAjuste = 1200;
                 }
 
-                //não meche, é sério
+                //não mexe, é sério
                 txtValorLimite.setText("" + valorAjuste);
                 sliderAjuste.setMax(Integer.parseInt(txtValorLimite.getText().toString()));
                 sliderAjuste.setProgress(valorAjuste);
