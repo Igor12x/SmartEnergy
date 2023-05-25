@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +21,13 @@ import com.android.volley.toolbox.Volley;
 import Interfaces.ILoginCliente;
 import Models.Cliente;
 import Models.ClienteLogin;
+import Models.MascaraCPF;
 
 public class Tela_Login extends AppCompatActivity {
     private TextView txtCpf, txtSenha;
     private Button btnLogar;
 
-    private ImageButton btnVoltaLogin;
+    private ImageButton btnVoltaLogin, btnLogMostrarSenha;
     private String cpfCliente, senhaCliente;
     private Intent intent;
     @Override
@@ -39,12 +43,14 @@ public class Tela_Login extends AppCompatActivity {
         txtCpf = findViewById(R.id.txtCpf);
         txtSenha = findViewById(R.id.txtSenha);
         btnLogar = findViewById(R.id.btnLog);
-
-        btnVoltaLogin = findViewById(R.id.imageButton3);
-
+        btnVoltaLogin = findViewById(R.id.btnVoltaLogin);
+        btnLogMostrarSenha = findViewById(R.id.btnLogMostrarSenha);
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
 
 
+        txtCpf.addTextChangedListener(new MascaraCPF((EditText) txtCpf, 11) );
+
+        //voltando para tela inicial
         btnVoltaLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +75,22 @@ public class Tela_Login extends AppCompatActivity {
         Log.d("ERRO LOGIN", "login" + e);
     }
 
+
+        //evento de mudança do icone da senha
+        btnLogMostrarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !txtSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                txtSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnLogMostrarSenha.setImageResource(mostrarSenha ? R.drawable.olho_fechado : R.drawable.icone_olho_azul);
+            }
+
+
+        });
 
     }
 
@@ -98,13 +120,3 @@ public class Tela_Login extends AppCompatActivity {
         });
     }
 }
-/*SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-
-if (sharedPreferences.contains("cpf") && sharedPreferences.contains("senha")) {
-    String cpf = sharedPreferences.getString("cpf", "");
-    String senha = sharedPreferences.getString("senha", "");
-
-    // Use as informações de CPF e senha aqui
-} else {
-    // SharedPreferences não contém informações de CPF e senha
-}*/

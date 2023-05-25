@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/telaLogin"
+    android:id="@+id/constrainLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lazul_marinho"
@@ -84,19 +84,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txtCpf"
         app:layout_constraintVertical_bias="0.431" />
 
-    <ImageView
-        android:id="@+id/imgLogSenha"
-        android:layout_width="32dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="252dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtSenha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtSenha"
-        app:layout_constraintTop_toTopOf="@+id/txtSenha"
-        app:layout_constraintVertical_bias="0.448"
-        app:srcCompat="@drawable/icone_olho_azul" />
-
     <Button
         android:id="@+id/btnLog"
         android:layout_width="290dp"
@@ -173,7 +160,7 @@
         app:srcCompat="@drawable/logo_ofc" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnVoltaLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -183,6 +170,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icone_seta" />
+
+    <ImageButton
+        android:id="@+id/btnLogMostrarSenha"
+        android:layout_width="51dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/brancoazulado"
+        app:layout_constraintEnd_toEndOf="@+id/txtSenha"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="@+id/txtSenha"
+        app:layout_constraintTop_toTopOf="@+id/txtSenha"
+        app:srcCompat="@drawable/icone_olho_azul" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

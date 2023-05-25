@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +21,15 @@ import Interfaces.ICadastroCliente;
 import Models.CadastroCliente;
 import Models.Cliente;
 import Models.ClienteLogin;
+import Models.MascaraCPF;
+import Models.MascaraTelefone;
 
 public class Tela_Cadastro extends AppCompatActivity {
     private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
     private Button btnCad;
 
-    private ImageButton btnVoltaCad;
+    private ImageButton btnVoltaCad, btnCadSenha, btnCadConfirmaSenha;
+    private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,10 @@ public class Tela_Cadastro extends AppCompatActivity {
         plainCadConfirmarSenha = findViewById(R.id.plainCadConfirmarSenha);
         btnCad = findViewById(R.id.btnCad);
         btnVoltaCad = findViewById(R.id.btnVoltaCad);
+        btnCadSenha = findViewById(R.id.btnCadSenha);
+        btnCadConfirmaSenha = findViewById(R.id.btnCadConfirmaSenha);
+        plainCadCpf.addTextChangedListener(new MascaraCPF((EditText) plainCadCpf,11));
+        plainCadTel.addTextChangedListener(new MascaraTelefone((EditText) plainCadTel,11 ));
 
         //voltando para tela inicial
         btnVoltaCad.setOnClickListener(new View.OnClickListener() {
@@ -61,17 +71,42 @@ public class Tela_Cadastro extends AppCompatActivity {
                 plainCadSenha.getText().toString());
                 ValidarCadastro(solicitacao, cadastrar);
                 plainCadNome.setText("Cadastrado com sucesso");
-            }
-        });
-
-        //evento botão cadastrar, redirecionando a tela de seja bem-vindo
-        btnCad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
                 startActivity(intent);
             }
         });
+        btnCadSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !plainCadSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                plainCadSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnCadSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+
+
+            }
+
+
+        });
+
+        btnCadConfirmaSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean mostrarSenha = !plainCadConfirmarSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+
+                plainCadConfirmarSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+
+                // Atualize o ícone do botão
+                btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
+            }
+
+
+        });
+
 
     }
     public void ValidarCadastro(RequestQueue solicitacao, CadastroCliente cadastrar) {
@@ -82,4 +117,8 @@ public class Tela_Cadastro extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }
