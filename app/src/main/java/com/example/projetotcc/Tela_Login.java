@@ -62,6 +62,7 @@ public class Tela_Login extends AppCompatActivity {
                 ValidarLogin(solicitacao, cpfCliente, senhaCliente);
                 txtCpf.setText("");
                 txtSenha.setText("");
+                Intent intent = new Intent(Tela_Login.this, Tela_Principal.class);
             }
         });
 

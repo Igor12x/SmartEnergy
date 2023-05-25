@@ -160,18 +160,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLog"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="198dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textLogTitulo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_ofc" />
-
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
@@ -183,6 +171,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icone_seta" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="175dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textLogTitulo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/logo_back_clara" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

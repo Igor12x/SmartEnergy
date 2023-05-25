@@ -18,24 +18,40 @@
             android:name=".Tela_Bem_Vindo"
             android:exported="false" />
         <activity
-            android:name=".Tela_Inicial"
+            android:name=".Tela_Cadastro"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Criar_Nova_Senha"
             android:exported="false" />
         <activity
             android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
-            android:name=".Tela_Perfil"
+            android:name=".Tela_Esqueceu_Senha"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Principal"
             android:exported="false" />
         <activity
             android:name=".Tela_Login"
             android:exported="false" />
         <activity
-            android:name=".Tela_Cadastro"
+            android:name=".Tela_Perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Recuperacao_Senha"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Verificacao_Senha"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Carregamento"
             android:exported="false" />
 
         <activity
-            android:name=".Tela_Principal"
+            android:name=".Tela_Inicial"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
