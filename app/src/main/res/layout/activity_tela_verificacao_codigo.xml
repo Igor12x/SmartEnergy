@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brancoazulado"
-    tools:context=".MainActivity">
+    tools:context=".Tela_Verificacao_Codigo">
 
     <TextView
         android:id="@+id/textCodVerificacaoTitulo"
         android:layout_width="355dp"
         android:layout_height="41dp"
         android:layout_marginStart="28dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="28dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/textTitulo_codVerificacao"
@@ -21,19 +22,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="118dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textCodVerificacaoDescricao"
         android:layout_width="280dp"
         android:layout_height="55dp"
-
         android:layout_marginStart="37dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="94dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/textDescricao_codVerificacao"
         android:textColor="@color/lazul_marinho"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoTitulo" />
@@ -49,11 +50,14 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="40sp"
         android:textColor="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/plainCodVerificacao2"
@@ -66,11 +70,14 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="40sp"
         android:textColor="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintStart_toEndOf="@+id/plainCodVerificacao1"
-        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/plainCodVerificacao3"
@@ -84,12 +91,15 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="40sp"
         android:textColor="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintEnd_toStartOf="@+id/plainCodVerificacao4"
         app:layout_constraintStart_toEndOf="@+id/plainCodVerificacao2"
-        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/plainCodVerificacao4"
@@ -102,11 +112,14 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="1"
+        android:textSize="40sp"
         android:textColor="@color/preto"
         app:layout_constraintBottom_toTopOf="@+id/buttonCodVerificacao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/buttonCodVerificacao"
@@ -114,43 +127,17 @@
         android:layout_height="66dp"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="208dp"
+        android:layout_marginBottom="252dp"
         android:backgroundTint="@color/lazul_marinho"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/codVerificacao_botao"
         android:textColor="@color/lbranco"
         android:textSize="19sp"
         app:cornerRadius="47dp"
-        app:layout_constraintBottom_toTopOf="@+id/textCodVerificacaoNaoRecebeu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textCodVerificacaoNaoRecebeu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="@string/codVerificacao_textRodape"
-        android:textColor="@color/lazul_marinho"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textCodVerificacaoReenviar"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textCodVerificacaoReenviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="101dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="@string/codVerificacao_textRodape2"
-        android:textColor="@color/lazul_cinza_claro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/btnVoltaVerificacao"
@@ -158,11 +145,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:src="@drawable/icone_seta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

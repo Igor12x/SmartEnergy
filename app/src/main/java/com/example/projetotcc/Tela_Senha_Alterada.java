@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Tela_Recuperacao_Senha extends AppCompatActivity {
+public class Tela_Senha_Alterada extends AppCompatActivity {
 
     private ImageButton btnVoltaSenhaAlt;
 
@@ -17,7 +17,7 @@ public class Tela_Recuperacao_Senha extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_recuperecao_senha);
+        setContentView(R.layout.activity_tela_senha_alterada);
 
         //referencias
         btnVoltaSenhaAlt = findViewById(R.id.btnVoltaSenhaAlt);
@@ -27,7 +27,7 @@ public class Tela_Recuperacao_Senha extends AppCompatActivity {
         btnVoltaSenhaAlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Criar_Nova_Senha.class);
+                Intent intent = new Intent(getApplicationContext(), Tela_Redefinir_Senha.class);
                 startActivity(intent);
             }
         });

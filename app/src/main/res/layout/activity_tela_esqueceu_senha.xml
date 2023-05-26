@@ -37,19 +37,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextEmail"
         android:layout_width="345dp"
         android:layout_height="61dp"
+        android:autofillHints=""
         android:background="@drawable/edit_text_equeceu_senha"
         android:ems="10"
         android:fontFamily="@font/mplusrrounded1c"
         android:gravity="fill"
-        android:inputType="textPersonName"
+        android:hint="@string/plainEsqSenhaEmail"
+        android:inputType="textEmailAddress"
         android:paddingStart="20dp"
-        android:text="@string/plainEsqSenhaEmail"
-        android:textColor="@color/lazul_cinza_claro"
+        android:paddingEnd="20dp"
+        android:textColor="@color/lazul_marinho"
         android:textColorHighlight="@color/lazul_marinho"
-        android:textColorHint="@color/lazul_marinho"
+        android:textColorHint="@color/lazul_cinza_claro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -70,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintVertical_bias="0.142" />
 
     <TextView
@@ -103,16 +105,17 @@
         app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <ImageButton
-        android:id="@+id/btnVoltaEsqueci"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnVoltaEsqueceuSenha"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icone_seta" />
+        app:srcCompat="@drawable/icone_seta"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

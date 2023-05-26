@@ -6,11 +6,13 @@ public class Cliente {
     private String cpf;
     private String email;
     private String telefone;
-
     private String senha;
-
     private  int codigo;
 
+    public Cliente(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
 
     public Cliente(String nome, String sobrenome, String cpf, String email, String telefone, String senha, int codigo) {
         this.nome = nome;

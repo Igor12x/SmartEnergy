@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brancoazulado"
-    tools:context=".MainActivity">
+    tools:context=".Tela_Senha_Alterada">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
