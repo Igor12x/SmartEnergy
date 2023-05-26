@@ -6,35 +6,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class Tela_Inicial extends AppCompatActivity {
-    private Button iBtnLogin, iBtnCad;
+    private Button btnCadastro, btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
-
         //referencias
-        iBtnLogin = findViewById(R.id.iBtnLogin);
-        iBtnCad = findViewById(R.id.iBtnCad);
+        btnCadastro = findViewById(R.id.btnCadastro);
+        btnLogin = findViewById(R.id.btnLogin);
 
-        //Ir para tela de Login
-        iBtnLogin.setOnClickListener(new View.OnClickListener() {
+        //direcionando para tela Cadastro
+        btnCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
+                Intent intent = new Intent(getApplicationContext(),Tela_Cadastro.class);
                 startActivity(intent);
             }
         });
 
-
-        //Ir para tela de Cadastro
-        iBtnCad.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Cadastro.class);
+                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
                 startActivity(intent);
             }
         });

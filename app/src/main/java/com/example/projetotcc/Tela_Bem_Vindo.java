@@ -26,5 +26,9 @@ public class Tela_Bem_Vindo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
     }
 }
