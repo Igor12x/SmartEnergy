@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,8 +26,11 @@ import Models.MascaraCPF;
 import Models.MascaraTelefone;
 
 public class Tela_Cadastro extends AppCompatActivity {
-    private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha;
+    private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha, txtTermosUso;
     private Button btnCad;
+    private CheckBox checkBoxTermos;
+    private ImageButton btnVoltaCad;
+
 
     private ImageButton btnVoltaCad, btnCadSenha, btnCadConfirmaSenha;
     private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
@@ -50,6 +54,16 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnCadConfirmaSenha = findViewById(R.id.btnCadConfirmaSenha);
         plainCadCpf.addTextChangedListener(new MascaraCPF((EditText) plainCadCpf,11));
         plainCadTel.addTextChangedListener(new MascaraTelefone((EditText) plainCadTel,11 ));
+        checkBoxTermos = findViewById(R.id.checkBoxTermos);
+        txtTermosUso = findViewById(R.id.txtTermosUso);
+
+        txtTermosUso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Tela_Cadastro.this, Tela_Termos_Uso.class);
+                startActivity(intent);
+            }
+        });
 
         //voltando para tela inicial
         btnVoltaCad.setOnClickListener(new View.OnClickListener() {
@@ -63,16 +77,21 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CadastroCliente cadastrar = new CadastroCliente(
-                plainCadNome.getText().toString(),
-                plainCadCpf.getText().toString(),
-                plainCadEmail.getText().toString(),
-                plainCadTel.getText().toString(),
-                plainCadSenha.getText().toString());
-                ValidarCadastro(solicitacao, cadastrar);
-                plainCadNome.setText("Cadastrado com sucesso");
-                Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
-                startActivity(intent);
+                if (checkBoxTermos.isChecked()){
+                    CadastroCliente cadastrar = new CadastroCliente(
+                            plainCadNome.getText().toString(),
+                            plainCadCpf.getText().toString(),
+                            plainCadEmail.getText().toString(),
+                            plainCadTel.getText().toString(),
+                            plainCadSenha.getText().toString());
+                    ValidarCadastro(solicitacao, cadastrar);
+                    plainCadNome.setText("Cadastrado com sucesso");
+
+                    Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "Por favor, aceite os termos de uso", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnCadSenha.setOnClickListener(new View.OnClickListener() {
@@ -102,15 +121,14 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 // Atualize o ícone do botão
                 btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
-                
+
 
             }
 
 
         });
-
-
     }
+
     public void ValidarCadastro(RequestQueue solicitacao, CadastroCliente cadastrar) {
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {
             @Override
@@ -119,8 +137,4 @@ public class Tela_Cadastro extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }

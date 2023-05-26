@@ -107,6 +107,28 @@
     <!-- *******************************  String Perfil - BACK END *****************************************-->
     <string name="perfil_numero">Nº %s</string>
 
+    <!-- *******************************  String Cadastro ***************************************-->
+    <string name="lerTermos"><u>Leia os termos de uso</u></string>
+    <string name="termosDeUso">Este Termo de Uso e Privacidade estabelece as diretrizes para o uso dos serviços fornecidos por este aplicativo de acordo com a Lei Geral de Proteção de Dados ("LGPD") e demais legislações aplicáveis à proteção de dados pessoais.\n\n
+Consentimento\n
+Ao utilizar nosso Serviço, você concorda e aceita este Termo, autorizando expressamente a coleta, o uso, o armazenamento e o compartilhamento dos seus dados pessoais conforme descrito neste documento. Caso não concorde com este Termo, por favor, não utilize nosso Serviço.\n\n
+Coleta de Dados Pessoais\n
+2.1. Coletamos os dados pessoais fornecidos por você de forma voluntária, como nome, endereço de e-mail, número de telefone, dados de pagamento e outras informações necessárias para a prestação do Serviço.\n
+2.2. Podemos coletar dados de forma automática, como endereço IP, tipo de dispositivo, navegador utilizado, localização geográfica aproximada e informações de acesso, para fins estatísticos e de segurança.\n\n
+Uso dos Dados Pessoais\n
+3.1. Utilizamos seus dados pessoais para fornecer, operar, melhorar e personalizar o Serviço, bem como para responder a suas solicitações e oferecer suporte ao usuário.\n
+3.2. Seu endereço de e-mail poderá ser utilizado para o envio de informações, atualizações, promoções ou comunicações relacionadas ao Serviço. Caso não deseje receber tais comunicações, você poderá optar por cancelar a inscrição a qualquer momento.\n
+3.3. Poderemos utilizar dados de forma agregada e anonimizada para análises internas, desenvolvimento de produtos e serviços, e para melhorar a experiência do usuário.\n\n
+Compartilhamento de Dados Pessoais\n
+4.1. Não compartilhamos seus dados pessoais com terceiros, exceto quando necessário para a prestação do Serviço, cumprimento de obrigações legais, proteção dos nossos direitos ou se você tiver dado seu consentimento prévio.\n
+4.2. Podemos contratar prestadores de serviços terceirizados, como processadores de pagamentos ou provedores de serviços de hospedagem, que terão acesso aos seus dados pessoais apenas para executar tarefas específicas em nosso nome, e serão obrigados a proteger esses dados de acordo com as mesmas diretrizes deste Termo.\n\n
+Armazenamento e Segurança dos Dados\n
+5.1. Seus dados pessoais serão armazenados em servidores seguros e protegidos por medidas técnicas e organizacionais adequadas.\n
+5.2. Envidamos esforços razoáveis para proteger seus dados pessoais contra perda, uso indevido, acesso não autorizado, divulgação, alteração ou destruição. No entanto, não podemos garantir a segurança absoluta dos dados transmitidos pela Internet.\n\n
+Direitos do Titular dos Dados\n
+6.1. Você tem o direito de acessar, corrigir, atualizar e excluir seus dados pessoais, bem como de obter informações sobre o tratamento desses dados.\n
+6.2. Caso deseje exercer seus direitos ou tenha dúvidas\n\n
+Declaro conhecer e concordar com as disposições do Regimento do SMART ENERGY, Termos de Uso e Política de Privacidade, Política de Segurança da Informação e Privacidade e Política de Propriedade Intelectual.</string>
 
 
 </resources>
