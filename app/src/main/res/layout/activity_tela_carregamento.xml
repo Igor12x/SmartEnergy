@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tela_Carregamento"
-    android:backgroundTint="@color/cbranco_acinzentado">
+    android:background="@color/brancoazulado"
+    tools:context=".Tela_Carregamento">
 
-    <ImageView
-        android:id="@+id/imageView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icone_carregar" />
-
-
-
+  <ImageView
+      android:id="@+id/imageView36"
+      android:layout_width="424dp"
+      android:layout_height="538dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@mipmap/logo_back_azul" />
 </androidx.constraintlayout.widget.ConstraintLayout>

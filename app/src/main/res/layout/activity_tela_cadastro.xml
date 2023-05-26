@@ -7,6 +7,24 @@
     android:background="@color/cbranco_acinzentado"
     tools:context=".Tela_Login">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                tools:context=".Tela_Cadastro">
+
     <TextView
         android:id="@+id/textCadTitulo"
         android:layout_width="193dp"
@@ -175,6 +193,17 @@
         app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
         app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
 
+    <ImageView
+        android:id="@+id/imgCadSenha"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
+        app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_olho_branco" />
+
     <EditText
         android:id="@+id/plainCadConfirmarSenha"
         android:layout_width="291dp"
@@ -191,6 +220,17 @@
         app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
         app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
         app:layout_constraintTop_toBottomOf="@+id/plainCadSenha" />
+
+    <ImageView
+        android:id="@+id/imgCadConfirmarSenha"
+        android:layout_width="32dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
+        app:layout_constraintVertical_bias="0.21"
+        app:srcCompat="@drawable/icone_olho_branco" />
 
     <EditText
         android:id="@+id/plainCadCpf"
@@ -281,6 +321,11 @@
         app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
         app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
         app:srcCompat="@drawable/icone_olho_branco" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

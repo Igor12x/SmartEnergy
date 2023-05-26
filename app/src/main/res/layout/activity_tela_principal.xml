@@ -483,16 +483,6 @@
                     app:layout_constraintVertical_bias="0.068" />
 
                 <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="129dp"
-                    android:layout_height="99dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/logo_ofc" />
-
-                <ImageView
                     android:id="@+id/imageView16"
                     android:layout_width="378dp"
                     android:layout_height="406dp"
@@ -543,6 +533,16 @@
                     android:src="@drawable/img_usuario"
                     app:civ_border_color="@color/cinza_borda"
                     app:civ_border_width="2dp"/>
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.87"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/logo_back_clara" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

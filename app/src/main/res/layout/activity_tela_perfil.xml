@@ -46,17 +46,6 @@
                     app:srcCompat="@drawable/retangulo3" />
 
                 <ImageView
-                    android:id="@+id/imageView25"
-                    android:layout_width="294dp"
-                    android:layout_height="161dp"
-                    android:layout_marginTop="48dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.606"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/logo1" />
-
-                <ImageView
                     android:id="@+id/imageView27"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -332,6 +321,17 @@
                     app:layout_constraintHorizontal_bias="0.545"
                     app:layout_constraintStart_toStartOf="@+id/imageView28"
                     app:layout_constraintTop_toBottomOf="@+id/plainBairroPerfil" />
+
+                <ImageView
+                    android:id="@+id/imageView37"
+                    android:layout_width="402dp"
+                    android:layout_height="210dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.444"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/icon_logo_back" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

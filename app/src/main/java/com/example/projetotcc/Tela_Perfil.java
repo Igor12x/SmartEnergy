@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -74,10 +75,9 @@ public class Tela_Perfil extends AppCompatActivity {
                     }
                 });
 
-
                 Button btnNao = view1.findViewById(R.id.btnNao);
-                btnNao.setOnClickListener(v -> alertDialog.dismiss());
 
+                btnNao.setOnClickListener(v -> alertDialog.dismiss());
                 alertDialog.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -88,13 +88,13 @@ public class Tela_Perfil extends AppCompatActivity {
 
     private void desconectar(AlertDialog alertDialog) {
         try {
-            Handler handler = new Handler();
-            handler.postDelayed(() -> {
+            //Handler handler = new Handler();
+            //handler.postDelayed(() -> {
                 alertDialog.dismiss();
                 limparSharedPreferences();
-                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
-                startActivity(intent);
-            }, 500); // ajuste o valor do atraso conforme necessário
+                //Intent intent = new Intent(getApplicationContext(), Tela_Inicial.class);
+                //startActivity(intent);
+           // }, 500); // ajuste o valor do atraso conforme necessário
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(Tela_Perfil.this, "Ocorreu um erro ao desconectar. Por favor, tente novamente.", Toast.LENGTH_SHORT).show();

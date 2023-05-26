@@ -63,8 +63,10 @@ public class Tela_Login extends AppCompatActivity {
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cpfCliente = txtCpf.getText().toString();
+                cpfCliente = txtCpf.getText().toString().replaceAll("[^\\d]", "");
                 senhaCliente = txtSenha.getText().toString();
+                Log.d("CPFLOGIN: ", "" + cpfCliente);
+                Log.d("SENHALOGIN: ", "" + senhaCliente);
                 ValidarLogin(solicitacao, cpfCliente, senhaCliente);
                 txtCpf.setText("");
                 txtSenha.setText("");
