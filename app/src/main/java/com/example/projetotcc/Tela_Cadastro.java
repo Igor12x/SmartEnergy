@@ -32,7 +32,7 @@ public class Tela_Cadastro extends AppCompatActivity {
     private ImageButton btnVoltaCad;
 
 
-    private ImageButton btnVoltaCad, btnCadSenha, btnCadConfirmaSenha;
+    private ImageButton btnCadSenha, btnCadConfirmaSenha;
     private String nomeCliente, senhaCliente, cpfCliente, emailCliente, telCliente, senha1, senha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
