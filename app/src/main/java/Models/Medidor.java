@@ -105,8 +105,8 @@ public class Medidor {
             Calendar calendario = Calendar.getInstance();
             int mesAtual = calendario.get(Calendar.MONTH);
             calendario.setTime(dataFormata);
-            int mes = calendario.get(Calendar.MONTH);
-            return mes == mesAtual;
+            int mesRecebido = calendario.get(Calendar.MONTH);
+            return mesRecebido == mesAtual;
         } catch (ParseException e) {
             e.printStackTrace();
         }
