@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -98,8 +100,10 @@ public class Tela_Principal extends AppCompatActivity {
 
         textLimite = findViewById(R.id.textLimite);
         textLimite.setText(limiteConsumo + " kWh");
-
-
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        Medidor.buscarConsumoAtual(database, firebaseAuth);
+        Medidor.buscarConsumoDiario(database, firebaseAuth);
 
         textView2 = findViewById(R.id.textView2);
         SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
@@ -202,8 +206,6 @@ public class Tela_Principal extends AppCompatActivity {
                         Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
                         // usar residenciaSelecionada para buscar informações adicionais
                         buscarTarifas(solicitacao, residenciaSelecionada.getCodigo());
-                        buscarConsumoAtual(solicitacao, residenciaSelecionada.getCodigo());
-                        buscarConsumoDiario(solicitacao, residenciaSelecionada.getCodigo());
                         buscarUltimaFatura(solicitacao, residenciaSelecionada.getCodigo());
                     }
 
@@ -237,37 +239,6 @@ public class Tela_Principal extends AppCompatActivity {
                     tarifaTUSD = 0;
                     tarifaTE = 0;
                 }
-            }
-        });
-    }
-
-    public void buscarConsumoAtual(RequestQueue solicitacao, int idResidencia) {
-        Medidor.buscarConsumoAtual(idResidencia, solicitacao, new IMedidorBuscoConsumoAtual() {
-            @Override
-            public void onResultado(double consumoAtualResultado) {
-                consumoAtual = formatarDouble(consumoAtualResultado);
-                textConsumoAtualLimite.setText(consumoAtual + " kWh");
-                valorAtual = formatarDouble(FaturaCliente.calcularValorFaturaAtual(tarifaTUSD, tarifaTE,
-                        consumoAtual));
-                ExibirValorConsumoFaturaAtual(consumoAtual, valorAtual);
-                ExibirValorConsumoFaturaProjetada(consumoAtual);
-
-                //definindo a porcentagem que será preenchida pelo gráfico
-                double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
-                double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
-                text_view_progress.setText((int)grausGraficoConsumoAtual + "%");
-                text_view_progress2.setText((int)grausGraficoLimiteConsumo + "%");
-                progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
-                progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
-            }
-        });
-    }
-
-    public void buscarConsumoDiario(RequestQueue solicitacao, int idResidencia) {
-        Medidor.buscarConsumoDiario(idResidencia, solicitacao, new IMedidorBuscarConsumoDiario() {
-            @Override
-            public void onResultado(double consumoDiarioResultado) {
-                txtMedidorConsumoDiario.setText(consumoDiarioResultado + " kWh");
             }
         });
     }
@@ -321,7 +292,7 @@ public class Tela_Principal extends AppCompatActivity {
         textViewData.setText(dataAtual);
     }
 
-    ;
+
 
 
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "483743324313",
+    "firebase_url": "https://smartenergyfirebase-420ab-default-rtdb.firebaseio.com",
+    "project_id": "smartenergyfirebase-420ab",
+    "storage_bucket": "smartenergyfirebase-420ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483743324313:android:afe245f4a82fd786d78008",
+        "android_client_info": {
+          "package_name": "com.example.projetotcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483743324313-1h79erhildm9b5huftukum4mf808gfq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPZfPOWNa-tiT68bjpX9_oTiaw4UupNm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483743324313-1h79erhildm9b5huftukum4mf808gfq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

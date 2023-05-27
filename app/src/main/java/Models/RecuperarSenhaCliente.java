@@ -30,7 +30,8 @@ public class RecuperarSenhaCliente {
     }
 
     public static void ReceberCodigoVerificacao(String email, RequestQueue solicitacao, Context contexto, IRecuperarSenhaCodigoVerificacao listener) {
-        String url = "http://localhost:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
+        String url = "http://10.0.2.2:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
+        //String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
 
         StringRequest envio = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -55,7 +56,8 @@ public class RecuperarSenhaCliente {
     }
 
     public static void RedefinirSenhaCliente(Cliente redefinirSenhacliente, RequestQueue solicitacao, Context contexto, IRecuperarSenhaRedefinir listener) {
-        String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
+        //String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
+        String url = "http://10.0.2.2:5000/api/RecuperarSenha/RedefinirSenha";
 
         JSONObject enviarCliente = new JSONObject();
 
