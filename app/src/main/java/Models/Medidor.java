@@ -1,12 +1,11 @@
 package Models;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,48 +20,33 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Medidor {
-
-    public static void buscarConsumoAtual(FirebaseDatabase database, FirebaseAuth firebaseAuth){
-
-        String userEmail = "igorbtenorioidi@gmail.com";
-        String userPassword = "123456789";
-
-        firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+private static double consumoTotal = 0.0;
+    public static double buscarConsumoMesAtual(FirebaseDatabase database, int idResidencia, Context context){
 
                             DatabaseReference referencia = database.getReference("Medidor");
                             referencia.addValueEventListener(new ValueEventListener() {
-                                double consumoTotal = 0.0;
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for (DataSnapshot idSnapshot :snapshot.getChildren()){
-                                        Long idResidenciaResponse = idSnapshot.child("idResidencia").getValue(Long.class);
-                                        double consumoResponse = idSnapshot.child("consumo").getValue(Double.class) != null ? idSnapshot.child("consumo").getValue(Double.class) : 0.0;
-                                        String dataResponse = idSnapshot.child("data").getValue(String.class);
-                                        if (idResidenciaResponse != null && idResidenciaResponse == 1 && verificarMesAtual(dataResponse)) {
-                                            consumoTotal += consumoResponse;
-                                        }
 
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dadosPai) {
+                                    for (DataSnapshot dadosFilho :dadosPai.getChildren()){
+
+                                        Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
+                                        double consumo = dadosFilho.child("consumo").getValue(Double.class) != null ? dadosFilho.child("consumo").getValue(Double.class) : 0.0;
+                                        String data = dadosFilho.child("data").getValue(String.class);
+
+                                        if (idResidenciaResponse != null && idResidenciaResponse == idResidencia && verificarMesAtual(data)) {
+                                            consumoTotal += consumo;
+                                        }
                                     }
                                     System.out.println("Consumo Total: " + consumoTotal);
                                 }
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-
+                                    Toast.makeText(context, "Não foi possível ler o seu consumo desse mês", Toast.LENGTH_SHORT).show();
+                                    Log.e("DatabaseError", "Erro ao acessar banco de dados do Firebase: " + error.getMessage());
                                 }
                             });
-                        } else {
-                            // Autenticação falhou, trate o erro aqui
-                            Exception exception = task.getException();
-                            if (exception != null) {
-                                Log.e("Authentication", "Erro de autenticação: " + exception.getMessage());
-                            }
-                        }
-                    }
-                });
+                            return consumoTotal;
     }
     public static void buscarConsumoDiario(FirebaseDatabase database, FirebaseAuth firebaseAuth) {
 
@@ -86,14 +70,10 @@ public class Medidor {
                 System.out.println("consumoTotalDiario: " + consumoTotalDiario);
                 System.out.println("currentDay: " + currentDay);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Trate o cancelamento da consulta, se necessário
             }
         });
-
-
     }
     public static boolean verificarMesAtual(String data) {
         if (data == null || data.isEmpty()) {

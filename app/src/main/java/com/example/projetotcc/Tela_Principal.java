@@ -4,23 +4,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.graphics.drawable.GradientDrawable;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -37,8 +32,6 @@ import java.util.Locale;
 
 import Interfaces.ICompanhiaEletrica;
 import Interfaces.IFatura;
-import Interfaces.IMedidorBuscarConsumoDiario;
-import Interfaces.IMedidorBuscoConsumoAtual;
 import Interfaces.IResidencia;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
@@ -102,7 +95,7 @@ public class Tela_Principal extends AppCompatActivity {
         textLimite.setText(limiteConsumo + " kWh");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        Medidor.buscarConsumoAtual(database, firebaseAuth);
+        Medidor.buscarConsumoMesAtual(database, firebaseAuth);
         Medidor.buscarConsumoDiario(database, firebaseAuth);
 
         textView2 = findViewById(R.id.textView2);
@@ -291,6 +284,7 @@ public class Tela_Principal extends AppCompatActivity {
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     }
+
 
 
 
