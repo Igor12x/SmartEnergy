@@ -21,59 +21,74 @@ import java.util.Locale;
 
 public class Medidor {
 private static double consumoTotal = 0.0;
+private static double consumoTotalDiario = 0.0;
     public static double buscarConsumoMesAtual(FirebaseDatabase database, int idResidencia, Context context){
+        try {
 
-                            DatabaseReference referencia = database.getReference("Medidor");
-                            referencia.addValueEventListener(new ValueEventListener() {
+            DatabaseReference referencia = database.getReference("Medidor");
+            referencia.addValueEventListener(new ValueEventListener() {
 
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dadosPai) {
-                                    for (DataSnapshot dadosFilho :dadosPai.getChildren()){
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dadosPai) {
+                    for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
 
-                                        Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
-                                        double consumo = dadosFilho.child("consumo").getValue(Double.class) != null ? dadosFilho.child("consumo").getValue(Double.class) : 0.0;
-                                        String data = dadosFilho.child("data").getValue(String.class);
+                        Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
+                        double consumo = dadosFilho.child("consumo").getValue(Double.class) != null ? dadosFilho.child("consumo").getValue(Double.class) : 0.0;
+                        String data = dadosFilho.child("data").getValue(String.class);
 
-                                        if (idResidenciaResponse != null && idResidenciaResponse == idResidencia && verificarMesAtual(data)) {
-                                            consumoTotal += consumo;
-                                        }
-                                    }
-                                    System.out.println("Consumo Total: " + consumoTotal);
-                                }
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(context, "Não foi possível ler o seu consumo desse mês", Toast.LENGTH_SHORT).show();
-                                    Log.e("DatabaseError", "Erro ao acessar banco de dados do Firebase: " + error.getMessage());
-                                }
-                            });
+                        if (idResidenciaResponse != null && idResidenciaResponse == idResidencia && verificarMesAtual(data)) {
+                            consumoTotal += consumo;
+                        }
+                    }
+                    System.out.println("Consumo Total: " + consumoTotal);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(context, "Não foi possível ler o seu consumo desse mês", Toast.LENGTH_SHORT).show();
+                    Log.e("DatabaseError", "Erro ao acessar banco de dados do Firebase: " + error.getMessage());
+                }
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(context, "Não foi possível ler o seu consumo desse mês", Toast.LENGTH_SHORT).show();
+        }
                             return consumoTotal;
     }
-    public static void buscarConsumoDiario(FirebaseDatabase database, FirebaseAuth firebaseAuth) {
+    public static double buscarConsumoDiario(FirebaseDatabase database, int idResidencia, Context context) {
+        try {
+            DatabaseReference referencia = database.getReference("Medidor");
+            String hoje = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-        DatabaseReference referencia = database.getReference("Medidor");
-        String currentDay = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            referencia.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dadosPai) {
 
-        referencia.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                double consumoTotalDiario = 0.0;
 
-                for (DataSnapshot idSnapshot : snapshot.getChildren()) {
-                    double consumoResponse = idSnapshot.child("consumo").getValue(Double.class) != null ? idSnapshot.child("consumo").getValue(Double.class) : 0.0;
-                    String dataResponse = idSnapshot.child("data").getValue(String.class);
-                    Long idResidenciaResponse = idSnapshot.child("idResidencia").getValue(Long.class);
+                    for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
+                        double consumo = dadosFilho.child("consumo").getValue(Double.class) != null ? dadosFilho.child("consumo").getValue(Double.class) : 0.0;
+                        String data = dadosFilho.child("data").getValue(String.class);
+                        Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
 
-                    if ((dataResponse != null && dataResponse.equals(currentDay) && idResidenciaResponse != null && idResidenciaResponse == 1)) {
-                        consumoTotalDiario += consumoResponse;
+                        if ((data != null && data.equals(hoje) && idResidenciaResponse != null && idResidenciaResponse == idResidencia)) {
+                            consumoTotalDiario += consumo;
+                        }
                     }
+                    System.out.println("consumoTotalDiario: " + consumoTotalDiario);
+                    System.out.println("currentDay: " + hoje);
                 }
-                System.out.println("consumoTotalDiario: " + consumoTotalDiario);
-                System.out.println("currentDay: " + currentDay);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(context, "Não foi possível ler o seu consumo do dia", Toast.LENGTH_SHORT).show();
+                    Log.e("DatabaseError", "Erro ao acessar banco de dados do Firebase: " + error.getMessage());
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Não foi possível ler o seu consumo do dia", Toast.LENGTH_SHORT).show();
+        }
+        return consumoTotalDiario;
     }
     public static boolean verificarMesAtual(String data) {
         if (data == null || data.isEmpty()) {
