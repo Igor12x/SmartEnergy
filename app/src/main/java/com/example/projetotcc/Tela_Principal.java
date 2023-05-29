@@ -133,8 +133,8 @@ public class Tela_Principal extends AppCompatActivity {
                 builder.setView(view1);
                 final AlertDialog dialog = builder.create();
 
-                TextView txtAjuste = view1.findViewById(R.id.txtAjuste);
-                SeekBar sliderAjuste = view1.findViewById(R.id.sliderAjuste);
+                final TextView txtAjuste = view1.findViewById(R.id.txtAjuste);
+                final SeekBar sliderAjuste = view1.findViewById(R.id.sliderAjuste);
                 Button btnAjustar = view1.findViewById(R.id.btnAjustar);
                 TextView txtValorLimite = view1.findViewById(R.id.txtValorLimite);
 

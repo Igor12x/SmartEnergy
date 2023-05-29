@@ -9,6 +9,12 @@
         </item>
     </style>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+
     <style name="SeekBarStyle" parent="@android:style/Widget.SeekBar">
         <item name="android:progressDrawable">@drawable/gradient</item>
     </style>

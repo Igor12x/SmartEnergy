@@ -31,15 +31,15 @@
         android:layout_marginStart="43dp"
         android:layout_marginEnd="253dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#2C4B7B"
+        android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserrat_bold"
         android:text="CADASTRO"
         android:textColor="@color/lbranco"
-        app:cornerRadius="30dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/textView14"
@@ -64,16 +64,15 @@
         android:layout_marginStart="43dp"
         android:layout_marginEnd="254dp"
         android:layout_marginBottom="76dp"
-        android:backgroundTint="@color/brancoazulado"
+        android:background="@drawable/rounded_button1"
         android:fontFamily="@font/montserrat_bold"
         android:text="LOGIN"
         android:textColor="#2C4B7B"
-        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/lazul_marinho" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView8"

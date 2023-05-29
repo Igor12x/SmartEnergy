@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -22,6 +23,8 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
     private ImageButton btnVoltaEsqueci;
     private Button btnEnviarEmail;
     private EditText editTextEmail;
+
+    private TextView txtVolteAoLogin;
     private String emailCliente;
     private Intent intentVerificarCodigo;
     private RequestQueue solicitacao = null;
@@ -37,6 +40,15 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
         btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueceuSenha);
         btnEnviarEmail = findViewById(R.id.btnEscSenha);
         editTextEmail = findViewById(R.id.editTextEmail);
+        txtVolteAoLogin = findViewById(R.id.txtVolteAoLogin);
+
+        txtVolteAoLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
+                startActivity(intent);
+            }
+        });
 
         btnVoltaEsqueci.setOnClickListener(new View.OnClickListener() {
             @Override
