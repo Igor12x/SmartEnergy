@@ -59,9 +59,9 @@
 
                 <View
                     android:id="@+id/viewCad"
-                    android:layout_width="415dp"
-                    android:layout_height="747dp"
-                    android:layout_marginTop="176dp"
+                    android:layout_width="412dp"
+                    android:layout_height="897dp"
+                    android:layout_marginTop="185dp"
                     android:background="@drawable/bordas_arredondadas_azul"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -265,7 +265,7 @@
                     android:layout_width="290dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="92dp"
-                    android:backgroundTint="@color/brancoazulado"
+                    android:background="@drawable/rounded_button1"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/btnCadastro"
                     android:textColor="@color/cazul_marinho"
@@ -329,7 +329,7 @@
     <ImageButton
         android:id="@+id/btnCadSenha"
         android:layout_width="29dp"
-        android:layout_height="18dp"
+        android:layout_height="5dp"
         android:layout_marginTop="16dp"
         android:background="@color/borda_edit_text_azul"
         app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
@@ -341,7 +341,7 @@
     <ImageButton
         android:id="@+id/btnCadConfirmaSenha"
         android:layout_width="29dp"
-        android:layout_height="18dp"
+        android:layout_height="13dp"
         android:layout_marginTop="12dp"
         android:background="@color/borda_edit_text_azul"
         app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
