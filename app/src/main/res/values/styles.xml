@@ -14,7 +14,6 @@
         <item name="android:windowActionBar">false</item>
     </style>
 
-
     <style name="SeekBarStyle" parent="@android:style/Widget.SeekBar">
         <item name="android:progressDrawable">@drawable/gradient</item>
     </style>
