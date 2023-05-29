@@ -192,16 +192,7 @@
                     app:layout_constraintStart_toStartOf="@+id/plainCadCpf"
                     app:layout_constraintTop_toBottomOf="@+id/plainCadCpf" />
 
-                <ImageView
-                    android:id="@+id/imgCadSenha"
-                    android:layout_width="28dp"
-                    android:layout_height="26dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/plainCadSenha"
-                    app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
-                    app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
-                    app:layout_constraintVertical_bias="0.21"
-                    app:srcCompat="@drawable/icone_olho_branco" />
+
 
                 <EditText
                     android:id="@+id/plainCadConfirmarSenha"
@@ -220,16 +211,7 @@
                     app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
                     app:layout_constraintTop_toBottomOf="@+id/plainCadSenha" />
 
-                <ImageView
-                    android:id="@+id/imgCadConfirmarSenha"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/plainCadConfirmarSenha"
-                    app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
-                    app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
-                    app:layout_constraintVertical_bias="0.296"
-                    app:srcCompat="@drawable/icone_olho_branco" />
+
 
                 <EditText
                     android:id="@+id/plainCadCpf"
@@ -326,29 +308,29 @@
                     app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
                     app:layout_constraintTop_toBottomOf="@+id/plainCadConfirmarSenha" />
 
-    <ImageButton
-        android:id="@+id/btnCadSenha"
-        android:layout_width="29dp"
-        android:layout_height="5dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/borda_edit_text_azul"
-        app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
-        app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
-        app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
-        app:srcCompat="@drawable/icone_olho_branco" />
+                <ImageButton
+                    android:id="@+id/btnCadSenha"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/borda_edit_text_azul"
+                    app:layout_constraintEnd_toEndOf="@+id/plainCadSenha"
+                    app:layout_constraintHorizontal_bias="0.965"
+                    app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
+                    app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
+                    app:srcCompat="@drawable/icone_olho_branco" />
 
-    <ImageButton
-        android:id="@+id/btnCadConfirmaSenha"
-        android:layout_width="29dp"
-        android:layout_height="13dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/borda_edit_text_azul"
-        app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
-        app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
-        app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
-        app:srcCompat="@drawable/icone_olho_branco" />
+                <ImageButton
+                    android:id="@+id/btnCadConfirmaSenha"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/borda_edit_text_azul"
+                    app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
+                    app:layout_constraintHorizontal_bias="0.965"
+                    app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
+                    app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
+                    app:srcCompat="@drawable/icone_olho_branco" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
