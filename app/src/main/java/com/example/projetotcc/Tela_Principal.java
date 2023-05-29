@@ -41,6 +41,7 @@ import Interfaces.IResidencia;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
 import Models.Medidor;
+import Models.NotificationHelper;
 import Models.Residencia;
 import Models.ResidenciaAdapter;
 
@@ -75,6 +76,12 @@ public class Tela_Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
+
+        double grausGraficoLimiteConsumo = 80;
+        if (grausGraficoLimiteConsumo == 80) {
+            String message = "Seu limite de consumo está em 80%! Acesse as nossas dicas de economia.";
+            NotificationHelper.showNotification(this, message);
+        }
 
         solicitacao = Volley.newRequestQueue(this);
 
@@ -255,6 +262,8 @@ public class Tela_Principal extends AppCompatActivity {
                 //definindo a porcentagem que será preenchida pelo gráfico
                 double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
                 double grausGraficoLimiteConsumo = (consumoAtual / limiteConsumo) * 100;
+
+
                 text_view_progress.setText((int)grausGraficoConsumoAtual + "%");
                 text_view_progress2.setText((int)grausGraficoLimiteConsumo + "%");
                 progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
