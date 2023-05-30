@@ -26,7 +26,7 @@ import Models.MascaraCPF;
 import Models.MascaraTelefone;
 
 public class Tela_Cadastro extends AppCompatActivity {
-    private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha, txtTermosUso;
+    private TextView plainCadNome, plainCadEmail, plainCadTel, plainCadCpf, plainCadSenha, plainCadConfirmarSenha, txtTermosUso, plainCadSobrenome;
     private Button btnCad;
     private CheckBox checkBoxTermos;
     private ImageButton btnVoltaCad;
@@ -43,6 +43,7 @@ public class Tela_Cadastro extends AppCompatActivity {
 
         //referencias
         plainCadNome = findViewById(R.id.plainCadNome);
+        plainCadSobrenome = findViewById(R.id.plainCadSobrenome);
         plainCadEmail = findViewById(R.id.plainCadEmail);
         plainCadTel = findViewById(R.id.plainCadTel);
         plainCadCpf = findViewById(R.id.plainCadCpf);
@@ -77,19 +78,31 @@ public class Tela_Cadastro extends AppCompatActivity {
         btnCad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkBoxTermos.isChecked()){
-                    CadastroCliente cadastrar = new CadastroCliente(
-                            plainCadNome.getText().toString(),
-                            plainCadCpf.getText().toString(),
-                            plainCadEmail.getText().toString(),
-                            plainCadTel.getText().toString(),
-                            plainCadSenha.getText().toString());
-                    ValidarCadastro(solicitacao, cadastrar);
-                    plainCadNome.setText("Cadastrado com sucesso");
+                if (checkBoxTermos.isChecked()) {
+                    // Verificar se algum campo está vazio
+                    if (plainCadNome.getText().toString().isEmpty() ||
+                            plainCadCpf.getText().toString().isEmpty() ||
+                            plainCadEmail.getText().toString().isEmpty() ||
+                            plainCadTel.getText().toString().isEmpty() ||
+                            plainCadSenha.getText().toString().isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                    } else if (!plainCadSenha.getText().toString().equals(plainCadConfirmarSenha.getText().toString())) {
+                        Toast.makeText(getApplicationContext(), "A senha e a confirmação de senha não correspondem", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Cliente cadastrar = new Cliente(
+                                plainCadNome.getText().toString(),
+                                plainCadSobrenome.getText().toString(),
+                                plainCadCpf.getText().toString(),
+                                plainCadEmail.getText().toString(),
+                                plainCadTel.getText().toString(),
+                                plainCadSenha.getText().toString());
+                        ValidarCadastro(solicitacao, cadastrar);
+                        plainCadNome.setText("Cadastrado com sucesso");
 
-                    Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
-                    startActivity(intent);
-                }else {
+                        Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
+                        startActivity(intent);
+                    }
+                } else {
                     Toast.makeText(getApplicationContext(), "Por favor, aceite os termos de uso", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -104,32 +117,23 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 // Atualize o ícone do botão
                 btnCadSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
-
-
             }
-
-
         });
 
         btnCadConfirmaSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 boolean mostrarSenha = !plainCadConfirmarSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
 
                 plainCadConfirmarSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
 
                 // Atualize o ícone do botão
                 btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
-
-
             }
-
-
         });
     }
 
-    public void ValidarCadastro(RequestQueue solicitacao, CadastroCliente cadastrar) {
+    public void ValidarCadastro(RequestQueue solicitacao, Cliente cadastrar) {
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {
             @Override
             public void onResultado(String resposta) {

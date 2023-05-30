@@ -24,6 +24,15 @@ public class Cliente {
         this.codigo = codigo;
     }
 
+    public Cliente(String nome, String sobrenome, String cpf, String email, String telefone, String senha) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
+
     public String getNome() {
         return nome;
     }
