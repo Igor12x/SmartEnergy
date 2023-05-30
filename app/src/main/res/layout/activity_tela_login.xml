@@ -45,24 +45,13 @@
         android:ems="10"
         android:fontFamily="@font/montserrat_bold"
         android:hint="@string/hintLogCPF"
-        android:inputType="textWebEmailAddress|textEmailAddress|textEmailSubject"
+        android:inputType="number"
         android:textColorHighlight="@color/lazul_marinho"
         android:textColorHint="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewLog" />
-
-    <ImageView
-        android:id="@+id/imgLogEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/txtCpf"
-        app:layout_constraintEnd_toEndOf="@+id/txtCpf"
-        app:layout_constraintHorizontal_bias="0.965"
-        app:layout_constraintStart_toStartOf="@+id/txtCpf"
-        app:layout_constraintTop_toTopOf="@+id/txtCpf"
-        app:srcCompat="@drawable/icone_email_azul" />
 
     <EditText
         android:id="@+id/txtSenha"
@@ -188,6 +177,19 @@
         app:layout_constraintStart_toEndOf="@+id/textLogTitulo"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_back_clara" />
+
+    <ImageView
+        android:id="@+id/imageView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCpf"
+        app:layout_constraintEnd_toEndOf="@+id/txtCpf"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/txtCpf"
+        app:srcCompat="@drawable/icone_cpf_branco"
+        app:tint="@color/borda_edit_text_azul"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,8 +62,8 @@
                 <Button
                     android:id="@+id/btnOk"
                     android:layout_width="184dp"
-                    android:layout_height="51dp"
-                    android:backgroundTint="@color/cazul_marinho"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rounded_button"
                     android:text="OK"
                     android:textColor="@color/brancoazulado"
                     app:layout_constraintEnd_toEndOf="parent"
