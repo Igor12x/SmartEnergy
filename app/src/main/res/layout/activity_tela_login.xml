@@ -40,7 +40,7 @@
         android:id="@+id/txtCpf"
         android:layout_width="290dp"
         android:layout_height="48dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="145dp"
         android:backgroundTint="@color/lazul_marinho"
         android:ems="10"
         android:fontFamily="@font/montserrat_bold"
@@ -49,7 +49,7 @@
         android:textColorHighlight="@color/lazul_marinho"
         android:textColorHint="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewLog" />
 
@@ -68,7 +68,7 @@
         android:id="@+id/txtSenha"
         android:layout_width="290dp"
         android:layout_height="48dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="90dp"
         android:backgroundTint="@color/lazul_marinho"
         android:ems="10"
         android:fontFamily="@font/montserrat_bold"
@@ -77,7 +77,7 @@
         android:textColorHighlight="@color/lazul_marinho"
         android:textColorHint="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="@+id/txtCpf"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txtCpf"
         app:layout_constraintTop_toBottomOf="@+id/txtCpf" />
 
@@ -98,7 +98,7 @@
         android:id="@+id/btnLog"
         android:layout_width="290dp"
         android:layout_height="50dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserrat_bold"
 
@@ -127,7 +127,7 @@
         android:id="@+id/textLogNaoTemConta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/textLogNaoTemConta"
         android:textColor="@color/lazul_marinho"
@@ -144,7 +144,7 @@
         android:id="@+id/textLogRegistreAgora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/textLogRegistreAgora"
         android:textColor="@color/lazul_cinza_claro"

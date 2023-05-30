@@ -24,7 +24,7 @@ import Models.ClienteLogin;
 import Models.MascaraCPF;
 
 public class Tela_Login extends AppCompatActivity {
-    private TextView txtCpf, txtSenha, textLogEsqueceuSenha;
+    private TextView txtCpf, txtSenha, textLogEsqueceuSenha, textLogRegistreAgora;
     private Button btnLogar;
 
     private ImageButton btnVoltaLogin, btnLogMostrarSenha;
@@ -47,8 +47,18 @@ public class Tela_Login extends AppCompatActivity {
         btnLogMostrarSenha = findViewById(R.id.btnLogMostrarSenha);
         intent = new Intent(getApplicationContext(), Tela_Principal.class);
         textLogEsqueceuSenha =  findViewById(R.id.textLogEsqueceuSenha);
+        textLogRegistreAgora = findViewById(R.id.textLogRegistreAgora);
 
         txtCpf.addTextChangedListener(new MascaraCPF((EditText) txtCpf, 11) );
+
+        //indo para tela Cadastro
+        textLogRegistreAgora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Cadastro.class);
+                startActivity(intent);
+            }
+        });
 
         //voltando para tela inicial
         btnVoltaLogin.setOnClickListener(new View.OnClickListener() {

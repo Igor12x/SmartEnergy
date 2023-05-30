@@ -30,36 +30,34 @@
                     android:layout_width="193dp"
                     android:layout_height="46dp"
                     android:layout_marginStart="50dp"
-                    android:layout_marginTop="63dp"
+                    android:layout_marginTop="50dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/textCadTitulo"
                     android:textColor="@color/cazul_marinho"
                     android:textSize="30sp"
-                    app:layout_constraintBottom_toTopOf="@+id/textCadDescricao"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.1" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textCadDescricao"
                     android:layout_width="280dp"
                     android:layout_height="55dp"
-                    android:layout_marginTop="119dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/textoDescricao"
 
+                    android:text="@string/textoDescricao"
                     android:textColor="@color/cazul_marinho"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textCadTitulo"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textCadTitulo" />
 
 
                 <View
                     android:id="@+id/viewCad"
-                    android:layout_width="407dp"
+                    android:layout_width="411dp"
                     android:layout_height="659dp"
                     android:layout_marginTop="185dp"
                     android:background="@drawable/bordas_arredondadas_azul"
@@ -281,15 +279,15 @@
 
                 <CheckBox
                     android:id="@+id/checkBoxTermos"
-                    android:layout_width="202dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_width="258dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="48dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Aceito os termo de uso"
                     android:textColor="@color/brancoazulado"
                     app:layout_constraintBottom_toTopOf="@+id/btnCad"
                     app:layout_constraintEnd_toEndOf="@+id/txtTermosUso"
-                    app:layout_constraintHorizontal_bias="0.577"
+                    app:layout_constraintHorizontal_bias="0.361"
                     app:layout_constraintStart_toStartOf="@+id/txtTermosUso"
                     app:layout_constraintTop_toBottomOf="@+id/txtTermosUso"
                     app:layout_constraintVertical_bias="0.0" />
