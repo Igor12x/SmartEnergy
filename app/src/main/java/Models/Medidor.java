@@ -17,17 +17,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Medidor {
-    private static double consumoTotal = 0.0;
-    private static double consumoTotalDiario = 0.0;
+import Interfaces.IMedidorBuscarConsumoDiario;
+import Interfaces.IMedidorBuscoConsumoAtual;
 
-    public static double buscarConsumoMesAtual(FirebaseDatabase database, int idResidencia, Context context) {
+public class Medidor {
+    public double consumo;
+
+    public Medidor(double consumo) {
+        this.consumo = consumo;
+    }
+
+    public static void buscarConsumoMesAtual(FirebaseDatabase database, int idResidencia, Context context, IMedidorBuscoConsumoAtual listener) {
         try {
             DatabaseReference referencia = database.getReference("Medidor");
             referencia.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dadosPai) {
-                    consumoTotal = 0.0; // Reinicializa o consumo total antes de calcular novamente
+                    Medidor medidor = new Medidor(0);
                     for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
                         Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
                         Double consumoDouble = dadosFilho.child("consumo").getValue(Double.class);
@@ -35,10 +41,10 @@ public class Medidor {
                         String data = dadosFilho.child("data").getValue(String.class);
 
                         if (idResidenciaResponse != null && idResidenciaResponse == idResidencia && verificarMesAtual(data)) {
-                            consumoTotal += consumo;
+                            medidor.consumo += consumo;
                         }
                     }
-                    System.out.println("Consumo Total: " + consumoTotal);
+                    listener.onResultado(medidor.consumo);
                 }
 
                 @Override
@@ -51,10 +57,8 @@ public class Medidor {
             e.printStackTrace();
             Toast.makeText(context, "Não foi possível ler o seu consumo desse mês", Toast.LENGTH_SHORT).show();
         }
-        return consumoTotal;
     }
-
-    public static double buscarConsumoDiario(FirebaseDatabase database, int idResidencia, Context context) {
+    public static void buscarConsumoDiario(FirebaseDatabase database, int idResidencia, Context context, IMedidorBuscarConsumoDiario listener) {
         try {
             DatabaseReference referencia = database.getReference("Medidor");
             String hoje = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
@@ -62,7 +66,7 @@ public class Medidor {
             referencia.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dadosPai) {
-                    consumoTotalDiario = 0.0; // Reinicializa o consumo diário antes de calcular novamente
+                    Medidor medidor = new Medidor(0);
                     for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
                         Double consumoDouble = dadosFilho.child("consumo").getValue(Double.class);
                         double consumo = (consumoDouble != null) ? consumoDouble : 0.0;
@@ -70,11 +74,10 @@ public class Medidor {
                         Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
 
                         if (data != null && data.equals(hoje) && idResidenciaResponse != null && idResidenciaResponse == idResidencia) {
-                            consumoTotalDiario += consumo;
+                            medidor.consumo += consumo;
                         }
                     }
-                    System.out.println("Consumo Total Diário: " + consumoTotalDiario);
-                    System.out.println("Data Atual: " + hoje);
+                    listener.onResultado(medidor.consumo);
                 }
 
                 @Override
@@ -87,7 +90,6 @@ public class Medidor {
             e.printStackTrace();
             Toast.makeText(context, "Não foi possível ler o seu consumo do dia", Toast.LENGTH_SHORT).show();
         }
-        return consumoTotalDiario;
     }
 
     public static boolean verificarMesAtual(String data) {
