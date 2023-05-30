@@ -4,23 +4,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.graphics.drawable.GradientDrawable;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -67,21 +66,14 @@ public class Tela_Principal extends AppCompatActivity {
     private Intent intent;
 
     private RequestQueue solicitacao = null;
-    // Criando uma solicitação para a rede aonde está a API
 
-    //ajuste de limite
     private int valorAjuste = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
-
-        double grausGraficoLimiteConsumo = 80;
-        if (grausGraficoLimiteConsumo == 80) {
-            String message = "Seu limite de consumo está em 80%! Acesse as nossas dicas de economia.";
-            NotificationHelper.showNotification(this, message);
-        }
+        NotificationHelper.scheduleDailyNotification(this);
 
         solicitacao = Volley.newRequestQueue(this);
 
@@ -329,8 +321,4 @@ public class Tela_Principal extends AppCompatActivity {
         String dataAtual = dateFormat.format(date);
         textViewData.setText(dataAtual);
     }
-
-    ;
-
-
 }

@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -28,22 +31,20 @@
             android:name=".Tela_Login"
             android:exported="false" />
         <activity
-            android:name=".Tela_Principal"
-            android:exported="false" />
-        <activity
             android:name=".Tela_Dicas"
             android:exported="false" />
         <activity
             android:name=".Tela_Perfil"
             android:exported="false" />
         <activity
-            android:name=".Tela_Carregamento"
+            android:name=".Tela_Principal"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name="Models.NotificationHelper$NotificationBroadcastReceiver" />
     </application>
 
 </manifest>
