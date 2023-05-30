@@ -92,9 +92,9 @@ public class Tela_Cadastro extends AppCompatActivity {
                         Cliente cadastrar = new Cliente(
                                 plainCadNome.getText().toString(),
                                 plainCadSobrenome.getText().toString(),
-                                plainCadCpf.getText().toString(),
+                                plainCadCpf.getText().toString().replaceAll("[^\\d]", ""),
                                 plainCadEmail.getText().toString(),
-                                plainCadTel.getText().toString(),
+                                plainCadTel.getText().toString().replaceAll("[^\\d]", ""),
                                 plainCadSenha.getText().toString());
                         ValidarCadastro(solicitacao, cadastrar);
                         plainCadNome.setText("Cadastrado com sucesso");
