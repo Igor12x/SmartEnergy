@@ -20,10 +20,10 @@ import java.util.Locale;
 import Interfaces.IMedidorBuscarConsumoDiario;
 import Interfaces.IMedidorBuscoConsumoAtual;
 
-public class Medidor {
+public class Arduino {
     public double consumo;
 
-    public Medidor(double consumo) {
+    public Arduino(double consumo) {
         this.consumo = consumo;
     }
 
@@ -33,7 +33,7 @@ public class Medidor {
             referencia.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dadosPai) {
-                    Medidor medidor = new Medidor(0);
+                    Arduino medidor = new Arduino(0);
                     for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
                         Long idResidenciaResponse = dadosFilho.child("idResidencia").getValue(Long.class);
                         Double consumoDouble = dadosFilho.child("consumo").getValue(Double.class);
@@ -66,7 +66,7 @@ public class Medidor {
             referencia.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dadosPai) {
-                    Medidor medidor = new Medidor(0);
+                    Arduino medidor = new Arduino(0);
                     for (DataSnapshot dadosFilho : dadosPai.getChildren()) {
                         Double consumoDouble = dadosFilho.child("consumo").getValue(Double.class);
                         double consumo = (consumoDouble != null) ? consumoDouble : 0.0;

@@ -5,12 +5,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,8 +43,7 @@ import Interfaces.IMedidorBuscoConsumoAtual;
 import Interfaces.IResidencia;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
-import Models.Medidor;
-import Models.NotificationHelper;
+import Models.Arduino;
 import Models.Residencia;
 import Models.ResidenciaAdapter;
 
@@ -232,7 +228,7 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
     public void mostrarConsumoMesAtual(int idResidencia) {
-        Medidor.buscarConsumoMesAtual(database, idResidencia, Tela_Principal.this, new IMedidorBuscoConsumoAtual() {
+        Arduino.buscarConsumoMesAtual(database, idResidencia, Tela_Principal.this, new IMedidorBuscoConsumoAtual() {
             @Override
             public void onResultado(double consumoAtualResultado) {
 
@@ -247,7 +243,7 @@ public class Tela_Principal extends AppCompatActivity {
         });
             }
     public void mostrarConsumoDiario(int idResidencia) {
-            Medidor.buscarConsumoDiario(database, idResidencia, Tela_Principal.this, new IMedidorBuscarConsumoDiario() {
+            Arduino.buscarConsumoDiario(database, idResidencia, Tela_Principal.this, new IMedidorBuscarConsumoDiario() {
                 @Override
                 public void onResultado(double consumoDiarioResultado) {
                     textMedidorConsumoDiario.setText(consumoDiarioResultado + " kWh");
