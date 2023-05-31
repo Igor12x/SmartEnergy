@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -33,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".Tela_Login"
-            android:exported="false" />
-        <activity
-            android:name=".Tela_Carregamento"
             android:exported="false" />
         <activity
             android:name=".Tela_Dicas"
