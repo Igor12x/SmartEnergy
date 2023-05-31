@@ -2,13 +2,11 @@ package Models;
 
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,8 +14,6 @@ import org.json.JSONObject;
 import Interfaces.ICadastroCliente;
 
 public class CadastroCliente {
-
-
 
         public static void ValidarCadastroCliente(Cliente cadastro, RequestQueue solicitacao, ICadastroCliente listener) {
             String url = "http://10.0.2.2:5000/api/Cadastro";
@@ -38,13 +34,19 @@ public class CadastroCliente {
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.POST, url, enviarCliente, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                listener.onResultado(response.toString());
+                try {
+                    listener.onResultado(response.getString("nome").toString());
+                } catch (Exception e){
+                    e.printStackTrace();
+                    listener.onErro("Ocorreu um erro ao processar a resposta do servidor. Tente novamente.");
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("onErrorResponse", error.toString());
-
+                String errorMessage = ErroApi.mensagemErro(error);
+                listener.onErro(errorMessage);
             }
         });
         solicitacao.add(envio);

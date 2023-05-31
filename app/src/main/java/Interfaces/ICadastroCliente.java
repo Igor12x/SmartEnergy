@@ -3,5 +3,6 @@ package Interfaces;
 import Models.Cliente;
 
 public interface ICadastroCliente {
-    void onResultado(String resposta);
+    void onResultado(String nome);
+    void onErro(String mensagemErro);
 }
