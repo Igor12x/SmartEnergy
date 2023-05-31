@@ -100,9 +100,11 @@ public class Tela_Cadastro extends AppCompatActivity {
                         ValidarCadastro(solicitacao, cadastrar);
                         plainCadNome.setText("Cadastrado com sucesso");
 
+                        // ...
                         Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
-                        intent.putExtra("nome", plainCadNome.getText().toString()); // Adicionar o nome como parâmetro extra
+                        intent.putExtra("nome", plainCadNome.getText().toString());
                         startActivity(intent);
+
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Por favor, aceite os termos de uso", Toast.LENGTH_SHORT).show();

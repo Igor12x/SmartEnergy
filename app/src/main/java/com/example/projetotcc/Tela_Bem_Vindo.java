@@ -29,6 +29,7 @@ public class Tela_Bem_Vindo extends AppCompatActivity {
             txtBemVindo.setText("SEJA BEM-VINDO A SMART ENERGY!");
         }
 
+
         //Volte a tela de login
         btnBemVindo.setOnClickListener(new View.OnClickListener() {
             @Override
