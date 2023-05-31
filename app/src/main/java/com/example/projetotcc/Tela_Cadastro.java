@@ -62,6 +62,7 @@ public class Tela_Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Tela_Cadastro.this, Tela_Termos_Uso.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
         });
