@@ -98,12 +98,8 @@ public class Tela_Cadastro extends AppCompatActivity {
                                 plainCadTel.getText().toString().replaceAll("[^\\d]", ""),
                                 plainCadSenha.getText().toString());
                         ValidarCadastro(solicitacao, cadastrar);
-                        plainCadNome.setText("Cadastrado com sucesso");
 
-                        // ...
-                        Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
-                        intent.putExtra("nome", plainCadNome.getText().toString());
-                        startActivity(intent);
+
 
                     }
                 } else {
@@ -140,8 +136,16 @@ public class Tela_Cadastro extends AppCompatActivity {
     public void ValidarCadastro(RequestQueue solicitacao, Cliente cadastrar) {
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {
             @Override
-            public void onResultado(String resposta) {
-                Toast.makeText(Tela_Cadastro.this, resposta, Toast.LENGTH_SHORT).show();
+            public void onResultado(String nome) {
+                Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
+                intent.putExtra("nomeCliente", nome);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onErro(String mensagemErro) {
+                Toast.makeText(getApplicationContext(), mensagemErro, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
