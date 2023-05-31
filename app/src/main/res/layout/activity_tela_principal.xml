@@ -54,11 +54,11 @@
                     android:layout_width="37dp"
                     android:layout_height="39dp"
                     android:backgroundTint="#00FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="@+id/spinnerEndereco"
-                    app:layout_constraintEnd_toStartOf="@+id/spinnerEndereco"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinnerResidencia"
+                    app:layout_constraintEnd_toStartOf="@+id/spinnerResidencia"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/spinnerEndereco"
+                    app:layout_constraintTop_toTopOf="@+id/spinnerResidencia"
                     app:layout_constraintVertical_bias="0.777"
                     app:srcCompat="@drawable/baseline_home_24" />
 
@@ -67,7 +67,7 @@
                     android:layout_width="23dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/spinnerEndereco"
+                    app:layout_constraintBottom_toBottomOf="@+id/spinnerResidencia"
                     app:layout_constraintEnd_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.989"
@@ -146,7 +146,7 @@
                     tools:progress="60" />
 
                 <TextView
-                    android:id="@+id/text_view_progress"
+                    android:id="@+id/textProgressBarPorcentagem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
@@ -293,7 +293,7 @@
                     app:srcCompat="@drawable/group_8" />
 
                 <ProgressBar
-                    android:id="@+id/progress_bar2"
+                    android:id="@+id/progress_barLimite"
                     android:layout_width="174dp"
                     android:layout_height="139dp"
                     android:layout_marginTop="28dp"
@@ -305,22 +305,22 @@
                     tools:progress="60" />
 
                 <TextView
-                    android:id="@+id/text_view_progress2"
+                    android:id="@+id/textProgressBarPorcentagemLimite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@color/cinza_claro"
-                    app:layout_constraintBottom_toBottomOf="@+id/progress_bar2"
-                    app:layout_constraintEnd_toEndOf="@+id/progress_bar2"
+                    app:layout_constraintBottom_toBottomOf="@+id/progress_barLimite"
+                    app:layout_constraintEnd_toEndOf="@+id/progress_barLimite"
                     app:layout_constraintHorizontal_bias="0.516"
-                    app:layout_constraintStart_toStartOf="@+id/progress_bar2"
-                    app:layout_constraintTop_toTopOf="@+id/progress_bar2"
+                    app:layout_constraintStart_toStartOf="@+id/progress_barLimite"
+                    app:layout_constraintTop_toTopOf="@+id/progress_barLimite"
                     app:layout_constraintVertical_bias="0.509"
                     tools:text="60%" />
 
                 <Spinner
-                    android:id="@+id/spinnerEndereco"
+                    android:id="@+id/spinnerResidencia"
                     android:layout_width="210dp"
                     android:layout_height="21dp"
                     android:scrollbarSize="10dp"
@@ -354,7 +354,7 @@
                     app:srcCompat="@drawable/rectangle_40__2_" />
 
                 <TextView
-                    android:id="@+id/textLimite"
+                    android:id="@+id/textValorLimite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -444,7 +444,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
                 <TextView
-                    android:id="@+id/txtMedidorConsumoDiario"
+                    android:id="@+id/textMedidorConsumoDiario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
@@ -510,7 +510,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/textSaudacao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="60dp"
@@ -522,11 +522,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imageView18"
+                    android:id="@+id/imgPerfil"
                     android:layout_width="42dp"
                     android:layout_height="37dp"
                     android:layout_marginTop="28dp"
-                    app:layout_constraintEnd_toStartOf="@+id/textView2"
+                    app:layout_constraintEnd_toStartOf="@+id/textSaudacao"
                     app:layout_constraintHorizontal_bias="0.666"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -540,7 +540,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.87"
-                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintStart_toEndOf="@+id/textSaudacao"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@mipmap/logo_back_clara" />
 
