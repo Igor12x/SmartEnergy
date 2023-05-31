@@ -250,7 +250,6 @@
                     android:text="@string/btnCadastro"
                     android:textColor="@color/cazul_marinho"
                     android:textSize="19sp"
-                    app:cornerRadius="47dp"
                     app:layout_constraintEnd_toEndOf="@+id/plainCadConfirmarSenha"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
