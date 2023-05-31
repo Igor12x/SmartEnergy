@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Tela_Bem_Vindo extends AppCompatActivity {
     private Button btnBemVindo;
+    private TextView txtBemVindo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,15 @@ public class Tela_Bem_Vindo extends AppCompatActivity {
 
         //Referencias
         btnBemVindo = findViewById(R.id.btnBemVindo);
+        txtBemVindo = findViewById(R.id.txtBemVindo);
+
+        // Recuperar o nome da Intent
+        String nome = getIntent().getStringExtra("nome");
+        if (nome != null && !nome.isEmpty()) {
+            txtBemVindo.setText(nome + ", SEJA BEM-VINDO A SMART ENERGY!");
+        } else {
+            txtBemVindo.setText("SEJA BEM-VINDO A SMART ENERGY!");
+        }
 
         //Volte a tela de login
         btnBemVindo.setOnClickListener(new View.OnClickListener() {

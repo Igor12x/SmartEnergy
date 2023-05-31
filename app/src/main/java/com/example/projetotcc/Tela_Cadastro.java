@@ -101,6 +101,7 @@ public class Tela_Cadastro extends AppCompatActivity {
                         plainCadNome.setText("Cadastrado com sucesso");
 
                         Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
+                        intent.putExtra("nome", plainCadNome.getText().toString()); // Adicionar o nome como parâmetro extra
                         startActivity(intent);
                     }
                 } else {
