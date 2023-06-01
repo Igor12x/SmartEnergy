@@ -83,6 +83,7 @@ public class RecuperarSenhaCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("Redefinir senha", ">>>>>>>>>>>" + error);
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.statusCode == 404) {
                     listener.onError("O recurso solicitado não foi encontrado.");

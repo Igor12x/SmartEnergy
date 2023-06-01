@@ -43,7 +43,7 @@ import Interfaces.IMedidorBuscoConsumoAtual;
 import Interfaces.IResidencia;
 import Models.CompanhiaEnergiaEletrica;
 import Models.FaturaCliente;
-import Models.Arduino;
+import Models.Medidor;
 import Models.Residencia;
 import Models.ResidenciaAdapter;
 
@@ -228,7 +228,7 @@ public class Tela_Principal extends AppCompatActivity {
         });
     }
     public void mostrarConsumoMesAtual(int idResidencia) {
-        Arduino.buscarConsumoMesAtual(database, idResidencia, Tela_Principal.this, new IMedidorBuscoConsumoAtual() {
+        Medidor.buscarConsumoMesAtual(database, idResidencia, Tela_Principal.this, new IMedidorBuscoConsumoAtual() {
             @Override
             public void onResultado(double consumoAtualResultado) {
 
@@ -243,7 +243,7 @@ public class Tela_Principal extends AppCompatActivity {
         });
             }
     public void mostrarConsumoDiario(int idResidencia) {
-            Arduino.buscarConsumoDiario(database, idResidencia, Tela_Principal.this, new IMedidorBuscarConsumoDiario() {
+            Medidor.buscarConsumoDiario(database, idResidencia, Tela_Principal.this, new IMedidorBuscarConsumoDiario() {
                 @Override
                 public void onResultado(double consumoDiarioResultado) {
                     textMedidorConsumoDiario.setText(consumoDiarioResultado + " kWh");

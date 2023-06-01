@@ -76,7 +76,7 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
             RecuperarSenhaCliente.RedefinirSenhaCliente(senhaNovaCliente, solicitacao, getApplicationContext(), new IRecuperarSenhaRedefinir() {
                 @Override
                 public void onResultado(String alterado) {
-                    intentTelaSenhaAlterada =  new Intent(getApplicationContext(), Tela_Esqueceu_Senha.class);
+                    intentTelaSenhaAlterada =  new Intent(getApplicationContext(), Tela_Senha_Alterada.class);
                     startActivity(intentTelaSenhaAlterada);
                 }
 
