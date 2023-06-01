@@ -30,7 +30,7 @@
             android:layout_marginTop="2dp"
             android:ems="10"
             android:fontFamily="@font/montserrat_bold"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textAlignment="center"
             android:textColorHint="@color/cazul_marinho"
             app:layout_constraintEnd_toEndOf="parent"
