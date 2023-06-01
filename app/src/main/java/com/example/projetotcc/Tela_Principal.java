@@ -121,6 +121,14 @@ public class Tela_Principal extends AppCompatActivity {
             }
         });
 
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Tela_Perfil.class);
+                startActivity(intent1);
+            }
+        });
+
         //evento do text de limite
         textAjusteLimite.setOnClickListener(new View.OnClickListener() {
             @Override
