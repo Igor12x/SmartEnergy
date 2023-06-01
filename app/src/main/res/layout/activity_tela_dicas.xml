@@ -95,11 +95,11 @@
                     android:id="@+id/btnVoltarInicio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="28dp"
                     android:layout_marginEnd="374dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.695"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/icone_seta" />
@@ -134,8 +134,8 @@
 
                 <TextView
                     android:id="@+id/txtDica2"
-                    android:layout_width="375dp"
-                    android:layout_height="129dp"
+                    android:layout_width="374dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="36dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:hint="@string/txtDica2"
