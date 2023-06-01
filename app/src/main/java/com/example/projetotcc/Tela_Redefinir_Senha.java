@@ -75,7 +75,7 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
         try {
             RecuperarSenhaCliente.RedefinirSenhaCliente(senhaNovaCliente, solicitacao, getApplicationContext(), new IRecuperarSenhaRedefinir() {
                 @Override
-                public void onResultado(boolean alterado) {
+                public void onResultado(String alterado) {
                     intentTelaSenhaAlterada =  new Intent(getApplicationContext(), Tela_Esqueceu_Senha.class);
                     startActivity(intentTelaSenhaAlterada);
                 }
@@ -83,11 +83,11 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
                 @Override
                 public void onError(String mensagemErro) {
                     Toast.makeText(Tela_Redefinir_Senha.this, mensagemErro, Toast.LENGTH_LONG).show();
+
                 }
             });
-
-        } catch (Exception e) {
-            Toast.makeText(Tela_Redefinir_Senha.this, "Tente novamente", Toast.LENGTH_SHORT).show();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 

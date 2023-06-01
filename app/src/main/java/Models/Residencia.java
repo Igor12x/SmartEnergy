@@ -76,7 +76,8 @@ public class Residencia {
     }
 
     public static void listarResidencias(int idCliente, RequestQueue solicitacao, IResidencia listener) {
-        String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
+        //String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
+        String url = "http://localhost:5000/api/Residencia/listarResidencias";
         List<Residencia> residencias = new ArrayList<Residencia>();
         JsonArrayRequest envio = new JsonArrayRequest(Request.Method.GET, url + "/" + idCliente, null, new Response.Listener<JSONArray>() {
             @Override

@@ -3,6 +3,7 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,8 @@ public class Tela_Bem_Vindo extends AppCompatActivity {
         txtBemVindo = findViewById(R.id.txtBemVindo);
 
         // Recuperar o nome da Intent
-        String nome = getIntent().getStringExtra("nome");
+        SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
+        String nome = ler.getString("nome", "");
         if (nome != null && !nome.isEmpty()) {
             txtBemVindo.setText(nome + ", SEJA BEM-VINDO A SMART ENERGY!");
         } else {

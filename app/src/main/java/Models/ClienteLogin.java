@@ -23,8 +23,8 @@ public class ClienteLogin {
     }
 
     public static void ValidarLoginCliente(ClienteLogin login, RequestQueue solicitacao, ILoginCliente listener) {
-        //String url = "http://localhost:5000/api/Login";
-        String url = "http://10.0.2.2:5000/api/Login";
+        String url = "http://localhost:5000/api/Login";
+        //String url = "http://10.0.2.2:5000/api/Login";
 
         JSONObject enviarCliente = new JSONObject();
 

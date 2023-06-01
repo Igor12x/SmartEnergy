@@ -3,6 +3,7 @@ package com.example.projetotcc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -138,7 +139,10 @@ public class Tela_Cadastro extends AppCompatActivity {
             @Override
             public void onResultado(String nome) {
                 Intent intent = new Intent(getApplicationContext(), Tela_Bem_Vindo.class);
-                intent.putExtra("nomeCliente", nome);
+                SharedPreferences.Editor gravar =
+                        getSharedPreferences("usuario", MODE_PRIVATE).edit();
+                gravar.putString("nome", plainCadNome.getText().toString());
+                gravar.commit();
                 startActivity(intent);
             }
 

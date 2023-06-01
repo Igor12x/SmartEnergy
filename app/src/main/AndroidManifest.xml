@@ -24,6 +24,9 @@
             android:name=".Tela_Cadastro"
             android:exported="false" />
         <activity
+            android:name=".Tela_Principal"
+            android:exported="false" />
+        <activity
             android:name=".Tela_Esqueceu_Senha"
             android:exported="false" />
         <activity
@@ -48,7 +51,10 @@
             android:name=".Tela_Termos_Uso"
             android:exported="false" />
         <activity
-            android:name=".Tela_Principal"
+            android:name=".Tela_Verificacao_Codigo"
+            android:exported="false" />
+        <activity
+            android:name=".Tela_Carregamento"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,5 +1,6 @@
 package Models;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -22,6 +23,7 @@ public class NotificationHelper {
     private static final int DAILY_NOTIFICATION_HOUR = 21;
     private static final int DAILY_NOTIFICATION_MINUTE = 56;
 
+    @SuppressLint("MissingPermission")
     public static void showNotification(Context context, String message) {
         createNotificationChannel(context);
 

@@ -16,7 +16,8 @@ import Interfaces.ICadastroCliente;
 public class CadastroCliente {
 
         public static void ValidarCadastroCliente(Cliente cadastro, RequestQueue solicitacao, ICadastroCliente listener) {
-            String url = "http://10.0.2.2:5000/api/Cadastro";
+            //String url = "http://10.0.2.2:5000/api/Cadastro";
+            String url = "http://localhost:5000/api/Cadastro";
 
             JSONObject enviarCliente = new JSONObject();
 

@@ -3,6 +3,7 @@ package Models;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,8 +31,8 @@ public class RecuperarSenhaCliente {
     }
 
     public static void ReceberCodigoVerificacao(String email, RequestQueue solicitacao, Context contexto, IRecuperarSenhaCodigoVerificacao listener) {
-        String url = "http://10.0.2.2:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
-        //String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
+        //String url = "http://10.0.2.2:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
+       String url = "http://localhost:5000/api/RecuperarSenha/CodigoVerificacao/" + email;
 
         StringRequest envio = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -42,6 +43,7 @@ public class RecuperarSenhaCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("Erro recuperar Senha: ", " " + error);
                 NetworkResponse networkResponse = error.networkResponse;
                 if (networkResponse != null && networkResponse.statusCode == 404) {
                     listener.onError("O recurso solicitado não foi encontrado.");
@@ -52,12 +54,13 @@ public class RecuperarSenhaCliente {
                 }
             }
         });
+        envio.setRetryPolicy(new DefaultRetryPolicy(5000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         solicitacao.add(envio);
     }
 
     public static void RedefinirSenhaCliente(Cliente redefinirSenhacliente, RequestQueue solicitacao, Context contexto, IRecuperarSenhaRedefinir listener) {
-        //String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
-        String url = "http://10.0.2.2:5000/api/RecuperarSenha/RedefinirSenha";
+        String url = "http://localhost:5000/api/RecuperarSenha/RedefinirSenha";
+        //String url = "http://10.0.2.2:5000/api/RecuperarSenha/RedefinirSenha";
 
         JSONObject enviarCliente = new JSONObject();
 
@@ -68,11 +71,14 @@ public class RecuperarSenhaCliente {
             e.printStackTrace();
         }
 
-        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.POST, url, enviarCliente, new Response.Listener<JSONObject>() {
+        JsonObjectRequest envio = new JsonObjectRequest(Request.Method.PUT, url, enviarCliente, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
-                listener.onResultado(true);
+                try {
+                    listener.onResultado(response.getString("retorno"));
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override

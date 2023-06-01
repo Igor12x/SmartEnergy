@@ -30,7 +30,8 @@ public class AlterarCadastro {
     }
 
     public static void Alterar(AlterarCadastro dados, int codigoCliente, RequestQueue solicitacao, IAlterarCadastro listener){
-        String url = "http://10.0.2.2:5000/api/AlterarCadastro/" + codigoCliente;
+        //String url = "http://10.0.2.2:5000/api/AlterarCadastro/" + codigoCliente;
+        String url = "http://localhost:5000/api/AlterarCadastro/" + codigoCliente;
 
         JSONObject enviarAlteracao = new JSONObject();
 
