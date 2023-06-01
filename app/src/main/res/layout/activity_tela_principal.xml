@@ -62,17 +62,6 @@
                     app:layout_constraintVertical_bias="0.777"
                     app:srcCompat="@drawable/baseline_home_24" />
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="23dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/spinnerEndereco"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.989"
-                    app:srcCompat="@drawable/icone_setabaixa" />
-
                 <!-- inserindo o ProgressBar -->
 
                 <ImageButton
@@ -92,7 +81,7 @@
                     android:id="@+id/txtData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="140dp"
                     android:fontFamily="@font/mplusrrounded1c_bold"
@@ -184,7 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="28dp"
+                    android:layout_marginEnd="25dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="1473 kWh"
                     android:textColor="@color/agua_marinha"
@@ -251,7 +240,7 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="28dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:text="Conta projetada"
                     android:textColor="@color/cinza_ardosia"
@@ -484,12 +473,10 @@
 
                 <ImageView
                     android:id="@+id/imageView16"
-                    android:layout_width="378dp"
-                    android:layout_height="406dp"
+                    android:layout_width="370dp"
+                    android:layout_height="385dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtDicasConsumo"
                     app:srcCompat="@drawable/consumo" />
