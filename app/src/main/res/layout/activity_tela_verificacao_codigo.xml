@@ -28,14 +28,15 @@
         android:id="@+id/textCodVerificacaoDescricao"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="94dp"
         android:fontFamily="@font/montserrat_regular"
         android:text="@string/textDescricao_codVerificacao"
         android:textColor="@color/lazul_marinho"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoTitulo" />
 
@@ -126,18 +127,18 @@
         android:layout_width="338dp"
         android:layout_height="66dp"
         android:layout_marginStart="36dp"
+        android:layout_marginTop="252dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="252dp"
-        android:backgroundTint="@color/lazul_marinho"
+        android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/codVerificacao_botao"
         android:textColor="@color/lbranco"
         android:textSize="19sp"
         app:cornerRadius="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCodVerificacaoDescricao" />
 
     <ImageButton
         android:id="@+id/btnVoltaVerificacao"
