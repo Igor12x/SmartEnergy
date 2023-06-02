@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +28,10 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
     private Button btnConfirmarSenha;
     private Intent intentTelaEsqueceuSenha, intentTelaSenhaAlterada;
     private EditText[] editTextsSenhas;
-    private EditText editTextNovaSenha;
+
+    private boolean senhaVisivel;
+
+    private EditText editTextNovaSenha, editTextNvSenha, editTextCfmSenha;
     private RequestQueue solicitacao = null;
 
     @Override
@@ -34,6 +40,9 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
         setContentView(R.layout.activity_tela_redefinir_senha);
         solicitacao = Volley.newRequestQueue(this);
 
+        editTextNvSenha = findViewById(R.id.editTextNvSenha);
+        editTextCfmSenha = findViewById(R.id.editTextCfmSenha);
+
         btnVoltaNovaSenha = findViewById(R.id.btnVoltaNovaSenha);
         btnConfirmarSenha = findViewById(R.id.btnCfmSenha);
         editTextNovaSenha = findViewById(R.id.editTextNvSenha);
@@ -41,6 +50,65 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
                 findViewById(R.id.editTextNvSenha),
                 findViewById(R.id.editTextCfmSenha)
         };
+
+        //eventos de mostrar e ocultar senha
+        editTextNvSenha.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>=editTextNvSenha.getRight()-editTextNvSenha.getCompoundDrawables()[Right].getBounds()
+                            .width()){
+                        int selecione=editTextNvSenha.getSelectionEnd();
+                        if (senhaVisivel){
+                            //deifinindo a img do drawable
+                            editTextNvSenha.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.olho_fechado, 0);
+                            //para ocultar a senha
+                            editTextNvSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            senhaVisivel=false;
+                        }else {
+                            //deifinindo a img do drawable
+                            editTextNvSenha.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icone_olho_azul, 0);
+                            //para ocultar a senha
+                            editTextNvSenha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            senhaVisivel=true;
+                        }
+                        editTextNvSenha.setSelection(selecione);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        editTextCfmSenha.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>=editTextCfmSenha.getRight()-editTextCfmSenha.getCompoundDrawables()[Right].getBounds()
+                            .width()){
+                        int selecione=editTextCfmSenha.getSelectionEnd();
+                        if (senhaVisivel){
+                            //deifinindo a img do drawable
+                            editTextCfmSenha.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.olho_fechado, 0);
+                            //para ocultar a senha
+                            editTextCfmSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            senhaVisivel=false;
+                        }else {
+                            //deifinindo a img do drawable
+                            editTextCfmSenha.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.icone_olho_azul, 0);
+                            //para ocultar a senha
+                            editTextCfmSenha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            senhaVisivel=true;
+                        }
+                        editTextCfmSenha.setSelection(selecione);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         btnConfirmarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
