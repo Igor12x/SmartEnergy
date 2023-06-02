@@ -65,7 +65,7 @@
 
     <!--**********************************   String inicio   **********************************-->
 
-    <string name="txtData">Quinta, 16 de MAR de 2023</string>
+    <string name="txtData">quinta-feira, 01 de jun. de 2023</string>
     <string-array name="spinnerEndereco">
         <item>Rua das Rosas</item>
         <item>Rua das Orquideas</item>

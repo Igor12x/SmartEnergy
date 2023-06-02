@@ -55,7 +55,7 @@ public class Tela_Principal extends AppCompatActivity {
     private ImageView imgPerfil;
     private Date date = calendar.getTime();
     private double consumoAtual = 0, consumoProjetado = 0, valorAtual = 0, valorProjetado = 0, tarifaTUSD, tarifaTE;
-    private int valorAjuste,  diaFechamentoFatura = 1, idCliente;
+    private int valorAjuste,  diaFechamentoFatura = 1, idCliente, codigoResidencia;
     private TextView textInicioConsumoProjetado, textInicioConsumoAtual,
             textInicioValorConta, textInicioValorContaProjetado, txtData, textMedidorConsumoDiario, textUltimaFatura, textConsumoAtualLimite,
             textValorLimite, textSaudacao, AjusteLimite, textProgressBarPorcentagem, textProgressBarPorcentagemLimite, txtAjuste;
@@ -88,12 +88,12 @@ public class Tela_Principal extends AppCompatActivity {
             ler = getSharedPreferences("usuario", MODE_PRIVATE);
              idCliente = ler.getInt("codigo", 0);
             nomeCompleto = ler.getString("nome", "") + " " + ler.getString("sobrenome", "");
-            valorAjuste = ler.getInt("limite", 0);
+            valorAjuste = ler.getInt("limite" + codigoResidencia, 0);
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(Tela_Principal.this, "Erro ao carregar seus dados de perfil. Por favor, tente logar novamente ou entre em contato com o suporte.", Toast.LENGTH_SHORT).show();
         }
-        textSaudacao.setText("Ola " + nomeCompleto);
+        textSaudacao.setText("Olá, " + nomeCompleto + "!");
         textValorLimite.setText(valorAjuste + " kWh");
     }
 
@@ -160,7 +160,7 @@ public class Tela_Principal extends AppCompatActivity {
                     sliderAjuste.setMax(Integer.parseInt(txtAjuste.getText().toString()));
                     SharedPreferences.Editor gravar =
                             getSharedPreferences("usuario", MODE_PRIVATE).edit();
-                    gravar.putInt("limite", valorAjuste);
+                    gravar.putInt("limite" + codigoResidencia, valorAjuste);
                     gravar.commit();
                     porcentagemGrafico();
                     textValorLimite.setText("Limite: " + valorAjuste );
@@ -185,10 +185,12 @@ public class Tela_Principal extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         Residencia residenciaSelecionada = (Residencia) parent.getSelectedItem();
-                        buscarTarifas(solicitacao, residenciaSelecionada.getCodigo());
-                        buscarUltimaFatura(solicitacao, residenciaSelecionada.getCodigo());
-                        mostrarConsumoMesAtual(residenciaSelecionada.getCodigo());
-                        mostrarConsumoDiario(residenciaSelecionada.getCodigo());
+                        codigoResidencia = residenciaSelecionada.getCodigo();
+                        buscarTarifas(solicitacao, codigoResidencia);
+                        buscarUltimaFatura(solicitacao, codigoResidencia);
+                        mostrarConsumoMesAtual(codigoResidencia);
+                        mostrarConsumoDiario(codigoResidencia);
+                        carregarDadosCliente();
                     }
 
                     @Override
@@ -231,7 +233,7 @@ public class Tela_Principal extends AppCompatActivity {
         Medidor.buscarConsumoMesAtual(database, idResidencia, Tela_Principal.this, new IMedidorBuscoConsumoAtual() {
             @Override
             public void onResultado(double consumoAtualResultado) {
-
+                Log.d("consumoAtualResultado", ">>>>>>>>>>" + consumoAtualResultado);
                 consumoAtual = formatarDouble(consumoAtualResultado);
                 valorAtual = formatarDouble(FaturaCliente.calcularValorFaturaAtual(tarifaTUSD, tarifaTE,
                         consumoAtual));
@@ -324,9 +326,12 @@ public class Tela_Principal extends AppCompatActivity {
         double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
         double grausGraficoLimiteConsumo = (consumoAtual / valorAjuste) * 100;
         textProgressBarPorcentagem.setText((int)grausGraficoConsumoAtual + "%");
-        textProgressBarPorcentagemLimite.setText((int)grausGraficoLimiteConsumo + "%");
+        textProgressBarPorcentagemLimite.setText(0 + "%");
         progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
-        progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
+        if (valorAjuste != 0) {
+            progressLimiteConsumo.setProgress((int) grausGraficoLimiteConsumo);
+            textProgressBarPorcentagemLimite.setText((int) grausGraficoLimiteConsumo + "%");
+        }
     }
     public void AutenticarFirebase() {
 
