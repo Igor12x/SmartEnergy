@@ -173,7 +173,7 @@ public class Tela_Principal extends AppCompatActivity {
                     gravar.putInt("limite" + codigoResidencia, valorAjuste);
                     gravar.commit();
                     porcentagemGrafico();
-                    textValorLimite.setText("Limite: " + valorAjuste );
+                    textValorLimite.setText("Limite: R$ " + valorAjuste );
                     Toast.makeText(Tela_Principal.this, "Limite ajustado para: R$" +
                             valorAjuste, Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
@@ -288,7 +288,7 @@ public class Tela_Principal extends AppCompatActivity {
 
         textInicioConsumoAtual.setText(consumoAtual + " kWh");
         textInicioValorConta.setText("R$ " + valorAtual);
-        textConsumoAtualLimite.setText(consumoAtual + " kWh");
+        textConsumoAtualLimite.setText("R$ " + valorAtual);
     }
 
     public void ExibirValorConsumoFaturaProjetada(double consumoAtual) {
@@ -335,7 +335,7 @@ public class Tela_Principal extends AppCompatActivity {
     }
     public void porcentagemGrafico() {
         double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;
-        double grausGraficoLimiteConsumo = (consumoAtual / valorAjuste) * 100;
+        double grausGraficoLimiteConsumo = (valorAtual / valorAjuste) * 100;
         textProgressBarPorcentagem.setText((int)grausGraficoConsumoAtual + "%");
         textProgressBarPorcentagemLimite.setText(0 + "%");
         progressConsumoAtual.setProgress((int) grausGraficoConsumoAtual);
