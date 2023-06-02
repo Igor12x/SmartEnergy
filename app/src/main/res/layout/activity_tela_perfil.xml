@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="72dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintHorizontal_bias="0.504"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView24"
                     app:srcCompat="@drawable/retangulo4" />
@@ -115,7 +115,7 @@
                     android:enabled="false"
                     android:fontFamily="@font/mplusrrounded1c_bold"
                     android:hint="@string/plainTelefonePerfil"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:textColorHint="@color/black"
                     app:layout_constraintEnd_toEndOf="@+id/imageView27"
                     app:layout_constraintStart_toStartOf="@+id/imageView27"

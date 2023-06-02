@@ -79,9 +79,19 @@ public class Tela_Principal extends AppCompatActivity {
         carregarDadosCliente();
         ExibirDataAtual(txtData);
         btnTelaPerfil();
+        btnLabelOla();
         ajustarLimite();
         btnConfira(getApplicationContext());
         listarResidencias(idCliente, solicitacao);
+    }
+    public void btnLabelOla() {
+        textSaudacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Tela_Perfil.class);
+                startActivity(intent1);
+            }
+        });
     }
     private void carregarDadosCliente() {
         try {
@@ -321,6 +331,7 @@ public class Tela_Principal extends AppCompatActivity {
         textSaudacao = findViewById(R.id.textSaudacao);
         txtData = findViewById(R.id.txtData);
         spinnerResidencia = findViewById(R.id.spinnerResidencia);
+        textSaudacao = findViewById(R.id.textSaudacao);
     }
     public void porcentagemGrafico() {
         double grausGraficoConsumoAtual = (consumoAtual / consumoProjetado) * 100;

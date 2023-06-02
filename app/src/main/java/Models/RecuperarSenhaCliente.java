@@ -2,6 +2,7 @@ package Models;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -43,15 +44,7 @@ public class RecuperarSenhaCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Erro recuperar Senha: ", " " + error);
-                NetworkResponse networkResponse = error.networkResponse;
-                if (networkResponse != null && networkResponse.statusCode == 404) {
-                    listener.onError("O recurso solicitado não foi encontrado.");
-                } else if (networkResponse != null && networkResponse.statusCode == 500) {
-                    listener.onError("O email fornecido não possui cadastro.");
-                } else {
-                    listener.onError("Um erro inesperado ocorreu. Tente novamente mais tarde.");
-                }
+                listener.onError(ErroApi.mensagemErroRecuperarSenha(error));
             }
         });
         envio.setRetryPolicy(new DefaultRetryPolicy(5000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -69,6 +62,7 @@ public class RecuperarSenhaCliente {
             enviarCliente.put("senha", redefinirSenhacliente.getSenha());
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(contexto, "Error ao gerar formato JSON, verifique os campos preenchidos", Toast.LENGTH_SHORT).show();
         }
 
         JsonObjectRequest envio = new JsonObjectRequest(Request.Method.PUT, url, enviarCliente, new Response.Listener<JSONObject>() {
@@ -83,15 +77,7 @@ public class RecuperarSenhaCliente {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Redefinir senha", ">>>>>>>>>>>" + error);
-                NetworkResponse networkResponse = error.networkResponse;
-                if (networkResponse != null && networkResponse.statusCode == 404) {
-                    listener.onError("O recurso solicitado não foi encontrado.");
-                } else if (networkResponse != null && networkResponse.statusCode == 500) {
-                    listener.onError("As senhas fornececidas estão inválidas.");
-                } else {
-                    listener.onError("Um erro inesperado ocorreu. Tente novamente mais tarde.");
-                }
+                listener.onError(ErroApi.mensagemErroRecuperarSenha(error));
             }
         });
         solicitacao.add(envio);

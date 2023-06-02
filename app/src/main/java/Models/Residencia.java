@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Interfaces.IResidencia;
+import Interfaces.IResidenciaVerificarCadastro;
 
 public class Residencia {
     public int getCodigo() {
@@ -111,5 +113,22 @@ public class Residencia {
             }
     });
         solicitacao.add(envio);
+    }
+    public static void verificarResidenciaCadastrada(String cpf, RequestQueue solicitacao, IResidenciaVerificarCadastro listener){
+        //String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
+        String url = "http://localhost:5000/api/Residencia/verificarResidenciaCadastrada" + cpf;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                boolean possuiResidencia = Boolean.parseBoolean(response);
+                listener.onResultado(possuiResidencia);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
     }
 }

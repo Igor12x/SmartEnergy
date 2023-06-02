@@ -81,7 +81,6 @@ public class Tela_Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (checkBoxTermos.isChecked()) {
-                    // Verificar se algum campo está vazio
                     if (plainCadNome.getText().toString().isEmpty() ||
                             plainCadCpf.getText().toString().isEmpty() ||
                             plainCadEmail.getText().toString().isEmpty() ||

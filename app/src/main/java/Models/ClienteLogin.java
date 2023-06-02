@@ -51,8 +51,7 @@ public class ClienteLogin {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("onErrorResponseLogin", error.toString());
-
+            listener.onErro(ErroApi.mensagemErroCadastro(error));
             }
         });
         solicitacao.add(envio);

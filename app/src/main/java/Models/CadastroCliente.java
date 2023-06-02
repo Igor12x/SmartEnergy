@@ -46,7 +46,7 @@ public class CadastroCliente {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("onErrorResponse", error.toString());
-                String errorMessage = ErroApi.mensagemErro(error);
+                String errorMessage = ErroApi.mensagemErroCadastro(error);
                 listener.onErro(errorMessage);
             }
         });
