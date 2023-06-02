@@ -37,10 +37,10 @@
 
         <TextView
             android:id="@+id/textSenhaAltDescricao"
-            android:layout_width="281dp"
-            android:layout_height="33dp"
+            android:layout_width="268dp"
+            android:layout_height="37dp"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
 
             android:layout_marginEnd="65dp"
 
@@ -49,7 +49,7 @@
             android:text="@string/TextSenhaAlteradaDsc"
             android:textColor="@color/lazul_marinho"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.461"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textSenhaAltTitulo" />
 
@@ -58,9 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
-            android:layout_marginTop="207dp"
+            android:layout_marginTop="168dp"
             android:layout_marginEnd="156dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icone_senha_alterada" />
@@ -71,14 +72,16 @@
             android:layout_height="60dp"
             android:layout_marginStart="58dp"
             android:layout_marginEnd="63dp"
-            android:layout_marginBottom="215dp"
-            android:backgroundTint="@color/lazul_marinho"
+            android:layout_marginBottom="416dp"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/btnSenhaAlt"
             android:textColor="@color/lbranco"
+            android:textSize="16dp"
             app:cornerRadius="47dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
