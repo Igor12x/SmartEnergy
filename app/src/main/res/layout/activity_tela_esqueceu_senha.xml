@@ -12,34 +12,34 @@
         android:id="@+id/plainEsqSenhaTitulo"
         android:layout_width="280dp"
         android:layout_height="58dp"
+        android:layout_marginTop="100dp"
         android:text="@string/plainEsqSenhaTitulo"
         android:textColor="@color/lazul_marinho"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/plainEsqSenhaDescricao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/plainEsqSenhaDescricao"
         android:layout_width="297dp"
         android:layout_height="57dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="12dp"
         android:text="@string/plainEsqSenhaDescricao"
-        android:textColor="@color/lazul_marinho"
 
+        android:textColor="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/plainEsqSenhaTitulo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/plainEsqSenhaTitulo" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="345dp"
         android:layout_height="61dp"
+        android:layout_marginTop="44dp"
         android:autofillHints=""
         android:background="@drawable/edit_text_equeceu_senha"
         android:ems="10"
@@ -52,57 +52,25 @@
         android:textColor="@color/lazul_marinho"
         android:textColorHighlight="@color/lazul_marinho"
         android:textColorHint="@color/lazul_cinza_claro"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintTop_toBottomOf="@+id/plainEsqSenhaDescricao" />
 
     <Button
         android:id="@+id/btnEscSenha"
         android:layout_width="347dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="123dp"
-        android:backgroundTint="@color/lazul_marinho"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/btnEsqSenha"
         android:textColor="@color/lbranco"
+        android:textSize="16sp"
         app:cornerRadius="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="0.142" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="140dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/txtEscSenha"
-        android:textColor="@color/lazul_marinho"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtVolteAoLogin"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txtVolteAoLogin"
-        android:layout_width="47dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/txtEscSenhaLog"
-        android:textColor="@color/teal_200"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <ImageButton
         android:id="@+id/btnVoltaEsqueceuSenha"
