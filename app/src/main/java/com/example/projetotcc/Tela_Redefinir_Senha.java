@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +23,11 @@ import Models.RecuperarSenhaCliente;
 
 public class Tela_Redefinir_Senha extends AppCompatActivity {
 
-    private ImageButton btnVoltaNovaSenha;
+    private ImageButton btnVoltaNovaSenha, btnCadSenhaRedefinir, btnConfSenhaRedefinir;
     private Button btnConfirmarSenha;
     private Intent intentTelaEsqueceuSenha, intentTelaSenhaAlterada;
     private EditText[] editTextsSenhas;
-    private EditText editTextNovaSenha;
+    private EditText editTextNovaSenha, editTextNvSenha, editTextCfmSenha;
     private RequestQueue solicitacao = null;
 
     @Override
@@ -33,7 +35,11 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_redefinir_senha);
         solicitacao = Volley.newRequestQueue(this);
+        editTextNvSenha = findViewById(R.id.editTextNvSenha);
+        editTextCfmSenha = findViewById(R.id.editTextCfmSenha);
 
+        btnCadSenhaRedefinir = findViewById(R.id.btnCadSenhaRedefinir);
+        btnConfSenhaRedefinir = findViewById(R.id.btnConfSenhaRedefinir);
         btnVoltaNovaSenha = findViewById(R.id.btnVoltaNovaSenha);
         btnConfirmarSenha = findViewById(R.id.btnCfmSenha);
         editTextNovaSenha = findViewById(R.id.editTextNvSenha);
@@ -41,6 +47,27 @@ public class Tela_Redefinir_Senha extends AppCompatActivity {
                 findViewById(R.id.editTextNvSenha),
                 findViewById(R.id.editTextCfmSenha)
         };
+
+        btnCadSenhaRedefinir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean mostrarSenhaInicial = !editTextNvSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+                editTextNvSenha.setTransformationMethod(mostrarSenhaInicial ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+                // Atualize o ícone do botão
+                btnCadSenhaRedefinir.setImageResource(mostrarSenhaInicial ? R.drawable.olho_fechado : R.drawable.icone_olho_azul);
+            }
+        });
+
+        btnConfSenhaRedefinir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean mostrarSenhaInicialConf = !editTextCfmSenha.getTransformationMethod().equals(PasswordTransformationMethod.getInstance());
+                editTextCfmSenha.setTransformationMethod(mostrarSenhaInicialConf ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
+                // Atualize o ícone do botão
+                btnConfSenhaRedefinir.setImageResource(mostrarSenhaInicialConf ? R.drawable.olho_fechado : R.drawable.icone_olho_azul);
+            }
+        });
+
 
         btnConfirmarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
