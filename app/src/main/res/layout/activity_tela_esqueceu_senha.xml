@@ -10,9 +10,10 @@
 
     <TextView
         android:id="@+id/plainEsqSenhaTitulo"
-        android:layout_width="280dp"
-        android:layout_height="58dp"
+        android:layout_width="306dp"
+        android:layout_height="61dp"
         android:layout_marginTop="100dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/plainEsqSenhaTitulo"
         android:textColor="@color/lazul_marinho"
         android:textSize="30sp"
@@ -26,9 +27,9 @@
         android:id="@+id/plainEsqSenhaDescricao"
         android:layout_width="297dp"
         android:layout_height="57dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/plainEsqSenhaDescricao"
-
         android:textColor="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -39,7 +40,7 @@
         android:id="@+id/editTextEmail"
         android:layout_width="345dp"
         android:layout_height="61dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="56dp"
         android:autofillHints=""
         android:background="@drawable/edit_text_equeceu_senha"
         android:ems="10"
@@ -58,9 +59,9 @@
 
     <Button
         android:id="@+id/btnEscSenha"
-        android:layout_width="347dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="346dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/btnEsqSenha"
