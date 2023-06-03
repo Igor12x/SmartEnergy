@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,20 +30,23 @@ public class Tela_Carregamento extends AppCompatActivity {
 
     private void logar(RequestQueue solicitacao){
         if(!possuiUsuarioGravado()) {
+            Log.d("logarTeladeCarregamentoTrue", "IF");
             Handler handler = new Handler();
             handler.postDelayed(() -> {
                 Intent intent = new Intent(getApplicationContext(), Tela_Inicial.class);
                 startActivity(intent);
             }, 4000);
         } else {
+            Log.d("logarTeladeCarregamento",">>>>>>>>> aqui no else");
             SharedPreferences ler = getSharedPreferences("usuario", MODE_PRIVATE);
             ValidarLogin(solicitacao, ler.getString("cpf", ""), ler.getString("senha", ""));
+            Log.d("sharedPreferences", ">>>>>>> CPF" + ler.getString("cpf", ""));
         }
     }
     private boolean possuiUsuarioGravado() {
         try {
             SharedPreferences sharedPreferences = getSharedPreferences("usuario", MODE_PRIVATE);
-            return sharedPreferences.contains("nome");
+            return sharedPreferences.contains("cpf");
         } catch (Exception e){
             e.printStackTrace();
             return false;
@@ -62,6 +66,7 @@ public class Tela_Carregamento extends AppCompatActivity {
             @Override
             public void onResultado(Cliente clienteLogado) {
                 verificarResidenciaCadastrada(solicitacao, clienteLogado.getCpf());
+                Log.d("ValidarLogin", ">>>>>>>>>> " + clienteLogado.getCpf());
             }
 
             @Override
@@ -73,7 +78,9 @@ public class Tela_Carregamento extends AppCompatActivity {
     }
 
     public void verificarResidenciaCadastrada(RequestQueue solicitacao, String cpf) {
+        Log.d("verificarResidenciaCadastrada", ">>>>>>>>>>" + "estou no metodo");
         Residencia.verificarResidenciaCadastrada(cpf, solicitacao, cadastrado -> {
+            Log.d("verificarResidenciaCadastrada", ">>>>>>> " + cadastrado);
             if (cadastrado) {
                 abrirTelaPrincipal();
             } else {

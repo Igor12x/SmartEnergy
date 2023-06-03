@@ -116,19 +116,21 @@ public class Residencia {
     }
     public static void verificarResidenciaCadastrada(String cpf, RequestQueue solicitacao, IResidenciaVerificarCadastro listener){
         //String url = "http://10.0.2.2:5000/api/Residencia/listarResidencias";
-        String url = "http://localhost:5000/api/Residencia/verificarResidenciaCadastrada" + cpf;
+        String url = "http://localhost:5000/api/Residencia/verificarResidenciaCadastrada/" + cpf;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("onResponse -verificarResidenciaCadastrada", ">>>>>>> " + response );
                 boolean possuiResidencia = Boolean.parseBoolean(response);
                 listener.onResultado(possuiResidencia);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d("onErrorResponse-verificarResidenciaCadastrada", ">>>>>>>>>>>>" + error);
             }
         });
+        solicitacao.add(stringRequest);
     }
 }

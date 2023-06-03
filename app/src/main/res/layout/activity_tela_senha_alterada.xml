@@ -72,7 +72,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="58dp"
             android:layout_marginEnd="63dp"
-            android:layout_marginBottom="416dp"
+            android:layout_marginBottom="236dp"
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/btnSenhaAlt"
@@ -82,7 +82,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSenhaAltDescricao" />
 
         <ImageButton
             android:id="@+id/btnVoltaSenhaAlt"

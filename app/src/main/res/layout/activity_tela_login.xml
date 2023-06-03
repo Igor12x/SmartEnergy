@@ -166,7 +166,7 @@
         app:layout_constraintHorizontal_bias="0.995"
         app:layout_constraintStart_toStartOf="@+id/txtSenha"
         app:layout_constraintTop_toTopOf="@+id/txtSenha"
-        app:srcCompat="@drawable/icone_olho_azul" />
+        app:srcCompat="@drawable/olho_fechado" />
 
     <ImageView
         android:id="@+id/imageView13"

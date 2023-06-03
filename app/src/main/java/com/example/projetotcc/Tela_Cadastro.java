@@ -81,13 +81,18 @@ public class Tela_Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (checkBoxTermos.isChecked()) {
-                    if (plainCadNome.getText().toString().isEmpty() ||
-                            plainCadCpf.getText().toString().isEmpty() ||
-                            plainCadEmail.getText().toString().isEmpty() ||
-                            plainCadTel.getText().toString().isEmpty() ||
-                            plainCadSenha.getText().toString().isEmpty()) {
+                    if (verificarCamposVazios()) {
                         Toast.makeText(getApplicationContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
-                    } else if (!plainCadSenha.getText().toString().equals(plainCadConfirmarSenha.getText().toString())) {
+                    } else if(!verificarEmail(plainCadEmail.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Digite um email válido", Toast.LENGTH_SHORT).show();
+                    }else if(!validarTelefone(plainCadTel.getText().toString().replaceAll("[^\\d]", "")))
+                    {
+                        Toast.makeText(Tela_Cadastro.this, "Digite um telefone válido", Toast.LENGTH_SHORT).show();
+                    } else if(!validarCPF(plainCadCpf.getText().toString().replaceAll("[^\\d]", "")))
+                    {
+                        Toast.makeText(Tela_Cadastro.this, "Digite um CPF válido", Toast.LENGTH_SHORT).show();
+                    }
+                        else if (!plainCadSenha.getText().toString().equals(plainCadConfirmarSenha.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "A senha e a confirmação de senha não correspondem", Toast.LENGTH_SHORT).show();
                     } else {
                         Cliente cadastrar = new Cliente(
@@ -98,9 +103,6 @@ public class Tela_Cadastro extends AppCompatActivity {
                                 plainCadTel.getText().toString().replaceAll("[^\\d]", ""),
                                 plainCadSenha.getText().toString());
                         ValidarCadastro(solicitacao, cadastrar);
-
-
-
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Por favor, aceite os termos de uso", Toast.LENGTH_SHORT).show();
@@ -115,7 +117,6 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 plainCadSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
 
-                // Atualize o ícone do botão
                 btnCadSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
             }
         });
@@ -127,11 +128,83 @@ public class Tela_Cadastro extends AppCompatActivity {
 
                 plainCadConfirmarSenha.setTransformationMethod(mostrarSenha ? PasswordTransformationMethod.getInstance() : HideReturnsTransformationMethod.getInstance());
 
-                // Atualize o ícone do botão
                 btnCadConfirmaSenha.setImageResource(mostrarSenha ? R.drawable.icone_olho_branco : R.drawable.olho_fechado_branco);
             }
         });
     }
+    public boolean verificarEmail(String emailCliente) {
+        if (android.util.Patterns.EMAIL_ADDRESS.matcher(emailCliente).matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private boolean verificarCamposVazios() {
+        String nome = plainCadNome.getText().toString();
+        String cpf = plainCadCpf.getText().toString();
+        String email = plainCadEmail.getText().toString();
+        String telefone = plainCadTel.getText().toString();
+        String senha = plainCadSenha.getText().toString();
+
+        return nome.isEmpty() || cpf.isEmpty() || email.isEmpty() || telefone.isEmpty() || senha.isEmpty();
+    }
+
+    private boolean validarTelefone(String telefone) {
+        Log.d("TELEFONE", " >>>>>>>>>>> " + telefone);
+        Log.d("TELEFONE", " >>>>>>>>>>> " + telefone.length());
+        if (telefone.length() != 10 && telefone.length() != 11) {
+            return false;
+        }
+        return true;
+    }
+    private boolean validarCPF(String cpf) {
+        // Remover caracteres não numéricos do CPF
+        cpf = cpf.replaceAll("[^\\d]", "");
+
+        // Verificar se o CPF possui 11 dígitos
+        if (cpf.length() != 11) {
+            return false;
+        }
+
+        // Verificar se todos os dígitos do CPF são iguais
+        if (cpf.matches("(\\d)\\1{10}")) {
+            return false;
+        }
+
+        // Calcular o primeiro dígito verificador
+        int soma = 0;
+        for (int i = 0; i < 9; i++) {
+            soma += (cpf.charAt(i) - '0') * (10 - i);
+        }
+        int primeiroDigito = 11 - (soma % 11);
+        if (primeiroDigito >= 10) {
+            primeiroDigito = 0;
+        }
+
+        // Verificar o primeiro dígito verificador
+        if (cpf.charAt(9) - '0' != primeiroDigito) {
+            return false;
+        }
+
+        // Calcular o segundo dígito verificador
+        soma = 0;
+        for (int i = 0; i < 10; i++) {
+            soma += (cpf.charAt(i) - '0') * (11 - i);
+        }
+        int segundoDigito = 11 - (soma % 11);
+        if (segundoDigito >= 10) {
+            segundoDigito = 0;
+        }
+
+        // Verificar o segundo dígito verificador
+        if (cpf.charAt(10) - '0' != segundoDigito) {
+            return false;
+        }
+
+        return true;
+    }
+
+
 
     public void ValidarCadastro(RequestQueue solicitacao, Cliente cadastrar) {
         CadastroCliente.ValidarCadastroCliente(cadastrar, solicitacao, new ICadastroCliente() {

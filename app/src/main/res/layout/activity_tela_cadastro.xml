@@ -315,7 +315,7 @@
                     app:layout_constraintHorizontal_bias="0.965"
                     app:layout_constraintStart_toStartOf="@+id/plainCadSenha"
                     app:layout_constraintTop_toTopOf="@+id/plainCadSenha"
-                    app:srcCompat="@drawable/icone_olho_branco" />
+                    app:srcCompat="@drawable/olho_fechado_branco" />
 
                 <ImageButton
                     android:id="@+id/btnCadConfirmaSenha"
@@ -327,7 +327,7 @@
                     app:layout_constraintHorizontal_bias="0.965"
                     app:layout_constraintStart_toStartOf="@+id/plainCadConfirmarSenha"
                     app:layout_constraintTop_toTopOf="@+id/plainCadConfirmarSenha"
-                    app:srcCompat="@drawable/icone_olho_branco" />
+                    app:srcCompat="@drawable/olho_fechado_branco" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

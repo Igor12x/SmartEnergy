@@ -31,7 +31,7 @@
         android:text="@string/txtNvSenhaDsc"
         android:textColor="@color/lazul_marinho"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNvSenhaTitulo" />
 
@@ -39,7 +39,7 @@
         android:id="@+id/editTextNvSenha"
         android:layout_width="314dp"
         android:layout_height="49dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/borda_redonda_edit_text"
         android:drawableRight="@drawable/olho_fechado"
         android:ems="10"
@@ -52,16 +52,6 @@
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNvSenhaDsc" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNvSenha"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNvSenha"
-        app:layout_constraintTop_toTopOf="@+id/editTextNvSenha"
-        app:srcCompat="@drawable/icone_olho_azul" />
 
     <EditText
         android:id="@+id/editTextCfmSenha"
@@ -80,15 +70,7 @@
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNvSenha" />
-    <ImageView
-        android:id="@+id/imageView39"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextCfmSenha"
-        app:layout_constraintEnd_toEndOf="@+id/editTextCfmSenha"
-        app:layout_constraintTop_toTopOf="@+id/editTextCfmSenha"
-        app:srcCompat="@drawable/icone_olho_azul" />
+
     <Button
         android:id="@+id/btnCfmSenha"
         android:layout_width="312dp"
@@ -117,29 +99,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icone_seta"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/btnCadSenhaRedefinir"
-        android:layout_width="29dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNvSenha"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNvSenha"
-        app:layout_constraintTop_toTopOf="@+id/editTextNvSenha"
-        app:layout_constraintVertical_bias="0.411"
-        app:srcCompat="@drawable/icone_olho_azul" />
-
-    <ImageButton
-        android:id="@+id/btnConfSenhaRedefinir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextCfmSenha"
-        app:layout_constraintEnd_toEndOf="@+id/editTextCfmSenha"
-        app:layout_constraintTop_toTopOf="@+id/editTextCfmSenha"
-        app:srcCompat="@drawable/icone_olho_azul" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

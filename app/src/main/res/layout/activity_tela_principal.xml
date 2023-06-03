@@ -178,7 +178,6 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="1473 kWh"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintBottom_toTopOf="@+id/textInicioValorConta"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
@@ -189,14 +188,11 @@
                     android:id="@+id/textInicioValorConta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="R$ 1465,60"
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
-                    app:layout_constraintTop_toTopOf="@+id/imageView9"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintStart_toStartOf="@+id/imageView9" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -217,7 +213,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="1800 kWh"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
@@ -232,7 +227,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="44dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="R$ 1745,05"
                     android:textColor="@color/roxo_rroxeado"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="@+id/imageView10"
@@ -267,7 +261,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="48dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Fatura do mês anterior: R$ 1800,00 (1858 kWh)"
                     android:textColor="@color/agua_marinha"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -308,8 +301,7 @@
                     app:layout_constraintHorizontal_bias="0.516"
                     app:layout_constraintStart_toStartOf="@+id/progress_barLimite"
                     app:layout_constraintTop_toTopOf="@+id/progress_barLimite"
-                    app:layout_constraintVertical_bias="0.509"
-                    tools:text="60%" />
+                    app:layout_constraintVertical_bias="0.509" />
 
                 <Spinner
                     android:id="@+id/spinnerResidencia"
@@ -353,7 +345,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Limite: R$ 2000,00"
                     android:textColor="@color/agua_marinha"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintHorizontal_bias="0.489"
@@ -446,7 +437,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="92 kWh"
                     android:textColor="@color/agua_marinha"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toTopOf="@+id/imageView17"
@@ -511,7 +501,6 @@
                     android:layout_marginStart="100dp"
                     android:layout_marginTop="42dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Olá, SMART ENERGY"
                     android:textColor="@color/brancoazulado"
 
                     app:layout_constraintStart_toStartOf="parent"

@@ -40,15 +40,6 @@ public class Tela_Esqueceu_Senha extends AppCompatActivity {
         btnVoltaEsqueci = findViewById(R.id.btnVoltaEsqueceuSenha);
         btnEnviarEmail = findViewById(R.id.btnEscSenha);
         editTextEmail = findViewById(R.id.editTextEmail);
-        txtVolteAoLogin = findViewById(R.id.txtVolteAoLogin);
-
-        txtVolteAoLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Tela_Login.class);
-                startActivity(intent);
-            }
-        });
 
         btnVoltaEsqueci.setOnClickListener(new View.OnClickListener() {
             @Override
