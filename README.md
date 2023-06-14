@@ -1,4 +1,4 @@
-# Projeto de conclusão do meu curso técnico de desenvolvimento de software no SENAI 🎯:
+# Projeto de conclusão do meu curso técnico de desenvolvimento de software no SENAI 🎯
 
 No meu projeto de conclusão de curso, formamos um squad composto por colegas de classe e trabalhamos juntos para desenvolver uma aplicação abrangente de monitoramento de consumo de energia. Nosso projeto envolveu a criação de uma aplicação Android, uma API em C# e a integração com o Arduino.
 
